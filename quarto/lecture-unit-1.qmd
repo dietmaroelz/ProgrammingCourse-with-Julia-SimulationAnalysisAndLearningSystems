@@ -122,7 +122,7 @@ Try running this simple script in several ways:
 # Variables and types
 Think of variables as a **storage box**, with a name (tag) on it. The computer's memory is the **storage facility** in which you can store all your boxes. 
 
-![Variables are boxes in a storage facility (memory)](../img/boxes2.png)
+![Variables are boxes in a storage facility (memory)](img/boxes2.png)
 
 
 ```{julia}
@@ -155,7 +155,7 @@ isbits(x)
 ```
 x is a **primitive type**, i.e. x **directly** refers to the value of the variable.
 
-![Number types in Julia](../img/type_hierarchy.png)
+![Number types in Julia](img/type_hierarchy.png)
 
 Use 
 ```{julia}
@@ -550,7 +550,7 @@ z=y
 @show z===y;
 ```
 
-![composite types](../img/sketch1.png)
+![composite types](img/sketch1.png)
 
 # Control structures 
 

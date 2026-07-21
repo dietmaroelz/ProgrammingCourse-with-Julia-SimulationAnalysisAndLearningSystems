@@ -167,7 +167,7 @@ You are coming to this course after doing several mathematics and statistics cou
 * [Ready reckoner](https://en.wikipedia.org/wiki/Ready_reckoner)
 * [Computer (original meaning)](https://en.wikipedia.org/wiki/Computer_(occupation))
 
-[![Women coding image](../web_img/women_coders.jpg)](https://cacm.acm.org/news/234820-the-secret-history-of-women-in-coding/fulltext)
+[![Women coding image](img/women_coders.jpg)](https://cacm.acm.org/news/234820-the-secret-history-of-women-in-coding/fulltext)
 
 * [Ancient analogue computer](https://en.wikipedia.org/wiki/Antikythera_mechanism)
 * [Babbage's Difference Engine](https://en.wikipedia.org/wiki/Difference_engine)
@@ -180,7 +180,7 @@ You are coming to this course after doing several mathematics and statistics cou
 Wikipedia says this about a [computer](https://en.wikipedia.org/wiki/Computer):
 > A computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations automatically. 
 
-[![Ada](../web_img/ada.jpg)](https://en.wikipedia.org/wiki/Ada_Lovelace "Ada Lovelace")
+[![Ada](img/ada.jpg)](https://en.wikipedia.org/wiki/Ada_Lovelace "Ada Lovelace")
 
 We can live with this definition. Here are some notes and bits.
 
@@ -192,7 +192,7 @@ Most computers today implement some form of the [von Neumann architecture](https
 
 You should also know of the conceptual mathematical model of a computer which is typically the [Turing machine](https://en.wikipedia.org/wiki/Turing_machine). The nice thing about such an abstraction is that it often helps understand what and how certain algorithms operate, as well as their limitations. There are also related computer theoretic notions such as [Finite Automata](https://en.wikipedia.org/wiki/Deterministic_finite_automaton). We don't get too much into such computer science/discrete math notions in the course. However, it is very interesting stuff, that lies at the centre of mathematics and computer science. 
 
-[![Alan Turing](../web_img/alan-turing.jpg)](https://en.wikipedia.org/wiki/Alan_Turing)
+[![Alan Turing](img/alan-turing.jpg)](https://en.wikipedia.org/wiki/Alan_Turing)
 
 #### The culture of software development and Who is a programmer?
 

@@ -955,7 +955,7 @@ A heap will allow us to do pushing and popping in $O(log~n)$ time.
 
 A heap is based on an **(almost) complete balanced binary tree** data structure. Before we deal with heaps explicitly, let us look at these trees. Tree data structure are ubiquitous in computer science and come in many shapes and forms. A balanced binary tree is one specific form. Schematically we can represent it as follows:
 
-![Almost Complete Binary Tree](../web_img/tree1.jpg)
+![Almost Complete Binary Tree](img/tree1.jpg)
 
 Here we numbered the node in binary sequentially where the root is $1$, its two leaves are $10$, and $11$, the third layer has $100$, $101$, $110$, and $111$, and so fourth. In this example there are $12$ nodes all together. Notice they are compacted on the final layer to the left. 
 
@@ -965,7 +965,7 @@ A nice thing about this layout of the tree is that the **path** to any node is d
 
 Almost complete binary arrays are special in that they can actually be laid out in memory sequentially:
 
-![Almost Complete Binary Tree in memory](../web_img/tree2.png)
+![Almost Complete Binary Tree in memory](img/tree2.png)
 
 With this layout you can easily find the array index **left child**, **right child**, or **parent** of each node. In fact, there is $O(1)$ access to any numbered node. This differs from many other trees (not necessarily almost complete binary trees) where a **linked** implementation is needed if the tree is to be mutated efficiently. In such a linked implementation, pointers or references need to be kept between nodes. Here is for example a struct for such a node which keeps a string inside it:
 

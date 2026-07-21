@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="lecture-unit-1_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="lecture-unit-1_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="lecture-unit-1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="lecture-unit-1_files/libs/bootstrap/bootstrap-888e7731d048cfaa148b823e8fc1b2fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="lecture-unit-1_files/libs/bootstrap/bootstrap-25808a6e4626de0feadfecd6d3274d08.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -254,7 +254,7 @@ julia&gt; </code></pre>
 <p>Think of variables as a <strong>storage box</strong>, with a name (tag) on it. The computer’s memory is the <strong>storage facility</strong> in which you can store all your boxes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../img/boxes2.png" class="img-fluid figure-img"></p>
+<p><img src="img/boxes2.png" class="img-fluid figure-img"></p>
 <figcaption>Variables are boxes in a storage facility (memory)</figcaption>
 </figure>
 </div>
@@ -303,7 +303,7 @@ julia&gt; </code></pre>
 <p>x is a <strong>primitive type</strong>, i.e.&nbsp;x <strong>directly</strong> refers to the value of the variable.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../img/type_hierarchy.png" class="img-fluid figure-img"></p>
+<p><img src="img/type_hierarchy.png" class="img-fluid figure-img"></p>
 <figcaption>Number types in Julia</figcaption>
 </figure>
 </div>
@@ -588,7 +588,7 @@ y = 20</code></pre>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> m2, m1 <span class="op">=</span> m1, m2;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.000013 seconds (36 allocations: 1.688 KiB)</code></pre>
+<pre><code>  0.000027 seconds (36 allocations: 1.688 KiB)</code></pre>
 </div>
 </div>
 <p>takes about as much time as</p>
@@ -598,7 +598,7 @@ y = 20</code></pre>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> m2, m1 <span class="op">=</span> m1, m2;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.000009 seconds (9 allocations: 464 bytes)</code></pre>
+<pre><code>  0.000015 seconds (9 allocations: 464 bytes)</code></pre>
 </div>
 </div>
 <p>because for composite types <strong>only the references</strong> are swapped! Compare this to the time required for re-assigning those variables after copying their entire content:</p>
@@ -608,7 +608,7 @@ y = 20</code></pre>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> m2, m1 <span class="op">=</span> <span class="fu">copy</span>(m1), <span class="fu">copy</span>(m2);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.011771 seconds (4.74 k allocations: 15.486 MiB, 53.13% compilation time)</code></pre>
+<pre><code>  0.016985 seconds (4.74 k allocations: 15.486 MiB, 56.82% compilation time)</code></pre>
 </div>
 </div>
 </section>
@@ -889,7 +889,7 @@ z === y = true</code></pre>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../img/sketch1.png" class="img-fluid figure-img"></p>
+<p><img src="img/sketch1.png" class="img-fluid figure-img"></p>
 <figcaption>composite types</figcaption>
 </figure>
 </div>
@@ -1247,8 +1247,8 @@ Occupation: diesel mechanic</code></pre>
 <span id="cb204-3"><a href="#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">pointer</span>(a);</span>
 <span id="cb204-4"><a href="#cb204-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">pointer</span>(b);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>pointer(a) = Ptr{Int64}(0x00007e86c5edf220)
-pointer(b) = Ptr{Int64}(0x00007e86c5edf220)</code></pre>
+<pre><code>pointer(a) = Ptr{Int64}(0x000070992ee7dbe0)
+pointer(b) = Ptr{Int64}(0x000070992ee7dbe0)</code></pre>
 </div>
 </div>
 <p>You can see that both a and b “point” to the same location in memory (a reference, or pointer).</p>

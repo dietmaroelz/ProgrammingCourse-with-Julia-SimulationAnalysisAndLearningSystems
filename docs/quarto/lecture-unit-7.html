@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="lecture-unit-7_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="lecture-unit-7_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="lecture-unit-7_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="lecture-unit-7_files/libs/bootstrap/bootstrap-888e7731d048cfaa148b823e8fc1b2fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="lecture-unit-7_files/libs/bootstrap/bootstrap-25808a6e4626de0feadfecd6d3274d08.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -235,7 +235,7 @@ U_n = \frac{x_n}{2^\ell}.
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>non_deterministic_number <span class="op">=</span> <span class="fu">sum</span>(a)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> non_deterministic_number;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>non_deterministic_number = 3884457854223521</code></pre>
+<pre><code>non_deterministic_number = 26849939062124000</code></pre>
 </div>
 </div>
 <p>This number is arbitrary but we have no guarantee that it comes from some distribution, or that if we create it twice then each instance is statistically independent of the other.</p>
@@ -550,7 +550,7 @@ Stacktrace:
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="fu">rand_binomial</span>(n,p) for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">^</span><span class="fl">6</span>]</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>(mean <span class="op">=</span> <span class="fu">mean</span>(data), std <span class="op">=</span> <span class="fu">std</span>(data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>(mean = 6.000043, std = 2.0469287208078812)</code></pre>
+<pre><code>(mean = 6.00296, std = 2.0515534229630594)</code></pre>
 </div>
 </div>
 <p>Another way of doing this is to sample the CDF of the binomial distribution above. We could have also used the <a href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package, which provides statistics and samplers for many common distributions:</p>
@@ -1637,7 +1637,7 @@ Stacktrace:
 <p>A heap is based on an <strong>(almost) complete balanced binary tree</strong> data structure. Before we deal with heaps explicitly, let us look at these trees. Tree data structure are ubiquitous in computer science and come in many shapes and forms. A balanced binary tree is one specific form. Schematically we can represent it as follows:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../web_img/tree1.jpg" class="img-fluid figure-img"></p>
+<p><img src="img/tree1.jpg" class="img-fluid figure-img"></p>
 <figcaption>Almost Complete Binary Tree</figcaption>
 </figure>
 </div>
@@ -1647,7 +1647,7 @@ Stacktrace:
 <p>Almost complete binary arrays are special in that they can actually be laid out in memory sequentially:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../web_img/tree2.png" class="img-fluid figure-img"></p>
+<p><img src="img/tree2.png" class="img-fluid figure-img"></p>
 <figcaption>Almost Complete Binary Tree in memory</figcaption>
 </figure>
 </div>

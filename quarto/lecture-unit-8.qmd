@@ -57,7 +57,7 @@ Generally, to make keeping track of data easy, in a relational database you woul
 
 Here is an example of a more complex example - an imagining of how _LinkedIn_ might store their data in a relational database (taken from "Designing Data-Intensive Applications" by Martin Kleppmann).
 
-![From _Designing Data-Intensive Applications_ by Martin Kleppmann](../web_img/schema.png)
+![From _Designing Data-Intensive Applications_ by Martin Kleppmann](img/schema.png)
 
 ## SQL
 
