@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>BigHW - Semester 2, 2026.</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="bighw_files/libs/clipboard/clipboard.min.js"></script>
+<script src="bighw_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="bighw_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="bighw_files/libs/quarto-html/popper.min.js"></script>
+<script src="bighw_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="bighw_files/libs/quarto-html/anchor.min.js"></script>
+<link href="bighw_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="bighw_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="bighw_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="bighw_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="bighw_files/libs/bootstrap/bootstrap-888e7731d048cfaa148b823e8fc1b2fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#bighw---semester-2-2026." id="toc-bighw---semester-2-2026." class="nav-link active" data-scroll-target="#bighw---semester-2-2026."><span class="header-section-number">1</span> BigHW - Semester 2, 2026.</a></li>
+  <li><a href="#questions-14-are-submitted-on-jupyter-notebook-i" id="toc-questions-14-are-submitted-on-jupyter-notebook-i" class="nav-link" data-scroll-target="#questions-14-are-submitted-on-jupyter-notebook-i"><span class="header-section-number">2</span> Questions 1–4 are submitted on Jupyter notebook I</a>
+  <ul class="collapse">
+  <li><a href="#question-1-latex-jupyter-html-and-markdown" id="toc-question-1-latex-jupyter-html-and-markdown" class="nav-link" data-scroll-target="#question-1-latex-jupyter-html-and-markdown"><span class="header-section-number">2.1</span> Question 1: LaTeX, Jupyter, HTML, and Markdown</a></li>
+  <li><a href="#question-2-warming-up-with-quadratic-equations" id="toc-question-2-warming-up-with-quadratic-equations" class="nav-link" data-scroll-target="#question-2-warming-up-with-quadratic-equations"><span class="header-section-number">2.2</span> Question 2: Warming up with quadratic equations</a></li>
+  <li><a href="#question-3-an-1855-research-paper-is-still-of-interest" id="toc-question-3-an-1855-research-paper-is-still-of-interest" class="nav-link" data-scroll-target="#question-3-an-1855-research-paper-is-still-of-interest"><span class="header-section-number">2.3</span> Question 3: An 1855 research paper is still of interest</a></li>
+  <li><a href="#question-4-binary-hex-and-decimal" id="toc-question-4-binary-hex-and-decimal" class="nav-link" data-scroll-target="#question-4-binary-hex-and-decimal"><span class="header-section-number">2.4</span> Question 4: Binary, Hex, and Decimal</a></li>
+  <li><a href="#question-5-primitive-abundant-numbers-pan" id="toc-question-5-primitive-abundant-numbers-pan" class="nav-link" data-scroll-target="#question-5-primitive-abundant-numbers-pan"><span class="header-section-number">2.5</span> Question 5: Primitive abundant numbers (PAN)</a></li>
+  <li><a href="#question-6-primes-and-goldbachs-conjecture" id="toc-question-6-primes-and-goldbachs-conjecture" class="nav-link" data-scroll-target="#question-6-primes-and-goldbachs-conjecture"><span class="header-section-number">2.6</span> Question 6: Primes and Goldbach’s conjecture</a></li>
+  <li><a href="#question-7-time-to-speak-to-an-llm" id="toc-question-7-time-to-speak-to-an-llm" class="nav-link" data-scroll-target="#question-7-time-to-speak-to-an-llm"><span class="header-section-number">2.7</span> Question 7: Time to Speak to an LLM</a></li>
+  <li><a href="#question-8-sorting" id="toc-question-8-sorting" class="nav-link" data-scroll-target="#question-8-sorting"><span class="header-section-number">2.8</span> Question 8: Sorting</a></li>
+  <li><a href="#question-9-matrix-multiplication" id="toc-question-9-matrix-multiplication" class="nav-link" data-scroll-target="#question-9-matrix-multiplication"><span class="header-section-number">2.9</span> Question 9: Matrix Multiplication</a></li>
+  </ul></li>
+  <li><a href="#questions-1012-are-submitted-on-jupyter-notebook-iii" id="toc-questions-1012-are-submitted-on-jupyter-notebook-iii" class="nav-link" data-scroll-target="#questions-1012-are-submitted-on-jupyter-notebook-iii"><span class="header-section-number">3</span> Questions 10–12 are submitted on Jupyter notebook III</a>
+  <ul class="collapse">
+  <li><a href="#question-10-setting-up-your-github-repo-for-hand-in." id="toc-question-10-setting-up-your-github-repo-for-hand-in." class="nav-link" data-scroll-target="#question-10-setting-up-your-github-repo-for-hand-in."><span class="header-section-number">3.1</span> Question 10: Setting up your GitHub repo for hand-in.</a></li>
+  <li><a href="#question-11-a-few-unix-commands" id="toc-question-11-a-few-unix-commands" class="nav-link" data-scroll-target="#question-11-a-few-unix-commands"><span class="header-section-number">3.2</span> Question 11: A few unix commands</a></li>
+  <li><a href="#question-12-http-files-json-and-csv" id="toc-question-12-http-files-json-and-csv" class="nav-link" data-scroll-target="#question-12-http-files-json-and-csv"><span class="header-section-number">3.3</span> Question 12: HTTP, Files, JSON, and CSV</a></li>
+  </ul></li>
+  <li><a href="#questions-1317-are-submitted-on-jupyter-notebook-iv" id="toc-questions-1317-are-submitted-on-jupyter-notebook-iv" class="nav-link" data-scroll-target="#questions-1317-are-submitted-on-jupyter-notebook-iv"><span class="header-section-number">4</span> Questions 13–17 are submitted on Jupyter notebook IV</a>
+  <ul class="collapse">
+  <li><a href="#question-13-numerical-derivatives" id="toc-question-13-numerical-derivatives" class="nav-link" data-scroll-target="#question-13-numerical-derivatives"><span class="header-section-number">4.1</span> Question 13: Numerical derivatives</a></li>
+  <li><a href="#question-14-markov-chains-and-linearalgebra" id="toc-question-14-markov-chains-and-linearalgebra" class="nav-link" data-scroll-target="#question-14-markov-chains-and-linearalgebra"><span class="header-section-number">4.2</span> Question 14: Markov chains and <code>LinearAlgebra</code></a></li>
+  <li><a href="#question-15-planetary-motion---part-1" id="toc-question-15-planetary-motion---part-1" class="nav-link" data-scroll-target="#question-15-planetary-motion---part-1"><span class="header-section-number">4.3</span> Question 15: Planetary Motion - Part 1</a></li>
+  <li><a href="#question-16-only-for-math7504-planetary-motion---part-2" id="toc-question-16-only-for-math7504-planetary-motion---part-2" class="nav-link" data-scroll-target="#question-16-only-for-math7504-planetary-motion---part-2"><span class="header-section-number">4.4</span> Question 16 (only for MATH7504): Planetary Motion - Part 2</a></li>
+  <li><a href="#question-17-perspective-seminar-dr.-anna-foeglein." id="toc-question-17-perspective-seminar-dr.-anna-foeglein." class="nav-link" data-scroll-target="#question-17-perspective-seminar-dr.-anna-foeglein."><span class="header-section-number">4.5</span> Question 17: Perspective seminar (Dr.&nbsp;Anna Foeglein).</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="bighw.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">BigHW - Semester 2, 2026.</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="bighw---semester-2-2026." class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> BigHW - Semester 2, 2026.</h1>
+<p>(last edit: July 25, 2026)</p>
+<p><strong>Due:</strong> September 4, 2026, 16:00. This assignment is in pairs.</p>
+<!-- See also the [explainer video](https://www.youtube.com/watch?v=0lQQsa9cr-E) for this assignment.-->
+<p><strong>Please email <a href="mailto:%20uqafalco@uq.edu.au">Alistair</a> ( uqafalco@uq.edu.au ) as soon as possible with whom you are forming a pair</strong> to work on the BigHW and submit it together. Send him the names of the two students including their student ids. Just send one email per pair (cc-ing your partner).</p>
+<p><strong>Note:</strong> Since this assignment is in <strong>pairs</strong> make sure to submit with the names of both partners (or all three in exceptional circumstances) as well as student numbers. Submission will be via the Blackboard account of <strong>only one</strong> of the teammates but will count equally for both (or all three). All cases that involve a group of a single person or three people in the team, require <strong>explicit permission</strong> from the course coordinator.</p>
+<p>The recommended way to work in <strong>pairs</strong> is to have a <strong>lead</strong> for each question and a <strong>reviewer</strong> for each <strong>question</strong>. The leader will be responsible that a solution is created and the reviewer will be consulted and provide feedback. In previous years students that were not exposed to all questions ended up doing more poorly in the course quiz in comparison to students that reviewed (or led) all questions. There is certainly no need to state who is the lead and who is the reviewer for the questions. Ultimately the pair is jointly responsible for the assignment submission.</p>
+<p><strong>IJulia:</strong> We recommend to install <a href="https://github.com/JuliaLang/IJulia.jl">Ijulia</a> for running Jupyter notebooks in the browser. (Originally I was hoping that we could use Jupyter directly from vscode, but it turns out that the <code>readline()</code> command which is required for Q7 is not working from within VSCode-Jupyter notebooks.)</p>
+<p>To install IJulia, run <code>add IJulia</code> in package model. Then, in the Julia REPL, run <code>using IJulia</code> and <code>notebook()</code> to open Jupyter in the browser.</p>
+<p><strong>Submission format:</strong> The submission format is via a GitHub repository as described in Question 10. The submission should include the four submissions forms <a href="https://github.com/yoninazarathy/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-I-Q1-Q4.ipynb">I</a>, <a href="https://github.com/yoninazarathy/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-II-Q5-Q9.ipynb">II</a>, <a href="https://github.com/yoninazarathy/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-III-Q10-Q12.ipynb">III</a>, and <a href="https://github.com/yoninazarathy/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-IV-Q13-Q17.ipynb">IV</a>.</p>
+<p>The submission should also include an audio recording (30 sec minimum, 3 minutes maximum, 1 minute recommended). The voice recording should have voices of both (all) members of the group. The recording should verify that the work is your own. You can also state how you felt in the assignment. Say what was easy, what was hard, what you found useful, and what less. In case you used LLMs (chat-GPT etc…), make sure to mention how you used it and where it was useful (or not).</p>
+<p>To submit, go to Blackboard and submit as instructed there by providing a link to the GitHub repo, naming the partners, and uploading the voice recording (do not upload the voice recording to GitHub - upload it to Blackboard). PDFs of the Jupyter notebooks and voice recordings are for Blackboard. Jupyter notebooks are for GitHub.</p>
+<p><strong>Marking Criteria:</strong></p>
+<ul>
+<li><p>4 points are allocated for following instructions. This includes proper submission of the voice recording, the <code>.ipynb</code> file(s), having names and student numbers on the hand-in, and most importantly neatly formatting all the answers of the jupyter notebook.</p></li>
+<li><p>There are 16 questions in total, with 6 points allocated for each question. Some questions are easier and some harder. Some require more work and some require less work.</p></li>
+<li><p>There is an additional bonus question, question 17, dealing with Dr.&nbsp;Anna Foeglein’s perspective seminar. It yields an additional 10 bonus points.</p></li>
+<li><p>As this is the first assignment, points will not be deducted for sloppy coding style. However, in future assignments clean and consistent coding style is required.</p></li>
+</ul>
+<hr>
+</section>
+<section id="questions-14-are-submitted-on-jupyter-notebook-i" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Questions 1–4 are submitted on Jupyter notebook I</h1>
+<section id="question-1-latex-jupyter-html-and-markdown" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="question-1-latex-jupyter-html-and-markdown"><span class="header-section-number">2.1</span> Question 1: LaTeX, Jupyter, HTML, and Markdown</h2>
+<p>This question deals with basic formatting tools.</p>
+<p><strong>1a</strong>: Consider the following matrix,</p>
+<p><span class="math inline">\(A_n=\begin{pmatrix}
+    1 &amp; \frac{1}{2} &amp; \frac{1}{3} &amp; \ldots &amp; \frac{1}{n} \\
+    0 &amp; 1 &amp; \frac{1}{2} &amp;  \ldots &amp; \frac{1}{n-1} \\
+    \vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \frac{1}{3} \\
+    \vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \frac{1}{2} \\
+    0 &amp; \ldots &amp; \ldots &amp; 0 &amp; 1
+\end{pmatrix}\)</span></p>
+<p>Write out this matrix in LaTeX for <span class="math inline">\(n = 7\)</span>. In particular, write out all components in the top right half of the matrix, but keep dots only in the bottom left half to avoid writing more zeros than necessary.</p>
+<p><strong>1b</strong>: Use Markdown to write an ordered list of 5 programming languages, where you mention for each language where it is used. For example Javascript is often used for front end web development (but not limited to that), etc.</p>
+<p><strong>1c</strong>: Use HTML to embed an image with an hyperlink from the image (i.e.&nbsp;when you click the image you jump to a different website of your choice). Use HTML to resize the image to a size you like. Make sure the aspect ratio is maintained.</p>
+</section>
+<section id="question-2-warming-up-with-quadratic-equations" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="question-2-warming-up-with-quadratic-equations"><span class="header-section-number">2.2</span> Question 2: Warming up with quadratic equations</h2>
+<p>The following function uses the quadratic formula to compute the real roots of the quadratic equation <span class="math inline">\(ax^2 + bx + c = 0\)</span>. The return value is an array with 0, 1, or 2 roots.</p>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">real_roots_of_quadratic</span>(a<span class="op">::</span><span class="dt">Number</span>, b<span class="op">::</span><span class="dt">Number</span>, c<span class="op">::</span><span class="dt">Number</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Start by initializing an empty array</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   roots<span class="op">::</span><span class="dt">Array{Float64} </span><span class="op">=</span> []</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Compute the discriminant </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>   Δ <span class="op">=</span> b<span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">4</span>a<span class="op">*</span>c <span class="co">#\Delta + [TAB]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Based on the sign of the discriminant return 0, 1, or 2 roots.</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> Δ <span class="op">&lt;</span> <span class="fl">0</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> []</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>   <span class="cf">elseif</span> Δ <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> [<span class="op">-</span>b<span class="op">/</span>(<span class="fl">2</span>a)]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> [<span class="op">-</span>b <span class="op">+</span> √Δ, <span class="op">-</span>b <span class="op">-</span> √Δ] <span class="op">/</span> (<span class="fl">2</span>a) <span class="co">#\sqrt + [TAB]</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> roots </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#Attempting on -x²+5x-6=0</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">real_roots_of_quadratic</span>(<span class="op">-</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="op">-</span><span class="fl">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>2-element Vector{Float64}:
+ 2.0
+ 3.0</code></pre>
+</div>
+</div>
+<p><strong>2a</strong>: Experiment with multiple syntax variations by making a modification to the code snippet above and in each case observing the outcome.</p>
+<ol type="1">
+<li>The function accepts three arguments, <code>a</code>, <code>b</code>, and <code>c</code>. They are each of type <code>Number</code> as specified via <code>::Number</code>. Would the code still work without the <code>::Number</code> type specification? (yes/no). Try to explain why.</li>
+<li>Observe that the expression for the discriminant uses <code>4a*c</code> as short hand for <code>4*a*c</code>. Would <code>4ac</code> work? (yes/no). Try to explain why.</li>
+<li>A common typo in programming is to use <code>=</code> in place of <code>==</code>. The former is an assignment operator and the later is a logical operator checking for equality. Insert this typo by replacing <code>Δ == 0</code> with <code>Δ = 0</code>. Do you get a syntax error or a logical program error?</li>
+<li>The expression <code>[-b + √Δ, -b - √Δ] / (2a)</code> can also be written as <code>(-b .+ [√Δ,-√Δ])/(2a)</code>. Check this, does it work? (yes/no). Now do it with using <code>+</code> in the new expression instead of <code>.+</code>. Does it still work? (yes/no) Try to explain why.</li>
+<li>The <code>return</code> statement in the line <code>return roots</code> is optional yet makes for more verbose code. Try removing <code>return</code>. Does the function still work? (yes/no).</li>
+<li>There is a certain set of inputs for which this function will not work. Try setting the input argument <code>a</code> as <code>0</code> or <code>0.0</code>. What is the result? Explain what happens.</li>
+<li>To handle such cases where the quadratic equation is actually “not quadratic” add error checking code at the top of the function. One way to do this is to return some error message for example add at the top of the function:</li>
+</ol>
+<pre><code>if a == 0
+    return "Error - this is not a quadratic equation"
+end</code></pre>
+<p>Check that this works. 8. Instead of adding these three lines you may also shorten them as,</p>
+<pre><code>a == 0 &amp;&amp; return "Error - this is not a quadratic equation"</code></pre>
+<p>Check that this works and try to figure out (and explain) what this does. 9. Finally instead of returning a string as an error, we may use a more advanced mechanism. So use this instead:</p>
+<pre><code>a == 0 &amp;&amp; throw(DomainError(a, "argument must be nonzero"))</code></pre>
+<p>You will discuss such exception handling later in the course, yet at this point try to do your best to explain what this does.</p>
+<p><strong>2b</strong>: Now that we have a function that find the real roots of such quadratic equations, let us try it on a few examples:</p>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> [[<span class="fl">1</span>,<span class="op">-</span><span class="fl">5</span>,<span class="fl">6</span>], [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>],[<span class="fl">1</span>,<span class="fl">7</span>,<span class="fl">0</span>]]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> example <span class="kw">in</span> examples</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> <span class="fu">real_roots_of_quadratic</span>(example[<span class="fl">1</span>], example[<span class="fl">2</span>], example[<span class="fl">3</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">"The equation </span><span class="sc">$</span>(example[<span class="fl">1</span>])<span class="st">x² + </span><span class="sc">$</span>(example[<span class="fl">2</span>])<span class="st">x + </span><span class="sc">$</span>(example[<span class="fl">3</span>])<span class="st"> = 0 "</span>) <span class="co">#\^2 + [TAB] #***</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> <span class="fu">length</span>(roots) <span class="op">==</span> <span class="fl">0</span> <span class="co">#***</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(<span class="st">"has no real roots."</span>) <span class="co">#***</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">elseif</span> <span class="fu">length</span>(roots) <span class="op">==</span> <span class="fl">1</span> <span class="co">#***</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(<span class="st">"has the single (real) root </span><span class="sc">$</span>(roots[<span class="fl">1</span>])<span class="st">"</span>) <span class="co">#***</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span> <span class="co">#***</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(<span class="st">"has the real roots </span><span class="sc">$</span>(roots[<span class="fl">1</span>])<span class="st"> and </span><span class="sc">$</span>(roots[<span class="fl">2</span>])<span class="st">"</span>) <span class="co">#***</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span> <span class="co">#***</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The equation 1x² + -5x + 6 = 0 has the real roots 3.0 and 2.0
+The equation 1x² + 2x + 3 = 0 has no real roots.
+The equation 1x² + 7x + 0 = 0 has the real roots 0.0 and -7.0</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Add two more examples of your own to the array (of arrays) <code>examples</code> and see how it works.</li>
+<li>The lines marked with <code>#***</code> could have been set in a function of their own and that function can be called (invoked) in place of those lines. Name that function <code>print_quadratic_roots()</code> and have it accept two arguments. The first argument is an array <code>coefficients</code> which is interpreted as the coefficients (<span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>). The second argument is the array <code>roots</code>. Define that function and run the code with your new function in place of the lines marked with <code>#***</code>. Since your new function does not have a return value you may write <code>return nothing</code> in the end.</li>
+<li>Finally beautify the output of your function such that when a coefficient is <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span> it is not printed but rather only the sign is printed (if needed). For example the polynomial <span class="math inline">\(-1x^2-1x+1\)</span> is better printed as <span class="math inline">\(-x^2-x+1\)</span>. In doing so, use the <a href="https://docs.julialang.org/en/v1/manual/control-flow/#man-conditional-evaluation">ternary operator</a> <code>? :</code>. In one way or another. This may have code with less lines (less explicit big <code>if</code> - <code>else</code> statements).</li>
+</ol>
+<p><strong>2c</strong>: It is common and useful to create testing code that checks that operational code works. For the function <code>real_roots_of_quadratic()</code> we may create another function as follows:</p>
+<div id="6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">This function generates `num_tests` random triples of coefficients and checks that the function `real_roots_of_quadratic()` does its job. The return value is `true` if the test passed, otherwise it is `false`.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">test_real_roots_of_quadratic</span>(;num_tests <span class="op">=</span> <span class="fl">10000</span>, seed<span class="op">=</span><span class="fl">42</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>   <span class="bu">Random</span>.<span class="fu">seed!</span>(seed)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>   test_passed <span class="op">=</span> <span class="cn">true</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>num_tests</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>   a, b, c <span class="op">=</span> <span class="fl">2000</span><span class="fu">rand</span>(<span class="fl">3</span>) <span class="op">.-</span> <span class="fl">1000</span> <span class="co">#uniform values in the range [-1000, 1000]</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> <span class="fu">real_roots_of_quadratic</span>(a,b,c)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> x <span class="kw">in</span> roots</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>   err <span class="op">=</span> a<span class="op">*</span>x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> b<span class="op">*</span>x <span class="op">+</span> c </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>   test_passed <span class="op">=</span> (test_passed <span class="op">&amp;&amp;</span> <span class="fu">isapprox</span>(err, <span class="fl">0.0</span>, atol <span class="op">=</span> <span class="fl">1e-8</span>)) </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> test_passed</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">test_real_roots_of_quadratic</span>() ? <span class="fu">println</span>(<span class="st">"Test passed"</span>) <span class="op">:</span> <span class="fu">println</span>(<span class="st">"Test failed"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test passed</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Work on understanding the expression <code>2000rand(3) .- 1000</code>. How would you change this expression if you wanted the coefficients to be in the range [-5,5]? Make that change and see if the test still passes. (yes/no).</li>
+<li>Instead of having the numbers <code>2000</code> and <code>1000</code> “hardcoded” in the function it is better practice to pass them as optional arguments, similarly to the arguments <code>num_tests</code> and <code>seed</code>. Do this by creating arguments <code>coeff_min</code> and <code>coeff_max</code> that are by default at <code>-1000</code> and <code>1000</code> respectively. This means that the values in the expression <code>2000rand(3) .- 1000</code> need to be represented in terms of these arguments. Do this.</li>
+<li>What happens in this test when there are no real roots? How many iterations does the for loop execute in this case?</li>
+<li>In general a test passing is only a necessary condition for validity of a program rather than a sufficient condition. Can you suggest some sort of bug in the <code>real_roots_of_quadratic()</code> function that can exist which would slip through the test? Try this bug (modify <code>real_roots_of_quadratic()</code> and show that the test still passes).</li>
+<li>A different way to test would be to use “random roots” instead of random coefficients. Such a test would first randomly decide if there are 0 real roots, 1 real root, or 2 real roots. It would then randomly draw the roots. It would then find the coefficients that match these roots. It would then test that <code>real_roots_of_quadratic()</code> has these roots. Try to implement such a test function. For the case of 0 (real roots) you may “hardcode” a few specific examples. Alternatively (optional) try to use the complex numbers. For example <code>rand()+rand()*im</code> is a complex number with random real and imaginary values, each in [0,1]</li>
+</ol>
+<p><strong>2d</strong>: In general, we may have had a solver that finds the (potentially) complex roots of a quadratic. Since the coefficients, <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> are real, these are complex conjugates. So we want to use the quadratic formula directly (potentially taking square roots of negative numbers).</p>
+<p>Trying:</p>
+<div id="8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">√</span>(<span class="op">-</span><span class="fl">4</span>) <span class="co">#\sqrt + [TAB] is like the sqrt() function</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>DomainError with -4.0:
+sqrt was called with a negative real argument but will only return a complex result if called with a complex argument. Try sqrt(Complex(x)).
+Stacktrace:
+ [1] <span class="ansi-bold">throw_complex_domainerror</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Symbol, <span class="ansi-bright-black-fg">x</span>::Float64<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base.Math</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">math.jl:33</span>
+ [2] <span class="ansi-bold">sqrt</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">math.jl:627</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [3] <span class="ansi-bold">sqrt</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">x</span>::Int64<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base.Math</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">math.jl:1546</span>
+ [4] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/Assessment/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">bighw.qmd:187</span></pre>
+</div>
+</div>
+</div>
+<p>We got an error. Instead we need to highlight that <code>-4</code> is a complex number:</p>
+<div id="10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Complex</span>(<span class="op">-</span><span class="fl">4</span>) <span class="co">#Create a complex number -4 + 0i</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>-4 + 0im</code></pre>
+</div>
+</div>
+<p>Now the <code>sqrt()</code> function, which we shorten via the √ symbol works:</p>
+<div id="12" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">√Complex</span>(<span class="op">-</span><span class="fl">4</span>) <span class="co">#This is \sqrt + [TAB], just like sqrt()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>0.0 + 2.0im</code></pre>
+</div>
+</div>
+<p>So we can now create:</p>
+<div id="14" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">roots_of_quadratic</span>(a<span class="op">::</span><span class="dt">Number</span>, b<span class="op">::</span><span class="dt">Number</span>, c<span class="op">::</span><span class="dt">Number</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>   roots<span class="op">::</span><span class="dt">Array{ComplexF64} </span><span class="op">=</span> []</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>   Δ <span class="op">=</span> b<span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">4</span>a<span class="op">*</span>c</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> Δ <span class="op">&lt;</span> <span class="fl">0</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> [<span class="op">-</span>b <span class="op">+</span> <span class="fu">√Complex</span>(Δ), <span class="op">-</span>b <span class="op">-</span> <span class="fu">√Complex</span>(Δ)] <span class="op">/</span> (<span class="fl">2</span>a)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">elseif</span> Δ <span class="op">==</span> <span class="fl">0</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> [<span class="op">-</span>b<span class="op">/</span>(<span class="fl">2</span>a)]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>   roots <span class="op">=</span> [<span class="op">-</span>b <span class="op">+</span> √Δ, <span class="op">-</span>b <span class="op">-</span> √Δ] <span class="op">/</span> (<span class="fl">2</span>a) </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> roots </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">roots_of_quadratic</span>(<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>2-element Vector{ComplexF64}:
+ -1.0 + 1.4142135623730951im
+ -1.0 - 1.4142135623730951im</code></pre>
+</div>
+</div>
+<p>The above implementation is fine, however it has code duplication for both cases of <span class="math inline">\(\Delta \neq 0\)</span>. That is the case <code>Δ &lt; 0</code> and the case <code>Δ &gt; 0</code> can be merged. Modify the function so that it does not have an <code>elseif</code> statement. In fact, try to write the function without any <code>if</code> statement but rather only using the trinary operator <code>? :</code>.</p>
+</section>
+<section id="question-3-an-1855-research-paper-is-still-of-interest" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="question-3-an-1855-research-paper-is-still-of-interest"><span class="header-section-number">2.3</span> Question 3: An 1855 research paper is still of interest</h2>
+<!--Return to the continued fraction from Question 1, again using $a_0 =0, a_1 = 1, a_2 = 2, a_3 = 3, \ldots$. This continued fraction is mentioned [here](https://oeis.org/A052119) and was investigated in this [1855 Amoretti paper](http://www.numdam.org/item/NAM_1855_1_14__40_1.pdf). The approximate value of $x$ is $0.697774657964008$. -->
+<p>The following code computes the approximate value of the continued fraction (mentioned <a href="https://oeis.org/A052119">here</a> and investigated in <a href="http://www.numdam.org/item/NAM_1855_1_14__40_1.pdf">1855 Amoretti paper</a>) <span class="math display">\[
+x = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \cfrac{1}{a_4 + \cfrac{1}{\ddots}}}}}
+\]</span> for <span class="math inline">\(a_0 =0, a_1 = 1, a_2 = 2, a_3 = 3, \ldots\)</span>:</p>
+<div id="16" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">amoretti</span>(i<span class="op">=</span><span class="fl">0</span>; cut_off <span class="op">=</span> <span class="fl">20</span>) <span class="op">=</span> i <span class="op">&gt;</span> cut_off ? <span class="fl">0</span> <span class="op">:</span> i <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu">amoretti</span>(i<span class="op">+</span><span class="fl">1</span>; cut_off <span class="op">=</span> cut_off)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">amoretti</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>0.697774657964008</code></pre>
+</div>
+</div>
+<p><strong>3a</strong>: Try using the function <code>amoretti()</code> with <code>cut_off = 2</code>, <code>cut_off = 3</code>, and <code>cut_off = 4</code>. Explain what happens. Now in general, explain how this recursion works.</p>
+<p><strong>3b</strong>: Now to obtain the same value of <span class="math inline">\(0.697774657964008\)</span>, instead of using a recursive function call use a <code>for</code> loop.</p>
+<p><strong>3c</strong>: As you can see in the <a href="https://oeis.org/A052119">OEIS entry</a>. Analytically the series can be represented as “BesselI(1, 2)/BesselI(0, 2)”. Here BesselI is the special (mathematical function), <a href="https://en.wikipedia.org/wiki/Bessel_function">modified Bessel function of the first kind</a>. In Julia you can evaluate it using the <code>SpecialFunctions</code> package with <code>besseli</code>. Read the help entry for <code>besseli</code>. Then compute <code>besseli(1,2)/besseli(0,2)</code> to see you obtain the same numerical result.</p>
+<p><strong>3d</strong>: The list of 105 decimal digits in OEIS is [6, 9, 7, 7, 7, 4, 6, 5, 7, 9, 6, 4, 0, 0, 7, 9, 8, 2, 0, 0, 6, 7, 9, 0, 5, 9, 2, 5, 5, 1, 7, 5, 2, 5, 9, 9, 4, 8, 6, 6, 5, 8, 2, 6, 2, 9, 9, 8, 0, 2, 1, 2, 3, 2, 3, 6, 8, 6, 3, 0, 0, 8, 2, 8, 1, 6, 5, 3, 0, 8, 5, 2, 7, 6, 4, 6, 4, 1, 1, 1, 2, 9, 9, 6, 9, 6, 5, 6, 5, 4, 1, 8, 2, 6, 7, 6, 5, 6, 8, 7, 2, 3, 9, 8, 2]. These digits are not obtainable using standard floating point number calculations as above. However using <code>big()</code> you can create “big” floating point numbers. Use <code>big()</code> in the correct way to retrieve all of these digits and write code that compares your digits to the OEIS list. There are several ways to go about this.</p>
+</section>
+<section id="question-4-binary-hex-and-decimal" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="question-4-binary-hex-and-decimal"><span class="header-section-number">2.4</span> Question 4: Binary, Hex, and Decimal</h2>
+<p>Consider this code which creates two functions for creating random strings representing binary numbers and hexadecimal numbers.</p>
+<div id="18" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">random_binary_string</span>(n <span class="op">=</span> <span class="fl">12</span>) <span class="op">=</span> <span class="fu">*</span>([<span class="fu">rand</span>([<span class="ch">'0'</span>,<span class="ch">'1'</span>]) for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n]<span class="op">...</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">random_hex_string</span>(n<span class="op">=</span><span class="fl">3</span>) <span class="op">=</span> <span class="fu">*</span>([<span class="fu">rand</span>(<span class="fu">union</span>(<span class="ch">'0'</span><span class="op">:</span><span class="ch">'9'</span>,<span class="ch">'A'</span><span class="op">:</span><span class="ch">'F'</span>)) for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n]<span class="op">...</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>For example,</p>
+<div id="20" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">random_binary_string</span>()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">random_hex_string</span>();</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>random_binary_string() = "001110111010"
+random_hex_string() = "409"</code></pre>
+</div>
+</div>
+<p><strong>4a</strong>: Explain how these functions work. There is quite a bit of syntax in there. Break it down and explain what the syntax means.</p>
+<p>Assume now that you are given inputs:</p>
+<div id="22" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>r_bin_strs <span class="op">=</span> [<span class="fu">random_binary_string</span>() for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">^</span><span class="fl">3</span>]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>r_hex_strs <span class="op">=</span> [<span class="fu">random_hex_string</span>() for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">^</span><span class="fl">3</span>];</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>4b</strong>: Use standard Julia functions to parse these arrays of strings into arrays of numerical values and report the sum of the values (present the result in decimal). So your output should be two decimal numbers, one which is the sum of all of the binary numbers in the array, and the other which is the sum of all of the hex numbers. Prior to checking your output, suggest an estimate (expected value) for the sum - explain why.</p>
+<p><strong>4c</strong>: Now create your own functions (from first principles parsing strings) to convert a binary digit string and a hex string into values. Repeat 4b with your own functions and see you get the same result. Present your function implementations and the output.</p>
+</section>
+<section id="question-5-primitive-abundant-numbers-pan" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="question-5-primitive-abundant-numbers-pan"><span class="header-section-number">2.5</span> Question 5: Primitive abundant numbers (PAN)</h2>
+<p><strong>5a</strong> Investigate what defines a number to be a <a href="https://en.wikipedia.org/wiki/Primitive_abundant_number">primitive abundant number</a>. For this, look up the definition and consider why 20 is a PAN and why other numbers such as 18, 19, 21, 22, 23 are not PANs. It is best to use the term <a href="https://en.wikipedia.org/wiki/Deficient_number">deficient number</a> as an aid, but in your answer also define a deficient number. Write your answer in words.</p>
+<p><strong>5b</strong>: Use the <code>divisors</code> functions from the <code>Primes.jl</code> package as an aid to write a program that prints all the PANs that are less than or equal to <span class="math inline">\(1000\)</span>.</p>
+<p><strong>5c</strong>: Now write a program that does the same thing without using the <code>divisors</code> function from <code>Primes.jl</code> (i.e.&nbsp;write your own divisors function or something similar and use your own function).</p>
+</section>
+<section id="question-6-primes-and-goldbachs-conjecture" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="question-6-primes-and-goldbachs-conjecture"><span class="header-section-number">2.6</span> Question 6: Primes and Goldbach’s conjecture</h2>
+<p><a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach’s conjecture</a> states that every even number greater than two can be represented as a sum of two primes. For example <span class="math inline">\(16 = 11+5\)</span> and <span class="math inline">\(40 = 37+3\)</span> or <span class="math inline">\(23+17\)</span>. In this question you will try to disprove the conjecture by searching for an even number that is not a sum of two primes (don’t expect to succeed in disproving).</p>
+<p>First consider the <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> implemented as follows:</p>
+<div id="24" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="st">Returns the all the primes up to n.</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sieve_of_Eratosthenes</span>(n)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>   primebits <span class="op">=</span> <span class="fu">ones</span>(<span class="dt">Bool</span>,n) <span class="co">#Will contain true if the index is prime (initially all assumed prime)</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>   primebits[<span class="fl">1</span>] <span class="op">=</span> <span class="cn">false</span> <span class="co">#The number 1 is not prime</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>   p <span class="op">=</span> <span class="fl">2</span> <span class="co">#Smallest prime</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">while</span> p <span class="op">≤</span> n</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>   i <span class="op">=</span> <span class="fl">2</span>p</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">while</span> i <span class="op">≤</span> n  <span class="co"># \le +[TAB]</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>   primebits[i] <span class="op">=</span> <span class="cn">false</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>   i <span class="op">+=</span> p</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>   p <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>   <span class="cf">while</span> p <span class="op">≤</span> n <span class="op">&amp;&amp;</span> !primebits[p]</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>   p <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>   (<span class="fl">1</span><span class="op">:</span>n)[primebits]</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">100</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"First </span><span class="sc">$</span>n<span class="st"> primes: "</span>,<span class="fu">sieve_of_Eratosthenes</span>(n))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>First 100 primes: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29  …  53, 59, 61, 67, 71, 73, 79, 83, 89, 97]</code></pre>
+</div>
+</div>
+<p>This sieve yields a way to get a list of the first <span class="math inline">\(n\)</span> primes. However it is used inefficiently in the code below to create a plot of the number of Goldbach pairs.</p>
+<div id="26" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">check_Goldbach</span>(n)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>   <span class="pp">@assert</span> <span class="fu">iseven</span>(n)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>   num_pairs <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> p <span class="kw">in</span> <span class="fu">sieve_of_Eratosthenes</span>(n)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> <span class="fu">in</span>(n<span class="op">-</span>p,<span class="fu">sieve_of_Eratosthenes</span>(n))</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>   num_pairs <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> num_pairs</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">3</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>even_range <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">2</span><span class="op">:</span>n</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>checks <span class="op">=</span> <span class="fu">check_Goldbach</span>.(even_range)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fl">0</span> <span class="op">∈</span> checks</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(<span class="st">"Found a counter example for Goldbach"</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fu">rand</span>(<span class="fl">10</span>))</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(even_range,checks,legend<span class="op">=</span><span class="cn">false</span>,xlabel<span class="op">=</span><span class="st">"n"</span>,ylabel<span class="op">=</span><span class="st">"Number of Goldbach pairs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>ArgumentError: Package Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+Stacktrace:
+  [1] <span class="ansi-bold">__require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2617</span>
+  [2] <span class="ansi-bold">_require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2495</span>
+  [3] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2423</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [4] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:376</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [5] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2388</span>
+  [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2364</span>
+  [7] <span class="ansi-bold">eval</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">m</span>::Module, <span class="ansi-bright-black-fg">e</span>::Any<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Core</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">boot.jl:489</span>
+  [8] <span class="ansi-bold">(::QuartoNotebookWorker.var"#21#22"{Module, Expr})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:222</span>
+  [9] <span class="ansi-bold">(::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:170</span>
+ [10] <span class="ansi-bold">with_logstate</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"<span class="ansi-bright-black-fg">{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}}</span>, <span class="ansi-bright-black-fg">logstate</span>::Base.CoreLogging.LogState<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:542</span>
+ [11] <span class="ansi-bold">with_logger</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function, <span class="ansi-bright-black-fg">logger</span>::Base.CoreLogging.ConsoleLogger<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:653</span>
+ [12] <span class="ansi-bold">capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#21#22"<span class="ansi-bright-black-fg">{Module, Expr}</span>; <span class="ansi-bright-black-fg">rethrow</span>::Type, <span class="ansi-bright-black-fg">color</span>::Bool, <span class="ansi-bright-black-fg">passthrough</span>::Bool, <span class="ansi-bright-black-fg">capture_buffer</span>::IOBuffer, <span class="ansi-bright-black-fg">io_context</span>::Vector<span class="ansi-bright-black-fg">{Pair{Symbol, Any}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:167</span>
+ [13] <span class="ansi-bold">capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:248</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [14] <span class="ansi-bold">io_capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function; <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">kws</span>::@Kwargs<span class="ansi-bright-black-fg">{rethrow::DataType, color::Bool, io_context::Vector{Pair{Symbol, Any}}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:250</span>
+ [15] <span class="ansi-bold">io_capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:246</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [16] <span class="ansi-bold">include_str</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mod</span>::Module, <span class="ansi-bright-black-fg">code</span>::String; <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:201</span>
+ [17] <span class="ansi-bold">#invokelatest_gr#232</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1297</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [18] <span class="ansi-bold">invokelatest_gr</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1289</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [19] <span class="ansi-bold">#7</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:18</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [20] <span class="ansi-bold">with_inline_display</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#7#8"<span class="ansi-bright-black-fg">{String, String, Int64, Dict{String, Any}}</span>, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">InlineDisplay.jl:31</span>
+ [21] <span class="ansi-bold">_render_thunk</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">thunk</span>::Function, <span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">is_expansion_ref</span>::Base.RefValue<span class="ansi-bright-black-fg">{Bool}</span>; <span class="ansi-bright-black-fg">inline</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:43</span>
+ [22] <span class="ansi-bold">_render_thunk</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:35</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [23] <span class="ansi-bold">#render#4</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:15</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [24] <span class="ansi-bold">render</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:1</span>
+ [25] <span class="ansi-bold">render</span><span class="ansi-bold">(</span>::String, ::Vararg<span class="ansi-bright-black-fg">{Any}</span>; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">Main</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">startup.jl:145</span>
+ [26] top-level scope
+<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">none:1</span></pre>
+</div>
+</div>
+</div>
+<p>Modify this code or create code of your own so that you can plot a figure similar to the above for the first <span class="math inline">\(10^6\)</span> Goldbach pairs. Do <strong>not</strong> use any in-built (or package) functions for prime numbers (e.g.&nbsp;<a href="https://github.com/JuliaMath/Primes.jl">Primes.jl</a>). In the figure, instead of plotting all the points associated with Goldbach pairs, only plot a random subset of the points so that the figure won’t have more than about <span class="math inline">\(20,000\)</span> points.</p>
+</section>
+<section id="question-7-time-to-speak-to-an-llm" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="question-7-time-to-speak-to-an-llm"><span class="header-section-number">2.7</span> Question 7: Time to Speak to an LLM</h2>
+<p>In this question you will use the API of a Large Language Model (LLM) such as ChatGPT. In order not to avoid payment or bank detail sharing with an LLM service, you will run a smaller LLM locally on your computer using <a href="https://ollama.com/">Ollama</a>. First you will just install and use Ollama with a small LLM. Then we will write Julia code that communicates with the LLM in your own chat application. Note that if you prefer to use a commercial LLM (or some other local LLM with Ollama or LM-Studio to that suggested here) - feel free to do so. However, since most commercial LLMs need your payment information, using Ollama locally is preferred here.</p>
+<p><strong>7a</strong>: Install <a href="https://ollama.com/">Ollama</a>. This is a program/service that runs LLMs locally on your computer. You can run many types of LLMs on your computer. We will use, <code>Phi3</code>, a small one with “only” 3.8 billion trained parameters (the size of the model is 2.3 Gigabytes). To get it going, execute <code>ollama run phi3</code> in the terminal. This will download <code>Phi3</code> (may take some time), and then run it. If the download gets stuck towards the end, just Ctrl^C (to stop Ollama), and execute <code>ollama run phi3</code> again. Once ollama runs, it provides a chat interface. Enter: <code>I am wondering about the difference between programming and coding. Please explain.</code>. Paste the result in your answer. You can then stop Ollama (Ctrl^D), and next time your run <code>ollama run phi3</code> it will start instantly. You now have a small LLM on your computer. If you have a stronger computer you may obviously experiment with other models available on Ollama. But this is not required for this question.</p>
+<p><strong>7b</strong>: Now run <code>ollama serve</code>. This tells Ollama to run in the background and serve requests. If you see something like <code>Error: listen tcp 127.0.0.1:11434: bind: address already in use</code> or a similar error message it means that Ollama is probably already running in the background. Now use the shell command:</p>
+<pre><code>curl http://127.0.0.1:11434/api/chat -d '{
+  "model": "phi3",
+  "messages": [
+    {
+      "role": "user",
+      "content": "I am wondering about the difference between programming and coding. Please explain."
+    }
+  ],
+  "stream": false}
+}'</code></pre>
+<p>It may take a little bit for the LLM to compute the response. Once you get the response, paste it as the solution for this item. In addition look up the reference for <code>curl</code> to understand what the <code>-d</code> flag in <code>curl</code> does. Explain this in your answer. Also what does <code>127.0.0.1</code> mean? And finally what is <code>11434</code>?</p>
+<p><strong>7c</strong>: Your next step is to use the <code>HTTP</code> and <code>JSON</code> packages in Julia to carry out the same thing that the <code>curl</code> shell command did. Write a short Julia script that does this. Execute your script and share the script and the result.</p>
+<p><strong>7d</strong>: Now wrap these calls in a loop where <code>readline()</code> is followed by sending the query to the LLM, and then printing out the response like a chat interface. Demonstrate how this works by printing a screenshot of your created chat module.</p>
+</section>
+<section id="question-8-sorting" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="question-8-sorting"><span class="header-section-number">2.8</span> Question 8: Sorting</h2>
+<p>Consider this code which sorts a list of names:</p>
+<div id="28" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">array_table</span>(array, heading)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(heading,<span class="st">":"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> (i,a) <span class="kw">in</span> <span class="fu">enumerate</span>(array)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(i,<span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,a)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [   <span class="st">"Amy Chan"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Maithili Mehta"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Anna Foeglein"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Andy Ferris"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Claire Foster"</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Jack Litfin"</span>,</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Thomas Graham"</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Elaine Schenk"</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Jesse Woods"</span>,</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Tina Moghaddam"</span>,</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Zhihao Qiao"</span>,</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Paul Bellette"</span>,</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Paul Vrbik"</span>,</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Tom Cranitch"</span>,</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Yoni Nazarathy"</span>,</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Sam Hambleton"</span>,</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Isaac Beh"</span>, </span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Limao Chang"</span>, </span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Nazeef Hamid"</span>, </span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Cooper Janke"</span>, </span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Brandon Lowe"</span>, </span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Lief Lundmark"</span>,</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Megan Dawson"</span>,</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Alistair Falconer"</span>,</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Emma Comino"</span>,</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Ivana Carrizo-Molina"</span>,</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Amitai Rosenbaum"</span>,</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Jay Parfitt"</span>,</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Mittun Sudhahar"</span>,</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Dietmar Oelz"</span>]</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>sorted_names <span class="op">=</span> <span class="fu">sort</span>(names)</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="fu">array_table</span>(sorted_names, <span class="st">"Sorted by first name"</span>)</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>()</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>sorted_names <span class="op">=</span> <span class="fu">sort</span>(names,by<span class="op">=</span>(x)<span class="fu">-&gt;reverse</span>(<span class="fu">split</span>(x,<span class="st">" "</span>)))</span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a><span class="fu">array_table</span>(sorted_names,<span class="st">"Sorted by last name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sorted by first name:
+1   Alistair Falconer
+2   Amitai Rosenbaum
+3   Amy Chan
+4   Andy Ferris
+5   Anna Foeglein
+6   Brandon Lowe
+7   Claire Foster
+8   Cooper Janke
+9   Dietmar Oelz
+10  Elaine Schenk
+11  Emma Comino
+12  Isaac Beh
+13  Ivana Carrizo-Molina
+14  Jack Litfin
+15  Jay Parfitt
+16  Jesse Woods
+17  Lief Lundmark
+18  Limao Chang
+19  Maithili Mehta
+20  Megan Dawson
+21  Mittun Sudhahar
+22  Nazeef Hamid
+23  Paul Bellette
+24  Paul Vrbik
+25  Sam Hambleton
+26  Thomas Graham
+27  Tina Moghaddam
+28  Tom Cranitch
+29  Yoni Nazarathy
+30  Zhihao Qiao
+
+Sorted by last name:
+1   Isaac Beh
+2   Paul Bellette
+3   Ivana Carrizo-Molina
+4   Amy Chan
+5   Limao Chang
+6   Emma Comino
+7   Tom Cranitch
+8   Megan Dawson
+9   Alistair Falconer
+10  Andy Ferris
+11  Anna Foeglein
+12  Claire Foster
+13  Thomas Graham
+14  Sam Hambleton
+15  Nazeef Hamid
+16  Cooper Janke
+17  Jack Litfin
+18  Brandon Lowe
+19  Lief Lundmark
+20  Maithili Mehta
+21  Tina Moghaddam
+22  Yoni Nazarathy
+23  Dietmar Oelz
+24  Jay Parfitt
+25  Zhihao Qiao
+26  Amitai Rosenbaum
+27  Elaine Schenk
+28  Mittun Sudhahar
+29  Paul Vrbik
+30  Jesse Woods</code></pre>
+</div>
+</div>
+<p><strong>8a</strong>: Read the help entry for <code>sort()</code>. Now modify the code to sort the list based on the shortest last name (shortest first, longest last).</p>
+<p><strong>8b</strong>: Implement your own sort function, say <code>my_sort_bubble()</code>, using a Bubble sort algorithm. Your function should also accept a <code>by=</code> argument and work in the same way that <code>sort()</code> uses <code>by=</code>. Show the output on the same list, sorting by last name first.</p>
+<p><strong>8c</strong>: Now investigate the <a href="https://en.wikipedia.org/wiki/Quicksort">quick sort algorithm</a>. As you can see the Wikipedia entry has pseudo-code for the algorithm. Use the help of an LLM (e.g.&nbsp;ChatGPT or Anthropic’s Claude) to convert that pseudo-code to Julia code. Then use that code in your function <code>my_sort_quick()</code> that uses the quick sort algorithm. Test it on the list of names above, using last name first (it should also support <code>by=</code>). Note that the LLM help that you get may not be perfect, so you may need to make adjustments to make it work.</p>
+<p><strong>8d</strong>: Now generate lists of ten thousand integers via <code>data = rand(Int,10^4)</code>. Compare running times of the system’s <code>sort()</code>, <code>my_sort_bubble()</code>, and <code>my_sort_quick()</code> on this list. Use the <code>@btime</code> macro. Then repeat for <span class="math inline">\(10^7\)</span> and <span class="math inline">\(10^8\)</span> integers and compare <code>my_quick_sort()</code> and the in-built <code>sort()</code>. Report your results in an organized manner.</p>
+</section>
+<section id="question-9-matrix-multiplication" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="question-9-matrix-multiplication"><span class="header-section-number">2.9</span> Question 9: Matrix Multiplication</h2>
+<p>Here is code that creates two random matrices and displays their matrix product:</p>
+<div id="30" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">1</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">round</span>.(<span class="fl">10</span><span class="fu">*rand</span>(<span class="fl">2</span>,<span class="fl">3</span>))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="fu">round</span>.(<span class="fl">10</span><span class="fu">*rand</span>(<span class="fl">3</span>,<span class="fl">4</span>))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>A<span class="op">*</span>B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>2×4 Matrix{Float64}:
+ 127.0  87.0  3.0  95.0
+  71.0  61.0  9.0  80.0</code></pre>
+</div>
+</div>
+<p>This in built multiplication is designed to be very numerically efficient. However matrix multiplication can be computed in different ways and to explore these ways you will write your own matrix multiplication functions.</p>
+<p>For example:</p>
+<div id="32" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_mult_inner_products</span>(A,B)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>   nA,mA <span class="op">=</span> <span class="fu">size</span>(A)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>   nB,mB <span class="op">=</span> <span class="fu">size</span>(B)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>   <span class="pp">@assert</span> mA <span class="op">==</span> nB</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>   n, m, p <span class="op">=</span> nA, mA, mB</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>   C <span class="op">=</span> <span class="fu">Array</span><span class="dt">{Float64}</span>(<span class="cn">undef</span>,n,p)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>p</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>   C[i,j] <span class="op">=</span> A[i,<span class="op">:</span>]<span class="ch">' * B[:,j] #compute inner product of i'</span>th row of A and j<span class="op">'</span>th column of B</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> C</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">my_mult_inner_products</span>(A,B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>2×4 Matrix{Float64}:
+ 127.0  87.0  3.0  95.0
+  71.0  61.0  9.0  80.0</code></pre>
+</div>
+</div>
+<p>However, matrix products can be represented in other ways, and each of these other ways will have their own implementation. You will now create your own three functions that execute these implementations, and in each case test they get the same result for the test matrices <code>A</code> and <code>B</code> above.</p>
+<p><strong>9a</strong>: <code>my_mult_by_cols()</code>: The matrix product can be represented as the linear combination of the columns. That is, the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(C\)</span> is a linear combination of the columns of <span class="math inline">\(A\)</span> with weights given by the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(B\)</span>. Implement this making use of Julia’s vector arithmetic e.g.:</p>
+<div id="34" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>];</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="op">=</span> [<span class="fl">2</span>,<span class="fl">0</span>,<span class="fl">4</span>];</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span><span class="op">*</span>vec1 <span class="op">+</span> <span class="fl">4</span><span class="op">*</span>vec2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>3-element Vector{Int64}:
+ 11
+  6
+ 25</code></pre>
+</div>
+</div>
+<p><strong>9b</strong>: <code>my_mult_by_rows()</code>: Similarly to the above, you can take linear combinations of the rows of <span class="math inline">\(B\)</span>. This representation is the “dual” of 7a. Carry this out as well.</p>
+<p><strong>9c</strong>: <code>my_mult_sum_outer_products()</code>: A third representation is to consider outer products and observe that,</p>
+<p><span class="math display">\[
+A B = \sum_{j=1}^m A_{:,\,j} B_{j,\,:}^\top ~~,
+\]</span></p>
+<p>where <span class="math inline">\(A_{:,\,j}\)</span> is the <span class="math inline">\(j\)</span>th column of <span class="math inline">\(A\)</span> and <span class="math inline">\(B_{j,\,:}\)</span> is the <span class="math inline">\(j\)</span>th row of <span class="math inline">\(B\)</span> (represented as a column vector and hence its transpose is a row vector).</p>
+<p>To see such outer products (rank one matrices) in Julia, consider:</p>
+<div id="36" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="op">=</span> [<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>];</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="op">=</span> [<span class="fl">2</span>,<span class="fl">0</span>,<span class="fl">4</span>];</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>vec1<span class="op">*</span>vec2<span class="op">'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>3×3 Matrix{Int64}:
+ 2  0   4
+ 4  0   8
+ 6  0  12</code></pre>
+</div>
+</div>
+<p>So now rank one matrices may be added up.</p>
+<p><strong>9d</strong>: After you have implemented the functions for 9a, 9b, and 9c, it may appear that in each of these cases there is only a single loop while the function provided, <code>my_mult_inner_products()</code> has a nested loop. Does this mean that in terms of complexity of the number of the operations, 9a, 9b, and 9c are necessarily much more efficient? Explain your result.</p>
+</section>
+</section>
+<section id="questions-1012-are-submitted-on-jupyter-notebook-iii" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Questions 10–12 are submitted on Jupyter notebook III</h1>
+<section id="question-10-setting-up-your-github-repo-for-hand-in." class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="question-10-setting-up-your-github-repo-for-hand-in."><span class="header-section-number">3.1</span> Question 10: Setting up your GitHub repo for hand-in.</h2>
+<ul>
+<li>Create your GitHub account if you don’t have one.</li>
+<li>Create a new repo for this assignment. Name the repo exactly as <code>&lt;&lt;FIRST NAME1&gt;&gt;-&lt;&lt;LAST NAME1&gt;&gt;__&lt;&lt;FIRST NAME2&gt;&gt;-&lt;&lt;LAST NAME2&gt;&gt;2504-2026-BigHW</code>. So for example if your names are “Sam Sample” and “Tania Testname” the repo name should be <code>Sam-Sample__Tania-Testname-2504-2026-BigHW</code>.</li>
+<li>Make sure the repo is <strong>private</strong>.</li>
+<li>Invite the course GitHub user, <code>uqMATH2504</code> as a collaborator. You may do so early on while working on the assignment, and must do this no later than the assignment due date.</li>
+<li>Do <strong>not</strong> make any changes (commits) to the repo after the assignment due date.</li>
+<li>Create a local clone of the repo. It is recommended that use use <code>git</code> command line via the shell to work on making changes/additions to the assignment and submitting the changes. However you are free to use any other mechanism (VS-Code, GitHub desktop, etc).</li>
+<li>If you haven’t, install git on Mac or Linux, or use GitBash if you use Windows (both team mates should do this).</li>
+<li>Setup authentication either via personal access token or via SSH (both team mates should do this). <!--* If for some reason you are not able or willing to use GitHub, an alternative is GitLab. This is not recommended as it adds additional work to the teaching staff. However, if you wish to use GitLab instead of GitHub contact the teaching staff for permission.--></li>
+</ul>
+<p>Your GitHub repo should be formatted as exactly as follows: * Have a <code>README.md</code> file which states your name, the assignment title, and has a (clickable) link to the assignment instructions on the course website (to this document). <!--* Have a `LICENSE.md` file. Choose a license as you wish (for example the MIT license). However keep in mind that you must keep the submission private until the end of the semester.--> * Have a <code>.gitignore</code> file. * Have a <code>notebooks</code> directory and in it have the 4 submission forms (notebooks) I–IV. * Note: make sure that there aren’t any files in your submission repo except for the submission forms I–IV (.ipynb format). Use may use the <code>.gitignore</code> file to ensure <code>git</code> does not commit additional files and output files to your <code>repo</code>. Voice recordings and PDF files are to be uploaded to blackboard, not GitHub.</p>
+</section>
+<section id="question-11-a-few-unix-commands" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="question-11-a-few-unix-commands"><span class="header-section-number">3.2</span> Question 11: A few unix commands</h2>
+<p>In this question you will manipulate a few files via Unix command line. If you are using Windows, it is best you do it via GitBash or a Linux emulator. If you are using Linux or Mac, just use the shell. For the question create a folder <code>hw_q11</code> and make sure that <code>hw_q11</code> is your working directory in the terminal/shell/command-line via <code>cd</code>. You will then use the commands <code>ls</code>, <code>pwd</code>, <code>cd</code>, <code>cp</code>, <code>mv</code>, <code>rm</code> (be careful with <code>rm</code>), <code>cat</code>, and <code>echo</code>. You’ll also use output redirection to file (<code>&gt;</code>).</p>
+<p>Your submission should be comprised of the text from the shell including the commands you used and the outputs. Just get it by copying the shell text and pasting in a file.</p>
+<p><strong>11a</strong>: Create the folder <code>hw_q11</code> and make that your working directory in the shell. Illustrate this via <code>pwd</code>.</p>
+<p><strong>11b</strong>: Display your name to the terminal using the <code>echo</code> command.</p>
+<p><strong>11c</strong>: Repeat and use output redirection (<code>&gt;</code>) to send the output of the echo command to a file <code>my_name.txt</code>.</p>
+<p><strong>11d</strong>: Display the contents of the file using the <code>cat</code> command.</p>
+<p><strong>11e</strong>: Inspect the length of the file using <code>ls</code>. Make sure to use a flag for <code>ls</code> so as to see the number of bytes in the file.</p>
+<p><strong>11f</strong>: Create a duplicate of the file to another file called <code>my_name2.txt</code> using the <code>cp</code> command.</p>
+<p><strong>11g</strong>: Create a folder named <code>people</code> using the <code>mkdir</code> command.</p>
+<p><strong>11h</strong>: Move <code>my_name2.txt</code> into <code>people</code>, where the file name will be <code>&lt;&lt;YOUR-NAME&gt;&gt;.txt</code> with <code>&lt;&lt;YOUR-NAME&gt;&gt;</code> being your first and last name without white space using <code>_</code>. For this use the <code>mv</code> command.</p>
+<p><strong>11i</strong>: Using the same thing you did in <strong>11c</strong>, create three additional files of peoples names in the folder <code>people</code>.</p>
+<p><strong>11j</strong>: Change directory into <code>people</code>. Now Use <code>mv</code> to move one of the people files back into <code>hw_q11</code>. Use <code>..</code> (double dot).</p>
+<p><strong>11k</strong>: Move another file back into <code>hw_q11</code>, but now use an absolute path to describe the destination folder.</p>
+<p><strong>11l</strong>: Copy one of the files in people into a file name starting with <code>.</code> (single dot as prefix). For example if the file name was <code>marie_curie.txt</code>, copy it into <code>.marie_curie.txt</code>.</p>
+<p><strong>11m</strong>: Show all the files in the directory (also showing <code>.marie_curie.txt</code>), where you also see the size of the files and other information. Use the correct flag(s) for <code>ls</code> to show hidden files.</p>
+<p><strong>11n</strong>: Delete all the files in the directory using a single command. Please be very careful when deleting files!</p>
+<p><strong>11o</strong>: Move back to <code>hw_q11</code> and delete the directory <code>people</code>. Use either <code>rm</code> with a correct flag or <code>rmdir</code>.</p>
+</section>
+<section id="question-12-http-files-json-and-csv" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="question-12-http-files-json-and-csv"><span class="header-section-number">3.3</span> Question 12: HTTP, Files, JSON, and CSV</h2>
+<p>Inspect the Jupyter notebook file for <a href="https://github.com/yoninazarathy/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/practicals_jupyter/practical_B_more_on_basic_tools_and_julia_essentials.ipynb">practical B</a>, <code>practical_B_more_on_basic_tools_and_julia_essentials.ipynb</code>. The source URL is available by clicking “Raw” on the GitHub page. It is in JSON format.</p>
+<p>Write a program that reads in the JSON file (directly from the web) of the Jupyter notebook and prints a summary of the notebook including:</p>
+<ul>
+<li>Total number of cells.</li>
+<li>Number of code cells.</li>
+<li>Number of markdown cells.</li>
+<li>A breakdown of the number of code cells to cells that have output and those that don’t.</li>
+<li>Any other summary information you find relevant (you choose what summary to print - must be at least one item).</li>
+</ul>
+<p>The program should then create two CSV files, both with header rows and named <code>markdown_summary.csv</code> and <code>code_summary.csv</code>. Both of these files should contain a data row for each respective markdown or code cell in the notebook. The first column in each of the files should be named <code>cell_number</code> and should indicate the cell number in the Jupyter notebook (this is a unique count starting at 1 within the cells). The second and third columns are:</p>
+<ul>
+<li><code>character_count</code> - determines how many characters total are in the cell (include characters such as <code>\n</code> and count unique characters as a single character. E.g. <code>√</code> is a single character.</li>
+<li><code>line_count</code> - The number of lines the cell uses.</li>
+</ul>
+<p>The remaining columns count frequency of elements within the markdown or code of the cell. These columns will differ for <code>markdown_summary.csv</code> and <code>code_summary.csv</code>, and are described now.</p>
+<p>For the markdown summary file create columns: <code>#</code>, <code>##</code>, <code>###</code>, <code>####</code>, each of which count the number of times the respective element appears in the cell. For example if a cell has <code>#</code> and <code>##</code> in it, each once, then the respective entries in the line for this cell should be <code>1, 1, 0, 0</code>.</p>
+<p>For the code summary CSV file do so similarly, for the keywords: <code>return</code>, <code>for</code>, <code>if</code>, and <code>using</code> (i.e.&nbsp;4 columns, counting the frequency of these keywords in each of the code cells).</p>
+<p>Thus in summary, your program reads in a JSON file representing a Jupyter notebook, displays basic summary information, and then stores additional information to two CSV files which in principle could be further analyzed at a later time.</p>
+<p>Your relevant submission form for the assignment should show the first few lines of these CSV files.</p>
+</section>
+</section>
+<section id="questions-1317-are-submitted-on-jupyter-notebook-iv" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Questions 13–17 are submitted on Jupyter notebook IV</h1>
+<section id="question-13-numerical-derivatives" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="question-13-numerical-derivatives"><span class="header-section-number">4.1</span> Question 13: Numerical derivatives</h2>
+<p>The lecture notes contain code that illustrates the absolute relative error (as a function of <span class="math inline">\(h\)</span>) for numerical derivatives using the <strong>forward difference scheme</strong>,</p>
+<p><span class="math display">\[
+f'(x) \approx \frac{f(x+h) - f(x)}{h}.
+\]</span></p>
+<p>An alternative scheme is <strong>the central difference scheme</strong> using,</p>
+<p><span class="math display">\[
+f'(x) \approx \frac{f(x+h/2) - f(x-h/2)}{h}.
+\]</span></p>
+<p><strong>13a</strong>: Consider the functions, <span class="math inline">\(f_1(x) = sin(x^2)\)</span> at <span class="math inline">\(x=1/2\)</span>, <span class="math inline">\(f_2(x) = e^{3x^2}\)</span> at <span class="math inline">\(x=1\)</span>, and <span class="math inline">\(f_3(x) = atan(2x)/(1+e^{-2x^2})\)</span> at <span class="math inline">\(x=2\)</span>. Evaluate the performance of each of the schemes (forward and central) for each of these functions at the given points. In each case plot the error as a function of <span class="math inline">\(h\)</span>, and find the optimal <span class="math inline">\(h\)</span>. Display your results in a neat manner using one or two plots and a minimal summary.</p>
+<p><strong>13b</strong>: Consider now a vector valued function of the form, <span class="math inline">\(f: {\mathbb R}^K \to {\mathbb R}^K\)</span>, defined as,</p>
+<p><span class="math display">\[
+S(z) = \frac{1}{\sum_{i=1}^{K} e^{z_i}}
+\begin{bmatrix}
+e^{z_1} &amp; \cdots &amp; e^{z_{K}}
+\end{bmatrix}^\top.
+\]</span></p>
+<p>This function is called the <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax function</a>. Its Jacobian is a <span class="math inline">\(K \times K\)</span> matrix with elements of the form,</p>
+<p><span class="math display">\[
+J_{ij} = \frac{\partial}{\partial z_j} \frac{e^{z_i}}{\sum_{i=1}^{K} e^{z_i}}%\\
+=
+\begin{cases}
+S(z)_{i}(1-S(z)_{i}), &amp; i = j, \\[10pt]
+-S(z)_{i}S(z)_{j}, &amp; i \neq j.
+\end{cases}
+\]</span></p>
+<p>Assume you do not know the Jacobian expression and wish to compute it for a vector <span class="math inline">\(z\)</span> of dimension <span class="math inline">\(K\)</span>. How many softmax evaluations are needed with the forward difference scheme? How many softmax function evaluations are needed with the central difference scheme? Explain your answer.</p>
+<p><strong>13c</strong>: Consider now <span class="math inline">\(z = [1^{1/3}, 2^{1/3}, \ldots, K^{1/3}]^\top\)</span> for <span class="math inline">\(K=10\)</span>, <span class="math inline">\(K=20\)</span>, and <span class="math inline">\(K=100\)</span>. Plot the error of the Jacobian for both the forward difference scheme and the central difference scheme where as error you consider the euclidean distance between the approximated Jacobian and the explicit Jacobian (the square root of the sum up the squares of the differences between entries of the numerical derivative and the explicit one). What is the optimal <span class="math inline">\(h\)</span> in each case?</p>
+</section>
+<section id="question-14-markov-chains-and-linearalgebra" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="question-14-markov-chains-and-linearalgebra"><span class="header-section-number">4.2</span> Question 14: Markov chains and <code>LinearAlgebra</code></h2>
+<p>A discrete time, time-homogenous, finite state markov chain can be defined as a random sequence <span class="math inline">\(X_0,X_1,X_2,\ldots\)</span> where <span class="math inline">\(X_i \in \{1,2,\ldots,L\}\)</span> with <span class="math inline">\(L\)</span> being the number of states, and where the probability of <span class="math inline">\(X_{n+1} = j\)</span> given that <span class="math inline">\(X_n = i\)</span> is determined by the element <span class="math inline">\(P_{ij}\)</span> of the (stochastic) matrix <span class="math inline">\(P\)</span>. This is an <span class="math inline">\(L \times L\)</span> matrix with non-negative entries and, <span class="math inline">\(\sum_{j=1}^L P_{ij} = 1\)</span> for all <span class="math inline">\(i \in \{1,\ldots,L\}\)</span>. Hence each row <span class="math inline">\(i\)</span> of the matrix is the probability distribution of the next value in the sequence in case where the current value is <span class="math inline">\(i\)</span>. An initial probability of <span class="math inline">\(X_0\)</span> is also given via some vector <span class="math inline">\(p^0\)</span> where <span class="math inline">\(p^0_i = {\mathbb P}(X_0 = i)\)</span>.</p>
+<p>Markov chains are very useful models for a variety of applications and at UQ are briefly introduced in <a href="https://my.uq.edu.au/programs-courses/course.html?course_code=STAT2003">STAT2003</a> and studied in detail in <a href="https://my.uq.edu.au/programs-courses/course.html?course_code=STAT3004">STAT3004</a>. Here we will simply use them as a motivating example for practicing using linear algebra and no further background from these courses is needed.</p>
+<p>We focus on irreducible, aperiodic, finite state Markov chains. Irreducible means that for every pair <span class="math inline">\((i,j)\)</span> there exists an <span class="math inline">\(n\)</span> such that <span class="math inline">\(i\)</span>-th <span class="math inline">\(j\)</span>-th entry of the matrix power <span class="math inline">\(P^n\)</span> is non-negative. Aperiodic is guaranteed when the diagonal entries of <span class="math inline">\(P\)</span> are strictly positive. Irreducibility means that every state <span class="math inline">\(\{1,\ldots,L\}\)</span> is reachable from every other state and being aperiodic implies there aren’t times <span class="math inline">\(n\)</span> where only a subset of the states can be visited. For such Markov chains, one important vector quantity is the <strong>stationary probability</strong> (row) <span class="math inline">\(L\)</span>-vector. Here it is denoted <span class="math inline">\(\pi\)</span> with <span class="math inline">\(\sum_{i=1}^L \pi_i =1\)</span> and <span class="math inline">\(\pi_i&gt;0\)</span> for every <span class="math inline">\(i\)</span>. This vector <span class="math inline">\(\pi\)</span> counts the long term statistical occupancy of states, and can be characterized/computed in several ways:</p>
+<ol type="1">
+<li>It satisfies <span class="math inline">\(\pi P = \pi\)</span> (note that this is an undetermined system of linear equations because <span class="math inline">\((I-P)\)</span> is singular; still the additional requirement that <span class="math inline">\(\sum_{i=1}^L \pi_i =1\)</span> ensures uniqueness of <span class="math inline">\(\pi\)</span>).</li>
+<li>For any <span class="math inline">\(i\)</span>, <span class="math display">\[
+\lim_{n \to \infty} [P^n]_{ij} = \pi_j.
+\]</span></li>
+<li>The theory of non-negative matrices implies that <span class="math inline">\(P\)</span> has a a real eigenvalue equal to <span class="math inline">\(1\)</span>. This is the eigenvalue with maximal magnitude among all eigenvalues of <span class="math inline">\(P\)</span>. The vector <span class="math inline">\(\pi\)</span> is proportional to the eigenvector associated with this maximal eigenvalue (<span class="math inline">\(\sum_{i=1}^L \pi_i =1\)</span>).</li>
+<li>Given a sequence of random variables from this Markov chain <span class="math inline">\(\{X_0,X_1,X_2,\ldots\}\)</span> we estimate <span class="math inline">\(\pi_i\)</span> for large <span class="math inline">\(N\)</span> via, <span class="math display">\[
+\pi_i \approx \frac{1}{N} \sum_{n=1}^N {\mathbf 1} \{X_n = i\},
+\]</span> where <span class="math inline">\({\mathbf 1}\{\cdot\}\)</span> is the indicator function equalling <span class="math inline">\(1\)</span> if the argument occurs, and <span class="math inline">\(0\)</span> otherwise. This is true for any initial probability vector <span class="math inline">\(p^{0}\)</span>.</li>
+</ol>
+<p>In this problem you will compute/estimate <span class="math inline">\(\pi\)</span> using methods 1-4 for a specific class of problems.</p>
+<p>The code below generates a very special class of Markov chains where there is an explicit expression for the stationary probability vector <span class="math inline">\(\pi\)</span>. The function <code>structured_P</code> with input argument <code>L</code> creates and <span class="math inline">\(L \times L\)</span> matrix <span class="math inline">\(P\)</span> and the function <code>structured_π</code> creates an <span class="math inline">\(L\)</span>-vector (column vector) <span class="math inline">\(\pi\)</span> matching this <span class="math inline">\(P\)</span>:</p>
+<div id="38" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">structured_P</span>(L<span class="op">::</span><span class="dt">Int</span>; p<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">0.45</span>, r<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">0.01</span>)<span class="op">::</span><span class="dt">Matrix{Float64}</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>   q <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> p <span class="op">-</span> r</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>   P <span class="op">=</span> <span class="fu">diagm</span>(<span class="fu">fill</span>(r,L)) <span class="op">+</span> <span class="fu">diagm</span>(<span class="op">-</span><span class="fl">1</span><span class="op">=&gt;</span><span class="fu">fill</span>(q,L<span class="op">-</span><span class="fl">1</span>)) <span class="op">+</span> <span class="fu">diagm</span>(<span class="fl">1</span> <span class="op">=&gt;</span> <span class="fu">fill</span>(p,L<span class="op">-</span><span class="fl">1</span>))</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>   P[<span class="fl">1</span>,<span class="fl">1</span>] <span class="op">=</span> <span class="fl">1</span><span class="op">-</span>p</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>   P[L,L] <span class="op">=</span> <span class="fl">1</span><span class="op">-</span>q</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> P</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="fu">structured_π</span>(L<span class="op">::</span><span class="dt">Int</span>; p<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">0.45</span>, r<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">0.01</span>)<span class="op">::</span><span class="dt">Vector{Float64} </span><span class="op">=</span> <span class="cf">begin</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>   q <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> p <span class="op">-</span> r</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>   [(p<span class="op">/</span>q)<span class="op">^</span>i  for i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>L] <span class="op">*</span> (q<span class="op">-</span>p) <span class="op">/</span> p <span class="op">/</span> (<span class="fl">1</span><span class="fu">-</span>(p<span class="op">/</span>q)<span class="op">^</span>L) <span class="co">#Explicit expression (birth death)</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Here is for example the matrix <span class="math inline">\(P\)</span> for <span class="math inline">\(L=5\)</span>:</p>
+<div id="40" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> <span class="fu">structured_P</span>(<span class="fl">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>5×5 Matrix{Float64}:
+ 0.55  0.45  0.0   0.0   0.0
+ 0.54  0.01  0.45  0.0   0.0
+ 0.0   0.54  0.01  0.45  0.0
+ 0.0   0.0   0.54  0.01  0.45
+ 0.0   0.0   0.0   0.54  0.46</code></pre>
+</div>
+</div>
+<p>And here is the vector <span class="math inline">\(\pi\)</span> for <span class="math inline">\(L=5\)</span>:</p>
+<div id="42" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cn">π</span> <span class="op">=</span> <span class="fu">structured_π</span>(<span class="fl">5</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">sum</span>(<span class="cn">π</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">sum</span>(<span class="cn">π</span>) <span class="op">≈</span> <span class="fl">1.0</span> <span class="co">#\approx + [TAB]</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cn">π</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sum(π) = 0.9999999999999996
+sum(π) ≈ 1.0 = true</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>5-element Vector{Float64}:
+ 0.2786497527413459
+ 0.2322081272844549
+ 0.1935067727370457
+ 0.16125564394753808
+ 0.13437970328961507</code></pre>
+</div>
+</div>
+<p>We can see that it is a stationary distribution:</p>
+<div id="44" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">norm</span>(π<span class="ch">'*P - π'</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>π<span class="ch">'*P ≈ π'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>norm(π' * P - π') = 2.7755575615628914e-17</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>true</code></pre>
+</div>
+</div>
+<p>You will now consider <span class="math inline">\(L=2,3,4,5,10,20,30,40,50,100,200,300,400,500,1000\)</span> and in each case use methods 1-4 above to compute/estimate <span class="math inline">\(\pi\)</span>. Create 4 functions, one for each method and in each case use the function to compute/estimate <span class="math inline">\(\pi\)</span> and compare your estimated vector with the output of <code>structured_π</code>. Note that methods 1-3 will use functions from <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/">LinearAlgebra</a> while method 4 requires random variable generation. You may make use of <a href="https://juliastats.org/StatsBase.jl/stable/sampling/#StatsBase.sample"><code>sample</code> from StatsBase.jl</a> for this, or any other means. You may choose for how many steps to run the Markov Chain (<span class="math inline">\(N\)</span>). Similarly, since the second method requires you take take matrix powers <span class="math inline">\(P^n\)</span> for high <span class="math inline">\(n\)</span>, you may also choose which <span class="math inline">\(n\)</span> to use.</p>
+<p>Once your code works for the four methods, create some graphic or tabular output of your choice (one or two plots at most) which evaluates performance of each of the methods in terms of accuracy (and optional: running time). To measure accuracy use the <code>norm</code> function to compute the euclidean norm between your calculated <span class="math inline">\(\pi\)</span> and that arising from the explicit solution <code>structured_π</code>.</p>
+</section>
+<section id="question-15-planetary-motion---part-1" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="question-15-planetary-motion---part-1"><span class="header-section-number">4.3</span> Question 15: Planetary Motion - Part 1</h2>
+<p>In this problem and the next we deal with ordinary differential equations (ODEs), similar to those associated with planetary motion. Specifically we focus on a very simple two body problem reduced to two one body problems. Here you will implement the <a href="https://en.wikipedia.org/wiki/Euler_method">Euler Method</a> and the <a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">classic Runge–Kutta method</a> for solving ODEs. You will use these methods on the simple problem and analyze their performance in terms of step size.</p>
+<p>In general, take a function <span class="math inline">\(f: {\mathbb R}^d \to {\mathbb R}^d\)</span> which we called the <em>right hand side</em> (RHS). The ODE seeks a function <span class="math inline">\(u(\cdot)\)</span> where <span class="math inline">\(u(t) \in {\mathbb R}^d\)</span>, with, <span class="math display">\[
+\frac{d u}{dt} = f(u),
+\qquad
+\text{and}
+\qquad
+u(0) = u_0.
+\]</span> Here <span class="math inline">\(u_0 \in {\mathbb R}^d\)</span> is a given <em>initial condition</em>. Note also that in this formulation here, <span class="math inline">\(f(\cdot)\)</span> only depends on the <em>state</em> <span class="math inline">\(u\)</span> and not on time, <span class="math inline">\(t\)</span>. A more general formulation allows dependence on time.</p>
+<p>A solution <span class="math inline">\(u(\cdot)\)</span> is a function which for any <span class="math inline">\(t\ge 0\)</span> specifies the state <span class="math inline">\(u(t)\)</span> and satisfies the ODE above.</p>
+<p>For a given ODE problem, namely a RHS <span class="math inline">\(f(\cdot)\)</span> and an initial condition <span class="math inline">\(u_0\)</span>, an ODE numerical solver is an algorithm that tries to find <span class="math inline">\(u(t)\)</span> over time <span class="math inline">\(t\)</span> in some range <span class="math inline">\([0,t_{\max}]\)</span>. Euler’s method works by setting <span class="math inline">\(u(0) = u_0\)</span> and following the key recursion, <span class="math display">\[
+u(t+h) = u(t) + h f\big(u(t)\big),
+\]</span> starting with <span class="math inline">\(t=0\)</span> and incrementing <span class="math inline">\(t\)</span> by <span class="math inline">\(h\)</span> until <span class="math inline">\(t\ge t_{\max}\)</span>.</p>
+<p>The classic Runge–Kutta method, called also RK4, works via a more intricate scheme where, <span class="math display">\[
+u(t+h) = u(t) + \frac{h}{6}(k_1 + 2k_2 + 2k_3 +k_4),
+\]</span> where, <span class="math display">\[
+\begin{align*}
+k_{1} &amp;=f\left(u(t)\right) \\
+k_{2} &amp;=f\left(u(t) + h \, \frac{k_{1}}{2}\right), \\
+k_{3} &amp;=f\left(u(t) + h \, \frac{k_{2}}{2}\right) \\
+k_{4} &amp;=f\left(u(t) + h\, k_{3}\right) .
+\end{align*}
+\]</span> For both algorithms the step size <span class="math inline">\(h&gt;0\)</span> is a key parameter.</p>
+<p>Our example ODE deals with a mass orbiting a much larger mass on a plane (a reasonable approx to the earth around the sun). This is a two body problem reduced to two one body problems. A trivial one for the <a href="https://en.wikipedia.org/wiki/Barycenter">barycentre</a> and a second order differential equation for the orbit around the centre of mass. We now develop this ODE from simple physical principles (note that the physics of the problem is not crucial for solving this assignment problem).</p>
+<p>Newtons Law states that, <span class="math display">\[
+m \, a = F(r),
+\]</span> where <span class="math inline">\(m\)</span> is the mass of earth, <span class="math inline">\(a\)</span> is the acceleration vector, and <span class="math inline">\(F(r)\)</span> is the gravitational force vector acting on earth as a function of <span class="math inline">\(r\)</span>, the distance between the earth and the sun (which is the distance between earth and the barycentre). This force, driven by a <span class="math inline">\(1/r\)</span> potential, is given via, <span class="math display">\[
+F(r) = -\frac{m\, M\, G}{~~r^2} r'
+\]</span> where <span class="math inline">\(r'\)</span> is a unit vector pointing at the barycentre, <span class="math inline">\(M\)</span> is the <a href="https://en.wikipedia.org/wiki/Solar_mass">mass of the sun</a>, and <span class="math inline">\(G\)</span> is the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">gravitational constant</a>. Hence the acceleration vector of earth is <span class="math display">\[
+a = -\frac{M\, G}{~~~r^2}r'.
+\]</span> We now describe the location of earth via <span class="math inline">\(x(t)\)</span> and <span class="math inline">\(y(t)\)</span> in Cartesian coordinates, using the standard unit vectors <span class="math inline">\(\hat{i}\)</span> and <span class="math inline">\(\hat{j}\)</span>. With this description, the acceleration vector is, <span class="math display">\[
+a = \frac{d^2x}{dt^2} \hat{i} + \frac{d^2y}{dt^2} \hat{j}.
+\]</span> Now since, <span class="math display">\[
+r = \sqrt{x^2 + y^2}
+\qquad
+\text{and}
+\qquad
+r' = \frac{x}{|r|} \hat{i} + \frac{y}{|r|} \hat{j},
+\]</span> we get a system of second order ordinary differential equations:</p>
+<p><span class="math display">\[\begin{align*}
+\frac{d^2x}{dt^2} &amp;= -\frac{M\, G\, x}{~~r^{3}},\\
+\frac{d^2y}{dt^2} &amp;= -\frac{M\, G\, y}{~~r^{3}}.
+\end{align*}\]</span> This system has an explicit ellipsoid solution.</p>
+<p>We also expect the total energy <span class="math inline">\(E\)</span> to be conserved where <span class="math inline">\(E = T(t) + V(t)\)</span> with the kinetic energy satisfying <span class="math inline">\(T(t) \propto \|v(t)\|^2\)</span> and the potential energy satisfying and <span class="math inline">\(V(t) \propto -1/r(t)\)</span>. Here “<span class="math inline">\(\propto\)</span>” indicates “proportional to”. Here <span class="math inline">\(v(t)\)</span> is the velocity vector comprised of <span class="math inline">\(v_x(t)\)</span> and <span class="math inline">\(v_y(t)\)</span> with, <span class="math display">\[
+v_x = \frac{dx}{dt},
+\qquad
+\text{and}
+\qquad
+v_y = \frac{dy}{dt}.
+\]</span></p>
+<p>With such an explicit solution and the invariant of conservation of energy, we can now evaluate the performance of the various numerical schemes and their parameters. To do so, we also convert the system into the ODE form presented above (converting it from a second order ODE to a first order one). This is done by representing the state vector <span class="math inline">\(u(t)\)</span> with <span class="math inline">\(d=4\)</span> as <span class="math inline">\(v_x(t)\)</span>, <span class="math inline">\(v_y(t)\)</span>, <span class="math inline">\(x(t)\)</span>, <span class="math inline">\(y(t)\)</span>. Thus,</p>
+<p><span class="math display">\[\begin{align*}
+\frac{dv_x}{dt} &amp;= -\frac{M\,G\,x}{~~r^{3}},\\
+\frac{dv_y}{dt} &amp;= -\frac{M\,G\,y}{~~r^{3}},\\
+\frac{dx}{dt} &amp;= v_x, \\
+\frac{dy}{dt} &amp;= v_y.
+\end{align*}\]</span></p>
+<p>The following code specifies the function <code>df_dt_one_body</code> which is the RHS for this ODE. The other four one line functions are convenience accessors to the state variables.</p>
+<div id="46" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#These four convenience functions extract the state variable from the state vector</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#It is assumed the layout of the vector u is u = [v_x, v_y, x, y]</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">state_v_x</span>(u<span class="op">::</span><span class="dt">Vector{Float64}</span>) <span class="op">=</span> u[<span class="fl">1</span>]</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">state_v_y</span>(u<span class="op">::</span><span class="dt">Vector{Float64}</span>) <span class="op">=</span> u[<span class="fl">2</span>]</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">state_x</span>(u<span class="op">::</span><span class="dt">Vector{Float64}</span>) <span class="op">=</span> u[<span class="fl">3</span>]</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">state_y</span>(u<span class="op">::</span><span class="dt">Vector{Float64}</span>) <span class="op">=</span> u[<span class="fl">4</span>]</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="st">Computes the RHS for the one body problem. </span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">df_dt_one_body</span>(u<span class="op">::</span><span class="dt">Vector{Float64}</span>, t<span class="op">::</span><span class="dt">Float64</span>)<span class="op">::</span><span class="dt">Vector{Float64}</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>   M, G <span class="op">=</span> <span class="fl">1</span>, <span class="fl">1</span> <span class="co">#We take these constants as normalized. Naturally they would need to be set for physical values.</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>   r <span class="op">=</span> <span class="fu">sqrt</span>(<span class="fu">state_x</span>(u)<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fu">state_y</span>(u)<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> [<span class="fu">-M*G*state_x</span>(u)<span class="op">/</span>r<span class="op">^</span><span class="fl">3</span>, <span class="fu">-M*G*state_y</span>(u)<span class="op">/</span>r<span class="op">^</span><span class="fl">3</span>, <span class="fu">state_v_x</span>(u), <span class="fu">state_v_y</span>(u)]</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Once you use it to obtain a solution on a time vector <code>t</code> and a state (vector of vectors) <code>u</code>, a function such as <code>plot_solution</code> below can be used to plot the solution, also allowing you to use a <code>title</code> for the plot and a <code>label</code> for the series:</p>
+<div id="48" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">Measures</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plot_solution</span>( t<span class="op">::</span><span class="dt">AbstractArray{T}</span>, </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>   u<span class="op">::</span><span class="dt">Vector{Vector{Float64}}</span>; </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>   title<span class="op">::</span><span class="dt">String </span><span class="op">=</span> <span class="st">""</span>,</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>   label<span class="op">::</span><span class="dt">Union{String, Bool} </span><span class="op">=</span> <span class="cn">false</span>) <span class="kw">where</span> T</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>   x, y, v_x, v_y <span class="op">=</span> <span class="fu">state_x</span>.(u), <span class="fu">state_y</span>.(u), <span class="fu">state_v_x</span>.(u), <span class="fu">state_v_y</span>.(u)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>   <span class="co">#"Energy"</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>   r <span class="op">=</span> @. <span class="fu">sqrt</span>(x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>   E <span class="op">=</span> @. <span class="fl">0.5</span><span class="fu">*</span>(v_x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> v_y<span class="op">^</span><span class="fl">2</span>) <span class="op">-</span> <span class="fl">1.0</span><span class="op">/</span>r</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>   p1 <span class="op">=</span> <span class="fu">plot</span>(  x, y, label <span class="op">=</span> label, xlabel<span class="op">=</span> <span class="st">"X"</span>, ylabel <span class="op">=</span> <span class="st">"Y"</span>,</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>   title <span class="op">=</span> title<span class="op">*</span><span class="st">" (position)"</span>, aspectratio<span class="op">=</span><span class="fl">1</span>,legend<span class="op">=:</span>topleft,ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">7</span>,<span class="fl">7</span>))</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scatter!</span>([<span class="fl">0</span>], [<span class="fl">0</span>], ms<span class="op">=</span><span class="fl">15</span>, msw<span class="op">=</span><span class="fl">0</span>, c<span class="op">=:</span>orange, shape <span class="op">=:</span>star, label<span class="op">=</span><span class="st">"Sun"</span>)</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scatter!</span>([x[<span class="fl">1</span>]], [y[<span class="fl">1</span>]], ms<span class="op">=</span><span class="fl">5</span>, msw<span class="op">=</span><span class="fl">0</span>, c<span class="op">=:</span>blue, shape <span class="op">=:</span>circle, label<span class="op">=</span><span class="st">"Earth initial position"</span>)</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>   p4 <span class="op">=</span> <span class="fu">plot</span>(  t, E, xlabel <span class="op">=</span> <span class="st">"Time"</span>, ylabel <span class="op">=</span> <span class="st">"Energy"</span>,</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>   label <span class="op">=</span> label, title <span class="op">=</span> title<span class="op">*</span><span class="st">" (energy)"</span>)</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(p1, p4, margin <span class="op">=</span> <span class="fl">10</span>mm,size<span class="op">=</span>(<span class="fl">800</span>,<span class="fl">400</span>))</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>ArgumentError: Package Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+Stacktrace:
+  [1] <span class="ansi-bold">__require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2617</span>
+  [2] <span class="ansi-bold">_require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2495</span>
+  [3] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2423</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [4] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:376</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [5] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2388</span>
+  [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2364</span>
+  [7] <span class="ansi-bold">eval</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">m</span>::Module, <span class="ansi-bright-black-fg">e</span>::Any<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Core</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">boot.jl:489</span>
+  [8] <span class="ansi-bold">(::QuartoNotebookWorker.var"#21#22"{Module, Expr})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:222</span>
+  [9] <span class="ansi-bold">(::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:170</span>
+ [10] <span class="ansi-bold">with_logstate</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"<span class="ansi-bright-black-fg">{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}}</span>, <span class="ansi-bright-black-fg">logstate</span>::Base.CoreLogging.LogState<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:542</span>
+ [11] <span class="ansi-bold">with_logger</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function, <span class="ansi-bright-black-fg">logger</span>::Base.CoreLogging.ConsoleLogger<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:653</span>
+ [12] <span class="ansi-bold">capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#21#22"<span class="ansi-bright-black-fg">{Module, Expr}</span>; <span class="ansi-bright-black-fg">rethrow</span>::Type, <span class="ansi-bright-black-fg">color</span>::Bool, <span class="ansi-bright-black-fg">passthrough</span>::Bool, <span class="ansi-bright-black-fg">capture_buffer</span>::IOBuffer, <span class="ansi-bright-black-fg">io_context</span>::Vector<span class="ansi-bright-black-fg">{Pair{Symbol, Any}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:167</span>
+ [13] <span class="ansi-bold">capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:248</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [14] <span class="ansi-bold">io_capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function; <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">kws</span>::@Kwargs<span class="ansi-bright-black-fg">{rethrow::DataType, color::Bool, io_context::Vector{Pair{Symbol, Any}}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:250</span>
+ [15] <span class="ansi-bold">io_capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:246</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [16] <span class="ansi-bold">include_str</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mod</span>::Module, <span class="ansi-bright-black-fg">code</span>::String; <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:201</span>
+ [17] <span class="ansi-bold">#invokelatest_gr#232</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1297</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [18] <span class="ansi-bold">invokelatest_gr</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1289</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [19] <span class="ansi-bold">#7</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:18</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [20] <span class="ansi-bold">with_inline_display</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#7#8"<span class="ansi-bright-black-fg">{String, String, Int64, Dict{String, Any}}</span>, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">InlineDisplay.jl:31</span>
+ [21] <span class="ansi-bold">_render_thunk</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">thunk</span>::Function, <span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">is_expansion_ref</span>::Base.RefValue<span class="ansi-bright-black-fg">{Bool}</span>; <span class="ansi-bright-black-fg">inline</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:43</span>
+ [22] <span class="ansi-bold">_render_thunk</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:35</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [23] <span class="ansi-bold">#render#4</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:15</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [24] <span class="ansi-bold">render</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:1</span>
+ [25] <span class="ansi-bold">render</span><span class="ansi-bold">(</span>::String, ::Vararg<span class="ansi-bright-black-fg">{Any}</span>; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">Main</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">startup.jl:145</span>
+ [26] top-level scope
+<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">none:1</span></pre>
+</div>
+</div>
+</div>
+<p>Here for example we read binary data from a file (from the web), where we previously created <code>example_trajectory.dat</code> by running the Euler method on the time-horizon <span class="math inline">\([0,200]\)</span> with a step size of <span class="math inline">\(h=0.01\)</span>, an initial location of <span class="math inline">\((1.5,0)\)</span>, and initial vertical velocity of <span class="math inline">\(1\)</span>. We stored the binary data of the trajectory of type <code>Vector{Vector{Float64}}</code> in a file using the <a href="https://docs.julialang.org/en/v1/stdlib/Serialization/">serialization</a> mechanism and the code below reads the binary data back into <code>u</code> so it can plot it.</p>
+<p>The plot illustrates that that trajectory deviates from the desired ellipsoid solution and that the energy is not kept constant as needed.</p>
+<div id="50" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Serialization</span>, <span class="bu">HTTP</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="fl">0</span><span class="op">:</span>h<span class="op">:</span><span class="fl">200</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>u_0 <span class="op">=</span> [<span class="fl">0</span>., <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">0</span>]</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Note: the data was written to file via serialize("data/example_trajectory.dat", u) and then committed to GitHub</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>ode_web <span class="op">=</span> HTTP.<span class="fu">request</span>(<span class="st">"GET"</span>,<span class="st">"https://github.com/yoninazarathy/"</span><span class="op">*</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>   <span class="st">"ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/"</span><span class="op">*</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>   <span class="st">"raw/e71c6d085e0fcf79e3737c3a1db0fc56904e3f10/data/example_trajectory.dat"</span>)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="fu">deserialize</span>(<span class="fu">IOBuffer</span>(ode_web.body))</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">typeof</span>(u)</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_solution</span>(t,u,title <span class="op">=</span> <span class="st">"Euler's method"</span>, label<span class="op">=</span><span class="st">"h=</span><span class="sc">$</span>h<span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>ArgumentError: Package HTTP [cd3eb016-35fb-5094-929b-558a96fad6f3] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+Stacktrace:
+  [1] <span class="ansi-bold">__require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2617</span>
+  [2] <span class="ansi-bold">_require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2495</span>
+  [3] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2423</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [4] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:376</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [5] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2388</span>
+  [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2364</span>
+  [7] <span class="ansi-bold">eval</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">m</span>::Module, <span class="ansi-bright-black-fg">e</span>::Any<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Core</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">boot.jl:489</span>
+  [8] <span class="ansi-bold">(::QuartoNotebookWorker.var"#21#22"{Module, Expr})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:222</span>
+  [9] <span class="ansi-bold">(::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:170</span>
+ [10] <span class="ansi-bold">with_logstate</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"<span class="ansi-bright-black-fg">{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}}</span>, <span class="ansi-bright-black-fg">logstate</span>::Base.CoreLogging.LogState<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:542</span>
+ [11] <span class="ansi-bold">with_logger</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function, <span class="ansi-bright-black-fg">logger</span>::Base.CoreLogging.ConsoleLogger<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:653</span>
+ [12] <span class="ansi-bold">capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#21#22"<span class="ansi-bright-black-fg">{Module, Expr}</span>; <span class="ansi-bright-black-fg">rethrow</span>::Type, <span class="ansi-bright-black-fg">color</span>::Bool, <span class="ansi-bright-black-fg">passthrough</span>::Bool, <span class="ansi-bright-black-fg">capture_buffer</span>::IOBuffer, <span class="ansi-bright-black-fg">io_context</span>::Vector<span class="ansi-bright-black-fg">{Pair{Symbol, Any}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:167</span>
+ [13] <span class="ansi-bold">capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:248</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [14] <span class="ansi-bold">io_capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function; <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">kws</span>::@Kwargs<span class="ansi-bright-black-fg">{rethrow::DataType, color::Bool, io_context::Vector{Pair{Symbol, Any}}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:250</span>
+ [15] <span class="ansi-bold">io_capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:246</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [16] <span class="ansi-bold">include_str</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mod</span>::Module, <span class="ansi-bright-black-fg">code</span>::String; <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:201</span>
+ [17] <span class="ansi-bold">#invokelatest_gr#232</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1297</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [18] <span class="ansi-bold">invokelatest_gr</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1289</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [19] <span class="ansi-bold">#7</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:18</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [20] <span class="ansi-bold">with_inline_display</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#7#8"<span class="ansi-bright-black-fg">{String, String, Int64, Dict{String, Any}}</span>, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">InlineDisplay.jl:31</span>
+ [21] <span class="ansi-bold">_render_thunk</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">thunk</span>::Function, <span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">is_expansion_ref</span>::Base.RefValue<span class="ansi-bright-black-fg">{Bool}</span>; <span class="ansi-bright-black-fg">inline</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:43</span>
+ [22] <span class="ansi-bold">_render_thunk</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:35</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [23] <span class="ansi-bold">#render#4</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:15</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [24] <span class="ansi-bold">render</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:1</span>
+ [25] <span class="ansi-bold">render</span><span class="ansi-bold">(</span>::String, ::Vararg<span class="ansi-bright-black-fg">{Any}</span>; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">Main</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">startup.jl:145</span>
+ [26] top-level scope
+<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">none:1</span></pre>
+</div>
+</div>
+</div>
+<p><strong>15a</strong>: Implement the Euler’s method yourself and create similar plots with <span class="math inline">\(h=0.001\)</span> and <span class="math inline">\(h=0.0001\)</span> for the same time range and initial conditions. Plot plots similar to the plot above for the three values of <span class="math inline">\(h\)</span> (<span class="math inline">\(0.01\)</span>, <span class="math inline">\(0.001\)</span>, and <span class="math inline">\(0.0001\)</span>). The trajectory plots should appear separately, but the energy plots should appear on the same plot.</p>
+<p><strong>15b</strong>: Repeat by implementing the RK4 method for <span class="math inline">\(h=0.01\)</span>, <span class="math inline">\(h=0.1\)</span>, and <span class="math inline">\(h=0.5\)</span>.</p>
+<p><strong>15c</strong>: Comment on the efficiency of the methods and their ability to predict the trajectory, also as a function of <span class="math inline">\(h\)</span> and comparatively.</p>
+<p><strong>15d</strong>: Create a single animation which jointly illustrates the trajectory of the worst trajectory and the best trajectory from the 6 trajectories above. It is recommended that the animation display the running time, and trace the path of the earth in both trajectories, ideally using different colors and any other means you find for best visibility. The animation can be placed in your GitHub submission and a link to it provided with your submission.</p>
+<p>Note: Your solution to this question does not need to deal with binary data or use serialization as we have. Here it is simply a mechanism for obtaining data for our example plot (which you can reproduce).</p>
+</section>
+<section id="question-16-only-for-math7504-planetary-motion---part-2" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="question-16-only-for-math7504-planetary-motion---part-2"><span class="header-section-number">4.4</span> Question 16 (only for MATH7504): Planetary Motion - Part 2</h2>
+<p>The equations of motion described above for a planetary system have the special property of being a <a href="https://en.wikipedia.org/wiki/Hamiltonian_system">Hamiltonian System</a>. Hamiltonian Systems are of great interest to physicists and mathematicians due to their significance in physical modelling and their special properties. A (time invariant) Hamiltonian System is one where the dynamics of the system are completely determined by a smooth scalar function <span class="math inline">\(H(q,p)\)</span>, for <span class="math inline">\(q\)</span> and <span class="math inline">\(p \in {\mathbb R}^{\tilde{d}}\)</span>, where the dynamics are described by the system of first order differential equations for <span class="math inline">\(i=1,\ldots,{\tilde d}\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+\frac{dq_{i}}{dt} &amp;= \frac{\partial H}{\partial p_{i}},\\
+\frac{dp_{i}}{dt} &amp;= -\frac{\partial H}{\partial q_{i}}.
+\end{align*}\]</span></p>
+<p>For the planetary motion example, <span class="math inline">\(\tilde{d} = 2\)</span>, and the variables <span class="math inline">\(q\)</span> and <span class="math inline">\(p\)</span> can be interpreted as the position (<span class="math inline">\(x \hat{i} + y \hat{j}\)</span>) and momentum (<span class="math inline">\(v_{x} \hat{i} + v_{y} \hat{j}\)</span>) vectors respectively. The Hamiltonian can be interpreted as the total energy of the system and has the special separable form in terms of kinetic (<span class="math inline">\(T\)</span>) and potential (<span class="math inline">\(V\)</span>) energy,</p>
+<p><span class="math display">\[
+\begin{align*}
+H(q,p) = T(p) + V(q)
+=
+H(x, y, v_{x},v_{y}) = \frac{1}{2}(v_{x}^2 + v_{y}^2) - \frac{1}{\sqrt{x^2 + y^2}}.
+\end{align*}
+\]</span></p>
+<p>Note that length and time scales have been resized to remove the mass and gravitational constants. It is beyond the scope of this course but a special property of Hamiltonian systems that can be exploited for numerical methods is <a href="https://en.wikipedia.org/wiki/Symplectic_geometry">Sympletic Geometry</a>. The numerical methods for ODE solutions that use this property are correspondingly known as <a href="https://en.wikipedia.org/wiki/Symplectic_integrator">Symplectic Integrators</a>.</p>
+<p>A particularly simple and effective symplectic integrator that works for variable time steps (<span class="math inline">\(h\)</span>) is a <a href="https://en.wikipedia.org/wiki/Leapfrog_integration">leapfrog integrator</a> in kick-drift-kick form. This takes a second order ODE for <span class="math inline">\(u(t) \in {\mathbb R}^{\tilde{d}}\)</span> of the form</p>
+<p><span class="math display">\[
+\frac{d^2 u}{dt^2} = f(u),
+\qquad
+\frac{du}{dt} = v,
+\qquad
+\text{and}
+\qquad
+u(0) = u_0,
+\qquad
+\frac{du}{dt}(0) = v_0.
+\]</span> The leapfrog integrator uses an intermediate velocity update, <span class="math inline">\(v_{\frac{1}{2}}\)</span>, computed as <span class="math display">\[
+v_{\frac{1}{2}} = v(t) + \frac{h}{2} \, f\big(u(t)\big).
+\]</span> This value is then used to update the system via the recursion: <span class="math display">\[
+\begin{align*}
+u(t + h) &amp;= u(t) + h \, v_{\frac{1}{2}},\\
+v(t + h) &amp;= v_{\frac{1}{2}} + \frac{h}{2}\, f\big(u(t + h)\big).\\
+\end{align*}
+\]</span></p>
+<p><strong>16a</strong>: Implement the Second Order Leapfrog method above for yourself for the second order form of the dynamics of planetary motion. Create similar plots of the Euler and RK4 methods above with <span class="math inline">\(h=0.01\)</span>, <span class="math inline">\(h=0.1\)</span>, and <span class="math inline">\(h=0.5\)</span>.</p>
+<p><strong>16b</strong>: Compare the computational effort of the Leapfrog method with Euler and RK4 methods by comparing how many floating point operations per time step each method uses in your implementation. (This is not a coding question, but a theoretical question).</p>
+<p><strong>16c</strong>: Choose a range to time horizons to simulate over, comment on the trend of the accuracy of each method for long simulation runs. Summarize this analysis in a single compelling plot.</p>
+<p><strong>16d</strong>: The Julia package <a href="https://github.com/SciML/DifferentialEquations.jl">DifferentialEquations.jl</a> has support for various state of the art techniques, including <a href="https://diffeq.sciml.ai/stable/solvers/dynamical_solve/">symplectic integrators</a>. Choose a state of the art standard ODE solver and a symplectic integrator and use it to find a solution for this ODE system. Compare results with your own implementation of leapfrog and comment on the results.</p>
+</section>
+<section id="question-17-perspective-seminar-dr.-anna-foeglein." class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="question-17-perspective-seminar-dr.-anna-foeglein."><span class="header-section-number">4.5</span> Question 17: Perspective seminar (Dr.&nbsp;Anna Foeglein).</h2>
+<p>This question presents you with an additional 10 bonus points.</p>
+<p>Write a 1-4 paragraph summary of Anna’s perspective seminar. The writeup should answer these questions without treating the questions directly. That is, don’t write “the answer to Q1 is…” etc. Instead incorporate the answers in a flowing writeup report (like a blog post or letter). You may use first person and refer to the speaker as “Dr.&nbsp;Foeglein”, or “Anna” or similar.</p>
+<p>The writeup should address the following questions (in paragraph form):</p>
+<ol type="1">
+<li><p>What was Anna’s career path, and her relationship with engineering, software, mathematics, and statistics?</p></li>
+<li><p>Where does she currently work? What does she do in her job? How do you perceive her personal experience from her job?</p></li>
+<li><p>Discuss a few key tools that she spoke about during the talk, such as programming languages, mathematics, machine learning, statistical tools, platforms, and the like. Was this the first time that you heard about any of these tools?</p></li>
+<li><p>Have you picked up any tips from Anna’s talk? Of these, which can perhaps be of use in your career down the road?</p></li>
+<li><p>Feel free to state anything else that you found interesting from the talk.</p></li>
+</ol>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

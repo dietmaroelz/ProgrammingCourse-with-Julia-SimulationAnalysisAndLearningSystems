@@ -588,7 +588,7 @@ y = 20</code></pre>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> m2, m1 <span class="op">=</span> m1, m2;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.000014 seconds (36 allocations: 1.688 KiB)</code></pre>
+<pre><code>  0.000013 seconds (36 allocations: 1.688 KiB)</code></pre>
 </div>
 </div>
 <p>takes about as much time as</p>
@@ -598,7 +598,7 @@ y = 20</code></pre>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> m2, m1 <span class="op">=</span> m1, m2;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.000008 seconds (9 allocations: 464 bytes)</code></pre>
+<pre><code>  0.000009 seconds (9 allocations: 464 bytes)</code></pre>
 </div>
 </div>
 <p>because for composite types <strong>only the references</strong> are swapped! Compare this to the time required for re-assigning those variables after copying their entire content:</p>
@@ -608,7 +608,7 @@ y = 20</code></pre>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> m2, m1 <span class="op">=</span> <span class="fu">copy</span>(m1), <span class="fu">copy</span>(m2);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.011374 seconds (4.74 k allocations: 15.486 MiB, 52.58% compilation time)</code></pre>
+<pre><code>  0.011771 seconds (4.74 k allocations: 15.486 MiB, 53.13% compilation time)</code></pre>
 </div>
 </div>
 </section>
@@ -1247,8 +1247,8 @@ Occupation: diesel mechanic</code></pre>
 <span id="cb204-3"><a href="#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">pointer</span>(a);</span>
 <span id="cb204-4"><a href="#cb204-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">pointer</span>(b);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>pointer(a) = Ptr{Int64}(0x0000709fc1606ce0)
-pointer(b) = Ptr{Int64}(0x0000709fc1606ce0)</code></pre>
+<pre><code>pointer(a) = Ptr{Int64}(0x00007e86c5edf220)
+pointer(b) = Ptr{Int64}(0x00007e86c5edf220)</code></pre>
 </div>
 </div>
 <p>You can see that both a and b “point” to the same location in memory (a reference, or pointer).</p>

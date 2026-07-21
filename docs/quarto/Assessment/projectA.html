@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Project A - Semester 2, 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="projectA_files/libs/clipboard/clipboard.min.js"></script>
+<script src="projectA_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="projectA_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="projectA_files/libs/quarto-html/popper.min.js"></script>
+<script src="projectA_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="projectA_files/libs/quarto-html/anchor.min.js"></script>
+<link href="projectA_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="projectA_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="projectA_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="projectA_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="projectA_files/libs/bootstrap/bootstrap-888e7731d048cfaa148b823e8fc1b2fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#project-a---semester-2-2026" id="toc-project-a---semester-2-2026" class="nav-link active" data-scroll-target="#project-a---semester-2-2026"><span class="header-section-number">1</span> Project A - Semester 2, 2026</a></li>
+  <li><a href="#discrete-event-simulation-of-a-modulated-queueing-network-perspective-seminar-summary" id="toc-discrete-event-simulation-of-a-modulated-queueing-network-perspective-seminar-summary" class="nav-link" data-scroll-target="#discrete-event-simulation-of-a-modulated-queueing-network-perspective-seminar-summary"><span class="header-section-number">2</span> Discrete Event Simulation of a Modulated Queueing Network (+ perspective seminar summary)</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-your-github-repo-for-hand-in-10pts" id="toc-setting-up-your-github-repo-for-hand-in-10pts" class="nav-link" data-scroll-target="#setting-up-your-github-repo-for-hand-in-10pts"><span class="header-section-number">2.1</span> Setting up your GitHub repo for hand-in (10pts)</a></li>
+  <li><a href="#overview-of-the-model" id="toc-overview-of-the-model" class="nav-link" data-scroll-target="#overview-of-the-model"><span class="header-section-number">2.2</span> Overview of the model</a></li>
+  <li><a href="#overview-of-model-parameters" id="toc-overview-of-model-parameters" class="nav-link" data-scroll-target="#overview-of-model-parameters"><span class="header-section-number">2.3</span> Overview of model parameters</a></li>
+  <li><a href="#arrival-rates-to-nodes-and-traffic-equations" id="toc-arrival-rates-to-nodes-and-traffic-equations" class="nav-link" data-scroll-target="#arrival-rates-to-nodes-and-traffic-equations"><span class="header-section-number">2.4</span> Arrival rates to nodes and traffic equations</a></li>
+  <li><a href="#known-queueing-theory-results-and-an-overview-of-questions-to-investigate" id="toc-known-queueing-theory-results-and-an-overview-of-questions-to-investigate" class="nav-link" data-scroll-target="#known-queueing-theory-results-and-an-overview-of-questions-to-investigate"><span class="header-section-number">2.5</span> Known queueing theory results and an overview of questions to investigate</a></li>
+  <li><a href="#example-scenarios-networks" id="toc-example-scenarios-networks" class="nav-link" data-scroll-target="#example-scenarios-networks"><span class="header-section-number">2.6</span> Example scenarios (networks)</a></li>
+  </ul></li>
+  <li><a href="#task-1-thinking-about-modelling-assumptions-5pts" id="toc-task-1-thinking-about-modelling-assumptions-5pts" class="nav-link" data-scroll-target="#task-1-thinking-about-modelling-assumptions-5pts"><span class="header-section-number">3</span> Task 1: Thinking about Modelling Assumptions (5pts)</a></li>
+  <li><a href="#task-2-computation-for-jackson-networks-12pts" id="toc-task-2-computation-for-jackson-networks-12pts" class="nav-link" data-scroll-target="#task-2-computation-for-jackson-networks-12pts"><span class="header-section-number">4</span> Task 2: Computation for Jackson Networks (12pts)</a>
+  <ul class="collapse">
+  <li><a href="#task-3-a-simulation-engine-based-on-queue-states-33pts" id="toc-task-3-a-simulation-engine-based-on-queue-states-33pts" class="nav-link" data-scroll-target="#task-3-a-simulation-engine-based-on-queue-states-33pts"><span class="header-section-number">4.1</span> Task 3: A Simulation Engine Based on Queue States (33pts)</a></li>
+  <li><a href="#task-4-doing-statistical-testing-20pts" id="toc-task-4-doing-statistical-testing-20pts" class="nav-link" data-scroll-target="#task-4-doing-statistical-testing-20pts"><span class="header-section-number">4.2</span> Task 4: Doing Statistical Testing (20pts)</a></li>
+  <li><a href="#task-5-analysis-of-the-effect-of-modulation-on-mean-queue-sizes-20pts" id="toc-task-5-analysis-of-the-effect-of-modulation-on-mean-queue-sizes-20pts" class="nav-link" data-scroll-target="#task-5-analysis-of-the-effect-of-modulation-on-mean-queue-sizes-20pts"><span class="header-section-number">4.3</span> Task 5: Analysis of the effect of modulation on Mean Queue Sizes (20pts)</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="projectA.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Project A - Semester 2, 2026</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="project-a---semester-2-2026" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Project A - Semester 2, 2026</h1>
+</section>
+<section id="discrete-event-simulation-of-a-modulated-queueing-network-perspective-seminar-summary" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Discrete Event Simulation of a Modulated Queueing Network (+ perspective seminar summary)</h1>
+<p>(last edit: June 30, 2026)</p>
+<p><strong>Due:</strong> Friday, 25 September, 2026, 16:00. Late submissions are not accepted. <strong>Work in pairs</strong> - you must have a single partner for submission. Any deviation from this requires special permission from the course coordinator.</p>
+<p><strong>Note:</strong> The teaching staff will only answer questions (via Ed, consultation hour, or practicals) regarding this assignment up to the late evening of Wednesday September 23.</p>
+<p><strong>Weights and marking criteria:</strong> Total number of points: <strong>100</strong>. * There are <strong>10</strong> points for handing in according to the hand-in instructions, including a voice recording, neat output, and most importantly the GitHub repo. * The remaining <strong>90</strong> points are for the project itself. * In general, points <strong>will be</strong> deducted for sloppy coding style. Make sure to have your code properly indented, to use sensible and consistent variable names, and to write code that is in general clean and consistent.</p>
+<p><strong>Submission format:</strong> This assignment should be submitted via a GitHub Repo and a PDF file via Blackboard.</p>
+<p>Specific instructions for the GitHub repo are below. It is important that the GitHub repo be made <strong>private</strong> and the course user name <code>uqMATH2504</code> be invited as a collaborator. It is also important to name the repo <em>exactly</em> as <code>&lt;&lt;FIRST NAME1&gt;&gt;-&lt;&lt;LAST NAME1&gt;&gt;__&lt;&lt;FIRST NAME2&gt;&gt;-&lt;&lt;LAST NAME2&gt;&gt;-2504-2026-PROJECTA</code>. So for example if your names are “Little Pug” and “Big Hound” the repo name should be <code>Little-Pug__Big-Hound-2504-2026-PROJECTA</code>. Please invite <code>uqMATH2504</code> as a collaborator as early as possible.</p>
+<p>The PDF file should be a nicely formatted file that includes:</p>
+<ul>
+<li>Your names, student numbers, and assignment title (Project A - 2026) on the top.</li>
+<li>A (clickable) link to your GitHub repo.</li>
+<li>Instructions on how to run the main simulation code in the repo via an easy to use <code>simulation_script.jl</code> file.</li>
+<li>All of the project code formatted in an organized manner.</li>
+<li>Output and answers to specific questions formatted in an organized manner.</li>
+<li>Plots and graphs should have clean organized labels, legends, etc.</li>
+</ul>
+<p>The recommended way to make the PDF file is via a Jupyter notebook where you copy in some code and output into the notebook, and in certain cases use <code>include()</code> to run Julia code if appropriate. You also comment on questions in this PDF (e.g.&nbsp;when asked to answer things not via code). If desired you could keep this jupyter notebook (<code>.ipynb</code> file) in the repo. However, this Jupyter notebook will not be checked (only the PDF file), and it isn’t required to be a “runnable” notebook. In any case, please avoid pixelated screenshots of code, so for example if you choose to format your PDF file in MS-word (instead of Jupyter), make sure the code is cleanly formatted, and readable (<a href="https://carbon.now.sh">this page</a> may be useful).</p>
+<p>Marking responses will be made by the teaching staff by annotating (or leaving textual comments) regarding <strong>selected parts</strong> of your PDF file via blackboard. The teaching staff will also inspect your GitHub repo and potentially run <code>simulation_script.jl</code>. A very readable and clean PDF file is important. In printing Jupyter to PDF (or exporting to PDF) there may sometimes be excessive white space. Do not worry about this extra white space; it is not a problem.</p>
+<p><strong>Work in pairs but discuss with others</strong>: This is work in pairs. Plagiarism between groups will not be accepted. Nevertheless, feel free to consult with friends or classmates via Ed and other means about how to go about certain tasks. Answering Ed questions of others is recommended.</p>
+<!-- 
+
+**Marking Criteria**: 
+
+* 10 points are allocated for following instructions and the GitHub repo.
+
+* 10 points are allocated to the summary of the perspective seminar. 2 points for coherent and grammatically correct writing. 6 points for completeness (the writeup should answer all questions posed). 2 points of originality and style.
+
+* 90 points are for the simulation project itself.
+
+* In general, points **will be** deducted for sloppy coding style. Make sure to have your code properly indented, to use sensible and consistent variable names, and to write code that is in general clean and consistent. 
+-->
+<hr>
+<section id="setting-up-your-github-repo-for-hand-in-10pts" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="setting-up-your-github-repo-for-hand-in-10pts"><span class="header-section-number">2.1</span> Setting up your GitHub repo for hand-in (10pts)</h2>
+<ul>
+<li>Ideally use the same accounts you used for BigHW. Choose one of the team members to “own” the repo and the other(s) will be invited as collaborators.<br>
+</li>
+<li>Make sure the repo is <strong>private</strong>.</li>
+<li>Invite the course GitHub user, <code>uqMATH2504</code> as a collaborator and follow up, in case the invitation is not accepted. You may do so early on while working on the project, and must do this no later than the project due date.</li>
+<li>Do <strong>not</strong> make any changes (commits) to the repo after the project due date.</li>
+<li>Create a local clone of the repo. It is recommended to use the <code>git</code> command via the shell to work on making changes/additions to the assignment and submitting the changes. However you are free to use any other mechanism (VS-Code, GitHub desktop, etc).</li>
+</ul>
+<p>Your GitHub repo should be formatted exactly as follows: * Have a <code>README.md</code> file which states your names, the assignment title, and has a (clickable) link to the assignment instructions on the course website (to this document). * Have a <code>LICENSE.md</code> file. Choose a license as you wish (for example the MIT license). However keep in mind that you must keep the submission private until the end of the semester. * Have a <code>.gitignore</code> file. * Have basic running instructions on how to run the code.<br>
+* Have <code>src</code> and <code>test</code> folders. * Note: make sure that your submission repo contains only those files mentioned above (with the exception of perhaps a Jupyter <code>.ipynb</code> file if you choose to use it for creating the PDF). You may use the <code>.gitignore</code> file to ensure <code>git</code> does not commit additional files and output files to your <code>repo</code>. * All code (except for scripting) is to be part of a Julia module (with the <a href="https://docs.julialang.org/en/v1/manual/modules/">module statement</a>). Call the module <code>ModulatedJacksonSim</code>. (To avoid confusion, be aware that “modulated” for the network has nothing to do with “module” as in the module statement). * Make sure the project has a <code>Manifest.toml</code> and a <code>Project.toml</code> file that specify all the dependencies exactly. Do not have extra dependencies that are not used. * Have a <code>simulation_script.jl</code> file which runs all of the code needed for the tasks. As this script runs, make sure it prints some light intermediate output (e.g.&nbsp;progress), especially for simulations that take significant time to run.</p>
+<p>Since this project involves work in pairs, it is recommended that you try to use GitHub effectively. You may work on parallel branches with frequent merges (but this is not required), or work on the same branch via peer programming. The way you develop is not being assessed, still it is recommended you make good use of GitHub.</p>
+<!--
+## Perspective seminar question (10pts)
+
+Write a 1-4 paragraph summary of Dr. Maithili Mehta's perspective seminar. The writeup should answer these questions without treating the questions directly. That is, don't write "the answer to Q1 is..." etc. Instead incorporate the answers in a flowing writeup report (like a blog post or letter). You may use first person, or similar. Present the writeup as part of your PDF file submission (as the first item in the submission).
+
+The writeup should address the following questions:
+
+1. What was Maithili's career path, and her relationship with software and mathematics?
+1. Where does she currently work? What does she do in her job? How do you perceive her personal experience from her job?
+1. Discuss a few key tools that she spoke about during the talk, such as programming languages, mathematics, machine learning, statistical tools, simulation platforms, and the like. Was this the first time that you heard about any of these tools?
+1. Have you picked up any tips from Maithili's talk, which you can perhaps use in your career down the road?
+1. Feel free to state anything else that you found interesting from the talk and to contrast this talk with the previous talk.
+
+Note: Since the submission is in pairs you should only submit a single writeup for the pair/group.
+-->
+</section>
+<section id="overview-of-the-model" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="overview-of-the-model"><span class="header-section-number">2.2</span> Overview of the model</h2>
+<p>You may want to listen to last year’s <a href="https://www.youtube.com/watch?v=VI2usNCmVmg">Explainer video</a> by Yoni Nazarathy.</p>
+<p>Your key task is to create a discrete event simulation engine for stochastic models that are called “Modulated Open Jackson Networks”. <a href="https://en.wikipedia.org/wiki/Jackson_network">Jackson networks</a> are well studied in classical “applied probability” and “stochastic modelling”. The phrase “modulated” means that the parameters of the network vary over time. <!--"Modulated" networks are less amenable to closed form mathematical results (explicit formulas) - and this is why we will use discrete event simulation to analyze them.--> The “Open” phrase implies that customers may enter and leave these networks (in contrast with “closed” networks that have a finite number of customers). <!--Note: you do not need to dive deeply into the Wikipedia entries or other literature. All the information you need about the model is supplied in this project description.--></p>
+<p>A Jackson network (or “open Jackson network”) is a network of queues (also known as “nodes” or “stations”) where customers (also known as “jobs”) arrive from the outside world, are served at the queues in a “first-come first-served manner” and then move to other nodes or leave. As a very rough motivational example consider an amusement park. There are multiple rides, and individuals move throughout the park and queue up for rides. At any point (after finishing a ride) an individual may go home, or, alternatively, go to the next ride, and so forth. <!--However, this is just a rough motivation and there are several significant differences between the (modulated) Jackson network models you will simulate and what may constitute something like an amusement park. You are asked to discuss these differences in Task 1.--> Below is a detailed mathematical description of the model.</p>
+<p>There are <span class="math inline">\(L\)</span> stations (e.g.&nbsp;<span class="math inline">\(L=5\)</span> or <span class="math inline">\(L=100\)</span>) and each station has a <strong>server</strong> and a <strong>waiting buffer</strong> (or queue). There are jobs traversing through the network and the stations. If needed, jobs can be uniquely identified (numbered) via <span class="math inline">\(\ell=1,2,3,\ldots\)</span> and it is expected that the simulation processes thousands, or millions of jobs, so that if you track individual jobs then <span class="math inline">\(\ell\)</span> is an increasing counter of the jobs.</p>
+<p>A job’s location can be one of:</p>
+<ul>
+<li>Out of the system prior to arrival (the job still doesn’t exist).</li>
+<li>In the system in a buffer of one of the stations (queueing - i.e.&nbsp;waiting for its turn to enter service).</li>
+<li>In the system at one of the stations being served by the server at that station. This means it is “at the head” of the queue (and being served).</li>
+<li>Out of the system after leaving.</li>
+</ul>
+<p><em>Warning:</em> Your simulation should <strong>not</strong> have entities for individual jobs, but rather only have counts and general descriptors as the system state. The description above about the location of a job is merely for understanding the system being simulated. If you were interested in estimating other quantities such as the distribution of the time for a job in the simulation, then you would have to keep track of individual jobs.</p>
+<p>Time is continuous, <span class="math inline">\(t \ge 0\)</span>. In this continuous time system, jobs arrive to the system according to a random process and traverse between the stations as we describe now.</p>
+<p>Each station <span class="math inline">\(i=1,\ldots,L\)</span> has a service rate <span class="math inline">\(\mu_i &gt; 0\)</span> which is the inverse of the mean expected time it takes the server to process a job. Each station has a queue which has infinite capacity - i.e.&nbsp;there is no limit on the number of jobs in the queue. Jobs are served one by one at each station, where the mean service duration of each job is <span class="math inline">\(\mu_i^{-1}\)</span> and that duration is statistically independent from all other services at that node and at other nodes.</p>
+<p>When a job arrives to station <span class="math inline">\(i\)</span>, if the server is free (and this means there are no jobs in the buffer) the job immediately starts to receive service from the server. If the server is busy, the job queues for service and waits for its turn. Jobs may arrive either after finishing service at another node, or directly from the outside world.</p>
+<p>The rate of arrivals of jobs to nodes from the outside world is <span class="math inline">\(\alpha_i \ge 0\)</span> for node <span class="math inline">\(i\)</span>. Hence for nodes <span class="math inline">\(i\)</span> with external arrivals (<span class="math inline">\(\alpha_i &gt; 0\)</span>), the mean duration between external arrivals is <span class="math inline">\(1/\alpha_i\)</span>. In this project we’ll consider the durations of times between external arrivals to be exponentially distributed. This makes external arrival processes “Poisson processes” (this is also a mathematical detail that is not important for the carrying out the project).</p>
+<p>As for the durations of service times we will set them also as exponentially distributed. This assumption of Poisson arrival processes and exponentially distributed service time is what makes the network an “Open Jackson network”. Mathematically it means the network can be described by a “continuous time Markov chain” (you do not need to know these details for this project). In such a case, some explicit results exist and you could use these to test some parts (this is in Task 2 and Task 3). However, the <strong>modulation</strong> component of the model, described below, implies that generally, the model is more complicated than an Open Jackson Network. In this case, explicit results are much more scarce and hence the simulation model may yield information that is not available otherwise.</p>
+<p>When a job completes service it either leaves the system immediately, or immediately moves to another buffer. The choice of its destination is based on the routing matrix <span class="math inline">\(P\)</span>. Here <span class="math inline">\(P_{i,j}\)</span> is probability of going to station j after completing service in station <span class="math inline">\(i\)</span>. It is assumed that <span class="math inline">\(P\)</span> has non-negative entries and has a spectral radius less than <span class="math inline">\(1\)</span>. Mathematically this means that the maximal absolute value of eigenvalues of <span class="math inline">\(P\)</span> is less than 1. It also means that jobs may always eventually leave the system and that at least some rows of the matrix <span class="math inline">\(P\)</span> sum up to less than <span class="math inline">\(1\)</span>. The probability of a job leaving the system (immediately) after service at station <span class="math inline">\(i\)</span> is <span class="math inline">\(1 - \sum_{j=1}^L P_{i,j}\)</span>.</p>
+<p><em>Tip:</em> Recall (4) from Question 14 of BigHW. The <code>sample()</code> function from <code>StatsBase.jl</code> may help generate the location (node) of the next job when carrying out the simulation. Yet keep in mind that “outside of the system” is also a possible location.</p>
+<p>Now let us now describe how <strong>modulation</strong> takes place. With this model feature, the service rates of nodes are not fixed at <span class="math inline">\(\mu_1,\ldots,\mu_L\)</span> but rather alternate between the rates <span class="math inline">\(\mu_1,\ldots,\mu_L\)</span> and the rates <span class="math inline">\(\kappa\mu_1,\ldots,\kappa\mu_L\)</span>, with <span class="math inline">\(\kappa&gt;1\)</span>. I.e the second set of rates is “faster” than the first set of rates. Hence the system is either in “slow mode” (rates denoted <span class="math inline">\(\mu_i\)</span>), or is “fast mode” (rates denoted <span class="math inline">\(\kappa\mu_i\)</span>). At any given time, the mode of the system is either <code>slow</code> or <code>fast</code> and when this change happens, all rates instantly change. Very loosely, in the amusement park setting you can think of <code>slow</code> as a situation where rides only work with some employees and equipment while <code>fast</code> is a situation where rides work with more employees and equipment and operate faster. Modulation is then the process of changing between <code>slow</code> and <code>fast</code> back and forth.</p>
+<p>The process of changing (modulating) between “slow mode” (<code>slow</code>) and “fast mode” (<code>fast</code>) occurs independently of the jobs in the system, and for all servers together. Specifically the system changes between <code>slow</code> and <code>fast</code> and back as follows: <code>slow</code> durations are exponentially distributed with mean <span class="math inline">\(\gamma_1^{-1}\)</span> where <span class="math inline">\(\gamma_1 &gt; 0\)</span>. <code>fast</code> durations are exponentially distributed with mean <span class="math inline">\(\gamma_2^{-1}\)</span> where <span class="math inline">\(\gamma_2 &gt; 0\)</span>. The system alternates between <code>slow</code> and <code>fast</code> and back based on such independent random variables. The system starts in <code>slow</code>, then changes to <code>fast</code>, then back to <code>slow</code>, and so fourth. We denote the long term proportion of time that the system is <code>slow</code> via <span class="math inline">\(R^{(1)}\)</span>. This quantity is,</p>
+<p><span class="math display">\[
+R^{(1)} = \frac{\gamma_2}{\gamma_1 + \gamma_2} = \frac{\gamma_1^{-1}}{\gamma_1^{-1} + \gamma_2^{-1}}.
+\]</span></p>
+<p>Similarly the long term proportion of time that the system is in <code>fast</code>, <span class="math inline">\(R^{(2)}\)</span> is just <span class="math inline">\(1-R^{(1)}\)</span> or,</p>
+<p><span class="math display">\[
+R^{(2)} = \frac{\gamma_1}{\gamma_1 + \gamma_2} = \frac{\gamma_2^{-1}}{\gamma_1^{-1} + \gamma_2^{-1}}.
+\]</span></p>
+<p>Note that if <span class="math inline">\(R^{(1)} = 1\)</span> or <span class="math inline">\(R^{(2)} = 1\)</span> it means that the system is either always <code>slow</code> or respectively always <code>fast</code>. This can be approximated for “always <code>slow</code>” by sending <span class="math inline">\(\gamma_1 \to 0\)</span> (infinitely small “changing to fast” rate). Similarly <span class="math inline">\(\gamma_2 \to 0\)</span> will achieve “always <code>fast</code>”. We call these <strong>test cases</strong> the <strong>always slow</strong> and <strong>always fast</strong> test cases. They are important because in this case the network is essentially just an Open Jackson Network (not modulated).</p>
+<p>When the system changes mode (<code>slow</code> to <code>fast</code> or the other way), any service time of a job currently in service is purged and the service restarts for that job at a new service duration according to the new mode. So for example assume that server number 7 has a job that entered service at time <code>9.9</code> when the system was <code>slow</code>. This means that at time <code>9.9</code> the service duration was drawn with rate <span class="math inline">\(\mu_7\)</span>. Say that this duration is <code>3.3</code>. Hence the job is due to leave service at time <code>13.2</code>. Now assume that at time <code>11.4</code> the system switches to <code>fast</code> mode. Then at that point the job in service for server 7 needs to forget that it is due to leave at time <code>13.2</code> and instead a new service duration is drawn. That duration is exponentially distributed with rate <span class="math inline">\(\kappa\mu_7\)</span>. Say the new service duration is <code>2.3</code>, the job is now due to finish service at <code>11.4+2.3=13.7</code>.</p>
+<p>In a modelling setting we may expect to have the modulation occur at a rate much slower than the arrival and service rates. I.e. the rates <span class="math inline">\(\alpha_i\)</span>, <span class="math inline">\(\mu_i\)</span>, and <span class="math inline">\(\kappa\mu_i\)</span> should generally be much larger than the rates of modulation, <span class="math inline">\(\gamma_1\)</span> and <span class="math inline">\(\gamma_2\)</span>. For example in the amusement park example we can believe that staffing levels change in the order of hours while arrivals and ride durations are in the orders of seconds and minutes.</p>
+<p>While this may not be useful for modelling real scenarios, if we take <span class="math inline">\(\gamma_1 \to \infty\)</span> and <span class="math inline">\(\gamma_2 \to \infty\)</span> (very quick modulation), and under the exponential random variable assumptions, it will mean that the system acts like a non-modulated network (just an Open Jackson Network) with service rates,</p>
+<p><span class="math display">\[
+\tilde{\mu}_i =  R^{(1)} \mu_i + R^{(2)} \kappa\mu_i.
+\]</span></p>
+<p>We call this <span class="math inline">\(\gamma_1 \to \infty\)</span> and <span class="math inline">\(\gamma_2 \to \infty\)</span> case the <strong>super fast modulation</strong> case. It is an important test case because like the <strong>always slow</strong> and <strong>always fast</strong> test cases, it should also yield results as an Open Jackson Network (non modulated) with service rates <span class="math inline">\(\tilde{\mu}\)</span>.</p>
+<p>These averaged service rates, <span class="math inline">\(\tilde{\mu}_i\)</span>, are also important in the stability condition we describe below. Note also below, that when we consider notation like <span class="math inline">\(\mu\)</span>, or <span class="math inline">\(\tilde{\mu}\)</span>, or <span class="math inline">\(\alpha\)</span>, we refer to the <span class="math inline">\(L\)</span> dimensional vector of the individual entries.</p>
+</section>
+<section id="overview-of-model-parameters" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="overview-of-model-parameters"><span class="header-section-number">2.3</span> Overview of model parameters</h2>
+<p><strong>The parameters of the network that we shall use are:</strong></p>
+<ul>
+<li>The dimension of the network (number of nodes): <span class="math inline">\(L\)</span>.</li>
+<li>The external arrival rates: <span class="math inline">\(\alpha_1,\ldots,\alpha_L\)</span>, with <span class="math inline">\(\alpha_i \ge 0\)</span> for all <span class="math inline">\(i\)</span>, and <span class="math inline">\(\alpha_i &gt; 0\)</span> for at least one <span class="math inline">\(i\)</span>. (Vector <span class="math inline">\(\alpha\)</span>).</li>
+<li>The slow (normal) service rates: <span class="math inline">\(\mu_1,\ldots,\mu_L\)</span>, with <span class="math inline">\(\mu_i &gt; 0\)</span> for all <span class="math inline">\(i\)</span>. (Vector <span class="math inline">\(\mu\)</span>).</li>
+<li>The speedup parameter <span class="math inline">\(\kappa\)</span> with <span class="math inline">\(\kappa &gt; 1\)</span>.</li>
+<li>The modulation rates. Slow to fast: <span class="math inline">\(\gamma_1\)</span>. Fast to slow: <span class="math inline">\(\gamma_2\)</span>.</li>
+<li>The <span class="math inline">\(L \times L\)</span> routing matrix <span class="math inline">\(P\)</span>.</li>
+</ul>
+<p>Note that with the introduction of the speedup parameter we have the averaged service rate vector as,</p>
+<p><span class="math display">\[
+\tilde{\mu} =  R^{(1)} \mu + R^{(2)} \kappa \mu = \frac{\gamma_1 \kappa + \gamma_2}{\gamma_1 + \gamma_2} \mu.
+\]</span></p>
+<p>Note also that we may want to use the pair (<span class="math inline">\(\gamma_1\)</span>, <span class="math inline">\(R^{(1)}\)</span>) as parameters instead of (<span class="math inline">\(\gamma_1\)</span>, <span class="math inline">\(\gamma_2\)</span>). That is, we would like to specify <span class="math inline">\(\gamma_1\)</span> which is the rate of modulation (<code>slow</code> to <code>fast</code>) and <span class="math inline">\(R^{(1)}\)</span> which is the proportion of time for <code>slow</code>. With this we just set</p>
+<p><span class="math display">\[
+\gamma_2 = \gamma_1 \frac{R^{(1)}}{1-R^{(1)}}.
+\]</span></p>
+<p><em>Tip:</em> You’ll be generating a lot of exponentially distributed random variables. For example this is a distribution with <span class="math inline">\(\mu = 2.5\)</span> or a mean of <span class="math inline">\(0.4\)</span>.</p>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Distributions</span>, <span class="bu">Statistics</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>μ <span class="op">=</span> <span class="fl">2.5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> <span class="fu">Exponential</span>(<span class="fl">1</span><span class="op">/</span>μ)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Theoretical:"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fl">1</span><span class="op">/</span><span class="fu">mean</span>(dist)            <span class="co">#this is the mean() method from Distributions (theoretical mean)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Monte Carlo:"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="fu">rand</span>(dist) for _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">^</span><span class="fl">6</span>]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fl">1</span><span class="op">/</span><span class="fu">mean</span>(data);            <span class="co">#This is mean() from Base/Distributions (the sample mean)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>ArgumentError: Package Distributions [31c24e10-a181-5473-b8eb-7969acd0382f] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+Stacktrace:
+  [1] <span class="ansi-bold">__require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2617</span>
+  [2] <span class="ansi-bold">_require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2495</span>
+  [3] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2423</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [4] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:376</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [5] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2388</span>
+  [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2364</span>
+  [7] <span class="ansi-bold">eval</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">m</span>::Module, <span class="ansi-bright-black-fg">e</span>::Any<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Core</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">boot.jl:489</span>
+  [8] <span class="ansi-bold">(::QuartoNotebookWorker.var"#21#22"{Module, Expr})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:222</span>
+  [9] <span class="ansi-bold">(::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:170</span>
+ [10] <span class="ansi-bold">with_logstate</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"<span class="ansi-bright-black-fg">{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}}</span>, <span class="ansi-bright-black-fg">logstate</span>::Base.CoreLogging.LogState<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:542</span>
+ [11] <span class="ansi-bold">with_logger</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function, <span class="ansi-bright-black-fg">logger</span>::Base.CoreLogging.ConsoleLogger<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:653</span>
+ [12] <span class="ansi-bold">capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#21#22"<span class="ansi-bright-black-fg">{Module, Expr}</span>; <span class="ansi-bright-black-fg">rethrow</span>::Type, <span class="ansi-bright-black-fg">color</span>::Bool, <span class="ansi-bright-black-fg">passthrough</span>::Bool, <span class="ansi-bright-black-fg">capture_buffer</span>::IOBuffer, <span class="ansi-bright-black-fg">io_context</span>::Vector<span class="ansi-bright-black-fg">{Pair{Symbol, Any}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:167</span>
+ [13] <span class="ansi-bold">capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:248</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [14] <span class="ansi-bold">io_capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function; <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">kws</span>::@Kwargs<span class="ansi-bright-black-fg">{rethrow::DataType, color::Bool, io_context::Vector{Pair{Symbol, Any}}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:250</span>
+ [15] <span class="ansi-bold">io_capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:246</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [16] <span class="ansi-bold">include_str</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mod</span>::Module, <span class="ansi-bright-black-fg">code</span>::String; <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:201</span>
+ [17] <span class="ansi-bold">#invokelatest_gr#232</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1297</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [18] <span class="ansi-bold">invokelatest_gr</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1289</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [19] <span class="ansi-bold">#7</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:18</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [20] <span class="ansi-bold">with_inline_display</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#7#8"<span class="ansi-bright-black-fg">{String, String, Int64, Dict{String, Any}}</span>, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">InlineDisplay.jl:31</span>
+ [21] <span class="ansi-bold">_render_thunk</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">thunk</span>::Function, <span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">is_expansion_ref</span>::Base.RefValue<span class="ansi-bright-black-fg">{Bool}</span>; <span class="ansi-bright-black-fg">inline</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:43</span>
+ [22] <span class="ansi-bold">_render_thunk</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:35</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [23] <span class="ansi-bold">#render#4</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:15</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [24] <span class="ansi-bold">render</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:1</span>
+ [25] <span class="ansi-bold">render</span><span class="ansi-bold">(</span>::String, ::Vararg<span class="ansi-bright-black-fg">{Any}</span>; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">Main</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">startup.jl:145</span>
+ [26] top-level scope
+<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">none:1</span></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="arrival-rates-to-nodes-and-traffic-equations" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="arrival-rates-to-nodes-and-traffic-equations"><span class="header-section-number">2.4</span> Arrival rates to nodes and traffic equations</h2>
+<p>Jobs arrive to nodes either from outside or internally after being routed to a node. Combining both of these arrivals, a basic quantity one can measure is the rate of arrivals to a given node <span class="math inline">\(i\)</span>. That is,</p>
+<p><span class="math display">\[
+\lambda_i = \lim_{t \to \infty} \frac{A_i(t)}{t},
+\]</span></p>
+<p>where <span class="math inline">\(A_i(t)\)</span> is the number of arrivals (either from the outside world or from other nodes) to node <span class="math inline">\(i\)</span> during <span class="math inline">\([0,t]\)</span>. This quantity can be measured via simulation (as you will do), but it can also be computed directly via the matrix equation,</p>
+<p><span class="math display">\[
+\lambda = P^\top \lambda + \alpha,
+\qquad
+\qquad
+\text{(Traffic equations)}
+\]</span></p>
+<p>where <span class="math inline">\(\lambda\)</span> is a (column) vector of <span class="math inline">\(\lambda_i\)</span> values, and <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\mu\)</span> are also column vectors of the respective quantities. These “Traffic equations” hold as long as the solution to the equation <span class="math inline">\(\lambda = (I-P^\top)^{-1} \alpha\)</span> satisfies, <span class="math inline">\(\lambda &lt; \tilde{\mu}\)</span>. Here the inequality between vectors requires element-wise inequality on all elements. To understand the traffic equations further, look at them for each <span class="math inline">\(i\)</span>:</p>
+<p><span class="math display">\[
+\lambda_i = \underbrace{\alpha_i}_{\rm external} + \underbrace{\sum_{j=1}^L P_{j,i} \lambda_j}_{\rm internal}.
+\]</span></p>
+<p><em>Intuition:</em> Observe that <span class="math inline">\(\lambda_i\)</span> is equated to the sum of external arrivals and all internal arrivals from other nodes <span class="math inline">\(j\)</span> routed with proportions <span class="math inline">\(P_{j,i}\)</span>. This holds as long as the input rates to all nodes <span class="math inline">\(j\)</span> are less than the averaged (for modulation) service rate.</p>
+<p>When <span class="math inline">\(\lambda_i &lt; \tilde{\mu}_i\)</span> for all <span class="math inline">\(i\)</span>, we say the <strong>network is stable</strong> and this means that the arrival rate to each node is less than the effective service rate. In this <strong>stable</strong> case, as time goes to infinity, the network converges to statistical equilibrium or “steady state”. This means that if we consider a single long simulation, we may run a time average of that simulation to obtain steady state quantities.</p>
+<p>We will denote the <strong>load for node <span class="math inline">\(i\)</span></strong> via <span class="math inline">\(\rho_i = \lambda_i/\tilde{\mu}_i\)</span> and always work in a regime where <span class="math inline">\(\rho_i &lt; 1\)</span> for all <span class="math inline">\(i=1,\ldots,L\)</span>. We denote <span class="math inline">\(\rho^* = \max \{\rho_1,\ldots,\rho_L\}\)</span> as the “bottleneck load”. Clearly, as long as <span class="math inline">\(\rho^*&lt;1\)</span> the network is stable. The computed parameter <span class="math inline">\(\rho^*\)</span> is the parameter that we will vary for different scenarios and cases - details below.</p>
+</section>
+<section id="known-queueing-theory-results-and-an-overview-of-questions-to-investigate" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="known-queueing-theory-results-and-an-overview-of-questions-to-investigate"><span class="header-section-number">2.5</span> Known queueing theory results and an overview of questions to investigate</h2>
+<p>In general, it is known that as each <span class="math inline">\(\rho_i\)</span> grows, the congestion in the individual queue at node <span class="math inline">\(i\)</span> increases in the sense that “on average”, there are larger steady state queues and longer wait times. Further, as <span class="math inline">\(\rho^*\)</span> grows, the general congestion in the network grows. Since we consider <span class="math inline">\(\rho^* &lt; 1\)</span>, we only focus on networks that are stable, yet if <span class="math inline">\(\rho^* \approx 1\)</span>, e.g.&nbsp;<span class="math inline">\(=0.95\)</span>, they are highly congested.</p>
+<p>For a (non-modulated) Open Jackson Network, one can prove that the steady state queue length of each individual queue <span class="math inline">\(i\)</span> has a “geometric distribution” on <span class="math inline">\(0, 1, 2,\ldots\)</span> with a mean of <span class="math inline">\(\rho_i/(1-\rho_i)\)</span>. Many more such theoretical results exist, yet we skip the details. This relationship appears as follows:</p>
+<div id="4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ρ_grid <span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">0.95</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_steady_state_queue_size</span>(ρ) <span class="op">=</span> ρ<span class="op">/</span>(<span class="fl">1</span><span class="op">-</span>ρ) <span class="co">#Theoretical steady state mean queue length (also of M/M/1 queue).</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ρ_grid, <span class="fu">mean_steady_state_queue_size</span>.(ρ_grid), </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   xlabel <span class="op">=</span> <span class="st">"ρ"</span>, ylabel <span class="op">=</span> <span class="st">"Mean steady state queue length</span><span class="sc">\n</span><span class="st">for an individual node"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   label <span class="op">=</span> <span class="cn">false</span>, lw <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="op">:</span>black, xlim <span class="op">=</span> (<span class="fl">0</span>,<span class="fl">1</span>),  ylim<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>ArgumentError: Package Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+Stacktrace:
+  [1] <span class="ansi-bold">__require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2617</span>
+  [2] <span class="ansi-bold">_require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2495</span>
+  [3] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2423</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [4] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:376</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [5] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2388</span>
+  [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2364</span>
+  [7] <span class="ansi-bold">eval</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">m</span>::Module, <span class="ansi-bright-black-fg">e</span>::Any<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Core</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">boot.jl:489</span>
+  [8] <span class="ansi-bold">(::QuartoNotebookWorker.var"#21#22"{Module, Expr})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:222</span>
+  [9] <span class="ansi-bold">(::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:170</span>
+ [10] <span class="ansi-bold">with_logstate</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"<span class="ansi-bright-black-fg">{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}}</span>, <span class="ansi-bright-black-fg">logstate</span>::Base.CoreLogging.LogState<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:542</span>
+ [11] <span class="ansi-bold">with_logger</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function, <span class="ansi-bright-black-fg">logger</span>::Base.CoreLogging.ConsoleLogger<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:653</span>
+ [12] <span class="ansi-bold">capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#21#22"<span class="ansi-bright-black-fg">{Module, Expr}</span>; <span class="ansi-bright-black-fg">rethrow</span>::Type, <span class="ansi-bright-black-fg">color</span>::Bool, <span class="ansi-bright-black-fg">passthrough</span>::Bool, <span class="ansi-bright-black-fg">capture_buffer</span>::IOBuffer, <span class="ansi-bright-black-fg">io_context</span>::Vector<span class="ansi-bright-black-fg">{Pair{Symbol, Any}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:167</span>
+ [13] <span class="ansi-bold">capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:248</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [14] <span class="ansi-bold">io_capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function; <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">kws</span>::@Kwargs<span class="ansi-bright-black-fg">{rethrow::DataType, color::Bool, io_context::Vector{Pair{Symbol, Any}}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:250</span>
+ [15] <span class="ansi-bold">io_capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:246</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [16] <span class="ansi-bold">include_str</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mod</span>::Module, <span class="ansi-bright-black-fg">code</span>::String; <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:201</span>
+ [17] <span class="ansi-bold">#invokelatest_gr#232</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1297</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [18] <span class="ansi-bold">invokelatest_gr</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1289</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [19] <span class="ansi-bold">#7</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:18</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [20] <span class="ansi-bold">with_inline_display</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#7#8"<span class="ansi-bright-black-fg">{String, String, Int64, Dict{String, Any}}</span>, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">InlineDisplay.jl:31</span>
+ [21] <span class="ansi-bold">_render_thunk</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">thunk</span>::Function, <span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">is_expansion_ref</span>::Base.RefValue<span class="ansi-bright-black-fg">{Bool}</span>; <span class="ansi-bright-black-fg">inline</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:43</span>
+ [22] <span class="ansi-bold">_render_thunk</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:35</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [23] <span class="ansi-bold">#render#4</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:15</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [24] <span class="ansi-bold">render</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:1</span>
+ [25] <span class="ansi-bold">render</span><span class="ansi-bold">(</span>::String, ::Vararg<span class="ansi-bright-black-fg">{Any}</span>; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">Main</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">startup.jl:145</span>
+ [26] top-level scope
+<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">none:1</span></pre>
+</div>
+</div>
+</div>
+<p>However with modulation, there is not an explicit simple relationship. One of the main goals of the project is to quantify the effect of modulation.</p>
+<p><em>Tip:</em> In the tasks below you are not expected to look at a node per se but rather at the whole network. You would thus create a superposition of graphs as above, where you sum up all of the queues in the network. When considering the whole network, your x-axis would not be an individual <span class="math inline">\(\rho_i\)</span> but rather <span class="math inline">\(\rho^*\)</span>.</p>
+</section>
+<section id="example-scenarios-networks" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="example-scenarios-networks"><span class="header-section-number">2.6</span> Example scenarios (networks)</h2>
+<p>You will work with the following 4 scenarios. These are networks of size 3 nodes, 3 nodes, 5 nodes, or 100 nodes.</p>
+<div id="6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#You need to install the Parameters.jl package: https://github.com/mauro3/Parameters.jl</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#You need to install the Accessors.jl package: https://github.com/JuliaObjects/Accessors.jl</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Parameters</span>  </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Accessors</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="pp">@with_kw</span> <span class="kw">struct</span> NetworkParameters <span class="co">#The @with_kw macro comes from the Parameters.jl package and makes nice constructors</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>   L<span class="op">::</span><span class="dt">Int</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>   α_vector<span class="op">::</span><span class="dt">Vector{Float64} </span><span class="co">#This vector is a vector of α_i which can then be scaled</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>   μ_vector<span class="op">::</span><span class="dt">Vector{Float64} </span><span class="co">#This is the vector of service rates considered fixed</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>   P<span class="op">::</span><span class="dt">Matrix{Float64} </span><span class="co">#routing matrix</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>   γ₁<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> (<span class="fl">10</span><span class="op">^-</span><span class="fl">8</span>) <span class="co">#The rate of modulation slow to fast (default is that system is almost always slow)</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>   γ₂<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">1.0</span> <span class="co">#The rate of modulation fast to slow</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>   κ<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">2.0</span> <span class="co">#The speedup parameter</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the averaged service rate vector (this is tilde μ)</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">averaged_service_rate</span>(net<span class="op">::</span><span class="dt">NetworkParameters</span>) <span class="op">=</span> (net.γ₁<span class="op">*</span>net.κ <span class="op">+</span> net.γ₂)<span class="op">*</span>net.μ_vector<span class="op">/</span>(net.γ₁ <span class="op">+</span> net.γ₂)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">############################</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Three queues in tandem</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>scenario1 <span class="op">=</span> <span class="fu">NetworkParameters</span>(  L<span class="op">=</span><span class="fl">3</span>, </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>   α_vector <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">0</span>],</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>   μ_vector <span class="op">=</span> <span class="fu">ones</span>(<span class="fl">3</span>),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>   P <span class="op">=</span> [<span class="fl">0</span> <span class="fl">1.0</span> <span class="fl">0</span>;</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>   <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1.0</span>;</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>   <span class="fl">0</span> <span class="fl">0</span> <span class="fl">0</span>])</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">############################</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Three queues in tandem with option to return back to first queue</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>scenario2 <span class="op">=</span> <span class="pp">@set</span> scenario1.P  <span class="op">=</span> [<span class="fl">0</span> <span class="fl">1.0</span> <span class="fl">0</span>; <span class="co">#The @set macro is from Accessors.jl and allows to easily make a </span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>   <span class="fl">0</span> <span class="fl">0</span> <span class="fl">1.0</span>; <span class="co"># modified copy of an (immutable) struct</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>   <span class="fl">0.3</span> <span class="fl">0</span> <span class="fl">0</span>] </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co">############################</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co"># A ring of 5 queues</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>scenario3 <span class="op">=</span> <span class="fu">NetworkParameters</span>(  L<span class="op">=</span><span class="fl">5</span>, </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>   α_vector <span class="op">=</span> <span class="fu">ones</span>(<span class="fl">5</span>),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>   μ_vector <span class="op">=</span> <span class="fu">collect</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>),</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>   P <span class="op">=</span> [<span class="fl">0</span>  <span class="fl">.8</span>   <span class="fl">0</span>    <span class="fl">0</span>   <span class="fl">0</span>;</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>   <span class="fl">0</span>   <span class="fl">0</span>   <span class="fl">.8</span>   <span class="fl">0</span>   <span class="fl">0</span>;</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>   <span class="fl">0</span>   <span class="fl">0</span>   <span class="fl">0</span>    <span class="fl">.8</span>  <span class="fl">0</span>;</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>   <span class="fl">0</span>   <span class="fl">0</span>   <span class="fl">0</span>    <span class="fl">0</span>   <span class="fl">.8</span>;</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>   <span class="fl">.8</span>  <span class="fl">0</span>   <span class="fl">0</span>    <span class="fl">0</span>    <span class="fl">0</span>])</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co">############################</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># A large arbitrary network</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co">#Generate some random (arbitrary) matrix P</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">0</span>)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="fl">100</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> <span class="fu">rand</span>(L,L)</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> P <span class="op">./</span> <span class="fu">sum</span>(P, dims<span class="op">=</span><span class="fl">2</span>) <span class="co">#normalize rows by the sum</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> P <span class="op">.*</span> (<span class="fl">0.2</span> <span class="op">.+</span> <span class="fl">0.7</span><span class="fu">rand</span>(L)) <span class="co"># multiply rows by factors in [0.2,0.9] </span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>scenario4 <span class="op">=</span> <span class="fu">NetworkParameters</span>(  L<span class="op">=</span>L, </span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>   α_vector <span class="op">=</span> <span class="fu">ones</span>(L),</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>   μ_vector <span class="op">=</span> <span class="fl">0.5</span> <span class="op">.+</span> <span class="fu">rand</span>(L),</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>   P <span class="op">=</span> P);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>ArgumentError: Package Parameters [d96e819e-fc66-5662-9728-84c9c7592b0a] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+Stacktrace:
+  [1] <span class="ansi-bold">__require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">pkg</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2617</span>
+  [2] <span class="ansi-bold">_require_prelocked</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">uuidkey</span>::Base.PkgId, <span class="ansi-bright-black-fg">env</span>::String<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2495</span>
+  [3] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2423</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [4] <span class="ansi-bold">macro expansion</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lock.jl:376</span><span class="ansi-bright-black-fg"> [inlined]</span>
+  [5] <span class="ansi-bold">__require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2388</span>
+  [6] <span class="ansi-bold">require</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">into</span>::Module, <span class="ansi-bright-black-fg">mod</span>::Symbol<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">loading.jl:2364</span>
+  [7] <span class="ansi-bold">eval</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">m</span>::Module, <span class="ansi-bright-black-fg">e</span>::Any<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Core</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">boot.jl:489</span>
+  [8] <span class="ansi-bold">(::QuartoNotebookWorker.var"#21#22"{Module, Expr})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:222</span>
+  [9] <span class="ansi-bold">(::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:170</span>
+ [10] <span class="ansi-bold">with_logstate</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.Packages.IOCapture.var"#12#13"<span class="ansi-bright-black-fg">{Type{InterruptException}, QuartoNotebookWorker.var"#21#22"{Module, Expr}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}, IOContext{Base.PipeEndpoint}}</span>, <span class="ansi-bright-black-fg">logstate</span>::Base.CoreLogging.LogState<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:542</span>
+ [11] <span class="ansi-bold">with_logger</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function, <span class="ansi-bright-black-fg">logger</span>::Base.CoreLogging.ConsoleLogger<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">Base.CoreLogging</span> <span class="ansi-bright-black-fg">./logging/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">logging.jl:653</span>
+ [12] <span class="ansi-bold">capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#21#22"<span class="ansi-bright-black-fg">{Module, Expr}</span>; <span class="ansi-bright-black-fg">rethrow</span>::Type, <span class="ansi-bright-black-fg">color</span>::Bool, <span class="ansi-bright-black-fg">passthrough</span>::Bool, <span class="ansi-bright-black-fg">capture_buffer</span>::IOBuffer, <span class="ansi-bright-black-fg">io_context</span>::Vector<span class="ansi-bright-black-fg">{Pair{Symbol, Any}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker.Packages.IOCapture</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/vendor/IOCapture/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">IOCapture.jl:167</span>
+ [13] <span class="ansi-bold">capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:248</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [14] <span class="ansi-bold">io_capture</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::Function; <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">kws</span>::@Kwargs<span class="ansi-bright-black-fg">{rethrow::DataType, color::Bool, io_context::Vector{Pair{Symbol, Any}}}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:250</span>
+ [15] <span class="ansi-bold">io_capture</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:246</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [16] <span class="ansi-bold">include_str</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mod</span>::Module, <span class="ansi-bright-black-fg">code</span>::String; <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:201</span>
+ [17] <span class="ansi-bold">#invokelatest_gr#232</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1297</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [18] <span class="ansi-bold">invokelatest_gr</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">reflection.jl:1289</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [19] <span class="ansi-bold">#7</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:18</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [20] <span class="ansi-bold">with_inline_display</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">f</span>::QuartoNotebookWorker.var"#7#8"<span class="ansi-bright-black-fg">{String, String, Int64, Dict{String, Any}}</span>, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">InlineDisplay.jl:31</span>
+ [21] <span class="ansi-bold">_render_thunk</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">thunk</span>::Function, <span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span>, <span class="ansi-bright-black-fg">is_expansion_ref</span>::Base.RefValue<span class="ansi-bright-black-fg">{Bool}</span>; <span class="ansi-bright-black-fg">inline</span>::Bool<span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:43</span>
+ [22] <span class="ansi-bold">_render_thunk</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:35</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [23] <span class="ansi-bold">#render#4</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:15</span><span class="ansi-bright-black-fg"> [inlined]</span>
+ [24] <span class="ansi-bold">render</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">code</span>::String, <span class="ansi-bright-black-fg">file</span>::String, <span class="ansi-bright-black-fg">line</span>::Int64, <span class="ansi-bright-black-fg">cell_options</span>::Dict<span class="ansi-bright-black-fg">{String, Any}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-magenta-fg">QuartoNotebookWorker</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/QuartoNotebookWorker/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">render.jl:1</span>
+ [25] <span class="ansi-bold">render</span><span class="ansi-bold">(</span>::String, ::Vararg<span class="ansi-bright-black-fg">{Any}</span>; <span class="ansi-bright-black-fg">kwargs</span>::@Kwargs<span class="ansi-bright-black-fg">{}</span><span class="ansi-bold">)</span>
+<span class="ansi-bright-black-fg">    @</span> <span class="ansi-cyan-fg">Main</span> <span class="ansi-bright-black-fg">~/.julia/packages/QuartoNotebookRunner/evCNi/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">startup.jl:145</span>
+ [26] top-level scope
+<span class="ansi-bright-black-fg">    @</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">none:1</span></pre>
+</div>
+</div>
+</div>
+<p>For each of these scenarios you can modify certain parameters. Importantly, the way we adjust for a desired <span class="math inline">\(\rho^*\)</span> is by adjusting the <code>α_vector</code>. Details below.</p>
+</section>
+</section>
+<section id="task-1-thinking-about-modelling-assumptions-5pts" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Task 1: Thinking about Modelling Assumptions (5pts)</h1>
+<p>This task does not involve any coding or computation. Your answer can be in paragraph form or bullet point form. Consider the Modulated Jackson Network model and the application of a “Dream World” amusement park. As mentioned above, the model can be used to model customer congestion in the amusement park. However, like any model it is at best a rough approximation of reality. Describe some features that exist in the amusement park setting that are <strong>not</strong> captured by the model. Similarly, describe model assumptions that may be <strong>unrealistic</strong> for the application of the amusement park.</p>
+<p>Also answer the following: If you were actually using this model to assess congestion at the park, would it be useful or not? What would you use such a model for in the context of the park? What operational answers can you get with the aid of such simulations? To get insight for answering this question, you may (but are not required to) reference the perspective seminar lecture by Dr.&nbsp;Anna Foeglein. In that lecture Anna describes her work as a simulation professional.</p>
+</section>
+<section id="task-2-computation-for-jackson-networks-12pts" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Task 2: Computation for Jackson Networks (12pts)</h1>
+<p>We provide you with the functions <code>maximal_alpha_scaling()</code> and <code>set_scenario()</code> for adapting parameters of a scenario for a desired <span class="math inline">\(\rho^*\)</span> value. These functions also set modulation related parameters, <span class="math inline">\(\kappa\)</span>, <span class="math inline">\(\gamma_1\)</span> and <span class="math inline">\(R^{(1)}\)</span>.</p>
+<div id="8" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">Compute the maximal value by which we can scale the α_vector and be stable.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">maximal_alpha_scaling</span>(net<span class="op">::</span><span class="dt">NetworkParameters</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>   λ_base <span class="op">=</span> (I <span class="op">-</span> net.P<span class="op">'</span>) <span class="op">\</span> net.α_vector <span class="co">#Solve the traffic equations</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>   ρ_base <span class="op">=</span> λ_base <span class="op">./</span> <span class="fu">averaged_service_rate</span>(net) <span class="co">#Determine the load ρ  </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="fu">minimum</span>(<span class="fl">1</span> <span class="op">./</span> ρ_base) </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>max_scalings <span class="op">=</span> <span class="fu">round</span>.(<span class="fu">maximal_alpha_scaling</span>.([scenario1, scenario2, scenario3, scenario4]),digits<span class="op">=</span><span class="fl">3</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"The maximal scalings for scenarios 1 to 4 are: </span><span class="sc">$</span>max_scalings<span class="st">"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">Use this function to adjust the network parameters to the desired ρ⋆, and other parameters</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">set_scenario</span>(net<span class="op">::</span><span class="dt">NetworkParameters</span>, ρstar<span class="op">::</span><span class="dt">Float64</span>; κ<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">2.0</span>, γ₁<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">10</span><span class="op">^-</span><span class="fl">8</span>, R1<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">1</span><span class="op">-</span><span class="fl">10</span><span class="op">^-</span><span class="fl">8</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>   κ <span class="op">≤</span> <span class="fl">1</span> <span class="op">&amp;&amp;</span> <span class="fu">error</span>(<span class="st">"κ is out of range"</span>)  </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>   (ρstar <span class="op">≤</span> <span class="fl">0</span> <span class="op">||</span> ρstar <span class="op">≥</span> <span class="fl">1</span>) <span class="op">&amp;&amp;</span> <span class="fu">error</span>(<span class="st">"ρ⋆ is out of range"</span>)  </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>   (R1 <span class="op">≤</span> <span class="fl">0</span> <span class="op">||</span> R1 <span class="op">&gt;</span> <span class="fl">1</span>) <span class="op">&amp;&amp;</span> <span class="fu">error</span>(<span class="st">"R¹ is out of range"</span>)  </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>   net <span class="op">=</span> <span class="pp">@set</span> net.γ₁ <span class="op">=</span> γ₁</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>   net <span class="op">=</span> <span class="pp">@set</span> net.γ₂ <span class="op">=</span> net.γ₁ <span class="op">*</span> R1<span class="op">/</span>(<span class="fl">1</span><span class="op">-</span>R1) <span class="co">#set γ₂ based on given γ₁ and R1</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>   net <span class="op">=</span> <span class="pp">@set</span> net.κ <span class="op">=</span> κ</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>   max_scaling <span class="op">=</span> <span class="fu">maximal_alpha_scaling</span>(net)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>   net <span class="op">=</span> <span class="pp">@set</span> net.α_vector <span class="op">=</span> net.α_vector<span class="op">*</span>max_scaling<span class="op">*</span>ρstar <span class="co">#max_scaling*ρstar is the scaling factor applied to the original alpha</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> net</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `NetworkParameters` not defined in `Main.Notebook`
+Suggestion: check for spelling errors or missing imports.
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/Assessment/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">projectA.qmd:331</span></pre>
+</div>
+</div>
+</div>
+<p><strong>Note:</strong> In all cases in this project we aim to run simulations only for networks with <span class="math inline">\(\rho^*&lt;1\)</span>. That is only for stable networks. So in any case of testing or analysis, make sure you adjust the parameters of the network using the <code>set_scenario</code> function. This type of simulation of stable networks allows us to take long time averages from simulations which approximate “statistical steady state”.</p>
+<p>For example set the parameters of scenario 2 to have <span class="math inline">\(\rho^* = 0.7\)</span>, a default <span class="math inline">\(\kappa\)</span>, a value of <span class="math inline">\(\gamma_1 =  0.1\)</span>, and a value of <span class="math inline">\(R^{(1)} = 0.7\)</span> we do:</p>
+<div id="10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>adjusted_net <span class="op">=</span> <span class="fu">set_scenario</span>(scenario2, <span class="fl">0.7</span>; γ₁ <span class="op">=</span> <span class="fl">0.1</span>, R1 <span class="op">=</span> <span class="fl">0.7</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> adjusted_net.α_vector</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> adjusted_net.γ₁, adjusted_net.γ₂</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#check computations for R1 and R2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>R1,R2<span class="op">=</span>adjusted_net.γ₂<span class="op">/</span>(adjusted_net.γ₁<span class="op">+</span>adjusted_net.γ₂),adjusted_net.γ₁<span class="op">/</span>(adjusted_net.γ₁<span class="op">+</span>adjusted_net.γ₂)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> R1, R2</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#We can check by solving the traffic equations</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>λ <span class="op">=</span> (I <span class="op">-</span> adjusted_net.P<span class="op">'</span>) <span class="op">\</span> adjusted_net.α_vector <span class="co">#Solve the traffic equations</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ρ <span class="op">=</span> λ <span class="op">./</span> <span class="fu">averaged_service_rate</span>(adjusted_net) <span class="co">#This is the vector of ρ values</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>ρ_star<span class="op">=</span> <span class="fu">maximum</span>(ρ)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> ρ_star;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `set_scenario` not defined in `Main.Notebook`
+Suggestion: check for spelling errors or missing imports.
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/Assessment/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">projectA.qmd:364</span></pre>
+</div>
+</div>
+</div>
+<p>Whereas if we repeat with <span class="math inline">\(\kappa = 3\)</span> you can see that now <span class="math inline">\(\alpha_1\)</span> is increased because now in <code>fast</code> mode the system is faster. So to accommodate for the same target <span class="math inline">\(\rho^*\)</span> we can have a faster arrival rate.</p>
+<div id="12" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>adjusted_net <span class="op">=</span> <span class="fu">set_scenario</span>(scenario2, <span class="fl">0.7</span>; γ₁ <span class="op">=</span> <span class="fl">0.1</span>, R1 <span class="op">=</span> <span class="fl">0.7</span>, κ <span class="op">=</span> <span class="fl">3.0</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> adjusted_net.α_vector</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>λ <span class="op">=</span> (I <span class="op">-</span> adjusted_net.P<span class="op">'</span>) <span class="op">\</span> adjusted_net.α_vector <span class="co">#Solve the traffic equations</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ρ <span class="op">=</span> λ <span class="op">./</span> <span class="fu">averaged_service_rate</span>(adjusted_net) <span class="co">#This is the vector of ρ values</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>ρ_star<span class="op">=</span> <span class="fu">maximum</span>(ρ)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> ρ_star;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `set_scenario` not defined in `Main.Notebook`
+Suggestion: check for spelling errors or missing imports.
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/Assessment/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">projectA.qmd:382</span></pre>
+</div>
+</div>
+</div>
+<p>Now, after you take time to understand the code and computations above, assume we are in one of three test cases, the <strong>always slow</strong> case, the <strong>always fast</strong> case, or the <strong>super fast modulation</strong> case. Since each of these cases agree with a (non-modulated) Open Jackson Network we’ll use these cases as test code later. At this point, set parameters for each scenario and each of these cases (choose the <span class="math inline">\(\gamma_1\)</span> and <span class="math inline">\(R^{(1)}\)</span> parameters as you like, as long as they approximate these cases; keep <span class="math inline">\(\kappa = 2\)</span>). Then for each of the 4 scenarios and each of the 3 cases create a plot of the Open Jackson Network <strong>total steady state mean queue lengths</strong> as a function of <span class="math inline">\(\rho^*\)</span>. For this, simply use the fact that the theoretical steady state mean queue length for individual queue <span class="math inline">\(i\)</span> is <span class="math inline">\(\rho_i/(1-\rho_i)\)</span>. Then add the queue length of all <span class="math inline">\(L\)</span> queues in the scenario. Note the plots you create will not be affected by the type of test case (always slow, always fast, or super fast modulation). So it is enough to present 4 plots (no need for 12). Still, you will use this code below for testing. The idea here is that you know what type of behavior to expect from the network in these cases.</p>
+<section id="task-3-a-simulation-engine-based-on-queue-states-33pts" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="task-3-a-simulation-engine-based-on-queue-states-33pts"><span class="header-section-number">4.1</span> Task 3: A Simulation Engine Based on Queue States (33pts)</h2>
+<p>Create a simulation engine which can be run either with the following <code>sim_net_trace</code> function or the <code>sim_net_estimation</code> function.</p>
+<div id="14" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">Runs a discrete event simulation of a Modulated Jackson Network `net` and produces traces of queue sizes and the `slow`-`fast` state.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">The simulation runs from time `0` to `max_time`.  The simulation starts with empty queues and in `slow` modulation state.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">The return value is a trace of the queue sizes of each of the individual stations ( (time, value) pairs). It is also a trace of the simulation state (`slow`/`fast`,time) pairs. The combination of all these traces can be plotted to reconstruct the simulation.</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">This simulation does NOT keep individual customers state, it only keeps the following minimal state: </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">* The number of jobs in each queue.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">* A boolean value indicating if `slow` or `fast` (for the whole network)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sim_net_trace</span>(net<span class="op">::</span><span class="dt">NetworkParameters</span>; max_time <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">2</span>, seed<span class="op">::</span><span class="dt">Int64 </span><span class="op">=</span> <span class="fl">42</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Set the random seed</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>   <span class="bu">Random</span>.<span class="fu">seed!</span>(seed)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>   <span class="co">#The function would execute the simulation here - and this would use multiple other functions, types, and files</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> [] <span class="co"># The return value should be some data-structure which contains the traces</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `NetworkParameters` not defined in `Main.Notebook`
+Suggestion: check for spelling errors or missing imports.
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/Assessment/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">projectA.qmd:398</span></pre>
+</div>
+</div>
+</div>
+<div id="16" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">Runs a discrete event simulation of a Modulated Jackson Network `net` and collects statistics during the run. Returns an estimate of the total mean queue length.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">The simulation runs from time `0` to `max_time`.  The simulation starts with empty queues and in `slow` modulation state.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">Statistics about the total mean queue lengths are recorded from `warm_up_time` onwards and the estimated value is returned. </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">This simulation does NOT keep individual customers state, it only keeps the following minimal state: </span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">* The number of jobs in each queue.</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">* A boolean value indicating if `slow` or `fast` (for the whole network)</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sim_net_estimation</span>(net<span class="op">::</span><span class="dt">NetworkParameters</span>; max_time <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">6</span>, warm_up_time <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">4</span>, seed<span class="op">::</span><span class="dt">Int64 </span><span class="op">=</span> <span class="fl">42</span>)<span class="op">::</span><span class="dt">Float64</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>   <span class="co">#Set the random seed</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>   <span class="bu">Random</span>.<span class="fu">seed!</span>(seed)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>   <span class="co">#The function would execute the simulation here - and this would use multiple other functions, types, and files</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>   estimated_total_mean_queue_length <span class="op">=</span> <span class="fl">12.3</span> <span class="co">#the function would estimate this value (12.3 is just a place-holder)</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> estimated_total_mean_queue_length</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre>UndefVarError: `NetworkParameters` not defined in `Main.Notebook`
+Suggestion: check for spelling errors or missing imports.
+Stacktrace:
+ [1] top-level scope
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/Assessment/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">projectA.qmd:421</span></pre>
+</div>
+</div>
+</div>
+<p>The code/functions used by <code>sim_net_trace</code> and <code>sim_net_estimation</code> should be the same code as much as possible (this is the actual discrete event simulation engine). So avoid code duplication wherever possible.</p>
+<p>Now use <code>sim_net_trace</code> to plot traces for the first three scenarios, each set to have <span class="math inline">\(\rho^* = 0.8\)</span>. This plotting can help you debug the simulation as well. As for <code>sim_net_estimation</code>, at this point just see that it runs (this is a longer run). You will test it in the next task.</p>
+<p><strong>Tip</strong>: Implement this main task one step at a time. Then add more components until you get the full functionality. For example, first have the network without modulation and then add modulation. Also first have deterministic routing and then add random routing. Printing out network states in short debug runs can be helpful also.</p>
+</section>
+<section id="task-4-doing-statistical-testing-20pts" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="task-4-doing-statistical-testing-20pts"><span class="header-section-number">4.2</span> Task 4: Doing Statistical Testing (20pts)</h2>
+<p>Now you can test/explore the simulation in several ways, each time comparing to an Open Jackson Network. In all cases use <code>sim_net_estimation</code>. If there are problems with the test you may need to return to Task 3 to adjust your code.</p>
+<p><strong>Test #1</strong>: For each of the four scenarios, consider the <strong>always slow</strong> parameters that you chose. Then run a grid of <span class="math inline">\(\rho^*\)</span> with steps of <span class="math inline">\(0.01\)</span> between <span class="math inline">\(0.1\)</span> and <span class="math inline">\(0.9\)</span>. Compare the values with the theoretical values that you plotted in the previous task. Compare both by plotting the values and computing the absolute relative error over the grid of <span class="math inline">\(\rho^*\)</span>. You will know that your simulation is valid if the absolute relative error will be low and further decrease as <code>max_time</code> is increased.</p>
+<p><strong>Test #2</strong>: Repeat for the <strong>always fast</strong> parameters that you chose.</p>
+<p><strong>Test #3</strong>: Repeat for the <strong>super fast modulation</strong> parameters that you chose. Note that here the run time may be longer.</p>
+<p>These tests may be placed in your <code>test</code> folder. For them to be automatic you would require thresholds as they are statistical (noisy tests). So making the tests automatic is not required.</p>
+</section>
+<section id="task-5-analysis-of-the-effect-of-modulation-on-mean-queue-sizes-20pts" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="task-5-analysis-of-the-effect-of-modulation-on-mean-queue-sizes-20pts"><span class="header-section-number">4.3</span> Task 5: Analysis of the effect of modulation on Mean Queue Sizes (20pts)</h2>
+<p>Now that the simulation appears to be working correctly (based on your tests above), use your simulation engine to carry out a study. In particular we are interested in the effect of modulation on mean queue sizes. For networks with the same <span class="math inline">\(\rho^*\)</span>, how does modulation affect mean queues? We know that as <span class="math inline">\(\rho^*\)</span> increases from <span class="math inline">\(0\)</span> towards <span class="math inline">\(1\)</span>, mean queue sizes increase. But what about modulation? The answer to this is not clear.</p>
+<p>For each of the four scenarios stay with <span class="math inline">\(\kappa = 2\)</span> and <span class="math inline">\(\gamma_1 = 0.1\)</span>. Now consider <span class="math inline">\(R^{(1)} \in \{0.1, 0.2, 0.3, 0.4, 0.5, 0.9\}\)</span>. Use these 24 parameter values (<span class="math inline">\(6\times 4\)</span>) to run simulations and create plots of the estimated mean total queue length as a function of <span class="math inline">\(\rho^*\)</span>. A total of 24 curves on four plots, one plot for each scenario (with 6 curves in a plot). In all plots, the x-axis is always <span class="math inline">\(\rho^*\)</span> and the y-axis is the estimated total steady queue size in the network. Make sure the legend is properly marked and placed on each plot and that you have an easy script to create all plots. If you have any conclusions from your simulation plots, briefly describe them. Ponder why you get the curves that you get.</p>
+<p><strong>Tip</strong>: Start with short simulation runs to make sure your plots are well formatted. Then once formatting is complete, go for longer runs to decrease the variance of the estimated curves. Note that in each case you will use a grid of <span class="math inline">\(\rho^*\)</span>, so there are many simulation runs per curve (e.g.&nbsp;100) . As you develop this, start with a smaller grid.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
