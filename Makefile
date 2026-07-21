@@ -52,4 +52,4 @@ all-pdf:
 
 .PHONY: clean
 clean:
-	rm -rf quarto/_freeze quarto/.quarto lectures_html_pdf/quarto
+	rm -rf quarto/_freeze quarto/.quarto docs/
