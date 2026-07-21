@@ -1,5 +1,5 @@
 ---
-title: "Unit 1: Hello World Bootcamp"
+title: "Unit 1: Programming (scripting) Bootcamp"
 format:
   html:
     toc: true
@@ -13,52 +13,9 @@ format:
     number-sections: true
 ---
 
-# Unit 1: Hello World Bootcamp
+In this unit we'll study the very basics of programming using the [Julia](https://julialang.org/) language, though the concepts apply to pretty much every major programming language with slight modifications to the syntax. The unit ends with suggested class micro-projects and practice questions for the upcoming quiz. The pace and nature of this unit is aimed at students with little or no programming experience. The units afterwards pick up the pace significantly.
 
-In this unit we'll study the basic of a programming language, [Julia](https://julialang.org/) in our case. The unit ends with suggested class micro-projects and practice questions for the practice quiz that is at the end of the unit. The pace and nature of this unit is aimed at students with little or no programming experience. The units afterwards pick up the pace significantly.  
-
-## Super simple hello world
-
-Here is a Julia statement:
-
-```{julia}
-println("Hello World!")
-```
-We are calling (or invoking) the function `println` with the argument `"Hello World!"`. Round brackets after a name are the application of a function, kind of like in mathematics. But in Julia, round brackets also have other uses:
-
-For example, dealing with the order of precedence of computations:
-
-```{julia}
-1 + 1 * 4
-```
-
-```{julia}
-(1 + 1) * 4
-```
-
-And also creating tuples:
-
-```{julia}
-my_tuple = ("hello", 35, π, "world", '!')
-typeof(my_tuple)
-```
-
-## Input a variable through user interaction
-
-Store the following 3 lines into the file 'test.jl' and run it either through by runing the command 'julia test.jl' from the terminal or through include("test.jl") from the REPL.
-
-`println("What is your name: ")`   \
-`name=readline()`   \
-`println("Hi $name, how are you?")`
-
-This whole notebook is created using a package called [Weave.jl](https://github.com/JunoLab/Weave.jl). But try running these simple commands in:, 
-
-- REPL (by running Julia and using the REPL, line after line)
-- Jupyter (in a Jupyter notebook with Ctrl+Enter),
-- In a file (by creating a file such as my_code.jl and either running `julia my_code.jl` from the terminal or include("my_code.jl") within the REPL)
-- In VS-Code with the Julia extension.
-
-## Getting to business - what to expect from this unit:
+What to expect from this unit:
 
 * Variables
 * Types
@@ -69,7 +26,100 @@ This whole notebook is created using a package called [Weave.jl](https://github.
 * While loops
 * Creating your own functions with (`function`)
 
-## Variables and types
+
+# Get Started with the Julia command line interface
+Install Julia for your particular type of computer following the steps listed on the [Julia website](https://julialang.org/). Then open a terminal on your computer and start Julia with the command ''julia''. This should give you about the following output.
+
+```
+dietmar@Nina:~/github/MATH2504/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems$ julia
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.12.6 (2026-04-09)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org release
+|__/                   |
+
+julia> 
+```
+
+## Using Julia as a calculator
+
+The prompt `julia>` represents the Julia command line interface called **REPL** (Read-Eval-Print-Loop). Start by **using it as a calculator**, e.g. at the Julia prompt enter 
+```{julia}
+5+6
+```
+or 
+```{julia}
+sin(25/180)
+```
+
+
+Here the function `sin` from the standard library is called. 
+
+## Generating output - Hello World!
+
+Another function from the standard library can be called as follows:
+```{julia}
+println("Hello World!")
+```
+We are calling (or invoking) the function `println` with the argument `"Hello World!"`. The name of the function refers to ''Print (and go into the next) line''. It takes the argument (the text `"Hello World!"` in this case) and writes it into the next line after the command, finally ending the line and moving the cursor into the next line.
+
+Round brackets after a name are the application of a function, kind of like in mathematics. Keep in mind that round brackets also have other uses:
+For example, dealing with the order of precedence of computations:
+
+```{julia}
+1 + 1 * 4
+```
+as compared to
+```{julia}
+(1 + 1) * 4
+```
+or something more involved such as
+
+```{julia}
+(1/sin(25/180)+2.3)
+```
+
+# Using code editors
+The *REPL* is great for using Julia as a calculator. **Multi-line input (scripts, programs)** can be **pasted line-by-line and sometimes even at once directly into the REPL**, but it is more convenient to **store it into a .jl file**, and then 
+
+* invoke the file line by line either from the terminal running 'julia filename.jl', 
+* or from the REPL using 'include("filename.jl")'. 
+
+Or, you use a **dedicated editor**, e.g.
+
+* install [VSCode](https://code.visualstudio.com/) and, once you started the editor, install the Julia language extension. (If you can't make it work, we'll show you in the tutorials how to do this) and
+* the [Jupyter notebook interface](https://jupyter.org/) which can be installed by running, line-after-line, in the REPL
+\
+`using Pkg` \
+`Pkg.add("IJulia")` \
+`using IJulia` \
+`notebook()`
+
+
+
+## Input a variable through user interaction
+
+Store the following 3 lines into the file 'test.jl' and run it either by running the command 'julia test.jl' from the terminal or through include("test.jl") from the REPL, or directly from VSCode.
+
+`println("What is your name: ")`   \
+`name=readline()`   \
+`println("Hi ",  name, ", how are you?")`
+
+This short script outputs the question about your name, and then used the function `readline` to read in your name and store it into the variable `name`. Finally it outputs a greeting which includes your particular name.
+
+Try running this simple script in several ways:
+
+- REPL (by running Julia and using the REPL, line after line)
+- Jupyter (in a Jupyter notebook with Ctrl+Enter),
+- In a file (by creating a file such as my_code.jl and either running `julia my_code.jl` from the terminal or include("my_code.jl") within the REPL)
+- In VS-Code with the Julia extension.
+
+
+
+# Variables and types
 Think of variables as a **storage box**, with a name (tag) on it. The computer's memory is the **storage facility** in which you can store all your boxes. 
 
 ![Variables are boxes in a storage facility (memory)](../img/boxes2.png)
