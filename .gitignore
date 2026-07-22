@@ -4,3 +4,6 @@ my_binary_file.dat
 people.csv
 **/.ipynb_checkpoints/
 .vscode/**
+
+/.quarto/
+**/*.quarto_ipynb

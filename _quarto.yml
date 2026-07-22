@@ -28,3 +28,5 @@ format:
     colorlinks: true
     keep-tex: false
     include-in-header: header.tex
+    fig-width: 5.5
+    fig-height: 3.5

@@ -27,7 +27,7 @@ What to expect from this unit:
 * Creating your own functions with (`function`)
 
 
-# Get Started with the Julia command line interface
+# Getting Started
 Install Julia for your particular type of computer following the steps listed on the [Julia website](https://julialang.org/). Then open a terminal on your computer and start Julia with the command ''julia''. This should give you about the following output.
 
 ```
@@ -44,7 +44,7 @@ dietmar@Nina:~/github/MATH2504/ProgrammingCourse-with-Julia-SimulationAnalysisAn
 julia> 
 ```
 
-## Using Julia as a calculator
+## Command line interface (REPL) - using Julia as a calculator
 
 The prompt `julia>` represents the Julia command line interface called **REPL** (Read-Eval-Print-Loop). Start by **using it as a calculator**, e.g. at the Julia prompt enter 
 ```{julia}
@@ -82,7 +82,7 @@ or something more involved such as
 (1/sin(25/180)+2.3)
 ```
 
-# Using code editors
+## Using code editors
 The *REPL* is great for using Julia as a calculator. **Multi-line input (scripts, programs)** can be **pasted line-by-line and sometimes even at once directly into the REPL**, but it is more convenient to **store it into a .jl file**, and then 
 
 * invoke the file line by line either from the terminal running 'julia filename.jl', 
@@ -105,8 +105,8 @@ Or, you use a **dedicated editor**, e.g.
 Store the following 3 lines into the file 'test.jl' and run it either by running the command 'julia test.jl' from the terminal or through include("test.jl") from the REPL, or directly from VSCode.
 
 `println("What is your name: ")`   \
-`name=readline()`   \
-`println("Hi ",  name, ", how are you?")`
+`username=readline()`   \
+`println("Hi ",  username, ", how are you?")`
 
 This short script outputs the question about your name, and then used the function `readline` to read in your name and store it into the variable `name`. Finally it outputs a greeting which includes your particular name.
 
@@ -120,48 +120,66 @@ Try running this simple script in several ways:
 
 
 # Variables and types
-Think of variables as a **storage box**, with a name (tag) on it. The computer's memory is the **storage facility** in which you can store all your boxes. 
+In the last example the variable `username` acted as a container for the name the user would input. Indeed, one may think of variables as a **storage box**, with a name (tag) on it. The computer's memory is the **storage facility** in which you can store all your boxes. 
 
 ![Variables are boxes in a storage facility (memory)](img/boxes2.png)
 
-
+For example the command
 ```{julia}
 x = 3
 ```
-stores the value 3 in the box tagged x.
+stores the value 3 in the box tagged `x`.
 
+Later, you may retrieve the value stored in the variable `x`, for example the command
 ```{julia}
 x + 25
 ```
 retrieves the value stored in x and adds 25 to it.
 
 Variables have a type - think of it as the size and shape of the box. 
-
+The command
 ```{julia}
 typeof(x)
 ```
-gives the type of the variable x (an Integer value of size 64 bits= 8 bytes).
+gives the type of the variable x (an integer value of size 8 bytes). The size can be obtained using the function `sizeof`, e.g.
 ```{julia}
 sizeof(x)
 ```
+The type Int64 is the standard type for integers. Particular integer numbers are written without `.`:
+```{julia}
+typeof(32)
+```
+
+ Another big class of numeric variables are floating point numbers. Specific floating point numbers are written with at ```.```, e.g.
 ```{julia}
 y=34.23
 typeof(y)
 ```
-gives the type of the variable y (a Floating point number of size 64 bits= 8 bytes).
-
 ```{julia}
-isbits(x)
+sizeof(y)
 ```
-x is a **primitive type**, i.e. x **directly** refers to the value of the variable.
+defines a Floating point number of size 8 bytes. Floating point numbers are also the result when we divide integer numbers, e.g.
+```{julia}
+r=3/4
+println(r)
+typeof(r)
+```
+and the result of many functions which typically return floating point numbers such as 
+```{julia}
+result=cos(2)
+println(result)
+typeof(result)
+```
 
-![Number types in Julia](img/type_hierarchy.png)
+
+<!-- ![Number types in Julia](img/type_hierarchy.png)
 
 Use 
 ```{julia}
 @show typemin(Int16) typemax(Int16);
 ```
 to find the minimal and maximal values that can be represented by integer types.
+-->
 
 ## Variables of type String (i.e. text) and Char(acter)
 
@@ -179,6 +197,12 @@ sizeof(str)
 ```{julia}
 isbits(str)
 ```
+
+```{julia}
+isbits(x)
+```
+x is a **primitive type**, i.e. x **directly** refers to the value of the variable.
+
 String is the standard data type for text. It is a **composite type**. Therefore the variable 'str' does not refer to the text "Hello" itself, but to the address (**reference**, pointer) in memory where the content is stored. Think of the reference as the shelf number in the storage facility (memory).
 
 ```{julia}
@@ -359,7 +383,7 @@ m2 = rand(1000, 1000)
 ```
 
 
-## Using built-in functions and macros
+# Built-in functions and macros
 
 So we have seen in-built functions like `println` and `sqrt`, but surely there are many more?  
 
@@ -462,7 +486,7 @@ z=a+x
 @show typeof(z);
 ```
 
-## Logical statements (AND, OR, etc..)
+# Logical statements (AND, OR, etc..)
 
 ```{julia}
 true, false #In Python it is True and False (caps first letter)
@@ -552,9 +576,25 @@ z=y
 
 ![composite types](img/sketch1.png)
 
-# Control structures 
+# Conditional execution
 
-### Conditional statements (`if-elseif-else`)
+
+## If statements (`if-elseif-else`)
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart TD
+    Start([Start]) --> Cond1{if condition}
+    Cond1 -->|true| IfBlock["Execute if block"]
+    Cond1 -->|false| Cond2{elseif condition}
+    Cond2 -->|true| ElseIfBlock["Execute elseif block"]
+    Cond2 -->|false| ElseBlock["Execute else block"]
+    IfBlock --> End([End])
+    ElseIfBlock --> End
+    ElseBlock --> End
+```
+
+
 
 ```{julia}
 if 2 < 3 && 2 > 3
@@ -599,7 +639,7 @@ else
 end
 ```
 
-#### Compact ways of formulating if clauses
+### Compact ways of formulating if clauses
 Use either the **ternary operator** `condition ? dothisiftrue : dothisiffalse`
 ```{julia}
 x = -3 # some input
@@ -614,7 +654,40 @@ x < 0 && println("This is a negative number!")
 Here, the second condition for the AND clause `&&` is only evaluated if the first condition evaluates to true. Effectively this
 behaves like a single-line if statement.
 
-### For loops
+# Loops
+You might want to execute a specific section of your code more than once, for example for a certain number of times, or until a condition is reached. The section of a program which is structured in this way is called a **loop**.
+
+In principle, a loop can be implemented by combining an if-statement which checks whether the loop should be executed one more time or not, and a goto statement by which program execution jumps back to the beginning of the loop section.
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart TD
+    Start([Start]) --> Label["<b>loop:</b>"]
+    Label --> Check{<b>IF condition<br/>true?</b>}
+    Check -->|No| End([End])
+    Check -->|Yes| Execute["Execute loop body"]
+    Execute --> Goto["<b>goto loop</b>"]
+    Goto --> Label
+    style Label fill:#e1f5ff
+```
+
+In many programming languages, particularly older ones, such `goto` statements exist, but they make code error-prone as well as hard to read and to maintain. For that reason more modern programming languages either don't include any type of `goto` command, or just in the form of macros which is the case for Julia. 
+
+It is pretty much always better to implement loops through dedicated control structures, namely `for` loops and `while` loops.
+
+## For loops
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart TD
+    Start([Start]) --> Init["Initialize loop iterator<br/>for i in collection"]
+    Init --> Check{More items<br/>in collection?}
+    Check -->|No| End([End])
+    Check -->|Yes| Assign["Assign current item to i"]
+    Assign --> Execute["Execute loop body"]
+    Execute --> Next["Move to next item"]
+    Next --> Check
+```
 
 ```{julia}
 for i in 1:5
@@ -676,7 +749,16 @@ for i ∈ 1:13 # \in + [TAB]
 end
 ```
 
-### While loops
+## While loops
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart LR
+    Start([Start]) -->  Check{While condition<br/>true?}
+    Check -->|Yes| Execute["Execute loop body"]
+    Execute --> Check
+    Check -->|No| End([End])
+```
 
 While loops give you more control over the loop.
 
@@ -704,7 +786,61 @@ while n != 1
 end
 println(n)
 ```
-## Creating your own functions with (`function`)
+
+## `break` and `continue`
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.5 } } }%%
+flowchart TD
+    LoopStart --> Check{Loop condition<br/>true?}
+    Check -->|No| LoopEnd["Loop ends"]
+    Check -->|Yes| Statement1["Execute first<br>statements in the loop"]
+    Statement1 --> Decision{Check condition<br/>for break/continue?}
+    Decision -->|break| LoopEnd
+    Decision -->|continue| Check
+    Decision -->|neither| Statement2["Execute remaining<br/>statements in loop"]
+    Statement2 --> Check
+    style LoopEnd fill:#ffcdd2
+    style Decision fill:#fff9c4
+```
+
+Using the command `break`, loops can be left at any time.
+
+## Howto implement do-while loops in Julia
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart LR
+    Start([Start]) --> DoStuff["execute loop"]
+    DoStuff --> IfCond{"if condition"}
+    IfCond -->|true| Break["break"]
+    IfCond -->|false| DoStuff
+    Break --> End([End])
+```
+In do-while loops the loop is executed as least once before the termination condition is evaluated!
+```{julia}
+while true
+    # do stuff
+    if cond() 
+      break
+    end
+    # shorter:  cond() || break
+end
+```
+
+# Creating your own functions with (`function`)
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.5 } } }%%
+flowchart TD
+    Start(["Call function"]) --> |arg1, arg2, arg3, ...|FuncStart["Function start"]
+    FuncStart --> Process["Do something with<br/>arguments"]
+    Process --> Check{Compute explicit<br> return-value?}
+    Check --> |Yes| Return("compute myreturnvalue")
+    Check --> |No| Default("take return-value of<br/>last executed statement")
+    Return --> |myreturnvalue| End([Receive return-value])
+    Default --> |last return-value| End([Receive return-value])
+```
 
 We already had logic for an absolute value function (of real values). Now let's make a function out of it:
 
@@ -787,7 +923,7 @@ for n in 1:10
 end
 ```
 
-#### Alternative, more compact ways, of defining functions
+## Alternative, more compact ways, of defining functions
 
 When you can implement a function in one line, you can avoid using the `function` keyword and instead use **mathematical notation for defining functions**
 
