@@ -158,7 +158,7 @@ typeof(y)
 ```{julia}
 sizeof(y)
 ```
-defines a Floating point number of size 8 bytes. Floating point numbers are also the result when we divide integer numbers, e.g.
+defines a Floating point number of size 8 bytes = 64 bits. Floating point numbers are also the result when we divide integer numbers, e.g.
 ```{julia}
 r=3/4
 println(r)
@@ -171,7 +171,6 @@ println(result)
 typeof(result)
 ```
 
-
 <!-- ![Number types in Julia](img/type_hierarchy.png)
 
 Use 
@@ -183,66 +182,185 @@ to find the minimal and maximal values that can be represented by integer types.
 
 ## Variables of type String (i.e. text) and Char(acter)
 
+Variables can not only contain numbers, but pretty much every type of data, for example letters and text. The data type of single letters is called `Char`, which is short for character. The values of type `Char` are written with simple `'`, for example
 ```{julia}
-str = "Hello"
+c = 'a'
+typeof(c)
 ```
 
 ```{julia}
+y = 'η' # \eta + [TAB]
+typeof(y)
+```
+
+```{julia}
+sizeof(y)
+```
+
+On the other hand, the data type for text is called String (`"a string of characters!"`). Keep in mind that double `"` are used to write Strings.
+```{julia}
+str = "Hello"
 typeof(str)
 ```
 
+The length of the string (number of characters) can be obtained from the built-in function `length`:
 ```{julia}
-sizeof(str)
+length(str)
+```
+
+
+## Indexing
+
+Particular characters in a String can be retrieved using `indexing`. **Julia indexing is 1-based**, i.e. index 1 refers to the first letter, etc., whereas in other programming languages the first entry has index `0` be default.
+
+The following diagram illustrates how to retrieve characters from a string by index:
+
+```
+String: "This is an example string!"
+
+Index position (1-based):
+   1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+   T  h  i  s     i  s     a  n     e  x  a  m  p  l  e     s  t  r  i  n  g  !
+
+Examples:
+  str2[1]      →  'T'    (first character)
+  str2[7]      →  's'    (character at index 7)
+  str2[end]    →  '!'    (last character)
+  str2[end-5:end]  →  "tring!"  (substring from index 20 to 25)
+  str2[10:15]  →  "nample"    (substring from index 10 to 15)
+```
+
+
+```{julia}
+str2 = "This is an example string!"
+```
+
+```{julia}
+c1=str2[1]
+println("The first letter in the string is: ", c1)
+```
+
+```{julia}
+typeof(c1)
+```
+
+```{julia}
+c7=str2[7]
+println("and the 7th letter in the string is: ", c7)
+```
+
+The special index `end` can be used to the last character of the string
+
+```{julia}
+clast=str2[end]
+println("and the final letter in the string is: ", clast)
+```
+
+Once can even retrieve sub-sections of a string, which gives another string, e.g.
+```{julia}
+string_end=str2[end-5:end]
+println("and the final section of length 6 is: ", string_end)
+```
+or 
+
+```{julia}
+middle=str2[10:15]
+println("and a middle section of length 6 is: ", middle)
+```
+
+Another example of types of variables that admit indexing  are vectors
+```{julia}
+u=[1,2,3]
+u[2]=5
+v=u
+```
+
+and matrices
+```{julia}
+M=[1 2 3; 4 5 6; 7 8 9]
+M*v
+```
+
+Note that dealing with such higher-dimensional objects is one of the big strengths of Julia and will be discussed in the coming units. For now, vectors (and matrices) only serve as examples of composit variables.
+
+
+
+## Storage by reference 
+Variables of type String are more complex than those for simple numbers. They are composed of a sequence of simpler components of type `Char`. In particular, the length of a String can vary, and therefore also the amount of memory it occupies. 
+
+For these reasons, Strings are examples of **composite types**, while the simple datatypes such as those for basic integers and floating point numbers, and the one of characters are called **primitive types**. This can be verified using the built-in function `isbits` which returns `true` (another type of variable - see below) for primitive types, and false for composite types.
+
+```{julia}
+isbits(x)
+```
+```{julia}
+isbits(c)
 ```
 ```{julia}
 isbits(str)
 ```
 
+This has important consequence for how variables are stored in memory.
+Variables of **primitive types**, i.e. for which the variable **directly** refers to the value of the variable, are stored IN the variable - in the box denoted by the name of the variable (see figure above).
+
+Variables of **composite types**, on the other hand, such as Strings doe not refer directly to their content, but to the address (**reference**, pointer) in memory where the content is stored. Think of the reference as the shelf number in the computer memory which plays the role of a storage facility. For example in the figure above, the String variable `str` contains the reference (address) `5` which is the position in memory where the actual string containing "Heelo" is stored
+
+This has striking consequences. For example when assigning the content of one primitive variable to another variable, only the content is copied
 ```{julia}
-isbits(x)
+x=10
+y=x
 ```
-x is a **primitive type**, i.e. x **directly** refers to the value of the variable.
-
-String is the standard data type for text. It is a **composite type**. Therefore the variable 'str' does not refer to the text "Hello" itself, but to the address (**reference**, pointer) in memory where the content is stored. Think of the reference as the shelf number in the storage facility (memory).
-
+so we can change the content of one variable without modifying the content of the other one. 
 ```{julia}
-y = "η" # \eta + [TAB]
+x=100
+println(y)
 ```
-
+On the other hand, for a composite type such as vectors and matrices, 
 ```{julia}
-sizeof(y)
+u=[1,2,3]
+v=u
 ```
+This defines a vector of length 3 and copies the reference to this vector from u into v.
 
+When we modify the content of u using indexing, we also modify the content of v:
 ```{julia}
-y = "p"
-```
-
-```{julia}
-sizeof(y)
-```
-
-```{julia}
-y = 'p'
-```
-
-```{julia}
-typeof(y)
+u[1]=10
+@show(v)
 ```
 
-```{julia}
-isbits(y)
+```{mermaid}
+graph TD
+    subgraph vars ["Variable Names (Stack)"]
+        U["u<br/>(Variable)"]
+        V["v<br/>(Variable)"]
+    end
+    
+    subgraph mem ["Memory (Heap)"]
+        VEC["[10, 2, 3]<br/>(Vector Data)"]
+    end
+    
+    U -->|reference| VEC
+    V -->|reference| VEC
+    
+    style U fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+    style V fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+    style VEC fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+    style vars fill:#f0f0f0,stroke:#999
+    style mem fill:#fff9e6,stroke:#999
 ```
+
+The reason is that using indexing, we directly modify the section in memory, to which both references in u and in v are pointing. 
 
 
 ### Operations with Variables
 
+algebraic operations on numbers
 ```{julia}
 x = 3.0
 y = 4.2
-x*y, x+y, x-y, x/y, x^y #In Python it would have x**y (raising to a power)
+x*y, x+y, x-y, x/y, x^y
 ```
 And for non-numerical types such as Strings:
-
 ```{julia}
 s1 = "hello " #notice the extra space
 s2 = "world"
@@ -250,7 +368,7 @@ s2 = "world"
 s1*s2 #In Python it would have been x+y for concatenation 
 ```
 
-
+Even the exponential operator is defined for strings:
 ```{julia}
 s = "hello "
 y = 5
@@ -258,17 +376,11 @@ x^y
 ```
 These are examples of **operator (method) overloading** in Julia: For different data types, different versions of a function/method/operator can be defined. 
 
-#### Indexing into strings using [...] 
-
-```{julia}
-s[1:end-1]
-```
-
 ```{julia}
 s^(y-1)*s[1:end-1]
 ```
 
-Since the operator `'` has precedence of `*`, this is the same as 
+Since the operator `^` has precedence of `*`, this is the same as 
 
 ```{julia}
 (s^(y-1))*s[1:end-1]
@@ -279,8 +391,8 @@ What if we did the brackets the other way?
 ```{julia}
 s^((y-1)*s[1:end-1])
 ```
-Here, Julia tries to identify an instance of the method "+(.,.)" which takes an Integer and a String as arguments (this is Julia's **"multiple dispatch"** paradigm), but doesn't succeed.
-The closest candidates are listed in the error message, but none of them fits (e.g.any argument of type Int64 can be converted into types Real, Number, Any, etc).
+Here, Julia tries to identify an instance of the method "*(.,.)" which takes an Integer and a String as arguments (this is Julia's **"multiple dispatch"** paradigm), but doesn't succeed.
+The closest candidates are listed in the error message, but none of them fits (e.g., any argument of type Int64 can be converted into types Real, Number, Any, etc).
 
 ```{julia}
 x = 2
@@ -289,10 +401,6 @@ x = 2
 
 ```{julia}
 sqrt(x)
-```
-
-```{julia}
-round(√x, digits = 3) 
 ```
 
 ```{julia}
@@ -305,17 +413,6 @@ sqrt(y)
 
 ```{julia}
 z = sqrt(y + 0im)
-```
-#### Be careful about side effects when manipulating composite types
-For primitive types we have
-```{julia}
-a1=1; a2=a1; a1=99;
-println("After changing the value of a1, the value of a2 is: ", a2)
-```
-but for a composite type such as Vector{Float64}
-```{julia}
-v1=[1,2,3]; v2=v1; v1[1]=99;
-println("After changing the value of v1, the value of v2 is: $v2")
 ```
 
 #### Syntactic sugar for swapping values
@@ -445,9 +542,6 @@ But you can't do absolute value of a string:
 abs("3.5")
 ```
 
-```{julia}
-length("3.5")
-```
 
 ```{julia}
 factorial(4)
@@ -475,16 +569,6 @@ b=round(y);
 @show typeof(b) b;
 ```
 
-```{julia}
-Int('a'), Int('b'), Int('A'), Int('B'), Int('α'), Int('∀') #type \alpha and \forall
-```
-gives the ascii/unicode for these letters/symbols.
-
-Often those conversions are made implicitly (**"multiple dispatch"**), e.g.
-```{julia}
-z=a+x
-@show typeof(z);
-```
 
 # Logical statements (AND, OR, etc..)
 
