@@ -66,6 +66,25 @@ println("Hello World!")
 ```
 We are calling (or invoking) the function `println` with the argument `"Hello World!"`. The name of the function refers to ''Print (and go into the next) line''. It takes the argument (the text `"Hello World!"` in this case) and writes it into the next line after the command, finally ending the line and moving the cursor into the next line.
 
+The `println` function can also take several arguments.
+```{julia}
+println("hello", " ", "world")
+```
+
+Here is `print` without a new line.
+```{julia}
+print("hello")
+print(" ")
+print("world")
+```
+
+The symbol `\n` represents a `new line`-command,
+```{julia}
+println("hello\nworld") #notice the \n (newline)
+println("Here is the next line")
+```
+
+
 Round brackets after a name are the application of a function, kind of like in mathematics. Keep in mind that round brackets also have other uses:
 For example, dealing with the order of precedence of computations:
 
@@ -81,6 +100,18 @@ or something more involved such as
 ```{julia}
 (1/sin(25/180)+2.3)
 ```
+
+## Macros
+
+Note that '@show' does something very similar to `println`. It is a **macro (all macros have @ in their names)**.
+```{julia}
+@show(3/425)
+s="3.5";
+@show s;
+println(s)
+```
+**Macros are evaluated at compile time** (when translating the Julia code into machine code) and therefore have access to more information, e.g. the variable name of their argument. For that reason @show can also output the variable name 's' which is convenient for debugging, whereas prinln only has access to the content '3.5' of its argument.
+
 
 ## Using code editors
 The *REPL* is great for using Julia as a calculator. **Multi-line input (scripts, programs)** can be **pasted line-by-line and sometimes even at once directly into the REPL**, but it is more convenient to **store it into a .jl file**, and then 
@@ -136,6 +167,134 @@ x + 25
 ```
 retrieves the value stored in x and adds 25 to it.
 
+The **assignment operator `=`** is also used to assign the value (content) of one variable to another variable, or assign the result of a computation to a variable,
+```{julia}
+y=x
+z=y+5
+println("Now x = ", x, ", y = ", y, " and z = ",z, ".")
+```
+
+**Algebraic operations** on numbers
+```{julia}
+x = 3.0
+y = 4.2
+x*y, x+y, x-y, x/y, x^y
+```
+
+**Mathematical functions**
+
+```{julia}
+x = 2
+√x #\sqrt + [TAB]
+```
+
+```{julia}
+sqrt(x)
+```
+
+```{julia}
+y = -x
+```
+
+```{julia}
+sqrt(y)
+```
+
+```{julia}
+z = sqrt(y + 0im)
+```
+
+Let's see some mathematical in-built functions:
+
+```{julia}
+exp(1)
+```
+
+```{julia}
+ℯ #\euler + [TAB]
+```
+
+
+```{julia}
+log(ℯ^2), log2(2^5), log10(10^3)
+```
+
+```{julia}
+abs(-3.5), abs(3.5), abs(3 + 4im)
+```
+
+
+
+```{julia}
+factorial(4)
+```
+
+## Swapping values
+
+In Julia, there is special notation ("syntactic sugar") for swapping values
+
+If you do it in that `naive` way, then the following will happen.
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart LR
+    x1([x]) -->  |step 1| y1([y])
+    y1([y]) -->  |step 2| x1([x])
+```
+```{julia}
+x = 20
+y = 5 
+
+#swapping x and y:  attempt 1
+x = y
+y = x
+
+@show x; #This is the @show macro
+@show y;
+```
+So the value in `x` is overwritten and lost as soon as it is overwritten by the value in `y`.
+
+This can be fixed by storing the value in `x` temporarily in another variable.
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart LR
+    x2([x]) -->  |step 1| temp([temp])
+    y2([y]) -->  |step 2| x2([x])
+    temp([temp]) --> |step 3| y2([y])
+```
+
+
+```{julia}
+x = 20
+y = 5 
+
+#swapping x and y:  attempt 2
+temp = x
+x = y
+y = temp
+
+@show x;
+@show y;
+```
+
+To simplify the notation for this, in Julia we can do it without using the variable `temp`:
+
+```{julia}
+x = 20
+y = 5 
+
+x, y = y, x #Julia specific solution
+
+@show x;
+@show y;
+```
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart LR
+    x3([x,y]) -->  |step 1| y3([y,x])
+```
+
+## Numeric Types
 Variables have a type - think of it as the size and shape of the box. 
 The command
 ```{julia}
@@ -153,10 +312,7 @@ typeof(32)
  Another big class of numeric variables are floating point numbers. Specific floating point numbers are written with at ```.```, e.g.
 ```{julia}
 y=34.23
-typeof(y)
-```
-```{julia}
-sizeof(y)
+typeof(y), sizeof(y)
 ```
 defines a Floating point number of size 8 bytes = 64 bits. Floating point numbers are also the result when we divide integer numbers, e.g.
 ```{julia}
@@ -167,8 +323,7 @@ typeof(r)
 and the result of many functions which typically return floating point numbers such as 
 ```{julia}
 result=cos(2)
-println(result)
-typeof(result)
+result, typeof(result)
 ```
 
 <!-- ![Number types in Julia](img/type_hierarchy.png)
@@ -180,6 +335,22 @@ Use
 to find the minimal and maximal values that can be represented by integer types.
 -->
 
+### Type conversions
+
+```{julia}
+a=4;
+x=Float64(a); 
+@show typeof(a) a;
+@show typeof(x) x;
+```
+```{julia}
+y=sqrt(5);
+b=round(y);
+@show typeof(y) y;
+@show typeof(b) b;
+```
+
+
 ## Variables of type String (i.e. text) and Char(acter)
 
 Variables can not only contain numbers, but pretty much every type of data, for example letters and text. The data type of single letters is called `Char`, which is short for character. The values of type `Char` are written with simple `'`, for example
@@ -190,12 +361,9 @@ typeof(c)
 
 ```{julia}
 y = 'η' # \eta + [TAB]
-typeof(y)
+typeof(y), sizeof(y)
 ```
 
-```{julia}
-sizeof(y)
-```
 
 On the other hand, the data type for text is called String (`"a string of characters!"`). Keep in mind that double `"` are used to write Strings.
 ```{julia}
@@ -208,8 +376,49 @@ The length of the string (number of characters) can be obtained from the built-i
 length(str)
 ```
 
+But you can't do absolute value of a string:
 
-## Indexing
+```{julia}
+abs("3.5")
+```
+
+And for strings even some algebraic operations are defined,
+```{julia}
+s1 = "hello " #notice the extra space
+s2 = "world"
+@show typeof(s1);
+s1*s2 #In Python it would have been x+y for concatenation 
+```
+
+Even the exponential operator is defined for strings:
+```{julia}
+s = "hello "
+y = 5
+x^y
+```
+These are examples of **operator (method) overloading** in Julia: For different data types, different versions of a function/method/operator can be defined. 
+
+```{julia}
+s^(y-1)*s[1:end-1]
+```
+
+Since the operator `^` has precedence of `*`, this is the same as 
+
+```{julia}
+(s^(y-1))*s[1:end-1]
+```
+
+## Common errors: type mismatch
+What if we did the brackets the other way?
+```{julia}
+s^((y-1)*s[1:end-1])
+```
+Here, Julia tries to identify an instance of the method "*(.,.)" which takes an Integer and a String as arguments (this is Julia's **"multiple dispatch"** paradigm), but doesn't succeed.
+The closest candidates are listed in the error message, but none of them fits (e.g., any argument of type Int64 can be converted into types Real, Number, Any, etc).
+
+
+
+## Indexing, Vectors and Matrices
 
 Particular characters in a String can be retrieved using `indexing`. **Julia indexing is 1-based**, i.e. index 1 refers to the first letter, etc., whereas in other programming languages the first entry has index `0` be default.
 
@@ -238,9 +447,6 @@ str2 = "This is an example string!"
 ```{julia}
 c1=str2[1]
 println("The first letter in the string is: ", c1)
-```
-
-```{julia}
 typeof(c1)
 ```
 
@@ -283,21 +489,32 @@ M*v
 
 Note that dealing with such higher-dimensional objects is one of the big strengths of Julia and will be discussed in the coming units. For now, vectors (and matrices) only serve as examples of composit variables.
 
+## Mutable vs immutable composite types
+A big difference between Strings on the one hand and collections such as Vectors as well as Matrices on the other hand is that Strings in Julia are immutable whereas Vectors and Matrices are mutable.
+This means that Strings can not be modified in hindsight, whereas Vectors (and Matrices) can be modified after creation.
+
+```{julia}
+str="Here, I am creating a string variable"
+str[5]='c'
+```
+This creates an error whereas for a Matrix
+```{julia}
+v=[1,2,3]
+v[1]=10
+@show(v)
+M=[1.0 2.0 3; 4 5 6; 7 8 9]
+M[1, 2]=200.0
+@show(M)
+```
 
 
-## Storage by reference 
+## Storage-by-reference vs storage-by-value
 Variables of type String are more complex than those for simple numbers. They are composed of a sequence of simpler components of type `Char`. In particular, the length of a String can vary, and therefore also the amount of memory it occupies. 
 
 For these reasons, Strings are examples of **composite types**, while the simple datatypes such as those for basic integers and floating point numbers, and the one of characters are called **primitive types**. This can be verified using the built-in function `isbits` which returns `true` (another type of variable - see below) for primitive types, and false for composite types.
 
 ```{julia}
-isbits(x)
-```
-```{julia}
-isbits(c)
-```
-```{julia}
-isbits(str)
+isbits(x), isbits(c), isbits(str)
 ```
 
 This has important consequence for how variables are stored in memory.
@@ -331,12 +548,12 @@ u[1]=10
 ```{mermaid}
 graph TD
     subgraph vars ["Variable Names (Stack)"]
-        U["u<br/>(Variable)"]
-        V["v<br/>(Variable)"]
+        U["u"]
+        V["v"]
     end
     
     subgraph mem ["Memory (Heap)"]
-        VEC["[10, 2, 3]<br/>(Vector Data)"]
+        VEC["[10, 2, 3]"]
     end
     
     U -->|reference| VEC
@@ -349,228 +566,10 @@ graph TD
     style mem fill:#fff9e6,stroke:#999
 ```
 
-The reason is that using indexing, we directly modify the section in memory, to which both references in u and in v are pointing. 
+The reason is that using indexing, we directly modify the section in memory, to which both references in `u` and in `v` are pointing. 
 
 
-### Operations with Variables
-
-algebraic operations on numbers
-```{julia}
-x = 3.0
-y = 4.2
-x*y, x+y, x-y, x/y, x^y
-```
-And for non-numerical types such as Strings:
-```{julia}
-s1 = "hello " #notice the extra space
-s2 = "world"
-@show typeof(s1);
-s1*s2 #In Python it would have been x+y for concatenation 
-```
-
-Even the exponential operator is defined for strings:
-```{julia}
-s = "hello "
-y = 5
-x^y
-```
-These are examples of **operator (method) overloading** in Julia: For different data types, different versions of a function/method/operator can be defined. 
-
-```{julia}
-s^(y-1)*s[1:end-1]
-```
-
-Since the operator `^` has precedence of `*`, this is the same as 
-
-```{julia}
-(s^(y-1))*s[1:end-1]
-```
-
-#### Common errors: type mismatch
-What if we did the brackets the other way?
-```{julia}
-s^((y-1)*s[1:end-1])
-```
-Here, Julia tries to identify an instance of the method "*(.,.)" which takes an Integer and a String as arguments (this is Julia's **"multiple dispatch"** paradigm), but doesn't succeed.
-The closest candidates are listed in the error message, but none of them fits (e.g., any argument of type Int64 can be converted into types Real, Number, Any, etc).
-
-```{julia}
-x = 2
-√x #\sqrt + [TAB]
-```
-
-```{julia}
-sqrt(x)
-```
-
-```{julia}
-y = -x
-```
-
-```{julia}
-sqrt(y)
-```
-
-```{julia}
-z = sqrt(y + 0im)
-```
-
-#### Syntactic sugar for swapping values
-
-```{julia}
-x = 20
-y = 5 
-
-#swapping x and y:  attempt 1
-x = y
-y = x
-
-@show x; #This is the @show macro
-@show y;
-```
-
-```{julia}
-x = 20
-y = 5 
-
-#swapping x and y:  attempt 2
-temp = x
-x = y
-y = temp
-
-@show x;
-@show y;
-```
-
-In Julia we can do it without using the variable `temp`!
-
-```{julia}
-x = 20
-y = 5 
-
-x, y = y, x #Julia specific solution
-
-@show x;
-@show y;
-```
-
-Now, with composite types:
-
-```{julia}
-m1 = rand(1000, 1000)  #generates of 1000x1000 matrix with random entries
-m2 = rand(1000, 1000)
-
-@time m2, m1 = m1, m2;
-```
-takes about as much time as
-
-```{julia}
-m1 = rand(10000, 10000)
-m2 = rand(10000, 10000)
-
-@time m2, m1 = m1, m2;
-```
-because for composite types **only the references** are swapped! Compare this to the time required for re-assigning those variables after copying their entire content:
-
-```{julia}
-m1 = rand(1000, 1000)
-m2 = rand(1000, 1000)
-
-@time m2, m1 = copy(m1), copy(m2);
-```
-
-
-# Built-in functions and macros
-
-So we have seen in-built functions like `println` and `sqrt`, but surely there are many more?  
-
-```{julia}
-println("hello world")
-```
-
-The `println` function can also take several arguments.
-
-```{julia}
-println("hello", " ", "world")
-```
-
-Here is `print` without a new line.
-
-```{julia}
-print("hello")
-print(" ")
-print("world")
-```
-
-```{julia}
-println("hello\nworld") #notice the \n (newline)
-println("Here is the next line")
-```
-
-An equivalent use of `print`:
-
-```{julia}
-print("hello")
-print("\n")
-print("world")
-print("\n")
-println("Here is the next line")
-```
-
-Let's see some mathematical in-built functions:
-
-```{julia}
-exp(1)
-```
-
-```{julia}
-ℯ #\euler + [TAB]
-```
-
-
-```{julia}
-log(ℯ^2), log2(2^5), log10(10^3)
-```
-
-```{julia}
-abs(-3.5), abs(3.5), abs(3 + 4im)
-```
-
-But you can't do absolute value of a string:
-
-```{julia}
-abs("3.5")
-```
-
-
-```{julia}
-factorial(4)
-```
-
-Note that '@show' does something very similar. It is a **macro (all macros have @ in their names)**.
-```{julia}
-s="3.5";
-@show s;
-println(s)
-```
-**Macros are evaluated at compile time** (when translating the Julia code into machine code) and therefore have access to more information, e.g. the variable name of their argument. For that reason @show can also output the variable name 's' which is convenient for debugging, whereas prinln only has access to the content '3.5' of its argument.
-## Type conversions
-
-```{julia}
-a=4;
-x=Float64(a); 
-@show typeof(a) a;
-@show typeof(x) x;
-```
-```{julia}
-y=sqrt(5);
-b=round(y);
-@show typeof(y) y;
-@show typeof(b) b;
-```
-
-
-# Logical statements (AND, OR, etc..)
+# Logical statements and conditional execution
 
 ```{julia}
 true, false #In Python it is True and False (caps first letter)
@@ -585,7 +584,7 @@ typeof(true)
 @show Int(false);
 ```
 
-#### Logical operators
+## Logical operators
 ```{julia}
 5 == 2 + 3 # check for equality
 ```
@@ -660,10 +659,7 @@ z=y
 
 ![composite types](img/sketch1.png)
 
-# Conditional execution
-
-
-## If statements (`if-elseif-else`)
+## Conditional execution (`if-elseif-else`)
 
 ```{mermaid}
 %%{init: { 'flowchart': { 'scale': 0.7 } } }%%
@@ -870,11 +866,9 @@ while n != 1
 end
 println(n)
 ```
-
 ## `break` and `continue`
-
 ```{mermaid}
-%%{init: { 'flowchart': { 'scale': 0.5 } } }%%
+%%{init: { 'flowchart': { 'scale': 0.4 } } }%%
 flowchart TD
     LoopStart --> Check{Loop condition<br/>true?}
     Check -->|No| LoopEnd["Loop ends"]
@@ -893,7 +887,7 @@ Using the command `break`, loops can be left at any time.
 ## Howto implement do-while loops in Julia
 
 ```{mermaid}
-%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+%%{init: { 'flowchart': { 'scale': 0.5 } } }%%
 flowchart LR
     Start([Start]) --> DoStuff["execute loop"]
     DoStuff --> IfCond{"if condition"}
@@ -903,16 +897,19 @@ flowchart LR
 ```
 In do-while loops the loop is executed as least once before the termination condition is evaluated!
 ```{julia}
+i=0
 while true
     # do stuff
-    if cond() 
+    println(i)
+    i = i + 1
+    if i>5
       break
     end
-    # shorter:  cond() || break
+    # shorter:  i>5 || break
 end
 ```
 
-# Creating your own functions with (`function`)
+# Creating your own functions
 
 ```{mermaid}
 %%{init: { 'flowchart': { 'scale': 0.5 } } }%%
@@ -1025,83 +1022,7 @@ One can even define **anonymous function** without function names
 ```
 
 
-## Arrays = Data
-
-So up to this point we have the basics of programming including variables, logical statements, conditional statements, loops, and functions. One other major component is **data**. For this let us consider arrays.
-
-```{julia}
-[2, 4, -3, 15] #this is an array
-```
-Note that in Julia 1-dimensional arrays are also called Vector.
-Arrays represent a "block of memory" (RAM). Its address in RAM (random access memory) can be retrieved as follows:
-
-```{julia}
-a = [2, 4, -3, 15]
-b = a #This just makes b point to the same chunk of memory as a.
-@show pointer(a);
-@show pointer(b);
-```
-
-You can see that both a and b "point" to the same location in memory (a reference, or pointer).
-
-### Indexing
-
-We can get an element of an array by "indexing". In Julia (like MATLAB and R) indexing starts at 1. In languages like Python, Javascript, and C/C++, indexing starts at 0.
-
-```{julia}
-@show a[1];
-@show a[2];
-@show a[3];
-@show a[4];
-```
-
-You can also change the elements this way.
-
-```{julia}
-a[3] = -100.
-@show a;
-```
-
-```{julia}
-@show b;
-```
-<!--
-Note that in Python the basic similar entity to an array is the "list". Also note that if you use [NumPy](https://numpy.org/) in Python, as is typically the case for numerical computation, then the basic entity is called an "array". In Python the length of a list is obtained via the `len` function. In Julia the length of an array is obtained using `length`.
--->
-```{julia}
-length(a)
-```
-
-Note that strings are kind of like arrays.
-
-```{julia}
-my_string = "Hello"
-@show length(my_string)
-@show my_string[1]
-@show my_string[5];
-```
-
-But arrays are **mutable** (meaning you can change them) while strings are not (they are **immutable**).
-
-```{julia}
-my_string[5] = 'x'
-```
-
-The error above is how Julia tries to tell you that you can't change the string. 
-
-Arrays don't have to be arrays of just numbers, for example.
-
-```{julia}
-my_other_array = ["hello", 2, sqrt, 3.4, "bye", [1, 2, 3]]
-```
-is an array of components of type `Any` (the most general type Julia provides).
-
-Compare this to the definition of a tuple
-```{julia}
-my_other_array = ("hello", 2, sqrt, 3.4, "bye", [1, 2, 3]);
-typeof(my_other_array)
-```
-
+## Functions for arrays (Vectors, Matrices ...)
 
 Let's make a function that sums up entries of an array (assuming it is an array of numbers).
 
@@ -1122,14 +1043,6 @@ There is also an in-built function for this.
 
 ```{julia}
 sum(a)
-```
-
-But you can do more things with the in-built sum. For example:
-
-```{julia}
-a = [-1,10,-100,1000]
-@show sum(a)
-@show sum(abs, a); #sum the absolute values
 ```
 
 Arrays can be extended with the `push!` function. Note that the `!` is part of the function name and indicates to us that the function modifies the array.
