@@ -175,10 +175,20 @@ println("Now x = ", x, ", y = ", y, " and z = ",z, ".")
 ```
 
 **Algebraic operations** on numbers
+
 ```{julia}
 x = 3.0
 y = 4.2
 x*y, x+y, x-y, x/y, x^y
+```
+
+```{julia}
+u = 33
+v =53.234
+@show(u % 4) #u modulo 3
+@show (u ÷ 7) #integer division without rest
+@show (rem(u,7)) #this returns the rest after division
+@show(v % 7)
 ```
 
 **Mathematical functions**
@@ -211,12 +221,15 @@ exp(1)
 ```
 
 ```{julia}
-ℯ #\euler + [TAB]
+ℯ #\euler + [TAB], 
 ```
 
+```{julia}
+π #\pi + [TAB]
+```
 
 ```{julia}
-log(ℯ^2), log2(2^5), log10(10^3)
+log(ℯ^2), log2(2^5), log10(10^3), sin(3π), cos(0.1), tan(π/3)
 ```
 
 ```{julia}
@@ -1121,15 +1134,7 @@ What if we wanted to also know which index attains this maximum? See the `findma
 findmax([length(hailstone(n)) for n in 1:10^3])
 ```
 
-## Classroom Micro-Projects 
-
-Here are several micro-projects aimed at providing practice using the concepts above. For each of them you may need a bit more functionality and in-built functions that what we explored so far. You can get that from web-search, LLM-help, peer help, or staff help.
-
-**Micro-Project 1**: Write a little program in that gives a student a mathematics arithmetic quiz with the operations +, - and *. It has input numbers in the range from 1 to 200. Students get asked questions and need to respond with the correct answer. After 10 questions the students gets a summary of how many they got correct and what they got wrong. You may need to explore the `readline` and `parse` functions. 
-
-**Micro-Project 2**: Write a little program that is a Tik-Tak-Toe game between two players. On each turn, the state of the board is re-printed. You can use 1,...,9 as input for the cells.
-
-**Micro-Project 3**: Write a program that works on some fixed long string (e.g. several paragraphs of text such as the text here describing the micro projects). The program should output the character count, the word count, and perhaps other statistics about the text.
+# Practise 
 
 ## Practice questions
 
@@ -1186,3 +1191,13 @@ end
 ```
 
 Fill in the code for the function.
+
+## Classroom Micro-Projects 
+
+Here are several micro-projects aimed at providing practice using the concepts above. For each of them you may need a bit more functionality and in-built functions that what we explored so far. You can get that from web-search, LLM-help, peer help, or staff help.
+
+**Micro-Project 1**: Write a little program in that gives a student a mathematics arithmetic quiz with the operations +, - and *. It has input numbers in the range from 1 to 200. Students get asked questions and need to respond with the correct answer. After 10 questions the students gets a summary of how many they got correct and what they got wrong. You may need to explore the `readline` and `parse` functions. 
+
+**Micro-Project 2**: Write a little program that is a Tik-Tak-Toe game between two players. On each turn, the state of the board is re-printed. You can use 1,...,9 as input for the cells.
+
+**Micro-Project 3**: Write a program that works on some fixed long string (e.g. several paragraphs of text such as the text here describing the micro projects). The program should output the character count, the word count, and perhaps other statistics about the text.
