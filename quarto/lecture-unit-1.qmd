@@ -444,6 +444,10 @@ The closest candidates are listed in the error message, but none of them fits (e
 
 Particular characters in a String can be retrieved using `indexing`. **Julia indexing is 1-based**, i.e. index 1 refers to the first letter, etc., whereas in other programming languages the first entry has index `0` be default.
 
+```{julia}
+str2 = "This is an example string!"
+```
+
 The following diagram illustrates how to retrieve characters from a string by index:
 
 ```
@@ -461,10 +465,6 @@ Examples:
   str2[10:15]  →  "nample"    (substring from index 10 to 15)
 ```
 
-
-```{julia}
-str2 = "This is an example string!"
-```
 
 ```{julia}
 c1=str2[1]
@@ -506,6 +506,11 @@ v=u
 and matrices
 ```{julia}
 M=[1 2 3; 4 5 6; 7 8 9]
+M*v
+```
+
+```{julia}
+M[1,1]=0
 M*v
 ```
 
