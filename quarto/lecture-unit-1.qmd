@@ -538,21 +538,22 @@ M[1, 2]=200.0
 ## Storage-by-reference vs storage-by-value
 Variables of type String are more complex than those for simple numbers. They are composed of a sequence of simpler components of type `Char`. In particular, the length of a String can vary, and therefore also the amount of memory it occupies. 
 
-For these reasons, Strings are examples of **composite types**, while the simple datatypes such as those for basic integers and floating point numbers, and the one of characters are called **primitive types**. This can be verified using the built-in function `isbits` which returns `true` (another type of variable - see below) for primitive types, and false for composite types.
+For these reasons, Strings are examples of **composite types**, while the simple datatypes such as those for basic integers and floating point numbers, and the one of characters are called **primitive types**. This can be verified using the built-in function `isbits` which returns `true` (a logical constant - see below) for primitive types, and false for composite types.
 
 ```{julia}
 isbits(x), isbits(c), isbits(str)
 ```
 
-This has important consequence for how variables are stored in memory.
-Variables of **primitive types**, i.e. for which the variable **directly** refers to the value of the variable, are stored IN the variable - in the box denoted by the name of the variable (see figure above).
+This has important consequences for how variables are stored in memory.
+Variables of **primitive types**, i.e. for which the variable **directly** refers to the value of the variable, are stored IN the variable - "in the box" denoted by the name of the variable (see figure above).
 
-Variables of **composite types**, on the other hand, such as Strings doe not refer directly to their content, but to the address (**reference**, pointer) in memory where the content is stored. Think of the reference as the shelf number in the computer memory which plays the role of a storage facility. For example in the figure above, the String variable `str` contains the reference (address) `5` which is the position in memory where the actual string containing "Heelo" is stored
+Variables of **composite types**, on the other hand, such as Strings do not refer directly to their content, but to the address (**reference**, pointer) in memory where the content is stored. Think of the reference as the shelf number in the computer memory which plays the role of a storage facility. For example in the figure above, the String variable `str` contains the reference (address) `5` which is the position in memory where the actual string containing "Heelo" is stored
 
 This has striking consequences. For example when assigning the content of one primitive variable to another variable, only the content is copied
 ```{julia}
 x=10
 y=x
+@show(y)
 ```
 so we can change the content of one variable without modifying the content of the other one. 
 ```{julia}
@@ -580,7 +581,7 @@ graph TD
     end
     
     subgraph mem ["Memory (Heap)"]
-        VEC["[10, 2, 3]"]
+        VEC["[1, 2, 3]"]
     end
     
     U -->|reference| VEC
@@ -598,6 +599,7 @@ The reason is that using indexing, we directly modify the section in memory, to 
 
 # Logical statements and conditional execution
 
+The data type Bool has only two possible values,
 ```{julia}
 true, false #In Python it is True and False (caps first letter)
 ```
@@ -606,6 +608,8 @@ true, false #In Python it is True and False (caps first letter)
 ```{julia}
 typeof(true)
 ```
+
+Internally, those two values are represented like the integer values `0` and `1` (actually in programming languages which are closer to the hardware representation of the program, this is exactly how logical values are treated).
 ```{julia}
 @show Int(true);
 @show Int(false);
@@ -639,15 +643,14 @@ false || false, false || true, true || false, true || true #logical OR
 For the next block, you need to have the package `Random` installed: To install it, change to package mode using `]`, and use `add Random`. 
 
 The REPL modes are
-*  `;` to access the shell/terminal temporarily , 
-* `?` for help mode
-*  `]` for package mode
+
+*  `;` to access the shell/terminal temporarily, 
+* `?` for help mode,
+*  `]` for package mode,
 * Ctrl-C or Backspace brings you back to the standard "Julian" prompt.
 
 ```{julia}
 using Random 
-
-Random.seed!(7)  #The exclamation mark denotes functions which change the environment (side-effects).
 
 x = rand(1:100) #random number within 1, 2, ..., 100
 y = rand(1:100) #random number within 1, 2, ..., 100
@@ -657,7 +660,8 @@ y = rand(1:100) #random number within 1, 2, ..., 100
 (x == y) || (x != y)
 ```
 
-The command `Random.seed!` sets the seed value for the random number generator. Without it, an almost random seed value is generated and random numbers will differ every time you evaluate the following 'rand' commands. If you set the seed value, then random numbers will always be the same - every time you run the script (which can be useful for debugging, or comparison).
+<!-- The command `Random.seed!` sets the seed value for the random number generator. Without it, an almost random seed value is generated and random numbers will differ every time you evaluate the following 'rand' commands. If you set the seed value, then random numbers will always be the same - every time you run the script (which can be useful for debugging, or comparison).
+-->
 
 ```{julia}
 x < y, x<=y, x ≤ y, x > y, x ≥ y # \le or \ge + [TAB]
@@ -686,6 +690,7 @@ z=y
 
 ![composite types](img/sketch1.png)
 
+This is again a consequence of starage-by=reference. Initially the vector `[1,2,3]` is physically saved in memory twice. The reference to the first one is stored in the variable `x`, the reference to the second one is stored in `y`. For that reason the comparison `x==y` evaluates to `true`, this is because the content of the two vectors is equal. But when comparing the two variables using the comparison operator `===`, the result is `false`, because physically the two variables "point to" two different positions in memory.
 ## Conditional execution (`if-elseif-else`)
 
 ```{mermaid}
@@ -845,16 +850,6 @@ for i ∈ 1:13 # \in + [TAB]
 end
 ```
 
-Using the command `continue`, code executation continues at the start of the loop
-```{julia}
-for i ∈ 1:13 # \in + [TAB]
-   if i<10
-   continue
-   else
-   println("hello $i")
-   end
-end
-```
 
 ## While loops
 
@@ -909,7 +904,31 @@ flowchart TD
     style Decision fill:#fff9c4
 ```
 
+Using the command `continue`, code executation continues at the start of the loop
+```{julia}
+for i ∈ 1:13 # \in + [TAB]
+   if i<10
+      continue
+   else
+      println("hello $i")
+   end
+end
+```
+
+
 Using the command `break`, loops can be left at any time.
+
+Using the command `continue`, code executation continues at the start of the loop
+```{julia}
+for i ∈ 1:13 # \in + [TAB]
+   if i>10
+      break
+   else
+      println("hello $i")
+   end
+end
+```
+
 
 ## Howto implement do-while loops in Julia
 
