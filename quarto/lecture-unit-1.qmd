@@ -839,16 +839,6 @@ println("And using a formula: ", max_val*(max_val+1)/2)
 
 Notice the above `55` vs. `55.0`. This is because of division which converts an integer to a float.
 
-Using the command `break`, loops can be left at any time.
-```{julia}
-for i ∈ 1:13 # \in + [TAB]
-   if i<5
-   println("hello $i")
-   else
-   break
-   end
-end
-```
 
 
 ## While loops
@@ -862,7 +852,7 @@ flowchart LR
     Check -->|No| End([End])
 ```
 
-While loops give you more control over the loop.
+While loops give you more control over the loop. In while loops, the termination condition (actually is should be rather called continuation condition) is very flexible, though always evaluated at the BEGINNING of the loop section.
 
 ```{julia}
 i = 1
@@ -873,14 +863,25 @@ while i ≤ 3   # do the following as long as i is smaller or equal than 3
 end
 ```
 
-The hailstone sequence: If a number is even, half it, if it is odd, multiply by 3 and add 1. Stop when you reach 1.
+In particular, if the continuation condition is never satisfied, the loop will not be executed, not even once.
+```{julia}
+i = 5
+while i ≤ 3   # do the following as long as i is smaller or equal than 3
+   global i
+   println(i)
+   i = i + 1
+end
+```
+
+
+Ex.: The hailstone sequence: If a number is even, half it, if it is odd, multiply by 3 and add 1. Stop when you reach 1.
 
 ```{julia}
 n = 7
 while n != 1
-   global n
+   #global n
    print(n, ", ")
-   if n % 2 == 0 # modulo
+   if n % 2 == 0 # modulo 2...testing of n is even
    n = n ÷ 2 # \div + [TAB] Integer division
    else
    n = 3n + 1
@@ -904,27 +905,37 @@ flowchart TD
     style Decision fill:#fff9c4
 ```
 
-Using the command `continue`, code executation continues at the start of the loop
+Using the command `continue` within a loop, code executation continues at the start of the loop
 ```{julia}
 for i ∈ 1:13 # \in + [TAB]
    if i<10
       continue
    else
-      println("hello $i")
+      println("hello ", i)
    end
 end
 ```
 
 
-Using the command `break`, loops can be left at any time.
+Using the command `break` within a loop, loops can be left at any time.
 
-Using the command `continue`, code executation continues at the start of the loop
+```{julia}
+for i ∈ 1:13 # \in + [TAB]
+   if i<5
+   println("hello $i")
+   else
+   break
+   end
+end
+```
+
+
 ```{julia}
 for i ∈ 1:13 # \in + [TAB]
    if i>10
       break
    else
-      println("hello $i")
+      println("hello $i") #String interpolation
    end
 end
 ```
@@ -941,9 +952,22 @@ flowchart LR
     IfCond -->|false| DoStuff
     Break --> End([End])
 ```
-In do-while loops the loop is executed as least once before the termination condition is evaluated!
+In do-while loops the continuation condition is a the end of the loop. Therefore, the loop is executed as least once before the continuation condition is evaluated!
 ```{julia}
 i=0
+while true
+    # do stuff
+    println(i)
+    i = i + 1
+    if i>5
+      break
+    end
+    # shorter:  i>5 || break
+end
+```
+
+```{julia}
+i=10
 while true
     # do stuff
     println(i)
