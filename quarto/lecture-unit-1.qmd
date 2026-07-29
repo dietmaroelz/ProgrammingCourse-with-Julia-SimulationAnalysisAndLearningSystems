@@ -1193,68 +1193,57 @@ findmax([length(hailstone(n)) for n in 1:10^3])
 
 # Practise 
 
-## Practice questions
-
-1. Consider the Julia code:
-
-```
-a = ["$i" for i in 1:3]
-s = a[1]*a[2]*a[3]
-```
-
-What is the type and value of `s`?
-
-2. You want to write a function `my_minimum` that gets an array of numbers and returns the minimal value in the array. Do not use the `minimum` in-built function as part of your answer.
-
-```
-function my_minimum(a)
-
-    return minimal_value
-end
-```
-
-Fill in the code for the function.
-
-3. You want to write a Julia function `num_sub_str` which accepts a string `main_string` and a string `sub_string`, and returns a count of how many times `sub_string` is in `main_string`. 
-
-```
-function num_sub_str(main_string, sub_string)
-
-    return number_occurrences
-end
-```
-
-Fill in the code for the function.
-
-4. Consider the Julia function, `tamid_nahon` which gets two boolean values as inputs, `a`, and `b`.
-
-```
-function tamid_nahon(a, b)
-    return !(a && b) == !a || !b
-end
-```
-
-For what combinations of `a` and `b` is the return value `true`? For what is it `false`?
-
-5. The Fibonacci sequence is 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... (every element is the sum of the previous two and the initialization is 0, 1). Write a Julia function that computes the first `n` terms of the Fibonacci sequence, returning these terms in an array.
-
-```
-function fibonacci(n)
-    arr = [0, 1]
-
-
-    return arr
-end
-```
-
-Fill in the code for the function.
-
 ## Classroom Micro-Projects 
 
 Here are several micro-projects aimed at providing practice using the concepts above. For each of them you may need a bit more functionality and in-built functions that what we explored so far. You can get that from web-search, LLM-help, peer help, or staff help.
 
-**Micro-Project 1**: Write a little program in that gives a student a mathematics arithmetic quiz with the operations +, - and *. It has input numbers in the range from 1 to 200. Students get asked questions and need to respond with the correct answer. After 10 questions the students gets a summary of how many they got correct and what they got wrong. You may need to explore the `readline` and `parse` functions. 
+1. Write a little program in that gives a student a mathematics arithmetic quiz with the operations +, - and *. It has input numbers in the range from 1 to 200. Students get asked questions and need to respond with the correct answer. After 10 questions the students gets a summary of how many they got correct and what they got wrong. You may need to explore the `readline` and `parse` functions. 
 
-**Micro-Project 2**: Write a little program that is a Tik-Tak-Toe game between two players. On each turn, the state of the board is re-printed. You can use 1,...,9 as input for the cells.
+1. Write a little program that is a Tik-Tak-Toe game between two players. On each turn, the state of the board is re-printed. You can use 1,...,9 as input for the cells.
 
-**Micro-Project 3**: Write a program that works on some fixed long string (e.g. several paragraphs of text such as the text here describing the micro projects). The program should output the character count, the word count, and perhaps other statistics about the text.
+1. Write a program that works on some fixed long string (e.g. several paragraphs of text such as the text here describing the micro projects). The program should output the character count and the word coun. 
+
+1. Write a function called `fizz_buzz` that accepts a number and
+- If the number is divisible by 3 but not 5, prints "Fizz" (without quotes)
+- If the number is divisible by 5 but not 3, prints "Buzz" (without quotes)
+- If the number is divisible by 3 and 5, print "FizzBuzz" (without quotes)
+- Otherwise, print the number itself
+
+
+## Practice questions
+
+1. Sum of squares: 
+   Write a function called `sum_of_squares` that accepts the natural number $n$ and returns the sum $1^2 + 2^2 + \cdots + (n-1)^2 + n^2$.
+
+1. Fibonacci Sequence
+   Calculate the first element of the Fibonacci sequence $a_0 = 1, a_1 = 1, a_{n+2} = a_{n+1} + a_n$ greater than $1000$, and store it in a variable called `an`.
+   
+   Hint: use a `while` loop
+
+1. Consider the Julia code:
+   ```
+   a = [1, 4, 9]
+   s = a[1]*a[2]*a[3]
+   ```
+   What is the type and value of `s`?
+
+1. You want to write a function `my_minimum` that gets a vector of numbers and returns the minimal value in the array. Do not use the `minimum` in-built function as part of your answer.
+
+1. You want to write a Julia function `num_sub_str` which accepts a string `main_string` and a string `sub_string`, and returns a count of how many times `sub_string` is in `main_string`. 
+   ```
+   function num_sub_str(main_string, sub_string)
+      ........
+      return number_occurrences
+   end
+   ```
+   Fill in the code for the function.
+
+1. Consider the Julia function, `tamid_nahon` which gets two boolean values as inputs, `a`, and `b`.
+   ```
+   function tamid_nahon(a, b)
+      return !(a && b) == !a || !b
+   end
+   ```
+   For what combinations of `a` and `b` is the return value `true`? For what is it `false`?
+
+
