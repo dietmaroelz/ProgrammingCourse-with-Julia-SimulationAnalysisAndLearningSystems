@@ -128,7 +128,7 @@ As for the durations of service times we will set them also as exponentially dis
 
 When a job completes service it either leaves the system immediately, or immediately moves to another buffer. The choice of its destination is based on the routing matrix $P$. Here $P_{i,j}$ is probability of going to station j after completing service in station $i$.  It is assumed that $P$ has non-negative entries and has a spectral radius less than $1$. Mathematically this means that the maximal absolute value of eigenvalues of $P$ is less than 1. It also means that jobs may always eventually leave the system and that at least some rows of the matrix $P$ sum up to less than $1$. The probability of a job leaving the system (immediately) after service at station $i$ is $1 - \sum_{j=1}^L P_{i,j}$.
 
-*Tip:* Recall (4) from Question 14 of BigHW. The `sample()` function from `StatsBase.jl` may help generate the location (node) of the next job when carrying out the simulation. Yet keep in mind that "outside of the system" is also a possible location.
+*Tip:* Recall (4) from the question on ''Markov chains and LinearAlgebra'' of BigHW. The `sample()` function from `StatsBase.jl` may help generate the location (node) of the next job when carrying out the simulation. Yet keep in mind that "outside of the system" is also a possible location.
 
 Now let us now describe how **modulation** takes place. With this model feature, the service rates of nodes are not fixed at $\mu_1,\ldots,\mu_L$ but rather alternate between the rates $\mu_1,\ldots,\mu_L$ and the rates $\kappa\mu_1,\ldots,\kappa\mu_L$, with $\kappa>1$. I.e the second set of rates is "faster" than the first set of rates. Hence the system is either in "slow mode" (rates denoted $\mu_i$), or is "fast mode" (rates denoted $\kappa\mu_i$). At any given time, the mode of the system is either `slow` or `fast` and when this change happens, all rates instantly change. Very loosely, in the amusement park setting you can think of `slow` as a situation where rides only work with some employees and equipment while `fast` is a situation where rides work with more employees and equipment and operate faster. Modulation is then the process of changing between `slow` and `fast` back and forth. 
 
@@ -156,7 +156,7 @@ $$
 \tilde{\mu}_i =  R^{(1)} \mu_i + R^{(2)} \kappa\mu_i.
 $$
 
-We call this $\gamma_1 \to \infty$ and $\gamma_2 \to \infty$ case the **super fast modulation** case. It is an important test case because like the **always slow** and **always fast** test cases, it should also yield results as an Open Jackson Network (non modulated) with service rates $\tilde{\mu}$. 
+We call this $\gamma_1 \to \infty$ and $\gamma_2 \to \infty$ case the **super fast modulation** case. Note that to avoid that your simulations in this scenario stall, the **service rate should be high relative to the modulation rate!** It is an important test case because like the **always slow** and **always fast** test cases, it should also yield results as an Open Jackson Network (non modulated) with service rates $\tilde{\mu}$. 
 
 These averaged service rates, $\tilde{\mu}_i$, are also important in the stability condition we describe below. Note also below, that when we consider notation like $\mu$, or $\tilde{\mu}$, or $\alpha$, we refer to the $L$ dimensional vector of the individual entries.
 
