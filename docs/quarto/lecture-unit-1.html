@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="lecture-unit-1_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="lecture-unit-1_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="lecture-unit-1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="lecture-unit-1_files/libs/bootstrap/bootstrap-25808a6e4626de0feadfecd6d3274d08.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="lecture-unit-1_files/libs/bootstrap/bootstrap-888e7731d048cfaa148b823e8fc1b2fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="lecture-unit-1_files/libs/quarto-diagram/mermaid.min.js"></script>
 <script src="lecture-unit-1_files/libs/quarto-diagram/mermaid-init.js"></script>
 <link href="lecture-unit-1_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -600,7 +600,7 @@ flowchart LR
 <!-- ![Number types in Julia](img/type_hierarchy.png)
 
 Use 
-```tziuzoj
+```zmznyhu
 @show typemin(Int16) typemax(Int16);
 ```
 to find the minimal and maximal values that can be represented by integer types.
@@ -1068,7 +1068,7 @@ Int(false) = 0</code></pre>
 <span id="cb152-7"><a href="#cb152-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb152-8"><a href="#cb152-8" aria-hidden="true" tabindex="-1"></a>(x <span class="op">==</span> y) <span class="op">||</span> (x <span class="op">!=</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(x, y) = (94, 57)</code></pre>
+<pre><code>(x, y) = (68, 10)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>true</code></pre>
@@ -1363,9 +1363,9 @@ flowchart LR
 <span id="cb189-3"><a href="#cb189-3" aria-hidden="true" tabindex="-1"></a>   <span class="co">#global n</span></span>
 <span id="cb189-4"><a href="#cb189-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(n, <span class="st">", "</span>)</span>
 <span id="cb189-5"><a href="#cb189-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> n <span class="op">%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span> <span class="co"># modulo 2...testing of n is even</span></span>
-<span id="cb189-6"><a href="#cb189-6" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> n <span class="op">÷</span> <span class="fl">2</span> <span class="co"># \div + [TAB] Integer division</span></span>
+<span id="cb189-6"><a href="#cb189-6" aria-hidden="true" tabindex="-1"></a>     n <span class="op">=</span> n <span class="op">÷</span> <span class="fl">2</span> <span class="co"># \div + [TAB] Integer division</span></span>
 <span id="cb189-7"><a href="#cb189-7" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span></span>
-<span id="cb189-8"><a href="#cb189-8" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> <span class="fl">3</span>n <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb189-8"><a href="#cb189-8" aria-hidden="true" tabindex="-1"></a>     n <span class="op">=</span> <span class="fl">3</span>n <span class="op">+</span> <span class="fl">1</span></span>
 <span id="cb189-9"><a href="#cb189-9" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb189-10"><a href="#cb189-10" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
 <span id="cb189-11"><a href="#cb189-11" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1419,9 +1419,9 @@ hello 13</code></pre>
 <div id="190" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb193"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span><span class="fl">13</span> <span class="co"># \in + [TAB]</span></span>
 <span id="cb193-2"><a href="#cb193-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> i<span class="op">&lt;</span><span class="fl">5</span></span>
-<span id="cb193-3"><a href="#cb193-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(<span class="st">"hello </span><span class="sc">$</span>i<span class="st">"</span>)</span>
+<span id="cb193-3"><a href="#cb193-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">println</span>(<span class="st">"hello </span><span class="sc">$</span>i<span class="st">"</span>)</span>
 <span id="cb193-4"><a href="#cb193-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span></span>
-<span id="cb193-5"><a href="#cb193-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">break</span></span>
+<span id="cb193-5"><a href="#cb193-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
 <span id="cb193-6"><a href="#cb193-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb193-7"><a href="#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1537,9 +1537,9 @@ flowchart TD
 <div id="198" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb201"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_abs</span>(x)</span>
 <span id="cb201-2"><a href="#cb201-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> x <span class="op">&lt;</span> <span class="fl">0</span></span>
-<span id="cb201-3"><a href="#cb201-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="op">-</span>x</span>
+<span id="cb201-3"><a href="#cb201-3" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="op">-</span>x</span>
 <span id="cb201-4"><a href="#cb201-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span></span>
-<span id="cb201-5"><a href="#cb201-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> x</span>
+<span id="cb201-5"><a href="#cb201-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> x</span>
 <span id="cb201-6"><a href="#cb201-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb201-7"><a href="#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -1550,9 +1550,9 @@ flowchart TD
 <div id="200" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb203"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_abs</span>(x)</span>
 <span id="cb203-2"><a href="#cb203-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> x <span class="op">&lt;</span> <span class="fl">0</span></span>
-<span id="cb203-3"><a href="#cb203-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="op">-</span>x</span>
+<span id="cb203-3"><a href="#cb203-3" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="op">-</span>x</span>
 <span id="cb203-4"><a href="#cb203-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
-<span id="cb203-5"><a href="#cb203-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> x</span>
+<span id="cb203-5"><a href="#cb203-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> x</span>
 <span id="cb203-6"><a href="#cb203-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>my_abs (generic function with 1 method)</code></pre>
@@ -1562,7 +1562,7 @@ flowchart TD
 <div id="202" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb205"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_abs</span>(x)</span>
 <span id="cb205-2"><a href="#cb205-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> x <span class="op">&lt;</span> <span class="fl">0</span></span>
-<span id="cb205-3"><a href="#cb205-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="op">-</span>x</span>
+<span id="cb205-3"><a href="#cb205-3" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="op">-</span>x</span>
 <span id="cb205-4"><a href="#cb205-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb205-5"><a href="#cb205-5" aria-hidden="true" tabindex="-1"></a>   x</span>
 <span id="cb205-6"><a href="#cb205-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1601,12 +1601,12 @@ Occupation: diesel mechanic</code></pre>
 <span id="cb211-2"><a href="#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">hailstone</span>(n_start)</span>
 <span id="cb211-3"><a href="#cb211-3" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> n_start</span>
 <span id="cb211-4"><a href="#cb211-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">while</span> n <span class="op">!=</span> <span class="fl">1</span></span>
-<span id="cb211-5"><a href="#cb211-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(n, <span class="st">", "</span>)</span>
-<span id="cb211-6"><a href="#cb211-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> n <span class="op">%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span> </span>
-<span id="cb211-7"><a href="#cb211-7" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> n <span class="op">÷</span> <span class="fl">2</span> </span>
-<span id="cb211-8"><a href="#cb211-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span></span>
-<span id="cb211-9"><a href="#cb211-9" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> <span class="fl">3</span>n <span class="op">+</span> <span class="fl">1</span></span>
-<span id="cb211-10"><a href="#cb211-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb211-5"><a href="#cb211-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(n, <span class="st">", "</span>)</span>
+<span id="cb211-6"><a href="#cb211-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> n <span class="op">%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span> </span>
+<span id="cb211-7"><a href="#cb211-7" aria-hidden="true" tabindex="-1"></a>         n <span class="op">=</span> n <span class="op">÷</span> <span class="fl">2</span> </span>
+<span id="cb211-8"><a href="#cb211-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb211-9"><a href="#cb211-9" aria-hidden="true" tabindex="-1"></a>         n <span class="op">=</span> <span class="fl">3</span>n <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb211-10"><a href="#cb211-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
 <span id="cb211-11"><a href="#cb211-11" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb211-12"><a href="#cb211-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">println</span>(n)</span>
 <span id="cb211-13"><a href="#cb211-13" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="cn">nothing</span></span>
@@ -1669,7 +1669,7 @@ Occupation: diesel mechanic</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb219"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_sum</span>(input_array)</span>
 <span id="cb219-2"><a href="#cb219-2" aria-hidden="true" tabindex="-1"></a>   total <span class="op">=</span> <span class="fl">0</span></span>
 <span id="cb219-3"><a href="#cb219-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">length</span>(input_array)</span>
-<span id="cb219-4"><a href="#cb219-4" aria-hidden="true" tabindex="-1"></a>   total <span class="op">+=</span> input_array[i]</span>
+<span id="cb219-4"><a href="#cb219-4" aria-hidden="true" tabindex="-1"></a>      total <span class="op">+=</span> input_array[i]</span>
 <span id="cb219-5"><a href="#cb219-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb219-6"><a href="#cb219-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> total</span>
 <span id="cb219-7"><a href="#cb219-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
@@ -1705,12 +1705,12 @@ my_array = [-3, 10]</code></pre>
 <span id="cb225-2"><a href="#cb225-2" aria-hidden="true" tabindex="-1"></a>   sequence <span class="op">=</span> <span class="dt">Int</span>[]</span>
 <span id="cb225-3"><a href="#cb225-3" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> n_start</span>
 <span id="cb225-4"><a href="#cb225-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">while</span> n <span class="op">!=</span> <span class="fl">1</span></span>
-<span id="cb225-5"><a href="#cb225-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">push!</span>(sequence, n) <span class="co"># was before print(n, ", ")</span></span>
-<span id="cb225-6"><a href="#cb225-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> n <span class="op">%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span> </span>
-<span id="cb225-7"><a href="#cb225-7" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> n <span class="op">÷</span> <span class="fl">2</span> </span>
-<span id="cb225-8"><a href="#cb225-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span></span>
-<span id="cb225-9"><a href="#cb225-9" aria-hidden="true" tabindex="-1"></a>   n <span class="op">=</span> <span class="fl">3</span>n <span class="op">+</span> <span class="fl">1</span></span>
-<span id="cb225-10"><a href="#cb225-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
+<span id="cb225-5"><a href="#cb225-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">push!</span>(sequence, n) <span class="co"># was before print(n, ", ")</span></span>
+<span id="cb225-6"><a href="#cb225-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> n <span class="op">%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span> </span>
+<span id="cb225-7"><a href="#cb225-7" aria-hidden="true" tabindex="-1"></a>         n <span class="op">=</span> n <span class="op">÷</span> <span class="fl">2</span> </span>
+<span id="cb225-8"><a href="#cb225-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb225-9"><a href="#cb225-9" aria-hidden="true" tabindex="-1"></a>         n <span class="op">=</span> <span class="fl">3</span>n <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb225-10"><a href="#cb225-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
 <span id="cb225-11"><a href="#cb225-11" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb225-12"><a href="#cb225-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">push!</span>(sequence, n) <span class="co"># was before println(n)</span></span>
 <span id="cb225-13"><a href="#cb225-13" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> sequence <span class="co"># was before return nothing</span></span>
@@ -1753,8 +1753,8 @@ my_array = [-3, 10]</code></pre>
 <span id="cb228-4"><a href="#cb228-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">global</span> length_of_longest, n_of_longest</span>
 <span id="cb228-5"><a href="#cb228-5" aria-hidden="true" tabindex="-1"></a>   seq_len <span class="op">=</span> <span class="fu">length</span>(<span class="fu">hailstone</span>(n))</span>
 <span id="cb228-6"><a href="#cb228-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> seq_len <span class="op">&gt;</span> length_of_longest</span>
-<span id="cb228-7"><a href="#cb228-7" aria-hidden="true" tabindex="-1"></a>   length_of_longest <span class="op">=</span> seq_len</span>
-<span id="cb228-8"><a href="#cb228-8" aria-hidden="true" tabindex="-1"></a>   n_of_longest <span class="op">=</span> n</span>
+<span id="cb228-7"><a href="#cb228-7" aria-hidden="true" tabindex="-1"></a>      length_of_longest <span class="op">=</span> seq_len</span>
+<span id="cb228-8"><a href="#cb228-8" aria-hidden="true" tabindex="-1"></a>      n_of_longest <span class="op">=</span> n</span>
 <span id="cb228-9"><a href="#cb228-9" aria-hidden="true" tabindex="-1"></a>   <span class="cf">end</span></span>
 <span id="cb228-10"><a href="#cb228-10" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
 <span id="cb228-11"><a href="#cb228-11" aria-hidden="true" tabindex="-1"></a></span>

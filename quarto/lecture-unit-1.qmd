@@ -882,9 +882,9 @@ while n != 1
    #global n
    print(n, ", ")
    if n % 2 == 0 # modulo 2...testing of n is even
-   n = n ÷ 2 # \div + [TAB] Integer division
+     n = n ÷ 2 # \div + [TAB] Integer division
    else
-   n = 3n + 1
+     n = 3n + 1
    end
 end
 println(n)
@@ -922,9 +922,9 @@ Using the command `break` within a loop, loops can be left at any time.
 ```{julia}
 for i ∈ 1:13 # \in + [TAB]
    if i<5
-   println("hello $i")
+      println("hello $i")
    else
-   break
+      break
    end
 end
 ```
@@ -998,9 +998,9 @@ We already had logic for an absolute value function (of real values). Now let's 
 ```{julia}
 function my_abs(x)
    if x < 0
-   return -x
+      return -x
    else
-   return x
+      return x
    end
 end
 ```
@@ -1010,9 +1010,9 @@ We can also implement this as,
 ```{julia}
 function my_abs(x)
    if x < 0
-   return -x
+      return -x
    end
-   return x
+      return x
 end
 ```
 
@@ -1021,7 +1021,7 @@ Or even,
 ```{julia}
 function my_abs(x)
    if x < 0
-   return -x
+      return -x
    end
    x
 end
@@ -1053,12 +1053,12 @@ Let's see the hailstone sequence for the first 10 integers:
 function hailstone(n_start)
    n = n_start
    while n != 1
-   print(n, ", ")
-   if n % 2 == 0 
-   n = n ÷ 2 
-   else
-   n = 3n + 1
-   end
+      print(n, ", ")
+      if n % 2 == 0 
+         n = n ÷ 2 
+      else
+         n = 3n + 1
+      end
    end
    println(n)
    return nothing
@@ -1100,7 +1100,7 @@ Let's make a function that sums up entries of an array (assuming it is an array 
 function my_sum(input_array)
    total = 0
    for i in 1:length(input_array)
-   total += input_array[i]
+      total += input_array[i]
    end
    return total
 end
@@ -1132,12 +1132,12 @@ function hailstone(n_start)
    sequence = Int[]
    n = n_start
    while n != 1
-   push!(sequence, n) # was before print(n, ", ")
-   if n % 2 == 0 
-   n = n ÷ 2 
-   else
-   n = 3n + 1
-   end
+      push!(sequence, n) # was before print(n, ", ")
+      if n % 2 == 0 
+         n = n ÷ 2 
+      else
+         n = 3n + 1
+      end
    end
    push!(sequence, n) # was before println(n)
    return sequence # was before return nothing
@@ -1165,8 +1165,8 @@ for n in 1:10^3
    global length_of_longest, n_of_longest
    seq_len = length(hailstone(n))
    if seq_len > length_of_longest
-   length_of_longest = seq_len
-   n_of_longest = n
+      length_of_longest = seq_len
+      n_of_longest = n
    end
 end
 
