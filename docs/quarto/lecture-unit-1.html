@@ -155,13 +155,9 @@ window.Quarto = {
   <li><a href="#creating-your-own-functions" id="toc-creating-your-own-functions" class="nav-link" data-scroll-target="#creating-your-own-functions"><span class="header-section-number">5</span> Creating your own functions</a>
   <ul class="collapse">
   <li><a href="#alternative-more-compact-ways-of-defining-functions" id="toc-alternative-more-compact-ways-of-defining-functions" class="nav-link" data-scroll-target="#alternative-more-compact-ways-of-defining-functions"><span class="header-section-number">5.1</span> Alternative, more compact ways, of defining functions</a></li>
-  <li><a href="#functions-for-arrays-vectors-matrices" id="toc-functions-for-arrays-vectors-matrices" class="nav-link" data-scroll-target="#functions-for-arrays-vectors-matrices"><span class="header-section-number">5.2</span> Functions for arrays (Vectors, Matrices …)</a></li>
+  <li><a href="#functions-for-arrays-vectors-matrices" id="toc-functions-for-arrays-vectors-matrices" class="nav-link" data-scroll-target="#functions-for-arrays-vectors-matrices"><span class="header-section-number">5.2</span> Functions for arrays (vectors, matrices …)</a></li>
   </ul></li>
-  <li><a href="#practise" id="toc-practise" class="nav-link" data-scroll-target="#practise"><span class="header-section-number">6</span> Practise</a>
-  <ul class="collapse">
-  <li><a href="#classroom-micro-projects" id="toc-classroom-micro-projects" class="nav-link" data-scroll-target="#classroom-micro-projects"><span class="header-section-number">6.1</span> Classroom Micro-Projects</a></li>
-  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions"><span class="header-section-number">6.2</span> Practice questions</a></li>
-  </ul></li>
+  <li><a href="#quiz-practise-questions" id="toc-quiz-practise-questions" class="nav-link" data-scroll-target="#quiz-practise-questions"><span class="header-section-number">6</span> Quiz practise questions</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-unit-1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -629,7 +625,7 @@ flowchart LR
 <!-- ![Number types in Julia](img/type_hierarchy.png)
 
 Use 
-```qwvzgtc
+```vwurskg
 @show typemin(Int16) typemax(Int16);
 ```
 to find the minimal and maximal values that can be represented by integer types.
@@ -1097,7 +1093,7 @@ Int(false) = 0</code></pre>
 <span id="cb152-7"><a href="#cb152-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb152-8"><a href="#cb152-8" aria-hidden="true" tabindex="-1"></a>(x <span class="op">==</span> y) <span class="op">||</span> (x <span class="op">!=</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(x, y) = (17, 54)</code></pre>
+<pre><code>(x, y) = (28, 83)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>true</code></pre>
@@ -1692,7 +1688,7 @@ Occupation: diesel mechanic</code></pre>
 </div>
 </section>
 <section id="functions-for-arrays-vectors-matrices" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="functions-for-arrays-vectors-matrices"><span class="header-section-number">5.2</span> Functions for arrays (Vectors, Matrices …)</h2>
+<h2 data-number="5.2" class="anchored" data-anchor-id="functions-for-arrays-vectors-matrices"><span class="header-section-number">5.2</span> Functions for arrays (vectors, matrices …)</h2>
 <p>Let’s make a function that sums up entries of an array (assuming it is an array of numbers).</p>
 <div id="216" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb219"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_sum</span>(input_array)</span>
@@ -1825,48 +1821,32 @@ my_array = [-3, 10]</code></pre>
 </div>
 </section>
 </section>
-<section id="practise" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Practise</h1>
-<section id="classroom-micro-projects" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="classroom-micro-projects"><span class="header-section-number">6.1</span> Classroom Micro-Projects</h2>
-<p>Here are several micro-projects aimed at providing practice using the concepts above. For each of them you may need a bit more functionality and in-built functions that what we explored so far. You can get that from web-search, LLM-help, peer help, or staff help.</p>
+<section id="quiz-practise-questions" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Quiz practise questions</h1>
 <ol type="1">
-<li><p>Write a little program in that gives a student a mathematics arithmetic quiz with the operations +, - and *. It has input numbers in the range from 1 to 200. Students get asked questions and need to respond with the correct answer. After 10 questions the students gets a summary of how many they got correct and what they got wrong. You may need to explore the <code>readline</code> and <code>parse</code> functions.</p></li>
-<li><p>Write a little program that is a Tik-Tak-Toe game between two players. On each turn, the state of the board is re-printed. You can use 1,…,9 as input for the cells.</p></li>
-<li><p>Write a program that works on some fixed long string (e.g.&nbsp;several paragraphs of text such as the text here describing the micro projects). The program should output the character count and the word coun.</p></li>
-<li><p>Write a function called <code>fizz_buzz</code> that accepts a number and</p></li>
-</ol>
+<li><p>Write a function called <code>fizz_buzz</code> that accepts a number and</p>
 <ul>
 <li>If the number is divisible by 3 but not 5, prints “Fizz” (without quotes)</li>
 <li>If the number is divisible by 5 but not 3, prints “Buzz” (without quotes)</li>
 <li>If the number is divisible by 3 and 5, print “FizzBuzz” (without quotes)</li>
 <li>Otherwise, print the number itself</li>
-</ul>
-</section>
-<section id="practice-questions" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="practice-questions"><span class="header-section-number">6.2</span> Practice questions</h2>
-<ol type="1">
+</ul></li>
+<li><p>Write a Julia function which returns the number of spaces in the String provided as argument to the function. Test the function using the argument “Julia uses the Multiple-Dispatch paradigm!”</p></li>
+<li><p>Write a short script which prints the first 30 elements of the recursion relation <span class="math inline">\(c_{n+1}=4 c_n - 3 c_{n-1}\)</span> starting with <span class="math inline">\(c_1=0\)</span> and <span class="math inline">\(c_2=1\)</span>. At the end the script should also print the sum <span class="math inline">\(c_1+c_2+...c_{30}\)</span>.</p></li>
 <li><p>Sum of squares: Write a function called <code>sum_of_squares</code> that accepts the natural number <span class="math inline">\(n\)</span> and returns the sum <span class="math inline">\(1^2 + 2^2 + \cdots + (n-1)^2 + n^2\)</span>.</p></li>
-<li><p>Fibonacci Sequence Calculate the first element of the Fibonacci sequence <span class="math inline">\(a_0 = 1, a_1 = 1, a_{n+2} = a_{n+1} + a_n\)</span> greater than <span class="math inline">\(1000\)</span>, and store it in a variable called <code>an</code>.</p>
-<p>Hint: use a <code>while</code> loop</p></li>
+<li><p>Fibonacci Sequence Calculate the first element of the Fibonacci sequence <span class="math inline">\(a_0 = 1, a_1 = 1, a_{n+2} = a_{n+1} + a_n\)</span> greater than <span class="math inline">\(1000\)</span>, and store it in a variable called <code>an</code>.</p></li>
 <li><p>Consider the Julia code:</p>
 <pre><code>a = [1, 4, 9]
 s = a[1]*a[2]*a[3]</code></pre>
 <p>What is the type and value of <code>s</code>?</p></li>
 <li><p>You want to write a function <code>my_minimum</code> that gets a vector of numbers and returns the minimal value in the array. Do not use the <code>minimum</code> in-built function as part of your answer.</p></li>
-<li><p>You want to write a Julia function <code>num_sub_str</code> which accepts a string <code>main_string</code> and a string <code>sub_string</code>, and returns a count of how many times <code>sub_string</code> is in <code>main_string</code>.</p>
-<pre><code>function num_sub_str(main_string, sub_string)
-   ........
-   return number_occurrences
-end</code></pre>
-<p>Fill in the code for the function.</p></li>
+<li><p>You want to write a Julia function <code>is_sub_str</code> which accepts two Strings <code>str</code> and <code>substr</code>, and returns <code>true</code> is <code>substr</code> is a sub-string of <code>str</code> (do not use any library functions, but only the tools developed in this Unit 1).</p></li>
 <li><p>Consider the Julia function, <code>tamid_nahon</code> which gets two boolean values as inputs, <code>a</code>, and <code>b</code>.</p>
 <pre><code>function tamid_nahon(a, b)
    return !(a &amp;&amp; b) == !a || !b
 end</code></pre>
 <p>For what combinations of <code>a</code> and <code>b</code> is the return value <code>true</code>? For what is it <code>false</code>?</p></li>
 </ol>
-</section>
 </section>
 
 </main>
