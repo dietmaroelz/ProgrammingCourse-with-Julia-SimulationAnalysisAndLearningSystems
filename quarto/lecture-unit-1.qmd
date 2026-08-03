@@ -349,31 +349,6 @@ Use
 to find the minimal and maximal values that can be represented by integer types.
 -->
 
-### Type conversions
-
-For type conversions, in particular between integers and floating point numbers, use `Float64` and `Int` as though they were functions:
-```{julia}
-a=4;
-x=Float64(a); 
-@show typeof(a) a;
-@show typeof(x) x;
-```
-```{julia}
-y=sqrt(5);
-b=round(y);
-@show typeof(y) y;
-@show typeof(b) b;
-```
-
-Here, `b` is still of type `Float64`. Only after applying `Int` it becomes an integer
-
-```{julia}
-basInt=Int(b)
-@show basInt;
-@show typeof(basInt);
-```
-
-
 ## Variables of type String (i.e. text) and Char(acter)
 
 Variables can not only contain numbers, but pretty much every type of data, for example letters and text. The data type of single letters is called `Char`, which is short for character. The values of type `Char` are written with simple `'`, for example
@@ -438,6 +413,45 @@ s^((y-1)*s[1:end-1])
 ```
 Here, Julia tries to identify an instance of the method "*(.,.)" which takes an Integer and a String as arguments (this is Julia's **"multiple dispatch"** paradigm), but doesn't succeed.
 The closest candidates are listed in the error message, but none of them fits (e.g., any argument of type Int64 can be converted into types Real, Number, Any, etc).
+
+## Type conversions and string interpolation
+
+For type conversions, in particular between integers and floating point numbers, use `Float64` and `Int` as though they were functions:
+```{julia}
+a=4;
+x=Float64(a); 
+@show typeof(a) a;
+@show typeof(x) x;
+```
+```{julia}
+y=sqrt(5);
+b=round(y);
+@show typeof(y) y;
+@show typeof(b) b;
+```
+
+Here, `b` is still of type `Float64`. Only after applying `Int` it becomes an integer
+
+```{julia}
+basInt=Int(b)
+@show basInt;
+@show typeof(basInt);
+```
+
+The standard method to convert numbers into Strings uses the function `string` (lowercase!). E.g.
+```{julia}
+a=3
+f=3.333
+str="A string which includes a="*string(a)*" and f="*string(f)
+```
+
+As special type of type conversion is **String interpolation** using the symbol `$` which automatically converts a variable (and even an entire expression) into a String and inserts it into an existing string, e.g.:
+
+```{julia}
+i = 234
+f = pi/2
+println("An example of an integer is i=$i and an example for a floating-point number is f=$f.")
+```
 
 
 
@@ -639,6 +653,11 @@ false || false, false || true, true || false, true || true #logical OR
 
 ```{julia}
 !(2 == 3) # ! (not)
+```
+
+**Logical AND (`&&`) has precedence of logical OR (`||`)** as can be seen in 
+```{julia}
+true || false && false
 ```
 
 For the next block, you need to have the package `Random` installed: To install it, change to package mode using `]`, and use `add Random`. 
@@ -973,7 +992,7 @@ for i ∈ 1:13 # \in + [TAB]
    if i>10
       break
    else
-      println("hello $i") #String interpolation
+      println("hello $i")
    end
 end
 ```
@@ -1199,7 +1218,7 @@ println("The longest hailstone sequence is of length $length_of_longest when you
 1. Sum of squares: 
    Write a function called `sum_of_squares` that accepts the natural number $n$ and returns the sum $1^2 + 2^2 + \cdots + (n-1)^2 + n^2$.
 
-1. Fibonacci Sequence
+1. Fibonacci Sequence: 
    Calculate the first element of the Fibonacci sequence $a_0 = 1, a_1 = 1, a_{n+2} = a_{n+1} + a_n$ greater than $1000$, and store it in a variable called `an`.
    
 1. Consider the Julia code:
@@ -1221,4 +1240,160 @@ println("The longest hailstone sequence is of length $length_of_longest when you
    ```
    For what combinations of `a` and `b` is the return value `true`? For what is it `false`?
 
+1. Write a function `round_to_nearest_int` that takes a floating-point number and returns it as an integer type, rounded to the nearest integer. Test it with values like `3.7`, `-2.3`, and `5.5`.
+
+1. Without running the code, predict the output of the following expression and explain why:
+   ```
+   result = true || false && false
+   ```
+   What is the value of `result`? Where could you add parenthesis to change the result?
+
+1. Write a Julia expression which computes the exponential of pi/2 and stores the result in a variable named `res`. What is the type of this variable?
+
+1. Write a script which asks the user to input a loginname and then prints a statement like the following: "Your loginname includes xxx integer numbers between 0 and 9".
+
+1. Write a function substrings which takes the String `str` as argument and returns three substrings, one which starts like `str`, one which ends like `str` and one take from somewhere in the middle. The lengths of these substrings should be random every time the function is executed.
+
+1. Write a function `count_down` that takes a positive integer `n` and prints all numbers from `n` down to 1, each on a separate line, using a while loop. After printing all numbers, it should print "Liftoff!".
+
+1. Write a function `print_odd_numbers` that takes an integer `n` and prints all odd numbers from 1 to `n` (inclusive). Use a for loop and the `continue` statement to skip even numbers.
+
+1. Consider the Julia function
+   ```julia
+   function myfun2(a)
+      i=10
+      while i<115
+         if i >= a
+            break
+         end
+         println(i)
+         i = i+1
+      end
+      return i
+   end
+   ```
+   A. What is the output written by `println` when calling `myfun2(10)`?
+
+   B. What is the return value of `myfun2(11)`?
+
+
+1. What is printed?
+   ```
+   str1 = "hello"
+   str2 = str1
+   str1 = "world"
+   println(str2)
+   ```
+   Would the behavior be different if we used vectors instead of strings?
+
+1. Consider the following code:
+   ```
+   vec1 = [1, 2, 3]
+   vec2 = vec1
+   vec3 = [1, 2, 3]
+   ```
+   Which of the following comparisons will return `true` and which will return `false`? Explain why.
+   - `vec1 == vec2`
+   - `vec1 === vec2`
+   - `vec1 == vec3`
+   - `vec1 === vec3`
+
+1. Rewrite the following if-else statement using the ternary operator:
+   ```
+   if x >= 0
+      result = sqrt(x)
+   else
+      result = 0.0
+   end
+   ```
+
+1. Write two functions: `double(x)` that returns `2*x` and `add_five(x)` that returns `x + 5`. Then use function composition to create a single expression that first doubles a number and then adds five to the result. 
+
+1. Write a function `digit_sum` that takes a positive integer `n` and returns the sum of its digits. For example, `digit_sum(123)` should return `6` (because 1 + 2 + 3 = 6). Hint: Use the modulo operator `%` and integer division `÷`.
+
+1. Write a function `check_brackets` that takes a string containing a mathematical expression and checks whether opening and closing brackets are balanced (i.e. for every opening bracked there is a closing one).
+
+
+1. What is the type of each of the following Julia expressions?
+
+   ```julia
+   3
+   3.0
+   '3'
+   "3"
+   ```
+
+
+1. Given `name = "Julia"`, which expression produces `Hello Julia!`?
+
+   A. `"Hello name!"`
+
+   B. `"Hello $name!"`
+
+   C. `'Hello $name!'`
+   
+   D. `println(name)`
+
+1. What is printed?
+
+   ```julia
+   x = 5
+   if x > 3
+      println("A")
+   elseif x > 5
+      println("B")
+   else
+      println("C")
+   end
+   ```
+1. What is printed?
+
+   ```julia
+   s = 0
+   for i in 1:4
+      s += i
+   end
+   println(s)
+   ```
+
+1. Which of the following correctly defines a Julia function that returns the square of its argument?
+
+   A.
+   ```julia
+   square(x) = x*x
+   ```
+
+   B.
+   ```julia
+   function square(x)
+      x*x
+   end
+   ```
+
+   C. Both A and B
+
+   D. Neither
+
+1. What is printed?
+
+   ```julia
+   A = [1, 2, 3]
+   B = A
+   B[2] = 100
+
+   println(A)
+   ```
+
+1. Which operator tests whether two values are numerically equal?
+
+   A. `=`
+
+   B. `==`
+
+   C. `:=`
+
+   D. `===`
+
+
+1. Write a Julia function `is_even(n)` that returns `true` if `n` is even and `false` otherwise.
 
