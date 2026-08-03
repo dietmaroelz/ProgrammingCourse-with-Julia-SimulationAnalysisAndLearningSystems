@@ -83,6 +83,7 @@ The symbol `\n` represents a `new line`-command,
 println("hello\nworld") #notice the \n (newline)
 println("Here is the next line")
 ```
+Note that **the symbol `#` in Julia is used to declare a single-line comment** (everything after `#` is part of a comment and doesn't affect program execution).
 
 
 Round brackets after a name are the application of a function, kind of like in mathematics. Keep in mind that round brackets also have other uses:
@@ -322,7 +323,7 @@ The type Int64 is the standard type for integers. Particular integer numbers are
 typeof(32)
 ```
 
- Another big class of numeric variables are floating point numbers. Specific floating point numbers are written with at ```.```, e.g.
+ Another big class of numeric variables are floating-point numbers. Specific floating-point numbers are written with a `.`, e.g.
 ```{julia}
 y=34.23
 typeof(y), sizeof(y)
@@ -514,7 +515,7 @@ M[1,1]=0
 M*v
 ```
 
-Note that dealing with such higher-dimensional objects is one of the big strengths of Julia and will be discussed in the coming units. For now, vectors (and matrices) only serve as examples of composit variables.
+Note that dealing with such higher-dimensional objects is one of the big strengths of Julia and will be discussed in the coming units. For now, vectors (and matrices) only serve as examples of composite variables.
 
 ## Mutable vs immutable composite types
 A big difference between Strings on the one hand and collections such as Vectors as well as Matrices on the other hand is that Strings in Julia are immutable whereas Vectors and Matrices are mutable.
@@ -549,7 +550,7 @@ Variables of **primitive types**, i.e. for which the variable **directly** refer
 
 Variables of **composite types**, on the other hand, such as Strings do not refer directly to their content, but to the address (**reference**, pointer) in memory where the content is stored. Think of the reference as the shelf number in the computer memory which plays the role of a storage facility. For example in the figure above, the String variable `str` contains the reference (address) `5` which is the position in memory where the actual string containing "Heelo" is stored
 
-This has striking consequences. For example when assigning the content of one primitive variable to another variable, only the content is copied
+This has striking consequences. For example, when assigning the content of one primitive variable to another variable, only the content is copied
 ```{julia}
 x=10
 y=x
@@ -690,7 +691,17 @@ z=y
 
 ![composite types](img/sketch1.png)
 
-This is again a consequence of starage-by=reference. Initially the vector `[1,2,3]` is physically saved in memory twice. The reference to the first one is stored in the variable `x`, the reference to the second one is stored in `y`. For that reason the comparison `x==y` evaluates to `true`, this is because the content of the two vectors is equal. But when comparing the two variables using the comparison operator `===`, the result is `false`, because physically the two variables "point to" two different positions in memory.
+This is again a consequence of **storage-by=reference**. Initially the vector `[1,2,3]` is **physically saved in memory twice**. The reference to the first one is stored in the variable `x`, the reference to the second one is stored in `y`. For that reason the comparison `x==y` evaluates to `true`, this is because the content of the two vectors is equal. But when comparing the two variables using the comparison operator `===`, the result is `false`, because physically the two variables "point to" two different positions in memory.
+
+Note that **for Strings the result is different**,
+```{julia}
+s1="some text"
+s2="some text"
+@show(s1==s2)
+@show(s1===s2)
+```
+because **Strings are immutable**. This enables the compiler to **optimise memory usage by storing the String constant `"some text"` only once in memory!**
+
 ## Conditional execution (`if-elseif-else`)
 
 ```{mermaid}
@@ -764,82 +775,32 @@ x = -3 # some input
 x < 0 && println("This is a negative number!")   
 ```
 Here, the second condition for the AND clause `&&` is only evaluated if the first condition evaluates to true. Effectively this
-behaves like a single-line if statement.
+behaves like a **single-line if statement**.
 
 # Loops
 You might want to execute a specific section of your code more than once, for example for a certain number of times, or until a condition is reached. The section of a program which is structured in this way is called a **loop**.
 
-In principle, a loop can be implemented by combining an if-statement which checks whether the loop should be executed one more time or not, and a goto statement by which program execution jumps back to the beginning of the loop section.
+In principle, a loop can be implemented by combining an 
+
+1. if-statement which checks whether the loop should be executed one more time or not, and a 
+2. goto statement by which program execution jumps back to the beginning of the loop section.
 
 ```{mermaid}
 %%{init: { 'flowchart': { 'scale': 0.7 } } }%%
 flowchart TD
     Start([Start]) --> Label["<b>loop:</b>"]
     Label --> Check{<b>IF condition<br/>true?</b>}
-    Check -->|No| End([End])
-    Check -->|Yes| Execute["Execute loop body"]
+    Check -->|Yes| End["<b>goto end</b>"] 
+    Check -->|No| Execute["Continue code execution<br>(loop body)"]
     Execute --> Goto["<b>goto loop</b>"]
     Goto --> Label
+    End --> Label2["<b>end:</b>"]
     style Label fill:#e1f5ff
 ```
 
 In many programming languages, particularly older ones, such `goto` statements exist, but they make code error-prone as well as hard to read and to maintain. For that reason more modern programming languages either don't include any type of `goto` command, or just in the form of macros which is the case for Julia. 
 
-It is pretty much always better to implement loops through dedicated control structures, namely `for` loops and `while` loops.
-
-## For loops
-
-```{mermaid}
-%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
-flowchart TD
-    Start([Start]) --> Init["Initialize loop iterator<br/>for i in collection"]
-    Init --> Check{More items<br/>in collection?}
-    Check -->|No| End([End])
-    Check -->|Yes| Assign["Assign current item to i"]
-    Assign --> Execute["Execute loop body"]
-    Execute --> Next["Move to next item"]
-    Next --> Check
-```
-
-```{julia}
-for i in 1:5
-   println(i)
-end
-```
-
-```{julia}
-for i in 1:3
-   println(i)
-end
-```
-
-```{julia}
-for i ∈ 1:3 # \in + [TAB]
-   println(i)
-end
-```
-
-```{julia}
-for _ ∈ 1:3 # \in + [TAB]
-   println("hello")
-end
-```
-
-
-```{julia}
-total = 0
-max_val = 10
-for i ∈ 1:max_val 
-   global total # This line can be ignored by now
-   total = total + i
-end
-println("The total is: $total")
-println("And using a formula: ", max_val*(max_val+1)/2)
-```
-
-Notice the above `55` vs. `55.0`. This is because of division which converts an integer to a float.
-
-
+It is **pretty much always better to implement loops through dedicated control structures, namely `for` loops and `while` loops**.
 
 ## While loops
 
@@ -852,7 +813,7 @@ flowchart LR
     Check -->|No| End([End])
 ```
 
-While loops give you more control over the loop. In while loops, the termination condition (actually is should be rather called continuation condition) is very flexible, though always evaluated at the BEGINNING of the loop section.
+In while loops, the loop section is written as a `while block` with the termination condition (actually it should be rather called continuation condition) at the BEGINNING of the loop section. Any initialisation has to happen before the `while` loop.
 
 ```{julia}
 i = 1
@@ -873,8 +834,18 @@ while i ≤ 3   # do the following as long as i is smaller or equal than 3
 end
 ```
 
+On the other hand, once can also write infinite loops which by themself won't terminante, unless the user presses `Ctrl-C` (or kills the program by some other method).
 
-Ex.: The hailstone sequence: If a number is even, half it, if it is odd, multiply by 3 and add 1. Stop when you reach 1.
+```
+i=0
+while true   # do it forever!
+   global i
+   println(i)
+   i = i + 1
+end
+```
+
+As an example, where we compute the beginning of the hailstone sequence: If a number is even, half it, if it is odd, multiply by 3 and add 1. Stop when you reach 1.
 
 ```{julia}
 n = 7
@@ -889,7 +860,72 @@ while n != 1
 end
 println(n)
 ```
+
+## For loops
+
+```{mermaid}
+%%{init: { 'flowchart': { 'scale': 0.7 } } }%%
+flowchart TD
+    Start([Start]) --> Init["Initialize loop iterator<br/>for i in collection"]
+    Init --> Check{More items<br/>in collection?}
+    Check -->|No| End([End])
+    Check -->|Yes| Assign["Assign current item to i"]
+    Assign --> Execute["Execute loop body"]
+    Execute --> Next["Move to next item"]
+    Next --> Check
+```
+
+In `for` loops, the loop section is written as a `for...end` block with a counter and an ordered index set in the `for` line at the beginning of the block.
+
+The `for` line serves three functions:
+
+1. Initialise the counter
+2. Check whether the end of the index set is reached and if so, leave the loop
+3. Otherwise update (e.g. increase) the counter after every iteration
+
+```{julia}
+for i in 2:5
+   println("hello nr ", i)
+end
+```
+
+```{julia}
+for i ∈ 1:3 # \in + [TAB]
+   println("hello nr ", i)
+end
+```
+
+If the counter is not used in the loop, then `_` can be used as place holder:
+```{julia}
+for _ ∈ 1:3 # \in + [TAB]
+   println("hello")
+end
+```
+
+A more general way of writing thisis 
+```{julia}
+for i in eachindex(1:3)
+   println("hello nr ", i)
+end
+```
+
+
+For example, summation of all elements in a finite sequence:
+
+```{julia}
+total = 0
+max_val = 10
+for i in 1:max_val 
+   global total # This line can be ignored by now
+   total = total + i
+end
+println("The total is: $total")
+println("And using a formula: ", max_val*(max_val+1)/2)
+```
+Notice the above `55` vs. `55.0`. This is because of division which converts an integer to a float.
+
 ## `break` and `continue`
+
 ```{mermaid}
 %%{init: { 'flowchart': { 'scale': 0.4 } } }%%
 flowchart TD
@@ -905,9 +941,11 @@ flowchart TD
     style Decision fill:#fff9c4
 ```
 
-Using the command `continue` within a loop, code executation continues at the start of the loop
+The archaic form or writing loops using `if` and some sort of `goto` command is arguably more flexible, and sometimes this type of flexibility is very helpful. For that reason, many programming languages such as Julia implement the commands `continue` and `break` by which the loop execution can be controlled from whithin the loop.
+
+Using the command `continue` within a loop, code executation **continues at the start of the loop**.
 ```{julia}
-for i ∈ 1:13 # \in + [TAB]
+for i in 1:13 
    if i<10
       continue
    else
@@ -917,7 +955,7 @@ end
 ```
 
 
-Using the command `break` within a loop, loops can be left at any time.
+Using the command `break` within a loop, **loops can be left at any time**.
 
 ```{julia}
 for i ∈ 1:13 # \in + [TAB]
@@ -952,7 +990,7 @@ flowchart LR
     IfCond -->|false| DoStuff
     Break --> End([End])
 ```
-In do-while loops the continuation condition is a the end of the loop. Therefore, the loop is executed as least once before the continuation condition is evaluated!
+In do-while loops, the continuation condition is at the end of the loop. Therefore, the loop is executed at least once before the continuation condition is evaluated! No explicit syntax for do-while loops exists in Julia, since this particular behavior can be reproduced by **combining an infinite `while` loop with `if` and `break` commands**:
 ```{julia}
 i=0
 while true
@@ -966,6 +1004,7 @@ while true
 end
 ```
 
+This is to demonstrate that with a do-while loop, the loop section is always executed at least once, even if the termination condition is `true` from the start:
 ```{julia}
 i=10
 while true
@@ -989,11 +1028,11 @@ flowchart TD
     Process --> Check{Compute explicit<br> return-value?}
     Check --> |Yes| Return("compute myreturnvalue")
     Check --> |No| Default("take return-value of<br/>last executed statement")
-    Return --> |myreturnvalue| End([Receive return-value])
-    Default --> |last return-value| End([Receive return-value])
+    Return --> |return myreturnvalue| End([Receive return-value])
+    Default --> |return it implicitly| End([Receive return-value])
 ```
 
-We already had logic for an absolute value function (of real values). Now let's make a function out of it:
+We already had logic for an absolute value function (of real values). Now let's make a callable function out of it:
 
 ```{julia}
 function my_abs(x)
@@ -1005,6 +1044,7 @@ function my_abs(x)
 end
 ```
 
+Note that using the command `return` the function terminates and the argument of the `return` command becomes the **return value** of the function.
 We can also implement this as,
 
 ```{julia}
@@ -1012,7 +1052,7 @@ function my_abs(x)
    if x < 0
       return -x
    end
-      return x
+   return x
 end
 ```
 
@@ -1026,7 +1066,7 @@ function my_abs(x)
    x
 end
 ```
-which uses that functions by default return the output of the last command.
+which uses that **functions by default return the output of the last command.**
 
 ```{julia}
 @show my_abs(-3.5);
@@ -1046,10 +1086,26 @@ end
 print_my_details()
 ```
 
-Let's see the hailstone sequence for the first 10 integers:
+
+## Using mathematical notation to define functions
+
+When you can implement a function in one line, you can avoid using the `function` keyword and instead use **mathematical notation for defining functions**
 
 ```{julia}
-#let's "wrap" the code we had before in a function
+times_2(x) = 2x 
+
+@show times_2(times_2(10)) #this uses the function twice.
+@show (times_2 ∘ times_2)(10) # \circ...alternative way of writing function composition
+```
+
+On many occasion when there is no ambiguity, Julia permits omitting the multiplication symbol `*` in order to mimic mathematical notation even more closely.
+
+# Example: Collatz conjecture, hailstone sequence
+
+Let's formulate the computation of the first 10 elements of the hailstone sequence as a function:
+
+```{julia}
+#here, we "wrap" the code we had before in a function
 function hailstone(n_start)
    n = n_start
    while n != 1
@@ -1067,129 +1123,66 @@ end
 hailstone(7)
 ```
 
+Note that the function actually only outputs the elements of the hailstone sequence, but it doesn't return them.
 ```{julia}
 println("Hailstone sequences: ")
 for n in 1:10
    hailstone(n)
 end
 ```
+The [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) says that for every starting value the sequence eventually hits 1. Let's try to disprove it by seeing if this program gets stuck.
 
-## Alternative, more compact ways, of defining functions
-
-When you can implement a function in one line, you can avoid using the `function` keyword and instead use **mathematical notation for defining functions**
-
+First I extend the definition of the function hailstone above, so it returns the length of the hailstone sequence rather than printing it.
 ```{julia}
-times_2(x) = 2x 
-
-@show times_2(times_2(10)) #this uses the function twice.
-@show (times_2 ∘ times_2)(10) # alternative way of writing function composition
-@show [1,2,3] |> times_2; # or, using piping operator |>
-```
-
-One can even define **anonymous function** without function names
-```{julia}
-[1,2,3] |> (x->2x) 
-```
-
-
-## Functions for arrays (vectors, matrices ...)
-
-Let's make a function that sums up entries of an array (assuming it is an array of numbers).
-
-```{julia}
-function my_sum(input_array)
-   total = 0
-   for i in 1:length(input_array)
-      total += input_array[i]
-   end
-   return total
-end
-
-a = [1, 10, 100, 1000]
-my_sum(a)
-```
-
-There is also an in-built function for this.
-
-```{julia}
-sum(a)
-```
-
-Arrays can be extended with the `push!` function. Note that the `!` is part of the function name and indicates to us that the function modifies the array.
-
-```{julia}
-my_array = Int[] #empty array of integers
-push!(my_array, -3)
-@show my_array
-push!(my_array, 10)
-@show my_array;
-```
-
-Let's modify our `hailstone` function to return an array with the sequence instead of printing the sequence. 
-
-```{julia}
-function hailstone(n_start)
-   sequence = Int[]
+function hailstone_length(n_start)
    n = n_start
+   len = 1
    while n != 1
-      push!(sequence, n) # was before print(n, ", ")
+      len += 1 # short notation for n = n + 1
+      # print(n, ", ")
       if n % 2 == 0 
          n = n ÷ 2 
       else
          n = 3n + 1
       end
    end
-   push!(sequence, n) # was before println(n)
-   return sequence # was before return nothing
+   #println(n)
+   #println()
+   return len
 end
 
-hailstone(7)
+hailstone_length(7)
 ```
-
-The [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) says that for every starting value the sequence eventually hits 1. Let's try to disprove it by seeing if this program gets stuck.
 
 ```{julia}
 for n in 1:10^3
-   hailstone(n)
+   if n>1
+      print(", ")
+   end
+   print(hailstone_length(n))
 end
+println()
 ```
 
-It didn't get stuck (try even changing `10^3` to `10^6`).
+It didn't get stuck (try even changing `10^3` to `10^6`). If the loop would "get stuck", it wouldn't terminate unless we press `Ctrl-C`!
 
 Now let's see what was the longest sequence.
 
 ```{julia}
 length_of_longest = 0
-n_of_longest = 1
+n_of_longest = 0
 for n in 1:10^3
    global length_of_longest, n_of_longest
-   seq_len = length(hailstone(n))
+   seq_len = hailstone_length(n)
    if seq_len > length_of_longest
       length_of_longest = seq_len
       n_of_longest = n
    end
 end
 
-println("Longest sequence is of length $length_of_longest when you start at $n_of_longest.")
+println("The longest hailstone sequence is of length $length_of_longest when you start at $n_of_longest.")
 ```
 
-One very easy way to create an array is via an array comprehension. 
-
-```{julia}
-[i^2 for i in 1:10]
-```
-
-The `maximum` function finds the maximal value of an array. We can find the 179 value from above just like this.
-
-```{julia}
-maximum([length(hailstone(n)) for n in 1:10^3])
-```
-
-What if we wanted to also know which index attains this maximum? See the `findmax` function.
-
-```{julia}
-findmax([length(hailstone(n)) for n in 1:10^3])
-```
 
 # Quiz practise questions
 
