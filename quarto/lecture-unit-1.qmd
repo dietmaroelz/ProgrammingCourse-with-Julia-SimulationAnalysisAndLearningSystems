@@ -781,13 +781,21 @@ else
 end
 ```
 
-### Compact ways of formulating if clauses
+## Compact ways of formulating if clauses
 Use either the **ternary operator** `condition ? dothisiftrue : dothisiffalse`
 ```{julia}
 x = -3 # some input
 absx = x < 0 ? -x : x   
 ```
-
+is the equivalten to
+```{julia}
+x = -3 # some input
+if x<0
+   absx=-x
+else
+   absx=x
+end
+```
 or using logical AND (`&&`), making use of Julia's **lazy evalution of logical operators**, 
 ```{julia}
 x = -3 # some input
@@ -1108,16 +1116,28 @@ print_my_details()
 
 ## Using mathematical notation to define functions
 
-When you can implement a function in one line, you can avoid using the `function` keyword and instead use **mathematical notation for defining functions**
+When you can implement a function in one line, you can avoid using the `function` keyword and instead use **mathematical notation for defining functions**:
 
+Instead of 
+```{julia}
+function times_1(x)
+   return 2x
+end
+times_1(343)
+```
+you could also just define a function as follows:
 ```{julia}
 times_2(x) = 2x 
+```
 
+These two function definitions are actually perfectly equivalent. Once functions are defined, you can for example compose them as follows:
+```{julia}
 @show times_2(times_2(10)) #this uses the function twice.
 @show (times_2 ∘ times_2)(10) # \circ...alternative way of writing function composition
 ```
 
-On many occasion when there is no ambiguity, Julia permits omitting the multiplication symbol `*` in order to mimic mathematical notation even more closely.
+Note that on many occasion when there is no ambiguity, Julia permits omitting the multiplication symbol `*` in order to mimic mathematical notation even more closely.
+
 
 # Example: Collatz conjecture, hailstone sequence
 
@@ -1129,7 +1149,7 @@ function hailstone(n_start)
    n = n_start
    while n != 1
       print(n, ", ")
-      if n % 2 == 0 
+      if n % 2 == 0 #is n even?
          n = n ÷ 2 
       else
          n = 3n + 1
@@ -1213,16 +1233,40 @@ println("The longest hailstone sequence is of length $length_of_longest when you
 
 1. Write a Julia function which returns the number of spaces in the String provided as argument to the function. Test the function using the argument "Julia uses the Multiple-Dispatch paradigm!"
 
+1. Rewrite the following piece of code 
+   ```julia
+   cn=1
+   println(cn)
+   for i=1:5
+      cn=sin(cn)
+      println(cn)
+   end
+   ```
+   using a 
+   - `while` loop and 
+   - using and `if` clause to mimic a `do-while-loop`. 
+   Aim at avoiding redundant statements, yet, both versions of the script should generate the exactly same output as the code above.
+
 1. Write a short script which prints the first 30 elements of the recursion relation $c_{n+1}=4 c_n - 3 c_{n-1}$ starting with $c_1=0$ and $c_2=1$. At the end the script should also print the sum $c_1+c_2+...c_{30}$. 
 
 1. Sum of squares: 
    Write a function called `sum_of_squares` that accepts the natural number $n$ and returns the sum $1^2 + 2^2 + \cdots + (n-1)^2 + n^2$.
 
+1. What is the type of each of the following Julia expressions?
+
+   ```julia
+   3
+   3.0
+   '3'
+   3>0
+   "3"
+   ```
+
 1. Fibonacci Sequence: 
    Calculate the first element of the Fibonacci sequence $a_0 = 1, a_1 = 1, a_{n+2} = a_{n+1} + a_n$ greater than $1000$, and store it in a variable called `an`.
    
 1. Consider the Julia code:
-   ```
+   ```julia
    a = [1, 4, 9]
    s = a[1]*a[2]*a[3]
    ```
@@ -1232,8 +1276,28 @@ println("The longest hailstone sequence is of length $length_of_longest when you
 
 1. You want to write a Julia function `is_sub_str` which accepts two Strings `str` and `substr`, and returns `true` is `substr` is a sub-string of `str` (do not use any library functions, but only the tools developed in this Unit 1).
 
-1. Consider the Julia function, `tamid_nahon` which gets two boolean values as inputs, `a`, and `b`.
+1. Which of the following correctly defines a Julia function that returns the square of its argument?
+
+   A.
+   ```julia
+   square(x) = x*x
    ```
+
+   B.
+   ```julia
+   function square(x)
+      x*x
+   end
+   ```
+
+   C. Both A and B
+
+   D. Neither
+
+
+
+1. Consider the Julia function, `tamid_nahon` which gets two boolean values as inputs, `a`, and `b`.
+   ```julia
    function tamid_nahon(a, b)
       return !(a && b) == !a || !b
    end
@@ -1243,18 +1307,40 @@ println("The longest hailstone sequence is of length $length_of_longest when you
 1. Write a function `round_to_nearest_int` that takes a floating-point number and returns it as an integer type, rounded to the nearest integer. Test it with values like `3.7`, `-2.3`, and `5.5`.
 
 1. Without running the code, predict the output of the following expression and explain why:
-   ```
+   ```julia
    result = true || false && false
    ```
    What is the value of `result`? Where could you add parenthesis to change the result?
 
 1. Write a Julia expression which computes the exponential of pi/2 and stores the result in a variable named `res`. What is the type of this variable?
 
+1. Which operator tests whether two values are numerically equal?
+
+   A. `=`
+
+   B. `==`
+
+   C. `:=`
+
+   D. `===`
+
 1. Write a script which asks the user to input a loginname and then prints a statement like the following: "Your loginname includes xxx integer numbers between 0 and 9".
 
 1. Write a function substrings which takes the String `str` as argument and returns three substrings, one which starts like `str`, one which ends like `str` and one take from somewhere in the middle. The lengths of these substrings should be random every time the function is executed.
 
 1. Write a function `count_down` that takes a positive integer `n` and prints all numbers from `n` down to 1, each on a separate line, using a while loop. After printing all numbers, it should print "Liftoff!".
+
+1. What is printed?
+
+   ```julia
+   A = [1, 2, 3]
+   B = A
+   B[2] = 100
+
+   println(A)
+   ```
+
+
 
 1. Write a function `print_odd_numbers` that takes an integer `n` and prints all odd numbers from 1 to `n` (inclusive). Use a for loop and the `continue` statement to skip even numbers.
 
@@ -1278,7 +1364,7 @@ println("The longest hailstone sequence is of length $length_of_longest when you
 
 
 1. What is printed?
-   ```
+   ```julia
    str1 = "hello"
    str2 = str1
    str1 = "world"
@@ -1287,7 +1373,7 @@ println("The longest hailstone sequence is of length $length_of_longest when you
    Would the behavior be different if we used vectors instead of strings?
 
 1. Consider the following code:
-   ```
+   ```julia
    vec1 = [1, 2, 3]
    vec2 = vec1
    vec3 = [1, 2, 3]
@@ -1299,7 +1385,7 @@ println("The longest hailstone sequence is of length $length_of_longest when you
    - `vec1 === vec3`
 
 1. Rewrite the following if-else statement using the ternary operator:
-   ```
+   ```julia
    if x >= 0
       result = sqrt(x)
    else
@@ -1308,20 +1394,6 @@ println("The longest hailstone sequence is of length $length_of_longest when you
    ```
 
 1. Write two functions: `double(x)` that returns `2*x` and `add_five(x)` that returns `x + 5`. Then use function composition to create a single expression that first doubles a number and then adds five to the result. 
-
-1. Write a function `digit_sum` that takes a positive integer `n` and returns the sum of its digits. For example, `digit_sum(123)` should return `6` (because 1 + 2 + 3 = 6). Hint: Use the modulo operator `%` and integer division `÷`.
-
-1. Write a function `check_brackets` that takes a string containing a mathematical expression and checks whether opening and closing brackets are balanced (i.e. for every opening bracked there is a closing one).
-
-
-1. What is the type of each of the following Julia expressions?
-
-   ```julia
-   3
-   3.0
-   '3'
-   "3"
-   ```
 
 
 1. Given `name = "Julia"`, which expression produces `Hello Julia!`?
@@ -1333,6 +1405,11 @@ println("The longest hailstone sequence is of length $length_of_longest when you
    C. `'Hello $name!'`
    
    D. `println(name)`
+
+1. Write a function `digit_sum` that takes a positive integer `n` and returns the sum of its digits. For example, `digit_sum(123)` should return `6` (because 1 + 2 + 3 = 6). Hint: Use the modulo operator `%` and integer division `÷`.
+
+1. Write a function `check_brackets` that takes a string containing a mathematical expression and checks whether opening and closing brackets are balanced (i.e. for every opening bracked there is a closing one).
+
 
 1. What is printed?
 
@@ -1355,44 +1432,6 @@ println("The longest hailstone sequence is of length $length_of_longest when you
    end
    println(s)
    ```
-
-1. Which of the following correctly defines a Julia function that returns the square of its argument?
-
-   A.
-   ```julia
-   square(x) = x*x
-   ```
-
-   B.
-   ```julia
-   function square(x)
-      x*x
-   end
-   ```
-
-   C. Both A and B
-
-   D. Neither
-
-1. What is printed?
-
-   ```julia
-   A = [1, 2, 3]
-   B = A
-   B[2] = 100
-
-   println(A)
-   ```
-
-1. Which operator tests whether two values are numerically equal?
-
-   A. `=`
-
-   B. `==`
-
-   C. `:=`
-
-   D. `===`
 
 
 1. Write a Julia function `is_even(n)` that returns `true` if `n` is even and `false` otherwise.
