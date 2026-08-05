@@ -1,35 +1,35 @@
 .PHONY: install
 install:
-	julia --project=. -e 'using Pkg; Pkg.instantiate()'
+	julia --project=. -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
 
 # Individual lecture targets
 .PHONY: lecture-1 lecture-2 lecture-3 lecture-4 lecture-5 lecture-6 lecture-7 lecture-8
-lecture-1:
+lecture-1: install
 	quarto render quarto/lecture-unit-1.qmd --to html,pdf
-lecture-2:
+lecture-2: install
 	quarto render quarto/lecture-unit-2.qmd --to html,pdf
-lecture-3:
+lecture-3: install
 	quarto render quarto/lecture-unit-3.qmd --to html,pdf
-lecture-4:
+lecture-4: install
 	quarto render quarto/lecture-unit-4.qmd --to html,pdf
-lecture-5:
+lecture-5: install
 	quarto render quarto/lecture-unit-5.qmd --to html,pdf
-lecture-6:
+lecture-6: install
 	quarto render quarto/lecture-unit-6.qmd --to html,pdf
-lecture-7:
+lecture-7: install
 	quarto render quarto/lecture-unit-7.qmd --to html,pdf
-lecture-8:
+lecture-8: install
 	quarto render quarto/lecture-unit-8.qmd --to html,pdf
 
 # Individual assessment targets
 .PHONY: bighw project3 projectA projectB
-bighw:
+bighw: install
 	quarto render quarto/Assessment/bighw.qmd --to html,pdf
-project3:
+project3: install
 	quarto render quarto/Assessment/project3.qmd --to html,pdf
-projectA:
+projectA: install
 	quarto render quarto/Assessment/projectA.qmd --to html,pdf
-projectB:
+projectB: install
 	quarto render quarto/Assessment/projectB.qmd --to html,pdf
 
 # Combined targets
@@ -43,11 +43,11 @@ all-assessments: bighw project3 projectA projectB
 all: all-lectures all-assessments
 
 .PHONY: all-html
-all-html:
+all-html: install
 	quarto render quarto/ --to html
 
 .PHONY: all-pdf
-all-pdf:
+all-pdf: install
 	quarto render quarto/ --to pdf
 
 .PHONY: clean
