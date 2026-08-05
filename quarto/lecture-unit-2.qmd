@@ -29,9 +29,9 @@ Random.seed!(42)
 function find_max(data)
    max_value = -Inf
    for x in data
-   if x > max_value
-   max_value = x
-   end
+      if x > max_value
+         max_value = x
+      end
    end
    return max_value
 end
@@ -53,10 +53,10 @@ function find_max(data)
    max_value = -Inf
    n = 0
    for x in data
-   if x > max_value
-   n = n+1
-   max_value = x
-   end
+      if x > max_value
+         n = n+1
+         max_value = x
+      end
    end
    return (max_value, n)
 end
@@ -222,9 +222,9 @@ println("Unsigned 8 bit integers\n")
 println("Number \tBinary  \tHexadecimal\tJulia representation")
 for n in 0:255
    if n ≤ 18 || n ≥ 250 #\le + [TAB],  \ge + [TAB]
-   println("$(lpad(string(n), 3)):\t$(bitstring(UInt8(n)))\t$(lpad(string(n, base = 16), 2))\t\t$(repr(UInt8(n)))")
+      println("$(lpad(string(n), 3)):\t$(bitstring(UInt8(n)))\t$(lpad(string(n, base = 16), 2))\t\t$(repr(UInt8(n)))")
    elseif n ∈ 19:21 #in(n,19:21)  \in + [TAB]
-   println("\t   ⋮")
+      println("\t   ⋮")
    end
 end
 ```
@@ -234,9 +234,9 @@ println("Signed 8 bit integers (observe the sign bit)\n")
 println("Number \tBinary")
 for n in -128:127
    if n ∈ -128:-120 || n ∈ -5:5 || n ∈ 125:127
-   println("$(lpad(n, 4)):\t$(bitstring(Int8(n)))")
+      println("$(lpad(n, 4)):\t$(bitstring(Int8(n)))")
    elseif n ∈ -119:-117 || n ∈ 6:8
-   println("\t   ⋮")
+      println("\t   ⋮")
    end
 end
 ```
@@ -315,7 +315,7 @@ function add_n_digits(a::Int, b::Int, n)
    y_bool = fill(Bool(0), n)
    carry = false
    for i = 1 : n
-   (y_bool[i], carry) = full_adder(a_bool[i], b_bool[i], carry)
+      (y_bool[i], carry) = full_adder(a_bool[i], b_bool[i], carry)
    end
    return y_bool, a_bool, b_bool
 end
@@ -554,10 +554,10 @@ That is, at each step the next iterate is the arithmetic mean of the previous it
 function bab_sqrt(z ; init_x = z/2, verbose = false, tol = 1e-10)
    x = init_x
    while true
-   verbose && println("Babylonian iterate: $x")
-   next_x = 0.5*(x + z / x)
-   abs(next_x - x) < tol && break
-   x = next_x
+      verbose && println("Babylonian iterate: $x")
+      next_x = 0.5*(x + z / x)
+      abs(next_x - x) < tol && break
+      x = next_x
    end
    x
 end
@@ -700,9 +700,9 @@ This is a recursive definition. Let's implement it:
 ```{julia}
 function my_factorial(n)
    if n == 0
-   return 1
+      return 1
    else
-   return n * my_factorial(n - 1)
+      return n * my_factorial(n - 1)
    end
 end
 
@@ -715,9 +715,9 @@ Let's see what happens with this recursion:
 function my_factorial(n)
    println("Calling my_factorial($n)")
    if n == 0
-   ret_val = 1
+      ret_val = 1
    else
-   ret_val = n * my_factorial(n - 1)
+      ret_val = n * my_factorial(n - 1)
    end
    println("Returning from the call of my_factorial($n)")
    ret_val
@@ -743,9 +743,9 @@ my_factorial1(n) = n == 0 ? 1 : n * my_factorial1(n - 1)
 
 function my_factorial2(n)
    if n == 0
-   return 1
+      return 1
    else
-   return n * my_factorial2(n - 1)
+      return n * my_factorial2(n - 1)
    end
 end
 ```
@@ -780,11 +780,13 @@ The other $\sqrt{n} e^{-n}$ factor of $n$ in Stirling, corrects for this and $\s
 ```{julia}
 stirling(n) = (√(2π*n))*(n/MathConstants.e)^n      
 
-[(
-   n! = factorial(n),
-   stirling = stirling(n),
-   ratio = round(factorial(n) / stirling(n), digits = 5),
-) for n in 1:10]
+[
+   (
+      n! = factorial(n),
+      stirling = stirling(n),
+      ratio = round(factorial(n) / stirling(n), digits = 5),
+   ) for n in 1:10
+]
 ```
 
 So let's use Stirling to see how big $n$ can be to fit in `UInt64`. That is solve 

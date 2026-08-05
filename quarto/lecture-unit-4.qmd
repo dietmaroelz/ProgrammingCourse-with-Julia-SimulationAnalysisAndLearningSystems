@@ -83,9 +83,11 @@ We won't deal much with binary files, but rather with files that can be interpre
 
 ```{julia}
 using DataFrames, CSV
-df = DataFrame( names = ["Jason", "Ella", "Kayley", "Emily"], 
+df = DataFrame(
+   names = ["Jason", "Ella", "Kayley", "Emily"], 
    ages = [23, 25, 13, 15], 
-   gender = [:male, missing, :female, :female])
+   gender = [:male, missing, :female, :female]
+)
 println(df)
 ```
 
@@ -251,7 +253,7 @@ function graphCreator(n::Int)
    yPts = last.(coords)
    edges = []
    for v in vertices, u in (v+1):n
-   push!(edges,(v,u)) 
+      push!(edges,(v,u)) 
    end
 
    anim = Animation()
@@ -259,11 +261,11 @@ function graphCreator(n::Int)
    xlims=(-1.5,1.5), ylims=(-1.5,1.5), legend=:none)
 
    for i in 1:length(edges)
-   u, v = edges[i][1], edges[i][2]
-   xpoints = [xPts[u], xPts[v]]
-   ypoints = [yPts[u], yPts[v]]
-   plot!(xpoints, ypoints, line=(:red))
-   frame(anim)
+      u, v = edges[i][1], edges[i][2]
+      xpoints = [xPts[u], xPts[v]]
+      ypoints = [yPts[u], yPts[v]]
+      plot!(xpoints, ypoints, line=(:red))
+      frame(anim)
    end
 
    gif(anim, "graph.gif", fps = 60)
@@ -538,11 +540,11 @@ using SpecialFunctions
 
 function riemann_sum(f, a, b, method = "midpoint")
    if method == "midpoint"
-   return (b - a)*f((a + b)/2)
+      return (b - a)*f((a + b)/2)
    elseif method == "simpsons"
-   return (b-a) / 6 * (f(a) + 4*f((a+b)/2) + f(b))
+      return (b-a) / 6 * (f(a) + 4*f((a+b)/2) + f(b))
    else
-   @error("unsupported method given")
+      @error("unsupported method given")
    end 
 end
 
@@ -873,13 +875,13 @@ columns = Int[]
 
 for i = 1 : n_people
    for j = i + 1 : n_people
-   is_friend = rand() < 100/n_people
-   if is_friend
-   push!(rows, i)
-   push!(columns, j)
-   push!(rows, j)
-   push!(columns, i)
-   end
+      is_friend = rand() < 100/n_people
+      if is_friend
+         push!(rows, i)
+         push!(columns, j)
+         push!(rows, j)
+         push!(columns, i)
+      end
    end
 end
 
