@@ -190,11 +190,11 @@ How would we implement such a sorting algorithm ourselves? One basic algorithm i
 function bubble_sort!(a)
    n = length(a)
    for i in 1:n-1
-   for j in 1:n-i
-   if a[j] > a[j+1]
-   (a[j], a[j+1]) = (a[j+1], a[j])
-   end
-   end
+      for j in 1:n-i
+         if a[j] > a[j+1]
+            (a[j], a[j+1]) = (a[j+1], a[j])
+         end
+      end
    end
    return a
 end
@@ -244,13 +244,13 @@ Random.seed!(0)
 function slightly_faster_bubble_sort!(a::Vector{Int})::Vector{Int}
    n = length(a)
    for i in 1:n-1
-   for j in 1:n-i
-   @inbounds begin
-   if a[j] > a[j+1]
-   (a[j], a[j+1]) = (a[j+1], a[j])
-   end
-   end
-   end
+      for j in 1:n-i
+         @inbounds begin
+            if a[j] > a[j+1]
+               (a[j], a[j+1]) = (a[j+1], a[j])
+            end
+         end
+      end
    end
    return a
 end
@@ -282,19 +282,18 @@ function do_timing()
    times = Vector{Float64}(undef, 0)
    n_range = 500 : 500 : 10^4
    for n in n_range
-   data = rand(Int64, n)
-   start_time = time_ns()
-   bubble_sort!(data)
-   end_time = time_ns()
-   push!(times, Int(end_time - start_time) / 10^6) # time in milliseconds
+      data = rand(Int64, n)
+      start_time = time_ns()
+      bubble_sort!(data)
+      end_time = time_ns()
+      push!(times, Int(end_time - start_time) / 10^6) # time in milliseconds
    end
    return times, n_range
 end
 
 times, n_range = do_timing()
 
-plot(n_range,times, 
-   xlabel="Input size", ylabel="Sorting time (ms)", legend = false, shape = :circle)
+plot(n_range,times, xlabel="Input size", ylabel="Sorting time (ms)", legend = false, shape = :circle)
 ```
 
 It appears that the running time grows quadratically with the input size! We can event try to fit a quadratic model using least squares for it:
@@ -393,12 +392,12 @@ function profiling_bubble_sort!(a)
    k = 0
    n = length(a)
    for i in 1:n-1
-   for j in 1:n-i
-   k += 1 #profiling step
-   if a[j] > a[j+1]
-   a[j], a[j+1] = a[j+1], a[j]
-   end
-   end
+      for j in 1:n-i
+         k += 1 #profiling step
+         if a[j] > a[j+1]
+            a[j], a[j+1] = a[j+1], a[j]
+         end
+      end
    end
    return k #returns the number of comparisons made
 end
@@ -416,11 +415,11 @@ As an aside, lets do this profiling by making a different version of our bubble 
 function bubble_sort!(a; comp = >)
    n = length(a)
    for i in 1:n-1
-   for j in 1:n-i
-   if comp(a[j],a[j+1])
-   a[j], a[j+1] = a[j+1], a[j]
-   end
-   end
+      for j in 1:n-i
+         if comp(a[j],a[j+1])
+            a[j], a[j+1] = a[j+1], a[j]
+         end
+      end
    end
    return a
 end
@@ -470,12 +469,12 @@ function do_timing()
    times = Vector{Float64}(undef,0)
    n_range = 500:500:10^4 
    for n in n_range
-   Random.seed!(0)
-   data = rand(Int64,n)
-   start_time = time_ns()
-   sort!(data[1:n]) #Use the in-built sort! instead
-   end_time = time_ns()
-   push!(times, Int(end_time - start_time)/10^6) #time in milliseconds
+      Random.seed!(0)
+      data = rand(Int64,n)
+      start_time = time_ns()
+      sort!(data[1:n]) #Use the in-built sort! instead
+      end_time = time_ns()
+      push!(times, Int(end_time - start_time)/10^6) #time in milliseconds
    end
    return times, n_range
 end
@@ -560,21 +559,23 @@ Access of matrix elements is $O(1)$, however this doesn't mean that in practice 
 function sum_rows(data, n, m)
    s = zero(eltype(data))
    for i in 1:n
-   for j in 1:m
-   s += data[i,j]
-   end
+      for j in 1:m
+         s += data[i,j]
+      end
    end
    return s
 end
+
 function sum_columns(data, n, m)
    s = zero(eltype(data))
    for j in 1:m
-   for i in 1:n
-   s += data[i,j]
-   end
+      for i in 1:n
+         s += data[i,j]
+      end
    end
    return s
 end
+
 using Random
 Random.seed!(0)
 n, m = 500, 10^6
@@ -628,7 +629,7 @@ add_key_value_pair(dict_keys,dict_values,"Rochdale", 4123)
 
 function value_of_key(keys,values,key_in_question) 
    for (i,k) in enumerate(keys)
-   k == key_in_question && return values[i]
+      k == key_in_question && return values[i]
    end
    @error "didn't find the key $key_in_question"
 end
@@ -689,21 +690,21 @@ Say now we want to lookup if an arbitrary number, `n` is in the set. If we were 
 ```{julia}
 function do_timing()
    @time begin
-   x = 10^5 #smallest number will be 213796.
-   while true
-   x ∈ array_data && break
-   x += 1
-   end
-   @show x
+      x = 10^5 #smallest number will be 213796.
+      while true
+         x ∈ array_data && break
+         x += 1
+      end
+      @show x
    end
 
    @time begin
-   x = 10^5 
-   while true
-   x ∈ my_set && break
-   x += 1
-   end
-   @show x
+      x = 10^5 
+      while true
+         x ∈ my_set && break
+         x += 1
+      end
+      @show x
    end
 end
 
@@ -789,7 +790,7 @@ function get_next_person(priority_queue::Vector{NamedTuple{(:priority, :name), T
    @assert !isempty(priority_queue) 
    max_p = first(priority_queue)
    for p in priority_queue
-   (p.priority > max_p.priority) && (max_p = p)
+      (p.priority > max_p.priority) && (max_p = p)
    end
    return max_p
 end
@@ -820,12 +821,12 @@ Random.seed!(0)
 function heap_sort!(a::AbstractArray)
    h = BinaryMinHeap{eltype(a)}()
    for e in a
-   push!(h, e) #This is an O(log n) operation
+      push!(h, e) #This is an O(log n) operation
    end
    
    #Write back onto the original array
    for i in 1:length(a)
-   a[i] = pop!(h) #This is an O(log n) operation
+      a[i] = pop!(h) #This is an O(log n) operation
    end
    return a
 end
@@ -848,12 +849,12 @@ function do_timing()
 
 
    for n in n_range
-   GC.enable(false) #This turns off garbage collection
-   start_time = time_ns()
-   heap_sort!(data[1:n]) 
-   end_time = time_ns()
-   GC.enable(true) #GC back on
-   push!(times_heap_sort, Int(end_time - start_time)/10^6) #time in milliseconds
+      GC.enable(false) #This turns off garbage collection
+      start_time = time_ns()
+      heap_sort!(data[1:n]) 
+      end_time = time_ns()
+      GC.enable(true) #GC back on
+      push!(times_heap_sort, Int(end_time - start_time)/10^6) #time in milliseconds
    end
    return times_heap_sort, n_range
 end
@@ -895,19 +896,19 @@ function do_timing()
    times_in_built_sort = Vector{Float64}(undef,0)
 
    for n in n_range
-   GC.enable(false) 
-   start_time = time_ns()
-   heap_sort!(data[1:n]) 
-   end_time = time_ns()
-   GC.enable(true)
-   push!(times_heap_sort, Int(end_time - start_time)/10^6) #time in milliseconds
+      GC.enable(false) 
+      start_time = time_ns()
+      heap_sort!(data[1:n]) 
+      end_time = time_ns()
+      GC.enable(true)
+      push!(times_heap_sort, Int(end_time - start_time)/10^6) #time in milliseconds
    
-   GC.enable(false)
-   start_time = time_ns()
-   sort!(data[1:n]) 
-   end_time = time_ns()
-   GC.enable(true)
-   push!(times_in_built_sort, Int(end_time - start_time)/10^6) #time in milliseconds
+      GC.enable(false)
+      start_time = time_ns()
+      sort!(data[1:n]) 
+      end_time = time_ns()
+      GC.enable(true)
+      push!(times_in_built_sort, Int(end_time - start_time)/10^6) #time in milliseconds
    end
    return times_heap_sort, times_in_built_sort, n_range
 end
@@ -942,25 +943,25 @@ function my_merge_sort(data)
    #Now merge, b and t are running indexes for the bottom and top
    b, t = 1, 1 #will
    for i in 1:n #loop on indexes of destination array
-   if b > length(data_bottom) #if data_bottom array is finished
-   data_new[i] = data_top[t] 
-   t += 1
-   continue #returns to top of for loop
-   end
-   if t > length(data_top) #if data_top is finished
-   data_new[i] = data_bottom[b]
-   b += 1
-   continue #returns to top of for loop
-   end
+      if b > length(data_bottom) #if data_bottom array is finished
+         data_new[i] = data_top[t] 
+         t += 1
+         continue #returns to top of for loop
+      end
+      if t > length(data_top) #if data_top is finished
+         data_new[i] = data_bottom[b]
+         b += 1
+         continue #returns to top of for loop
+      end
 
-   #if here then bottom and top are not finished - put the smaller element in the destination
-   if data_bottom[b] <= data_top[t]
-   data_new[i] = data_bottom[b]
-   b += 1
-   else
-   data_new[i] = data_top[t]
-   t+=1
-   end
+      #if here then bottom and top are not finished - put the smaller element in the destination
+      if data_bottom[b] <= data_top[t]
+         data_new[i] = data_bottom[b]
+         b += 1
+      else
+         data_new[i] = data_top[t]
+         t+=1
+      end
    end
    return data_new
 end
