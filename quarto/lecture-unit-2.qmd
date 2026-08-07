@@ -208,7 +208,7 @@ Some general observations of the teething difficulties of working in software as
 * If code was treated like writing a paper (or was a research output valued by itself), this transition would be smoother.
 * Mathematicians can bring value at many levels of an organisation, as you will be interacting with a diverse set of people. Communication skills are important, so treat code as one way of communicating.
 
-#### Historical Ladder of delegration in programming (a Faustian bargain)
+#### Historical Ladder of delegation in programming (a Faustian bargain)
 
 | Rung | You gain | You give up |
 |---|---|---|
@@ -223,7 +223,7 @@ Some general observations of the teething difficulties of working in software as
 | Classical ML | Solves problems too complex to hand-specify | Exact specification† - "correct" becomes statistical, not provable |
 | LLMs | Extraordinary generality, near-natural-language interface to computation | Specification and implementation control, determinism† - no contract like a compiler gives you, output is plausible, not guaranteed |
 
-† same flavor of bargain each time, trading a guarantee (exact bits, order, correctness) for capability. Floating point started this thread decades before anyone was worried about AI.
+† same flavour of bargain each time, trading a guarantee (exact bits, order, correctness) for capability. Floating point started this thread decades before anyone was worried about AI.
 
 #### Bits, bytes, hex, binary, and the works...
 
