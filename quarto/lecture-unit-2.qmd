@@ -13,8 +13,6 @@ format:
     number-sections: true
 ---
 
-# Unit 2: Basics
-
 To introduce things say you have an array of values and want to find the maximal value. How would you do it? Here is some Julia code:
 
 <!---
@@ -147,11 +145,11 @@ println("log(100) + γ = $(approx_h(100)), Monte Carlo Estimate: $(mean(records)
 histogram(records, ticks = 1:maximum(records), normed=true, xlabel="n", ylabel="probability", legend=false)
 ```
 
-## Preamble (before really getting into code)
+# Preamble (before really getting into code)
 
 Here is some general information to discuss before getting to the nitty gritty. 
 
-### What we assume you "already know"
+## What we assume you "already know"
 
 You are coming to this course after doing several mathematics and statistics courses. Hence we assume you have already done some coding or scripting of sorts. For example you might have done a bit of [Python](https://en.wikipedia.org/wiki/Python_(programming_language)), some [MATLAB](https://en.wikipedia.org/wiki/MATLAB) scripting, used some code in [R](https://en.wikipedia.org/wiki/R_(programming_language)), or similar. In all these cases, we assume that you've already experienced a bit of the following:
 
@@ -162,7 +160,7 @@ You are coming to this course after doing several mathematics and statistics cou
 * You certainly know how to use files, directories, and the internet. 
 * Finally, you are also somewhat of a mathematician. You have done courses such as STAT1301 (first year stats), MATH1071 (Analysis + Linear Algebra) + MATH1072 (Mutivariable Calculus + some modelling) + several more math electives.
 
-### Early computation
+## Early computation
 
 * [Ready reckoner](https://en.wikipedia.org/wiki/Ready_reckoner)
 * [Computer (original meaning)](https://en.wikipedia.org/wiki/Computer_(occupation))
@@ -175,7 +173,7 @@ You are coming to this course after doing several mathematics and statistics cou
 * [Curta (mechanical calculator)](https://en.wikipedia.org/wiki/Curta)
 * [Norden bombsight](https://en.wikipedia.org/wiki/Norden_bombsight)
 
-### What is a computer?
+## What is a computer?
 
 Wikipedia says this about a [computer](https://en.wikipedia.org/wiki/Computer):
 > A computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations automatically. 
@@ -194,7 +192,7 @@ You should also know of the conceptual mathematical model of a computer which is
 
 [![Alan Turing](img/alan-turing.jpg)](https://en.wikipedia.org/wiki/Alan_Turing)
 
-### The culture of software development and Who is a programmer?
+## The culture of software development and Who is a programmer?
 
 Two software aphorisms to consider as you progress:
 
@@ -208,7 +206,7 @@ Some general observations of the teething difficulties of working in software as
 * If code was treated like writing a paper (or was a research output valued by itself), this transition would be smoother.
 * Mathematicians can bring value at many levels of an organisation, as you will be interacting with a diverse set of people. Communication skills are important, so treat code as one way of communicating.
 
-### Historical Ladder of delegation in programming (a Faustian bargain)
+## Historical Ladder of delegation in programming (a Faustian bargain)
 
 | Rung | You gain | You give up |
 |---|---|---|
@@ -225,7 +223,7 @@ Some general observations of the teething difficulties of working in software as
 
 † same flavour of bargain each time, trading a guarantee (exact bits, order, correctness) for capability. Floating point started this thread decades before anyone was worried about AI.
 
-### Bits, bytes, hex, binary, and the works...
+## Bits, bytes, hex, binary, and the works...
 
 A bit is either $0$ or $1$. A byte is a sequence of $8$ bits. Hence there are $2^8 = 256$ options. 
 
@@ -421,7 +419,7 @@ x = ones(1000)
 
 ```
 
-## Julia from the ground up
+# Julia from the ground up
 
 We start by discussing Julia and a simple "Hello World" example and then continue to three stories which help us explore various aspects of Julia:
 
@@ -429,14 +427,14 @@ We start by discussing Julia and a simple "Hello World" example and then continu
 2. Factorials (second story).
 3. String manipulation (third story).
 
-### Introduction
+## Introduction
 
 * Julia as a language (community, history, and motivation...)
 * The Read Evaluate Print Loop REPL. (Demonstration).
 * Running from a file from the command line. (Demonstration).
 * Jupyter (Demonstration).
 
-### Hello World Julia
+## Hello World Julia
 
 "Hello World" [Taken from SWJ book](https://github.com/h-Klok/StatsWithJuliaBook/blob/master/1_chapter/helloWorld.jl)
 
@@ -467,7 +465,7 @@ println()
 sqrt.(squares)
 ```
 
-### Square root (the 1'st story)
+## Square root (the 1'st story)
 
 * Basics
 * Variables (also complex types)
@@ -675,7 +673,7 @@ Click the image below to watch a video with a detailed explanation of the algori
 
 [![Fast Inverse Square Root](http://img.youtube.com/vi/p8u_k2LIZyo/0.jpg)](http://www.youtube.com/watch?v=p8u_k2LIZyo "Fast Inverse Square Root")
 
-### Factorial (the 2'nd story)
+## Factorial (the 2'nd story)
 
 * Basics
 * Recursion
@@ -946,7 +944,7 @@ z = setdiff(-3:0.001:4, -3:0) #setdifference to remove points where gamma() retu
 plot(z, gamma.(z), ylim=(-7,7), legend=false, xlabel="z", ylabel="Γ(z)")
 ```
 
-### Text, natural language, and strings (the 3'rd story)
+## Text, natural language, and strings (the 3'rd story)
 
 We now focus on a different component of programming: dealing with strings, text, and natural language. The [Julia documentation about strings](https://docs.julialang.org/en/v1/manual/strings/) is also very useful.
 
