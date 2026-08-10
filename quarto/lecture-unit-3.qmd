@@ -13,15 +13,13 @@ format:
     number-sections: true
 ---
 
-# Unit 3: On Tools and Algorithms
-
 In the previous unit we got straight into general programming basics as well as specifics with Julia. We now know basic syntax, variables, conditional statements, loops, functions, and more. We spoke about bits, bytes, and representation of integers on a computer. In terms of tools we used Jupyter and the REPL.
 
 In this unit we'll get a taste for basic mathematical analysis of algorithms and quantification of behavior and performance. We'll also deal with more extensive tools including Git and GitHub, Visual Studio Code (IDE), and basic Unix command line.
 
 We'll start with tooling and then move onto a basic demonstrations of the fact that the performance of algorithms can be analyzed mathematically.
 
-## More tools
+# More tools
 
 We now spend more time on "tools", namely,
 
@@ -29,7 +27,7 @@ We now spend more time on "tools", namely,
 * Git and GitHub 
 * The Visual Studio Code IDE
 
-### Unix command line
+## Unix command line
 
 An [operating system](https://en.wikipedia.org/wiki/Operating_system) is software that manages the other software and hardware of the computer. It manages:
 
@@ -105,7 +103,7 @@ Finally some useful development tools:
 * `make` useful tool for building applications
 * `gdb` debugging tools 
 
-### A Note on the Unix Philosophy
+## A Note on the Unix Philosophy
 
 It can be hard to quantify good software design. An informative approach is the "Unix Philosophy". This is summarized by Doug McIlroy (the inventor of Unix pipes) as:
 
@@ -114,7 +112,7 @@ It can be hard to quantify good software design. An informative approach is the 
 * Design and build software, even operating systems, to be tried early, ideally within weeks. Don't hesitate to throw away the clumsy parts and rebuild them.
 * Use tools in preference to unskilled help to lighten a programming task, even if you have to detour to build the tools and expect to throw some of them out after you've finished using them.
 
-### Git and GitHub
+## Git and GitHub
 
 Working with software requires keeping track of versions and modifications. For this there is a set of best working practices that often depend on the task at hand. 
 
@@ -130,7 +128,7 @@ One very useful tool is [Git](https://en.wikipedia.org/wiki/Git). We will be usi
 
 For a review of commands see this [cheat sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet) 
 
-### VS Code IDE
+## VS Code IDE
 
 An IDE is an acronym for an "Integrated Development Environment". The most basic development environment is simply a text file editor (such as vim) and somewhere to run the code (such as a Julia REPL). Software developers work with wide variety of such tools (with extensions to make coding a simpler task).
 
@@ -148,7 +146,7 @@ Features of an IDE that will make your life easier:
 
 In this course we recommend using [VSCode](https://code.visualstudio.com/), an open source code editing tool made by Microsoft.
 
-### A Rough Field Guide to Software Licencing
+## A Rough Field Guide to Software Licencing
 
 There are a vast number of licencing arrangements for dealing with the use of software and the availability of source code for the software. Two broad classes to be aware of:
 
@@ -174,7 +172,7 @@ Examples of Software released under different licences:
 * Copyleft - Linux (GPLv2), R (GPLv2)
 * Public Domain - BLAS, SQLite
 
-## Mathematical analysis of algorithms
+# Mathematical analysis of algorithms
 
 As an illustration take sorting. Say we have a list of numbers and wish to sort it:
 
@@ -457,7 +455,7 @@ println("Sorted data: ", data)
 println("Number of comparisons: ", k) 
 ```
 
-#### Now lets compare bubble sort with the in-built sort:
+**Comparison of bubble sort with the in-built sort**
 
 As you can see from the plot, the in-built sort is about 200x faster! This is mostly **not** because of "in-built performance improvements" (remember that in Julia almost all the in-built functions are themselves written in Julia). It is because a different algorithm is used. In fact, sorting is one of the basic computer science problems that has been exhaustively studied. See for example the [Wikipedia sorting algorithms](https://en.wikipedia.org/wiki/Sorting_algorithm) entry with a table listing the complexity of many sorting methods.
 
@@ -489,7 +487,7 @@ We'll explore one such "efficient" sorting algorithm, heap-sort, and this is bec
 
 But first we discuss a few datastructures. 
 
-### A Whirlwind tour of a Few Datastructures
+# A Whirlwind tour of a Few Datastructures
 
 Note: Do not confuse "Datastructures" with "Databases", these are related terms that mean different things.
 
@@ -530,7 +528,7 @@ We do consider a few of the key other [Collections and Datastructures](https://d
 * Dictionaries 
 * Sets
 
-### Multidimensional arrays 
+## Multidimensional arrays 
 
  Multidimensional arrays are basically arrays where the indexing into the array is carried out in smarter way. The simplest example is a matrix.
 
@@ -591,7 +589,7 @@ println("Summing with the row iteration moving fastest")
 
 As you can see, going by columns is much faster than going by rows. This is because there are many **cache misses** if we go by rows. The key takeaway here is that while the speed complexity of the array algorithm $O(1)$ does not capture actual clock speed because of computer architecture issues such as the cache.
 
-#### Dictionaries
+## Dictionaries
 
 As the name implies, dictionaries refer to collections that keep **keys** and **values** and allow for efficient lookup. For example:
 
@@ -645,7 +643,7 @@ value_of_key(dict_keys,dict_values,"Taringa") #Will throw an error
 
 However you can probably see that the time complexity of `value_of_key()` is of the order $O(n)$ when $n$ is the number of keys. This is a very time-consuming lookup. An  (on average) efficient way to implement dictionaries is via a [Hash table](https://en.wikipedia.org/wiki/Hash_table) data structure. We won't get into the details now, but (solely for those interested) refer this (more advanced talk) related to [alternative implementations of dictionaries](https://www.youtube.com/watch?v=Y-hAZcqAw28) (this is a recent talk by one of the course lecturers, Andy Ferris).
 
-### Sets
+## Sets
 
 Another type of collection that is in-built in Julia and often very useful is a `Set`. Unlike arrays that maintain order, sets (like in mathematics) are unordered and do not have repetitions.
 
@@ -712,7 +710,7 @@ do_timing();
 ```
 
 
-### Priority queues, heaps, and back to sorting
+## Priority queues, heaps, and back to sorting
 
 We can't cover all of the fundamental algorithms and data structures in this course, so we chose one non-trivial data structure to focus on. This is the [heap data structure](https://en.wikipedia.org/wiki/Heap_(data_structure)). It will be used here for sorting, used in Unit 5 for algebraic manipulations, and used in Unit 6 as an aid for discrete event simulation.
 
@@ -802,7 +800,7 @@ Now you may think of simple ways to improve this, for example by enforcing the *
 
 Now in a scenario like a mass vaccination centre it isn't really a problem to use such a priority queue with $O(n)$ costs for most operations. This is because the frequency of events is not high and neither is $n$. However, in other scenarios where events (additions, deletions, finding the maximum priority) occur very frequently then $O(n)$ for each operation may be very painful. For example, what if you were simulating that vaccination centre on a computer (similar simulations will be considered in Unit 6). 
 
-##### The Heap data structure
+## The Heap data structure
 
 The [heap data structure](https://en.wikipedia.org/wiki/Heap_(data_structure)) is a smarter tree based way of keeping the elements of a priority queue. With this data structure, finding the maximum is $O(1)$, deleting the maximum is $O(\log n)$, insertions are $O(\log n)$, and updating of a priority is $O(\log n)$. We'll see the way it is implemented in Unit 6, but for now we'll use it as a "black box".
 
@@ -922,8 +920,9 @@ plot!(n_range,times_in_built_sort, label = "in-built sort", shape = :circle,
 
 So what is the in-built sort? Lets look at "quick sort".
 
-#### Quicksort (and Merge Sort on the way)
+# Quicksort (and Merge Sort on the way)
 
+## Merge Sort
 On our path to understanding quick sort we'll start with a different sorting algorithm Merge sort. It uses a [divide and conquer](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm) strategy somewhat similar to our target algorithm, quick-sort. 
 
 Here is an implementation of merge sort that is very wasteful in terms of memory copies (we won't present a more efficient implementation here). Nevertheless the key principle is that when presented with sorting an array of length $n$, merge-sort splits it into two arrays of size $n/2$ (or close to that if $n$ is odd). Merge sort then sorts each of the sub-arrays by calling itself again (a recursive call), and then when presented with two sorted sub arrays merge sort merges them in order.
@@ -999,9 +998,9 @@ $$
 C n \log n = 2 C \frac{n}{2} \log \frac{n}{2} + C (\log 2) n = C n \log n. 
 $$
 
-The Master theorem allows to formalize this taking into considerations all possible $O(n)$ terms.
+The **Master theorem** allows to formalize this taking into considerations all possible $O(n)$ terms.
 
-### A quick glimpse at quick-sort
+## A quick glimpse at quick-sort
 
 We now explore [quicksort](https://en.wikipedia.org/wiki/Quicksort). Like merge sort it is a divide and conquer algorithm. Implementing it is part of BigHW, so we won't provide an implementation. However here is pseudocode adapted from Wikipedia broken up into two functions `quicksort` which operates on an array `A` indexed by `lo` and `hi` (in an initial call you would use `lo = 1` and `hi = length(A)`:
 
