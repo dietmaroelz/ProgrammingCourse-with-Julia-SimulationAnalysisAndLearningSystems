@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="lecture-unit-2_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="lecture-unit-2_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="lecture-unit-2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="lecture-unit-2_files/libs/bootstrap/bootstrap-06df95296d23c3c7c558a87288644128.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="lecture-unit-2_files/libs/bootstrap/bootstrap-888e7731d048cfaa148b823e8fc1b2fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -118,8 +118,23 @@ window.Quarto = {
   <ul>
   <li><a href="#unit-2-basics" id="toc-unit-2-basics" class="nav-link active" data-scroll-target="#unit-2-basics"><span class="header-section-number">1</span> Unit 2: Basics</a>
   <ul class="collapse">
-  <li><a href="#preamble-before-really-getting-into-code" id="toc-preamble-before-really-getting-into-code" class="nav-link" data-scroll-target="#preamble-before-really-getting-into-code"><span class="header-section-number">1.1</span> Preamble (before really getting into code)</a></li>
-  <li><a href="#julia-from-the-ground-up" id="toc-julia-from-the-ground-up" class="nav-link" data-scroll-target="#julia-from-the-ground-up"><span class="header-section-number">1.2</span> Julia from the ground up</a></li>
+  <li><a href="#preamble-before-really-getting-into-code" id="toc-preamble-before-really-getting-into-code" class="nav-link" data-scroll-target="#preamble-before-really-getting-into-code"><span class="header-section-number">1.1</span> Preamble (before really getting into code)</a>
+  <ul class="collapse">
+  <li><a href="#what-we-assume-you-already-know" id="toc-what-we-assume-you-already-know" class="nav-link" data-scroll-target="#what-we-assume-you-already-know"><span class="header-section-number">1.1.1</span> What we assume you “already know”</a></li>
+  <li><a href="#early-computation" id="toc-early-computation" class="nav-link" data-scroll-target="#early-computation"><span class="header-section-number">1.1.2</span> Early computation</a></li>
+  <li><a href="#what-is-a-computer" id="toc-what-is-a-computer" class="nav-link" data-scroll-target="#what-is-a-computer"><span class="header-section-number">1.1.3</span> What is a computer?</a></li>
+  <li><a href="#the-culture-of-software-development-and-who-is-a-programmer" id="toc-the-culture-of-software-development-and-who-is-a-programmer" class="nav-link" data-scroll-target="#the-culture-of-software-development-and-who-is-a-programmer"><span class="header-section-number">1.1.4</span> The culture of software development and Who is a programmer?</a></li>
+  <li><a href="#historical-ladder-of-delegation-in-programming-a-faustian-bargain" id="toc-historical-ladder-of-delegation-in-programming-a-faustian-bargain" class="nav-link" data-scroll-target="#historical-ladder-of-delegation-in-programming-a-faustian-bargain"><span class="header-section-number">1.1.5</span> Historical Ladder of delegation in programming (a Faustian bargain)</a></li>
+  <li><a href="#bits-bytes-hex-binary-and-the-works" id="toc-bits-bytes-hex-binary-and-the-works" class="nav-link" data-scroll-target="#bits-bytes-hex-binary-and-the-works"><span class="header-section-number">1.1.6</span> Bits, bytes, hex, binary, and the works…</a></li>
+  </ul></li>
+  <li><a href="#julia-from-the-ground-up" id="toc-julia-from-the-ground-up" class="nav-link" data-scroll-target="#julia-from-the-ground-up"><span class="header-section-number">1.2</span> Julia from the ground up</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.2.1</span> Introduction</a></li>
+  <li><a href="#hello-world-julia" id="toc-hello-world-julia" class="nav-link" data-scroll-target="#hello-world-julia"><span class="header-section-number">1.2.2</span> Hello World Julia</a></li>
+  <li><a href="#square-root-the-1st-story" id="toc-square-root-the-1st-story" class="nav-link" data-scroll-target="#square-root-the-1st-story"><span class="header-section-number">1.2.3</span> Square root (the 1’st story)</a></li>
+  <li><a href="#factorial-the-2nd-story" id="toc-factorial-the-2nd-story" class="nav-link" data-scroll-target="#factorial-the-2nd-story"><span class="header-section-number">1.2.4</span> Factorial (the 2’nd story)</a></li>
+  <li><a href="#text-natural-language-and-strings-the-3rd-story" id="toc-text-natural-language-and-strings-the-3rd-story" class="nav-link" data-scroll-target="#text-natural-language-and-strings-the-3rd-story"><span class="header-section-number">1.2.5</span> Text, natural language, and strings (the 3’rd story)</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-unit-2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -291,8 +306,8 @@ h_n \approx \log(n) + \gamma.
 <section id="preamble-before-really-getting-into-code" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="preamble-before-really-getting-into-code"><span class="header-section-number">1.1</span> Preamble (before really getting into code)</h2>
 <p>Here is some general information to discuss before getting to the nitty gritty.</p>
-<section id="what-we-assume-you-already-know" class="level4" data-number="1.1.0.1">
-<h4 data-number="1.1.0.1" class="anchored" data-anchor-id="what-we-assume-you-already-know"><span class="header-section-number">1.1.0.1</span> What we assume you “already know”</h4>
+<section id="what-we-assume-you-already-know" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="what-we-assume-you-already-know"><span class="header-section-number">1.1.1</span> What we assume you “already know”</h3>
 <p>You are coming to this course after doing several mathematics and statistics courses. Hence we assume you have already done some coding or scripting of sorts. For example you might have done a bit of <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a>, some <a href="https://en.wikipedia.org/wiki/MATLAB">MATLAB</a> scripting, used some code in <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a>, or similar. In all these cases, we assume that you’ve already experienced a bit of the following:</p>
 <ul>
 <li>You have written some commands/code that are later interpreted by the computer to execute actions.</li>
@@ -303,8 +318,8 @@ h_n \approx \log(n) + \gamma.
 <li>Finally, you are also somewhat of a mathematician. You have done courses such as STAT1301 (first year stats), MATH1071 (Analysis + Linear Algebra) + MATH1072 (Mutivariable Calculus + some modelling) + several more math electives.</li>
 </ul>
 </section>
-<section id="early-computation" class="level4" data-number="1.1.0.2">
-<h4 data-number="1.1.0.2" class="anchored" data-anchor-id="early-computation"><span class="header-section-number">1.1.0.2</span> Early computation</h4>
+<section id="early-computation" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="early-computation"><span class="header-section-number">1.1.2</span> Early computation</h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Ready_reckoner">Ready reckoner</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Computer_(occupation)">Computer (original meaning)</a></li>
@@ -323,8 +338,8 @@ h_n \approx \log(n) + \gamma.
 <li><a href="https://en.wikipedia.org/wiki/Norden_bombsight">Norden bombsight</a></li>
 </ul>
 </section>
-<section id="what-is-a-computer" class="level4" data-number="1.1.0.3">
-<h4 data-number="1.1.0.3" class="anchored" data-anchor-id="what-is-a-computer"><span class="header-section-number">1.1.0.3</span> What is a computer?</h4>
+<section id="what-is-a-computer" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="what-is-a-computer"><span class="header-section-number">1.1.3</span> What is a computer?</h3>
 <p>Wikipedia says this about a <a href="https://en.wikipedia.org/wiki/Computer">computer</a>: &gt; A computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations automatically.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -347,8 +362,8 @@ h_n \approx \log(n) + \gamma.
 </figure>
 </div>
 </section>
-<section id="the-culture-of-software-development-and-who-is-a-programmer" class="level4" data-number="1.1.0.4">
-<h4 data-number="1.1.0.4" class="anchored" data-anchor-id="the-culture-of-software-development-and-who-is-a-programmer"><span class="header-section-number">1.1.0.4</span> The culture of software development and Who is a programmer?</h4>
+<section id="the-culture-of-software-development-and-who-is-a-programmer" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="the-culture-of-software-development-and-who-is-a-programmer"><span class="header-section-number">1.1.4</span> The culture of software development and Who is a programmer?</h3>
 <p>Two software aphorisms to consider as you progress:</p>
 <ul>
 <li>“code is read much more often than it is written”</li>
@@ -362,8 +377,8 @@ h_n \approx \log(n) + \gamma.
 <li>Mathematicians can bring value at many levels of an organisation, as you will be interacting with a diverse set of people. Communication skills are important, so treat code as one way of communicating.</li>
 </ul>
 </section>
-<section id="historical-ladder-of-delegation-in-programming-a-faustian-bargain" class="level4" data-number="1.1.0.5">
-<h4 data-number="1.1.0.5" class="anchored" data-anchor-id="historical-ladder-of-delegation-in-programming-a-faustian-bargain"><span class="header-section-number">1.1.0.5</span> Historical Ladder of delegation in programming (a Faustian bargain)</h4>
+<section id="historical-ladder-of-delegation-in-programming-a-faustian-bargain" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="historical-ladder-of-delegation-in-programming-a-faustian-bargain"><span class="header-section-number">1.1.5</span> Historical Ladder of delegation in programming (a Faustian bargain)</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -432,8 +447,8 @@ h_n \approx \log(n) + \gamma.
 </table>
 <p>† same flavour of bargain each time, trading a guarantee (exact bits, order, correctness) for capability. Floating point started this thread decades before anyone was worried about AI.</p>
 </section>
-<section id="bits-bytes-hex-binary-and-the-works" class="level4" data-number="1.1.0.6">
-<h4 data-number="1.1.0.6" class="anchored" data-anchor-id="bits-bytes-hex-binary-and-the-works"><span class="header-section-number">1.1.0.6</span> Bits, bytes, hex, binary, and the works…</h4>
+<section id="bits-bytes-hex-binary-and-the-works" class="level3" data-number="1.1.6">
+<h3 data-number="1.1.6" class="anchored" data-anchor-id="bits-bytes-hex-binary-and-the-works"><span class="header-section-number">1.1.6</span> Bits, bytes, hex, binary, and the works…</h3>
 <p>A bit is either <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. A byte is a sequence of <span class="math inline">\(8\)</span> bits. Hence there are <span class="math inline">\(2^8 = 256\)</span> options.</p>
 <p>If you use a byte to encode an integer, then one option is the range <span class="math inline">\(0,1,2,\ldots,255\)</span>. This is called an unsigned integer, or <code>UInt8</code> in Julia.</p>
 <p>Another option is the range <span class="math inline">\(-127,\ldots,128\)</span> (still <span class="math inline">\(256\)</span> possibilities) and this is called an <code>Int8</code>.</p>
@@ -752,8 +767,8 @@ sizeof(x) = 8000</code></pre>
 <li>Factorials (second story).</li>
 <li>String manipulation (third story).</li>
 </ol>
-<section id="introduction" class="level4" data-number="1.2.0.1">
-<h4 data-number="1.2.0.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.2.0.1</span> Introduction</h4>
+<section id="introduction" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.2.1</span> Introduction</h3>
 <ul>
 <li>Julia as a language (community, history, and motivation…)</li>
 <li>The Read Evaluate Print Loop REPL. (Demonstration).</li>
@@ -761,8 +776,8 @@ sizeof(x) = 8000</code></pre>
 <li>Jupyter (Demonstration).</li>
 </ul>
 </section>
-<section id="hello-world-julia" class="level4" data-number="1.2.0.2">
-<h4 data-number="1.2.0.2" class="anchored" data-anchor-id="hello-world-julia"><span class="header-section-number">1.2.0.2</span> Hello World Julia</h4>
+<section id="hello-world-julia" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="hello-world-julia"><span class="header-section-number">1.2.2</span> Hello World Julia</h3>
 <p>“Hello World” <a href="https://github.com/h-Klok/StatsWithJuliaBook/blob/master/1_chapter/helloWorld.jl">Taken from SWJ book</a></p>
 <div id="32" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hello World!</span></span>
@@ -814,8 +829,8 @@ These squares are just perfect:
 </div>
 </div>
 </section>
-<section id="square-root-the-1st-story" class="level4" data-number="1.2.0.3">
-<h4 data-number="1.2.0.3" class="anchored" data-anchor-id="square-root-the-1st-story"><span class="header-section-number">1.2.0.3</span> Square root (the 1’st story)</h4>
+<section id="square-root-the-1st-story" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="square-root-the-1st-story"><span class="header-section-number">1.2.3</span> Square root (the 1’st story)</h3>
 <ul>
 <li>Basics</li>
 <li>Variables (also complex types)</li>
@@ -859,7 +874,7 @@ Stacktrace:
  [3] <span class="ansi-bold">sqrt</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">x</span>::Int64<span class="ansi-bold">)</span>
 <span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base.Math</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">math.jl:1546</span>
  [4] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/src/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:493</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:493</span></pre>
 </div>
 </div>
 </div>
@@ -938,7 +953,7 @@ end</code></pre>
 <div class="ansi-escaped-output">
 <pre><span class="ansi-bright-black-fg">; Function Signature: sqrt(Float64)</span>
 <span class="ansi-bright-black-fg">;  @ math.jl:626 within `sqrt`</span>
-<span class="ansi-bright-magenta-fg">define</span> <span class="ansi-cyan-fg">double</span> <span class="ansi-bright-yellow-fg">@julia_sqrt_10536</span><span class="ansi-yellow-fg">(</span><span class="ansi-cyan-fg">double</span> %"x::Float64"<span class="ansi-yellow-fg">)</span> #0 <span class="ansi-yellow-fg">{</span>
+<span class="ansi-bright-magenta-fg">define</span> <span class="ansi-cyan-fg">double</span> <span class="ansi-bright-yellow-fg">@julia_sqrt_19011</span><span class="ansi-yellow-fg">(</span><span class="ansi-cyan-fg">double</span> %"x::Float64"<span class="ansi-yellow-fg">)</span> #0 <span class="ansi-yellow-fg">{</span>
 <span class="ansi-bright-red-fg">top:</span>
 <span class="ansi-bright-black-fg">;  @ math.jl:627 within `sqrt`</span>
 <span class="ansi-bright-black-fg">; ┌ @ float.jl:623 within `&lt;`</span>
@@ -947,7 +962,7 @@ end</code></pre>
   <span class="ansi-bright-cyan-fg ansi-bold">br</span> <span class="ansi-cyan-fg">i1</span> %0, <span class="ansi-cyan-fg">label</span> <span class="ansi-bright-red-fg">%L5</span>, <span class="ansi-cyan-fg">label</span> <span class="ansi-bright-red-fg">%L3</span>
 
 <span class="ansi-bright-red-fg">L3:</span>                                               <span class="ansi-bright-black-fg">; preds = %top</span>
-  <span class="ansi-bright-cyan-fg ansi-bold">call</span> <span class="ansi-cyan-fg">void</span> <span class="ansi-bright-yellow-fg">@j_throw_complex_domainerror_10539</span><span class="ansi-yellow-fg">(</span><span class="ansi-bright-magenta-fg">ptr</span> <span class="ansi-bright-magenta-fg">nonnull</span> <span class="ansi-bright-yellow-fg">@"jl_sym#sqrt#10540.jit"</span>, <span class="ansi-cyan-fg">double</span> %"x::Float64"<span class="ansi-yellow-fg">)</span> #11
+  <span class="ansi-bright-cyan-fg ansi-bold">call</span> <span class="ansi-cyan-fg">void</span> <span class="ansi-bright-yellow-fg">@j_throw_complex_domainerror_19014</span><span class="ansi-yellow-fg">(</span><span class="ansi-bright-magenta-fg">ptr</span> <span class="ansi-bright-magenta-fg">nonnull</span> <span class="ansi-bright-yellow-fg">@"jl_sym#sqrt#19015.jit"</span>, <span class="ansi-cyan-fg">double</span> %"x::Float64"<span class="ansi-yellow-fg">)</span> #11
   <span class="ansi-bright-cyan-fg ansi-bold">unreachable</span>
 
 <span class="ansi-bright-red-fg">L5:</span>                                               <span class="ansi-bright-black-fg">; preds = %top</span>
@@ -967,10 +982,10 @@ end</code></pre>
 <pre>   .text
     .file   "sqrt"
     .section    .ltext,"axl",@progbits
-    .globl  julia_sqrt_10648                <span class="ansi-bright-black-fg"># -- Begin function julia_sqrt_10648</span>
+    .globl  julia_sqrt_19016                <span class="ansi-bright-black-fg"># -- Begin function julia_sqrt_19016</span>
     .p2align    <span class="ansi-yellow-fg">4</span>, <span class="ansi-yellow-fg">0x90</span>
-    .type   julia_sqrt_10648,@function
-<span class="ansi-bright-red-fg">julia_sqrt_10648:</span>                       <span class="ansi-bright-black-fg"># @julia_sqrt_10648</span>
+    .type   julia_sqrt_19016,@function
+<span class="ansi-bright-red-fg">julia_sqrt_19016:</span>                       <span class="ansi-bright-black-fg"># @julia_sqrt_19016</span>
 <span class="ansi-bright-black-fg">; Function Signature: sqrt(Float64)</span>
 <span class="ansi-bright-black-fg">; ┌ @ math.jl:626 within `sqrt`</span>
 <span class="ansi-bright-black-fg"># %bb.0:                                # %top</span>
@@ -987,26 +1002,26 @@ end</code></pre>
     <span class="ansi-bright-cyan-fg ansi-bold">ret</span>
 <span class="ansi-bright-red-fg">.LBB0_2:</span>                                <span class="ansi-bright-black-fg"># %L3</span>
     <span class="ansi-bright-cyan-fg ansi-bold">push</span> rbp
-<span class="ansi-bright-black-fg">; │ @ math.jl:627 within `sqrt`</span>
-    <span class="ansi-bright-cyan-fg ansi-bold">movabs</span>   rdi, <span class="ansi-bright-magenta-fg">offset</span> <span class="ansi-bright-yellow-fg">".Ljl_sym#sqrt#10652.jit"</span>
-    <span class="ansi-bright-cyan-fg ansi-bold">movabs</span>   rax, <span class="ansi-bright-magenta-fg">offset</span> <span class="ansi-bright-yellow-fg">j_throw_complex_domainerror_10651</span>
     <span class="ansi-bright-cyan-fg ansi-bold">mov</span>  rbp, rsp
+<span class="ansi-bright-black-fg">; │ @ math.jl:627 within `sqrt`</span>
+    <span class="ansi-bright-cyan-fg ansi-bold">movabs</span>   rdi, <span class="ansi-bright-magenta-fg">offset</span> <span class="ansi-bright-yellow-fg">".Ljl_sym#sqrt#19020.jit"</span>
+    <span class="ansi-bright-cyan-fg ansi-bold">movabs</span>   rax, <span class="ansi-bright-magenta-fg">offset</span> <span class="ansi-bright-yellow-fg">j_throw_complex_domainerror_19019</span>
     <span class="ansi-bright-cyan-fg ansi-bold">call</span> rax
 <span class="ansi-bright-red-fg">.Lfunc_end0:</span>
-    .size   julia_sqrt_10648, .Lfunc_end0-julia_sqrt_10648
+    .size   julia_sqrt_19016, .Lfunc_end0-julia_sqrt_19016
 <span class="ansi-bright-black-fg">; └</span>
                                         <span class="ansi-bright-black-fg"># -- End function</span>
-    .type   ".L+Core.Float64#10650",@object <span class="ansi-bright-black-fg"># @"+Core.Float64#10650"</span>
+    .type   ".L+Core.Float64#19018",@object <span class="ansi-bright-black-fg"># @"+Core.Float64#19018"</span>
     .section    .lrodata,"al",@progbits
     .p2align    <span class="ansi-yellow-fg">3</span>, <span class="ansi-yellow-fg">0x0</span>
-<span class="ansi-bright-red-fg">".L+Core.Float64#10650":</span>
-    .quad   ".L+Core.Float64#10650.jit"
-    .size   ".L+Core.Float64#10650", <span class="ansi-yellow-fg">8</span>
+<span class="ansi-bright-red-fg">".L+Core.Float64#19018":</span>
+    .quad   ".L+Core.Float64#19018.jit"
+    .size   ".L+Core.Float64#19018", <span class="ansi-yellow-fg">8</span>
 
-.set ".Ljl_sym#sqrt#10652.jit", <span class="ansi-yellow-fg">128015850514136</span>
-    .size   ".Ljl_sym#sqrt#10652.jit", <span class="ansi-yellow-fg">8</span>
-.set ".L+Core.Float64#10650.jit", <span class="ansi-yellow-fg">128016013808496</span>
-    .size   ".L+Core.Float64#10650.jit", <span class="ansi-yellow-fg">8</span>
+.set ".Ljl_sym#sqrt#19020.jit", <span class="ansi-yellow-fg">136847228118744</span>
+    .size   ".Ljl_sym#sqrt#19020.jit", <span class="ansi-yellow-fg">8</span>
+.set ".L+Core.Float64#19018.jit", <span class="ansi-yellow-fg">136847391413104</span>
+    .size   ".L+Core.Float64#19018.jit", <span class="ansi-yellow-fg">8</span>
     .section    ".note.GNU-stack","",@progbits
 </pre>
 </div>
@@ -1143,8 +1158,8 @@ uN5 = [0.7071067811865475, 0.7071067811865475]</code></pre>
 </figure>
 </div>
 </section>
-<section id="factorial-the-2nd-story" class="level4" data-number="1.2.0.4">
-<h4 data-number="1.2.0.4" class="anchored" data-anchor-id="factorial-the-2nd-story"><span class="header-section-number">1.2.0.4</span> Factorial (the 2’nd story)</h4>
+<section id="factorial-the-2nd-story" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="factorial-the-2nd-story"><span class="header-section-number">1.2.4</span> Factorial (the 2’nd story)</h3>
 <ul>
 <li>Basics</li>
 <li>Recursion</li>
@@ -1426,7 +1441,7 @@ Stacktrace:
  [2] <span class="ansi-bold">factorial</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">n</span>::Int64<span class="ansi-bold">)</span>
 <span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">combinatorics.jl:34</span>
  [3] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/src/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:861</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:861</span></pre>
 </div>
 </div>
 </div>
@@ -1472,7 +1487,7 @@ Closest candidates are:
 
 Stacktrace:
  [1] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/src/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:886</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:886</span></pre>
 </div>
 </div>
 </div>
@@ -1545,7 +1560,7 @@ Stacktrace:
  [1] <span class="ansi-bold">gamma</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">n</span>::Int64<span class="ansi-bold">)</span>
 <span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">SpecialFunctions</span> <span class="ansi-bright-black-fg">~/.julia/packages/SpecialFunctions/pIm7V/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">gamma.jl:595</span>
  [2] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/src/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:937</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-2.qmd:937</span></pre>
 </div>
 </div>
 </div>
@@ -1560,8 +1575,8 @@ Stacktrace:
 </div>
 </div>
 </section>
-<section id="text-natural-language-and-strings-the-3rd-story" class="level4" data-number="1.2.0.5">
-<h4 data-number="1.2.0.5" class="anchored" data-anchor-id="text-natural-language-and-strings-the-3rd-story"><span class="header-section-number">1.2.0.5</span> Text, natural language, and strings (the 3’rd story)</h4>
+<section id="text-natural-language-and-strings-the-3rd-story" class="level3" data-number="1.2.5">
+<h3 data-number="1.2.5" class="anchored" data-anchor-id="text-natural-language-and-strings-the-3rd-story"><span class="header-section-number">1.2.5</span> Text, natural language, and strings (the 3’rd story)</h3>
 <p>We now focus on a different component of programming: dealing with strings, text, and natural language. The <a href="https://docs.julialang.org/en/v1/manual/strings/">Julia documentation about strings</a> is also very useful.</p>
 <div id="118" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>my_name <span class="op">=</span> <span class="st">"Janet"</span></span>
