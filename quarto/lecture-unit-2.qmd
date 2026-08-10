@@ -13,6 +13,8 @@ format:
     number-sections: true
 ---
 
+# Motivation
+
 To introduce things say you have an array of values and want to find the maximal value. How would you do it? Here is some Julia code:
 
 <!---
