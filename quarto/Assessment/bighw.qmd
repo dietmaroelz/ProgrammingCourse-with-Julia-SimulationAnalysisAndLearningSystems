@@ -16,9 +16,9 @@ format:
 (last edit: August 6, 2026)
 
 
-Assignment in pairs: **Please email [Mittun](mailto: m.sudhahar@uq.edu.au) ( m.sudhahar@uq.edu.au ) as soon as possible with whom you are forming a pair** to work on the BigHW and submit it together. Send him the names of the two students including their student ids. Just send one email per pair (cc-ing your partner).
+Assignment in pairs: In this assignment, you will work with a partner and submit together. Please **find a partner for BigHW as soon as possible and enroll in one of the BigHW submission groups on Blackboard**.
 
-**Note:** Since this assignment is in **pairs** make sure to submit with the names of both partners (or all three in exceptional circumstances) as well as student numbers. Submission will be via the Blackboard account of **only one** of the teammates but will count equally for both (or all three). All cases that involve a group of a single person or three people in the team, require **explicit permission** from the course coordinator.
+**Note:** Submission will be via Blackboard as a BigHW submission group of two students. The submission will count equally for both team members. All cases that involve a group of a single person or three people in the team, require **explicit permission** from the course coordinator.
 
 The recommended way to work in **pairs** is to have a **lead** for each question and a **reviewer** for each **question**. The leader will be responsible that a solution is created and the reviewer will be consulted and provide feedback. There is certainly no need to state who is the lead and who is the reviewer for the questions. Ultimately the pair is jointly responsible for the assignment submission. 
 
@@ -26,15 +26,15 @@ The recommended way to work in **pairs** is to have a **lead** for each question
 To install IJulia, run `add IJulia` in package model.
 Then, in the Julia REPL, run `using IJulia` and `notebook()` to open Jupyter in the browser.
 
-**Submission format:**  The submission format is via a GitHub repository in the **MATH25042026 github organisation** as described in Question 9. The submission should include the four submissions forms [I](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-I-Q1-Q4.ipynb), [II](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-II-Q5-Q8.ipynb), [III](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-III-Q9-Q11.ipynb), and [IV](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-IV-Q12-Q15.ipynb). 
+**Submission format:**  The submission format is via a GitHub repository in the **MATH25042026 github organisation** as **described in Question 9**. The submission should include the four submissions forms [I](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-I-Q1-Q4.ipynb), [II](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-II-Q5-Q8.ipynb), [III](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-III-Q9-Q11.ipynb), and [IV](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-IV-Q12-Q15.ipynb). 
 
 The submission should also include an **audio recording** (30 sec minimum, 3 minutes maximum, 1 minute recommended). The voice recording should have voices of both (all) members of the group. The recording should verify that the work is your own. You can also state how you felt in the assignment. Say what was easy, what was hard, what you found useful, and what less. In case you used LLMs (chat-GPT etc...), make sure to mention how you used it and where it was useful (or not).
 
-To submit, go to Blackboard and submit as instructed there by providing a link to the GitHub repo, naming the partners, and uploading the voice recording (do not upload the voice recording to GitHub - upload it to Blackboard). **PDFs of the Jupyter notebooks and voice recordings are for Blackboard. Jupyter notebooks are for GitHub.**
+To submit, go to Blackboard and submit as instructed there as a group by providing a link to the GitHub repo and uploading the voice recording (do not upload the voice recording to GitHub - upload it to Blackboard). **A link to the github repository and voice recordings are for Blackboard. Jupyter notebooks are for GitHub.**
 
 **Marking Criteria:** 
 
-* 4 points are allocated for following instructions. This includes proper submission of the voice recording, the `.ipynb` file(s), having names and student numbers on the hand-in, and most importantly neatly formatting all the answers of the jupyter notebook.
+* 5 points are allocated for following instructions. This includes proper submission of the voice recording, the `.ipynb` file(s), having names and student numbers on the hand-in, and most importantly neatly formatting all the answers of the jupyter notebook.
 
 * There are 14 questions in total, with 7 points allocated for each question. Some questions are easier and some harder. Some require more work and some require less work.
 
@@ -508,8 +508,9 @@ So now rank one matrices may be added up.
 
 ## Question 9: Setting up your GitHub repo for hand-in.
 
-* Create your GitHub account if you don't have one. Mail your github account to [Mittun](mailto: m.sudhahar@uq.edu.au) ( m.sudhahar@uq.edu.au ). You will then be invited to become a member of the **MATH25042026 github organisation**.
-* Within this organisation, create a new repo for this assignment. One student will create the repo, and then invite the paired student to be a collaborator on this project.
+* You will be invited to **create a GitHub account and joing the GitHub organisation MATH25042026**. 
+* If you already have a GitHub account, you may instead add your UQ email address to this existing account (see https://docs.github.com/en/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account for detailed instructions)
+* Within the MATH25042026 GitHub organisation, create a new repo for this assignment. One student will create the repo, and then invite the paired student to be a collaborator on this project.
 * Name the repo exactly as `<<FIRST NAME1>>-<<LAST NAME1>>__<<FIRST NAME2>>-<<LAST NAME2>>2504-2026-BigHW`. 
 So for example if your names are "Sam Sample" and "Tania Testname" the repo name should be `Sam-Sample__Tania-Testname-2504-2026-BigHW`.
 * Make sure the repo is **private**.
@@ -523,7 +524,7 @@ Your GitHub repo should be formatted as exactly as follows:
 <!--* Have a `LICENSE.md` file. Choose a license as you wish (for example the MIT license). However keep in mind that you must keep the submission private until the end of the semester.-->
 * Have a `.gitignore` file.
 * Have a `notebooks` directory and in it have the 4 submission forms (notebooks) I--IV. 
-* Note: make sure that there aren't any files in your submission repo except for the submission forms I--IV (.ipynb format) and `Readme.md`. You may use the `.gitignore` file to ensure `git` does not commit additional files and output files to your `repo`. Voice recordings and PDF files are to be uploaded to blackboard, not GitHub.
+* Note: make sure that there aren't any files in your submission repo except for the submission forms I--IV (.ipynb format) and `Readme.md`. You may use the `.gitignore` file to ensure `git` does not commit additional files and output files to your `repo`. Voice recording are to be uploaded to blackboard, not GitHub.
 
 ## Question 10: A few unix commands
 
