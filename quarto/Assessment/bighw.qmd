@@ -47,7 +47,7 @@ To submit, go to Blackboard and submit as instructed there as a group by providi
 # Questions 1--4 are submitted on Jupyter [notebook I](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-I-Q1-Q4.ipynb)
 
 
-## Question 1: LaTeX, Jupyter, HTML, and Markdown
+## Question 1: LaTeX, Jupyter, HTML, and Markdown  {-}
 
 This question deals with basic formatting tools.
 
@@ -67,7 +67,7 @@ Write out this matrix in LaTeX for $n = 7$. In particular, write out all compone
 
 **1c**: Use HTML to embed an image with an hyperlink from the image (i.e. when you click the image you jump to a different website of your choice). Use HTML to resize the image to a size you like. Make sure the aspect ratio is maintained. 
 
-## Question 2: Warming up with quadratic equations 
+## Question 2: Warming up with quadratic equations  {-}
 
 The following function uses the quadratic formula to compute the real roots of the quadratic equation $ax^2 + bx + c = 0$. The return value is an array with 0, 1, or 2 roots. 
 
@@ -82,11 +82,11 @@ function real_roots_of_quadratic(a::Number, b::Number, c::Number)
 
    #Based on the sign of the discriminant return 0, 1, or 2 roots.
    if Δ < 0 
-   roots = []
+      roots = []
    elseif Δ == 0
-   roots = [-b/(2a)]
+      roots = [-b/(2a)]
    else
-   roots = [-b + √Δ, -b - √Δ] / (2a) #\sqrt + [TAB]
+      roots = [-b + √Δ, -b - √Δ] / (2a) #\sqrt + [TAB]
    end
    return roots 
 end
@@ -104,22 +104,24 @@ real_roots_of_quadratic(-1,5,-6)
 5. The `return` statement in the line `return roots` is optional yet makes for more verbose code. Try removing `return`. Does the function still work? (yes/no). 
 6. There is a certain set of inputs for which this function will not work. Try setting the input argument `a` as `0` or `0.0`. What is the result? Explain what happens.
 7. To handle such cases where the quadratic equation is actually "not quadratic" add error checking code at the top of the function. One way to do this is to return some error message for example add at the top of the function: 
-```
-if a == 0
-    return "Error - this is not a quadratic equation"
-end
-```
-Check that this works.
+   ```julia
+   if a == 0
+      return "Error - this is not a quadratic equation"
+   end
+   ```
+   Check that this works.
+
 8. Instead of adding these three lines you may also shorten them as,
-```
-a == 0 && return "Error - this is not a quadratic equation"
-```
-Check that this works and try to figure out (and explain) what this does.
+   ```julia
+   a == 0 && return "Error - this is not a quadratic equation"
+   ```
+   Check that this works and try to figure out (and explain) what this does.
+
 9. Finally instead of returning a string as an error, we may use a more advanced mechanism. So use this instead:
-```
-a == 0 && throw(DomainError(a, "argument must be nonzero"))
-```
-You will discuss such exception handling later in the course, yet at this point try to do your best to explain what this does.
+   ```julia
+   a == 0 && throw(DomainError(a, "argument must be nonzero"))
+   ```
+   You will discuss such exception handling later in the course, yet at this point try to do your best to explain what this does.
 
 
 **2b**: Now that we have a function that find the real roots of such quadratic equations, let us try it on a few examples:
@@ -131,17 +133,19 @@ for example in examples
    roots = real_roots_of_quadratic(example[1], example[2], example[3])
    print("The equation $(example[1])x² + $(example[2])x + $(example[3]) = 0 ") #\^2 + [TAB] #***
    if length(roots) == 0 #***
-   println("has no real roots.") #***
+      println("has no real roots.") #***
    elseif length(roots) == 1 #***
-   println("has the single (real) root $(roots[1])") #***
+      println("has the single (real) root $(roots[1])") #***
    else #***
-   println("has the real roots $(roots[1]) and $(roots[2])") #***
+      println("has the real roots $(roots[1]) and $(roots[2])") #***
    end #***
 end
 ```
 
 1. Add two more examples of your own to the array (of arrays) `examples` and see how it works.
+
 2. The lines marked with `#***` could have been set in a function of their own and that function can be called (invoked) in place of those lines. Name that function `print_quadratic_roots()` and have it accept two arguments. The first argument is an array `coefficients` which is interpreted as the coefficients ($a$, $b$, and $c$). The second argument is the array `roots`. Define that function and run the code with your new function in place of the lines marked with `#***`. Since your new function does not have a return value you may write `return nothing` in the end.
+
 3. Finally beautify the output of your function such that when a coefficient is $+1$ or $-1$ it is not printed but rather only the sign is printed (if needed). For example the polynomial $-1x^2-1x+1$ is better printed as $-x^2-x+1$. In doing so, use the [ternary operator](https://docs.julialang.org/en/v1/manual/control-flow/#man-conditional-evaluation) `? :`. In one way or another. This may have code with less lines (less explicit big `if` - `else` statements).
 
 **2c**: It is common and useful to create testing code that checks that operational code works. For the function `real_roots_of_quadratic()` we may create another function as follows:
@@ -155,12 +159,12 @@ function test_real_roots_of_quadratic(;num_tests = 10000, seed=42)
    Random.seed!(seed)
    test_passed = true
    for _ in 1:num_tests
-   a, b, c = 2000rand(3) .- 1000 #uniform values in the range [-1000, 1000]
-   roots = real_roots_of_quadratic(a,b,c)
-   for x in roots
-   err = a*x^2 + b*x + c 
-   test_passed = (test_passed && isapprox(err, 0.0, atol = 1e-8)) 
-   end
+      a, b, c = 2000rand(3) .- 1000 #uniform values in the range [-1000, 1000]
+      roots = real_roots_of_quadratic(a,b,c)
+      for x in roots
+         err = a*x^2 + b*x + c 
+         test_passed = (test_passed && isapprox(err, 0.0, atol = 1e-8)) 
+      end
    end
    return test_passed
 end
@@ -170,8 +174,11 @@ test_real_roots_of_quadratic() ? println("Test passed") : println("Test failed")
 
 1. Work on understanding the expression `2000rand(3) .- 1000`. How would you change this expression if you wanted the coefficients to be in the range [-5,5]? Make that change and see if the test still passes. (yes/no).
 1. Instead of having the numbers `2000` and `1000` "hardcoded" in the function it is better practice to pass them as optional arguments, similarly to the arguments `num_tests` and `seed`. Do this by creating arguments `coeff_min` and `coeff_max` that are by default at `-1000` and `1000` respectively. This means that the values in the expression `2000rand(3) .- 1000` need to be represented in terms of these arguments. Do this.
+
 1. What happens in this test when there are no real roots? How many iterations does the for loop execute in this case? 
+
 1. In general a test passing is only a necessary condition for validity of a program rather than a sufficient condition. Can you suggest some sort of bug in the `real_roots_of_quadratic()` function that can exist which would slip through the test? Try this bug (modify `real_roots_of_quadratic()` and show that the test still passes).
+
 1. A different way to test would be to use "random roots" instead of random coefficients. Such a test would first randomly decide if there are 0 real roots, 1 real root, or 2 real roots. It would then randomly draw the roots. It would then find the coefficients that match these roots. It would then test that `real_roots_of_quadratic()` has these roots. Try to implement such a test function. For the case of 0 (real roots) you may "hardcode" a few specific examples. Alternatively (optional) try to use the complex numbers. For example `rand()+rand()*im` is a complex number with random real and imaginary values, each in [0,1]
 
 **2d**: In general, we may have had a solver that finds the (potentially) complex roots of a quadratic. Since the coefficients, $a$, $b$, and $c$ are real, these are complex conjugates. So we want to use the quadratic formula directly (potentially taking square roots of negative numbers). 
@@ -201,11 +208,11 @@ function roots_of_quadratic(a::Number, b::Number, c::Number)
    roots::Array{ComplexF64} = []
    Δ = b^2 - 4a*c
    if Δ < 0 
-   roots = [-b + √Complex(Δ), -b - √Complex(Δ)] / (2a)
+      roots = [-b + √Complex(Δ), -b - √Complex(Δ)] / (2a)
    elseif Δ == 0
-   roots = [-b/(2a)]
+      roots = [-b/(2a)]
    else
-   roots = [-b + √Δ, -b - √Δ] / (2a) 
+      roots = [-b + √Δ, -b - √Δ] / (2a) 
    end
    return roots 
 end
@@ -215,7 +222,7 @@ roots_of_quadratic(1,2,3)
 
 The above implementation is fine, however it has code duplication for both cases of $\Delta \neq 0$. That is the case `Δ < 0` and the case `Δ > 0` can be merged. Modify the function so that it does not have an `elseif` statement. In fact, try to write the function without any `if` statement but rather only using the trinary operator `? :`. 
 
-## Question 3: An 1855 research paper is still of interest
+## Question 3: An 1855 research paper is still of interest {-}
 
 <!--Return to the continued fraction from Question 1, again using $a_0 =0, a_1 = 1, a_2 = 2, a_3 = 3, \ldots$. This continued fraction is mentioned [here](https://oeis.org/A052119) and was investigated in this [1855 Amoretti paper](http://www.numdam.org/item/NAM_1855_1_14__40_1.pdf). The approximate value of $x$ is $0.697774657964008$. -->
 The following code computes the approximate value of the continued fraction (mentioned [here](https://oeis.org/A052119) and investigated in [1855 Amoretti paper](http://www.numdam.org/item/NAM_1855_1_14__40_1.pdf))
@@ -237,7 +244,7 @@ amoretti()
 
 **3d**: The list of 105 decimal digits in OEIS is [6, 9, 7, 7, 7, 4, 6, 5, 7, 9, 6, 4, 0, 0, 7, 9, 8, 2, 0, 0, 6, 7, 9, 0, 5, 9, 2, 5, 5, 1, 7, 5, 2, 5, 9, 9, 4, 8, 6, 6, 5, 8, 2, 6, 2, 9, 9, 8, 0, 2, 1, 2, 3, 2, 3, 6, 8, 6, 3, 0, 0, 8, 2, 8, 1, 6, 5, 3, 0, 8, 5, 2, 7, 6, 4, 6, 4, 1, 1, 1, 2, 9, 9, 6, 9, 6, 5, 6, 5, 4, 1, 8, 2, 6, 7, 6, 5, 6, 8, 7, 2, 3, 9, 8, 2]. These digits are not obtainable using standard floating point number calculations as above. However using `big()` you can create "big" floating point numbers. Use `big()` in the correct way to retrieve all of these digits and write code that compares your digits to the OEIS list. There are several ways to go about this. 
 
-## Question 4: Binary, Hex, and Decimal 
+## Question 4: Binary, Hex, and Decimal {-}
 
 Consider this code which creates two functions for creating random strings representing binary numbers and hexadecimal numbers.
 
@@ -272,7 +279,7 @@ r_hex_strs = [random_hex_string() for _ in 1:10^3];
 
 # Questions 5--8 are submitted on Jupyter [notebook II](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-II-Q5-Q8.ipynb)
 
-## Question 5: Primitive abundant numbers (PAN)
+## Question 5: Primitive abundant numbers (PAN) {-}
 
 **5a** Investigate what defines a number to be a [primitive abundant number](https://en.wikipedia.org/wiki/Primitive_abundant_number). For this, look up the definition and consider why 20 is a PAN and why other numbers such as 18, 19, 21, 22, 23 are not PANs. It is best to use the term [deficient number](https://en.wikipedia.org/wiki/Deficient_number) as an aid, but in your answer also define a deficient number. Write your answer in words.
 
@@ -281,7 +288,7 @@ r_hex_strs = [random_hex_string() for _ in 1:10^3];
 **5c**: Now write a program that does the same thing without using the `divisors` function from `Primes.jl` (i.e. write your own divisors function or something similar and use your own function).
 
 
-## Question 6: Primes and Goldbach's conjecture
+## Question 6: Primes and Goldbach's conjecture {-}
 
 [Goldbach's conjecture](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture) states that every even number greater than two can be represented as a sum of two primes. For example $16 = 11+5$ and $40 = 37+3$ or $23+17$. In this question you will try to disprove the conjecture by searching for an even number that is not a sum of two primes (don't expect to succeed in disproving).
 
@@ -296,15 +303,15 @@ function sieve_of_Eratosthenes(n)
    primebits[1] = false #The number 1 is not prime
    p = 2 #Smallest prime
    while p ≤ n
-   i = 2p
-   while i ≤ n  # \le +[TAB]
-   primebits[i] = false
-   i += p
-   end
-   p += 1
-   while p ≤ n && !primebits[p]
-   p += 1
-   end
+      i = 2p
+      while i ≤ n  # \le +[TAB]
+         primebits[i] = false
+         i += p
+      end
+      p += 1
+      while p ≤ n && !primebits[p]
+         p += 1
+      end
    end
    (1:n)[primebits]
 end
@@ -327,9 +334,9 @@ function check_Goldbach(n)
    @assert iseven(n)
    num_pairs = 0
    for p in sieve_of_Eratosthenes(n)
-   if in(n-p,sieve_of_Eratosthenes(n))
-   num_pairs += 1
-   end
+      if in(n-p,sieve_of_Eratosthenes(n))
+         num_pairs += 1
+      end
    end
    return num_pairs
 end
@@ -375,7 +382,7 @@ It may take a little bit for the LLM to compute the response. Once you get the r
 **7d**: Now wrap these calls in a loop where `readline()` is followed by sending the query to the LLM, and then printing out the response like a chat interface. Demonstrate how this works by printing a screenshot of your created chat module. 
 -->
 
-## Question 7: Sorting
+## Question 7: Sorting {-}
 
 Consider this code which sorts a list of names:
 
@@ -383,7 +390,7 @@ Consider this code which sorts a list of names:
 function array_table(array, heading)
    println(heading,":")
    for (i,a) in enumerate(array)
-   println(i,"\t",a)
+      println(i,"\t",a)
    end
 end
 
@@ -436,7 +443,7 @@ array_table(sorted_names,"Sorted by last name")
 **7d**: Now generate lists of ten thousand integers via `data = rand(Int,10^4)`. Compare running times of the system's `sort()`, `my_sort_bubble()`, and `my_sort_quick()` on this list. Use the `@btime` macro. Then repeat for $10^7$ and $10^8$ integers and compare `my_quick_sort()` and the in-built `sort()`. Report your results in an organized manner. 
 
 
-## Question 8: Matrix Multiplication
+## Question 8: Matrix Multiplication {-}
 
 Here is code that creates two random matrices and displays their matrix product:
 
@@ -461,9 +468,9 @@ function my_mult_inner_products(A,B)
    C = Array{Float64}(undef,n,p)
 
    for i in 1:n
-   for j in 1:p
-   C[i,j] = A[i,:]' * B[:,j] #compute inner product of i'th row of A and j'th column of B
-   end
+      for j in 1:p
+         C[i,j] = A[i,:]' * B[:,j] #compute inner product of i'th row of A and j'th column of B
+      end
    end
    return C
 end
@@ -506,7 +513,7 @@ So now rank one matrices may be added up.
 # Questions 9--11 are submitted on Jupyter [notebook III](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-III-Q9-Q11.ipynb)
 
 
-## Question 9: Setting up your GitHub repo for hand-in.
+## Question 9: Setting up your GitHub repo for hand-in. {-}
 
 * You will be invited to **create a GitHub account and joing the GitHub organisation MATH25042026**. 
 * If you already have a GitHub account, you may instead add your UQ email address to this existing account (see https://docs.github.com/en/account-and-profile/how-tos/email-preferences/adding-an-email-address-to-your-github-account for detailed instructions)
@@ -526,7 +533,7 @@ Your GitHub repo should be formatted as exactly as follows:
 * Have a `notebooks` directory and in it have the 4 submission forms (notebooks) I--IV. 
 * Note: make sure that there aren't any files in your submission repo except for the submission forms I--IV (.ipynb format) and `Readme.md`. You may use the `.gitignore` file to ensure `git` does not commit additional files and output files to your `repo`. Voice recording are to be uploaded to blackboard, not GitHub.
 
-## Question 10: A few unix commands
+## Question 10: A few unix commands {-}
 
 In this question you will manipulate a few files via Unix command line. If you are using Windows, it is best you do it via GitBash or a Linux emulator. If you are using Linux or Mac, just use the shell. For the question create a folder `hw_q11` and make sure that `hw_q11` is your working directory in the terminal/shell/command-line via `cd`. You will then use the commands `ls`, `pwd`, `cd`, `cp`, `mv`, `rm` (be careful with `rm`), `cat`, and `echo`. You'll also use output redirection to file (`>`).
 
@@ -562,7 +569,7 @@ Your submission should be comprised of the text from the shell including the com
 
 **10o**: Move back to `hw_q11` and delete the directory `people`. Use either `rm` with a correct flag or `rmdir`.
 
-## Question 11: HTTP, Files, JSON, and CSV
+## Question 11: HTTP, Files, JSON, and CSV {-}
 
 
 Inspect the Jupyter notebook file for [practical B](https://github.com/yoninazarathy/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/practicals_jupyter/practical_B_more_on_basic_tools_and_julia_essentials.ipynb), `practical_B_more_on_basic_tools_and_julia_essentials.ipynb`. The source URL is available by clicking "Raw" on the GitHub page. It is in JSON format.
@@ -578,6 +585,7 @@ Write a program that reads in the JSON file (directly from the web) of the Jupyt
 The program should then create two CSV files, both with header rows and named `markdown_summary.csv` and `code_summary.csv`. Both of these files should contain a data row for each respective markdown or code cell in the notebook. The first column in each of the files should be named `cell_number` and should indicate the cell number in the Jupyter notebook (this is a unique count starting at 1 within the cells). The second and third columns are:
 
 * `character_count` - determines how many characters total are in the cell (include characters such as `\n` and count unique characters as a single character. E.g. `√` is a single character.
+
 * `line_count` - The number of lines the cell uses.
 
 The remaining columns count frequency of elements within the markdown or code of the cell. These columns will differ for `markdown_summary.csv` and `code_summary.csv`, and are described now.
@@ -594,7 +602,7 @@ Your relevant submission form for the assignment should show the first few lines
 # Questions 12--15 are submitted on Jupyter [notebook IV](https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/blob/main/submission_forms_jupyter/Submission-Form-IV-Q12-Q15.ipynb)
 
 
-## Question 12: Numerical derivatives
+## Question 12: Numerical derivatives {-}
 
 The lecture notes contain code that illustrates the absolute relative error (as a function of $h$) for numerical derivatives using the **forward difference scheme**,
 
@@ -635,7 +643,7 @@ Assume you do not know the Jacobian expression and wish to compute it for a vect
 
 **12c**:  Consider now $z = [1^{1/3}, 2^{1/3}, \ldots, K^{1/3}]^\top$ for $K=10$, $K=20$, and $K=100$. Plot the error of the Jacobian for both the forward difference scheme and the central difference scheme where as error you consider the euclidean distance between the approximated Jacobian and the explicit Jacobian (the square root of the sum up the squares of the differences between entries of the numerical derivative and the explicit one). What is the optimal $h$ in each case?
 
-## Question 13: Markov chains and `LinearAlgebra`
+## Question 13: Markov chains and the `LinearAlgebra` package.{-}
 
 A discrete time, time-homogenous, finite state markov chain can be defined as a random sequence $X_0,X_1,X_2,\ldots$ where $X_i \in \{1,2,\ldots,L\}$ with $L$ being the number of states, and where the probability of $X_{n+1} = j$ given that $X_n = i$ is determined by the element $P_{ij}$ of the (stochastic) matrix $P$. This is an $L \times L$ matrix with non-negative entries and, $\sum_{j=1}^L P_{ij} = 1$ for all $i \in \{1,\ldots,L\}$. Hence each row $i$ of the matrix is the probability distribution of the next value in the sequence in case where the current value is $i$. An initial probability of $X_0$ is also given via some vector $p^0$ where $p^0_i = {\mathbb P}(X_0 = i)$. 
 
@@ -644,11 +652,13 @@ Markov chains are very useful models for a variety of applications and at UQ are
 We focus on irreducible, aperiodic, finite state Markov chains. Irreducible means that for every pair $(i,j)$ there exists an $n$ such that $i$-th $j$-th entry of the matrix power $P^n$ is non-negative. Aperiodic is guaranteed when the diagonal entries of $P$ are strictly positive. Irreducibility means that every state $\{1,\ldots,L\}$ is reachable from every other state and being aperiodic implies there aren't times $n$ where only a subset of the states can be visited. For such Markov chains, one important vector quantity is the **stationary probability** (row) $L$-vector. Here it is denoted $\pi$ with $\sum_{i=1}^L \pi_i =1$ and $\pi_i>0$ for every $i$. This vector $\pi$ counts the long term statistical occupancy of states, and can be characterized/computed in several ways:
 
 1. It satisfies $\pi P = \pi$ (note that this is an undetermined system of linear equations because $(I-P)$ is singular; still the additional requirement that $\sum_{i=1}^L \pi_i =1$ ensures uniqueness of $\pi$).
+
 1. For any $i$,
 $$
 \lim_{n \to \infty} [P^n]_{ij} = \pi_j.
 $$
 3. The theory of non-negative matrices implies that $P$ has a a real eigenvalue equal to $1$. This is the eigenvalue with maximal magnitude among all eigenvalues of $P$. The vector $\pi$ is proportional to the eigenvector associated with this maximal eigenvalue ($\sum_{i=1}^L \pi_i =1$).
+
 1. Given a sequence of random variables from this Markov chain $\{X_0,X_1,X_2,\ldots\}$ we estimate $\pi_i$ for large $N$ via,
 $$
 \pi_i \approx \frac{1}{N} \sum_{n=1}^N {\mathbf 1} \{X_n = i\}, 
@@ -701,7 +711,8 @@ You will now consider $L=2,3,4,5,10,20,30,40,50,100,200,300,400,500,1000$ and in
 
 Once your code works for the four methods, create some graphic or tabular output of your choice (one or two plots at most) which evaluates performance of each of the methods in terms of accuracy (and optional: running time). To measure accuracy use the `norm` function to compute the euclidean norm between your calculated $\pi$ and that arising from the explicit solution `structured_π`.
 
-## Question 14: Planetary Motion - Part 1
+<!-- ## Question 14: Planetary Motion - Part 1 {-} -->
+## Question 14: Planetary Motion {-}
 
 In this problem we deal with ordinary differential equations (ODEs), similar to those associated with planetary motion. Specifically we focus on a very simple two body problem reduced to two one body problems. Here you will implement the [Euler Method](https://en.wikipedia.org/wiki/Euler_method) and the [classic Runge–Kutta method](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods) for solving ODEs. You will use these methods on the simple problem and analyze their performance in terms of step size.
 
@@ -909,7 +920,7 @@ $$
 
 **15d**: The Julia package [DifferentialEquations.jl](https://github.com/SciML/DifferentialEquations.jl) has support for various state of the art techniques, including [symplectic integrators](https://diffeq.sciml.ai/stable/solvers/dynamical_solve/). Choose a state of the art standard ODE solver and a symplectic integrator and use it to find a solution for this ODE system. Compare results with your own implementation of leapfrog and comment on the results.
 -->
-## Question 15: Perspective seminar (Dr. Anna Foeglein).
+## Question 15: Perspective seminar (Dr. Anna Foeglein). {-}
 
 This question presents you with an additional 10 bonus points. 
 
