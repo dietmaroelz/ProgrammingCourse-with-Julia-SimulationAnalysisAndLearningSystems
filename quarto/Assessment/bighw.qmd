@@ -557,7 +557,7 @@ Your submission should be comprised of the text from the shell including the com
 
 **10i**: Using the same thing you did in **10c**, create three additional files of peoples names in the folder `people`.
 
-**10j**: Change directory into `people`. Now Use `mv` to move one of the people files back into `hw_q11`. Use `..` (double dot).
+**10j**: Change directory into `people`. Now Use `mv` to move one of the people files back into `hw_q10`. Use `..` (double dot).
 
 **10k**: Move another file back into `hw_q10`, but now use an absolute path to describe the destination folder.
 
