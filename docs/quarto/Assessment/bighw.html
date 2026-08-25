@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="bighw_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="bighw_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="bighw_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="bighw_files/libs/bootstrap/bootstrap-888e7731d048cfaa148b823e8fc1b2fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="bighw_files/libs/bootstrap/bootstrap-25808a6e4626de0feadfecd6d3274d08.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -729,9 +729,9 @@ A B = \sum_{j=1}^m A_{:,\,j} B_{j,\,:}^\top ~~,
 </section>
 <section id="question-10-a-few-unix-commands" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="question-10-a-few-unix-commands">Question 10: A few unix commands</h2>
-<p>In this question you will manipulate a few files via Unix command line. If you are using Windows, it is best you do it via GitBash or a Linux emulator. If you are using Linux or Mac, just use the shell. For the question create a folder <code>hw_q11</code> and make sure that <code>hw_q11</code> is your working directory in the terminal/shell/command-line via <code>cd</code>. You will then use the commands <code>ls</code>, <code>pwd</code>, <code>cd</code>, <code>cp</code>, <code>mv</code>, <code>rm</code> (be careful with <code>rm</code>), <code>cat</code>, and <code>echo</code>. You’ll also use output redirection to file (<code>&gt;</code>).</p>
+<p>In this question you will manipulate a few files via Unix command line. If you are using Windows, it is best you do it via GitBash or a Linux emulator. If you are using Linux or Mac, just use the shell. For the question create a folder <code>hw_q10</code> and make sure that <code>hw_q10</code> is your working directory in the terminal/shell/command-line via <code>cd</code>. You will then use the commands <code>ls</code>, <code>pwd</code>, <code>cd</code>, <code>cp</code>, <code>mv</code>, <code>rm</code> (be careful with <code>rm</code>), <code>cat</code>, and <code>echo</code>. You’ll also use output redirection to file (<code>&gt;</code>).</p>
 <p>Your submission should be comprised of the text from the shell including the commands you used and the outputs. Just get it by copying the shell text and pasting in a file.</p>
-<p><strong>10a</strong>: Create the folder <code>hw_q11</code> and make that your working directory in the shell. Illustrate this via <code>pwd</code>.</p>
+<p><strong>10a</strong>: Create the folder <code>hw_q10</code> and make that your working directory in the shell. Illustrate this via <code>pwd</code>.</p>
 <p><strong>10b</strong>: Display your name to the terminal using the <code>echo</code> command.</p>
 <p><strong>10c</strong>: Repeat and use output redirection (<code>&gt;</code>) to send the output of the echo command to a file <code>my_name.txt</code>.</p>
 <p><strong>10d</strong>: Display the contents of the file using the <code>cat</code> command.</p>
@@ -739,13 +739,13 @@ A B = \sum_{j=1}^m A_{:,\,j} B_{j,\,:}^\top ~~,
 <p><strong>10f</strong>: Create a duplicate of the file to another file called <code>my_name2.txt</code> using the <code>cp</code> command.</p>
 <p><strong>10g</strong>: Create a folder named <code>people</code> using the <code>mkdir</code> command.</p>
 <p><strong>10h</strong>: Move <code>my_name2.txt</code> into <code>people</code>, where the file name will be <code>&lt;&lt;YOUR-NAME&gt;&gt;.txt</code> with <code>&lt;&lt;YOUR-NAME&gt;&gt;</code> being your first and last name without white space using <code>_</code>. For this use the <code>mv</code> command.</p>
-<p><strong>10i</strong>: Using the same thing you did in <strong>11c</strong>, create three additional files of peoples names in the folder <code>people</code>.</p>
+<p><strong>10i</strong>: Using the same thing you did in <strong>10c</strong>, create three additional files of peoples names in the folder <code>people</code>.</p>
 <p><strong>10j</strong>: Change directory into <code>people</code>. Now Use <code>mv</code> to move one of the people files back into <code>hw_q11</code>. Use <code>..</code> (double dot).</p>
-<p><strong>10k</strong>: Move another file back into <code>hw_q11</code>, but now use an absolute path to describe the destination folder.</p>
+<p><strong>10k</strong>: Move another file back into <code>hw_q10</code>, but now use an absolute path to describe the destination folder.</p>
 <p><strong>10l</strong>: Copy one of the files in people into a file name starting with <code>.</code> (single dot as prefix). For example if the file name was <code>marie_curie.txt</code>, copy it into <code>.marie_curie.txt</code>.</p>
 <p><strong>10m</strong>: Show all the files in the directory (also showing <code>.marie_curie.txt</code>), where you also see the size of the files and other information. Use the correct flag(s) for <code>ls</code> to show hidden files.</p>
 <p><strong>10n</strong>: Delete all the files in the directory using a single command. Please be very careful when deleting files!</p>
-<p><strong>10o</strong>: Move back to <code>hw_q11</code> and delete the directory <code>people</code>. Use either <code>rm</code> with a correct flag or <code>rmdir</code>.</p>
+<p><strong>10o</strong>: Move back to <code>hw_q10</code> and delete the directory <code>people</code>. Use either <code>rm</code> with a correct flag or <code>rmdir</code>.</p>
 </section>
 <section id="question-11-http-files-json-and-csv" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="question-11-http-files-json-and-csv">Question 11: HTTP, Files, JSON, and CSV</h2>

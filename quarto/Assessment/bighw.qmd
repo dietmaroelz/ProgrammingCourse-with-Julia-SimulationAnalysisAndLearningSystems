@@ -535,11 +535,11 @@ Your GitHub repo should be formatted as exactly as follows:
 
 ## Question 10: A few unix commands {-}
 
-In this question you will manipulate a few files via Unix command line. If you are using Windows, it is best you do it via GitBash or a Linux emulator. If you are using Linux or Mac, just use the shell. For the question create a folder `hw_q11` and make sure that `hw_q11` is your working directory in the terminal/shell/command-line via `cd`. You will then use the commands `ls`, `pwd`, `cd`, `cp`, `mv`, `rm` (be careful with `rm`), `cat`, and `echo`. You'll also use output redirection to file (`>`).
+In this question you will manipulate a few files via Unix command line. If you are using Windows, it is best you do it via GitBash or a Linux emulator. If you are using Linux or Mac, just use the shell. For the question create a folder `hw_q10` and make sure that `hw_q10` is your working directory in the terminal/shell/command-line via `cd`. You will then use the commands `ls`, `pwd`, `cd`, `cp`, `mv`, `rm` (be careful with `rm`), `cat`, and `echo`. You'll also use output redirection to file (`>`).
 
 Your submission should be comprised of the text from the shell including the commands you used and the outputs. Just get it by copying the shell text and pasting in a file.
 
-**10a**: Create the folder `hw_q11` and make that your working directory in the shell. Illustrate this via `pwd`.
+**10a**: Create the folder `hw_q10` and make that your working directory in the shell. Illustrate this via `pwd`.
 
 **10b**: Display your name to the terminal using the `echo` command.
 
@@ -555,11 +555,11 @@ Your submission should be comprised of the text from the shell including the com
 
 **10h**: Move `my_name2.txt` into `people`, where the file name will be `<<YOUR-NAME>>.txt` with `<<YOUR-NAME>>` being your first and last name without white space using `_`. For this use the `mv` command.
 
-**10i**: Using the same thing you did in **11c**, create three additional files of peoples names in the folder `people`.
+**10i**: Using the same thing you did in **10c**, create three additional files of peoples names in the folder `people`.
 
 **10j**: Change directory into `people`. Now Use `mv` to move one of the people files back into `hw_q11`. Use `..` (double dot).
 
-**10k**: Move another file back into `hw_q11`, but now use an absolute path to describe the destination folder.
+**10k**: Move another file back into `hw_q10`, but now use an absolute path to describe the destination folder.
 
 **10l**: Copy one of the files in people into a file name starting with `.` (single dot as prefix). For example if the file name was `marie_curie.txt`, copy it into `.marie_curie.txt`. 
 
@@ -567,7 +567,7 @@ Your submission should be comprised of the text from the shell including the com
 
 **10n**: Delete all the files in the directory using a single command. Please be very careful when deleting files! 
 
-**10o**: Move back to `hw_q11` and delete the directory `people`. Use either `rm` with a correct flag or `rmdir`.
+**10o**: Move back to `hw_q10` and delete the directory `people`. Use either `rm` with a correct flag or `rmdir`.
 
 ## Question 11: HTTP, Files, JSON, and CSV {-}
 
