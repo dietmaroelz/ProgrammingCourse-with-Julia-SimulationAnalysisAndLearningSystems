@@ -14,9 +14,9 @@ format:
 ---
 
 # Project A - Semester 2, 2026
-# Discrete Event Simulation of a Modulated Queueing Network (+ perspective seminar summary)
+# Discrete Event Simulation of a Modulated Queueing Network 
 
-(last edit: June 30, 2026)
+(last edit: August 30, 2026)
 
 **Due:** Friday, 25 September, 2026, 16:00. Late submissions are not accepted. **Work in pairs** - you must have a single partner for submission. Any deviation from this requires special permission from the course coordinator.
 
@@ -29,7 +29,7 @@ format:
 
 **Submission format:** This assignment should be submitted via a GitHub Repo and a PDF file via Blackboard. 
 
-Specific instructions for the GitHub repo are below. It is important that the GitHub repo be made **private** and the course user name `uqMATH2504` be invited as a collaborator. It is also important to name the repo *exactly* as `<<FIRST NAME1>>-<<LAST NAME1>>__<<FIRST NAME2>>-<<LAST NAME2>>-2504-2026-PROJECTA`. So for example if your names are "Little Pug" and "Big Hound" the repo name should be `Little-Pug__Big-Hound-2504-2026-PROJECTA`. Please invite `uqMATH2504` as a collaborator as early as possible.
+Specific instructions for the GitHub repo are below. It is important that the GitHub repo be created within (owned) by the github organizatio MATH25042026 and be made **private**. It is also important to name the repo *exactly* as `PROJECTA-2504-2026-<<FIRST NAME1>>-<<LAST NAME1>>__<<FIRST NAME2>>-<<LAST NAME2>>`. So for example if your names are "Little Pug" and "Big Hound" the repo name should be `PROJECTA-2504-2026-Little-Pug__Big-Hound`. Please create the repo as early as possible.
 
 The PDF file should be a nicely formatted file that includes:
 
@@ -62,15 +62,14 @@ Marking responses will be made by the teaching staff by annotating (or leaving t
 
 ## Setting up your GitHub repo for hand-in (10pts)
 
-* Ideally use the same accounts you used for BigHW. Choose one of the team members to "own" the repo and the other(s) will be invited as collaborators.  
-* Make sure the repo is **private**.
-* Invite the course GitHub user, `uqMATH2504` as a collaborator and follow up, in case the invitation is not accepted. You may do so early on while working on the project, and must do this no later than the project due date. 
+* Ideally use the same accounts you used for BigHW. Create your repo within, i.e. owned by that MATH25042026 github organization. Choose one of team members to "own" the repo and the other(s) will be invited as collaborators.  
+* Make sure the repo is **private**. 
 * Do **not** make any changes (commits) to the repo after the project due date. 
 * Create a local clone of the repo. It is recommended to use the `git` command via the shell to work on making changes/additions to the assignment and submitting the changes. However you are free to use any other mechanism (VS-Code, GitHub desktop, etc).
 
 Your GitHub repo should be formatted exactly as follows:
 * Have a `README.md` file which states your names, the assignment title, and has a (clickable) link to the assignment instructions on the course website (to this document). 
-* Have a `LICENSE.md` file. Choose a license as you wish (for example the MIT license). However keep in mind that you must keep the submission private until the end of the semester.
+* Have a `LICENSE.md` file. Choose a license as you wish (for example the MIT license). However keep in mind that you must keep the submission private.
 * Have a `.gitignore` file.
 * Have basic running instructions on how to run the code.  
 * Have `src` and `test` folders.
@@ -99,7 +98,7 @@ Note: Since the submission is in pairs you should only submit a single writeup f
 
 ## Overview of the model
 
-You may want to listen to last year's [Explainer video](https://www.youtube.com/watch?v=VI2usNCmVmg) by Yoni Nazarathy.
+You may want to listen to an earlier [Explainer video](https://www.youtube.com/watch?v=VI2usNCmVmg) by Yoni Nazarathy.
 
 Your key task is to create a discrete event simulation engine for stochastic models that are called "Modulated Open Jackson Networks". [Jackson networks](https://en.wikipedia.org/wiki/Jackson_network) are well studied in classical "applied probability" and "stochastic modelling". The phrase "modulated" means that the parameters of the network vary over time. <!--"Modulated" networks are less amenable to closed form mathematical results (explicit formulas) - and this is why we will use discrete event simulation to analyze them.--> The "Open" phrase implies that customers may enter and leave these networks (in contrast with "closed" networks that have a finite number of customers). <!--Note: you do not need to dive deeply into the Wikipedia entries or other literature. All the information you need about the model is supplied in this project description.-->
 
@@ -130,7 +129,7 @@ When a job completes service it either leaves the system immediately, or immedia
 
 *Tip:* Recall (4) from the question on ''Markov chains and LinearAlgebra'' of BigHW. The `sample()` function from `StatsBase.jl` may help generate the location (node) of the next job when carrying out the simulation. Yet keep in mind that "outside of the system" is also a possible location.
 
-Now let us now describe how **modulation** takes place. With this model feature, the service rates of nodes are not fixed at $\mu_1,\ldots,\mu_L$ but rather alternate between the rates $\mu_1,\ldots,\mu_L$ and the rates $\kappa\mu_1,\ldots,\kappa\mu_L$, with $\kappa>1$. I.e the second set of rates is "faster" than the first set of rates. Hence the system is either in "slow mode" (rates denoted $\mu_i$), or is "fast mode" (rates denoted $\kappa\mu_i$). At any given time, the mode of the system is either `slow` or `fast` and when this change happens, all rates instantly change. Very loosely, in the amusement park setting you can think of `slow` as a situation where rides only work with some employees and equipment while `fast` is a situation where rides work with more employees and equipment and operate faster. Modulation is then the process of changing between `slow` and `fast` back and forth. 
+How does **modulation** work? With this model feature, the service rates of nodes are not fixed at $\mu_1,\ldots,\mu_L$ but rather alternate between the rates $\mu_1,\ldots,\mu_L$ and the rates $\kappa\mu_1,\ldots,\kappa\mu_L$, with $\kappa>1$. I.e., the second set of rates is "faster" than the first set of rates. Hence the system is either in "slow mode" (rates denoted $\mu_i$), or is "fast mode" (rates denoted $\kappa\mu_i$). At any given time, the mode of the system is either `slow` or `fast` and when this change happens, all rates instantly change. Very loosely, in the amusement park setting, you can think of `slow` as a situation where rides only work with some employees and equipment while `fast` is a situation where rides work with more employees and equipment and operate faster. Modulation is then the process of changing between `slow` and `fast`, back and forth. 
 
 The process of changing (modulating) between "slow mode" (`slow`) and "fast mode" (`fast`) occurs independently of the jobs in the system, and for all servers together. Specifically the system changes between `slow` and `fast` and back as follows: `slow` durations are exponentially distributed with mean $\gamma_1^{-1}$ where $\gamma_1 > 0$. `fast` durations are exponentially distributed with mean $\gamma_2^{-1}$ where $\gamma_2 > 0$. The system alternates between `slow` and `fast` and back based on such independent random variables. The system starts in `slow`, then changes to `fast`, then back to `slow`, and so fourth. We denote the long term proportion of time that the system is `slow` via $R^{(1)}$. This quantity is,
 
@@ -144,7 +143,7 @@ $$
 R^{(2)} = \frac{\gamma_1}{\gamma_1 + \gamma_2} = \frac{\gamma_2^{-1}}{\gamma_1^{-1} + \gamma_2^{-1}}.
 $$
 
-Note that if $R^{(1)} = 1$ or $R^{(2)} = 1$ it means that the system is either always `slow` or respectively always `fast`. This can be approximated for "always `slow`" by sending $\gamma_1 \to 0$ (infinitely small "changing to fast" rate). Similarly $\gamma_2 \to 0$ will achieve "always `fast`". We call these **test cases** the **always slow** and **always fast** test cases. They are important because in this case the network is essentially just an Open Jackson Network (not modulated).
+Note that if $R^{(1)} = 1$ or $R^{(2)} = 1$, it means that the system is either always `slow` or respectively always `fast`. This can be approximated for "always `slow`" by sending $\gamma_1 \to 0$ (infinitely small "changing to fast" rate). Similarly $\gamma_2 \to 0$ will achieve "always `fast`". We call these **test cases** the **always slow** and **always fast** test cases. They are important because in this case the network is essentially just an Open Jackson Network (not modulated).
 
 When the system changes mode (`slow` to `fast` or the other way), any service time of a job currently in service is purged and the service restarts for that job at a new service duration according to the new mode. So for example assume that server number 7 has a job that entered service at time `9.9` when the system was `slow`. This means that at time `9.9` the service duration was drawn with rate $\mu_7$. Say that this duration is `3.3`. Hence the job is due to leave service at time `13.2`. Now assume that at time `11.4` the system switches to `fast` mode. Then at that point the job in service for server 7 needs to forget that it is due to leave at time `13.2` and instead a new service duration is drawn. That duration is exponentially distributed with rate $\kappa\mu_7$. Say the new service duration is `2.3`, the job is now due to finish service at `11.4+2.3=13.7`.
 
@@ -316,14 +315,15 @@ scenario4 = NetworkParameters(  L=L,
 
 For each of these scenarios you can modify certain parameters. Importantly, the way we adjust for a desired $\rho^*$ is by adjusting the `α_vector`. Details below.
 
-# Task 1: Thinking about Modelling Assumptions (5pts)
+# Tasks
+## Task 1: Thinking about Modelling Assumptions (5pts)  {-}
 
 This task does not involve any coding or computation. Your answer can be in paragraph form or bullet point form. Consider the Modulated Jackson Network model and the application of a "Dream World" amusement park. As mentioned above, the model can be used to model customer congestion in the amusement park. However, like any model it is at best a rough approximation of reality. Describe some features that exist in the amusement park setting that are **not** captured by the model. Similarly, describe model assumptions that may be **unrealistic** for the application of the amusement park.
 
 Also answer the following: If you were actually using this model to assess congestion at the park, would it be useful or not? What would you use such a model for in the context of the park? What operational answers can you get with the aid of such simulations? To get insight for answering this question, you may (but are not required to) reference the perspective seminar lecture by Dr. Anna Foeglein. In that lecture Anna describes her work as a simulation professional.
 
 
-# Task 2: Computation for Jackson Networks (12pts)
+## Task 2: Computation for Jackson Networks (12pts)  {-}
 
 We provide you with the functions `maximal_alpha_scaling()` and `set_scenario()` for adapting parameters of a scenario for a desired $\rho^*$ value. These functions also set modulation related parameters, $\kappa$, $\gamma_1$ and $R^{(1)}$.
 
@@ -390,7 +390,7 @@ adjusted_net = set_scenario(scenario2, 0.7; γ₁ = 0.1, R1 = 0.7, κ = 3.0)
 
 Now, after you take time to understand the code and computations above, assume we are in one of three test cases, the **always slow** case, the **always fast** case, or the **super fast modulation** case. Since each of these cases agree with a (non-modulated) Open Jackson Network we'll use these cases as test code later. At this point, set parameters for each scenario and each of these cases (choose the $\gamma_1$ and $R^{(1)}$ parameters as you like, as long as they approximate these cases; keep $\kappa = 2$). Then for each of the 4 scenarios and each of the 3 cases create a plot of the Open Jackson Network **total steady state mean queue lengths** as a function of $\rho^*$. For this, simply use the fact that the theoretical steady state mean queue length for individual queue $i$ is $\rho_i/(1-\rho_i)$. Then add the queue length of all $L$ queues in the scenario. Note the plots you create will not be affected by the type of test case (always slow, always fast, or super fast modulation). So it is enough to present 4 plots (no need for 12). Still, you will use this code below for testing. The idea here is that you know what type of behavior to expect from the network in these cases. 
 
-## Task 3: A Simulation Engine Based on Queue States (33pts)
+## Task 3: A Simulation Engine Based on Queue States (33pts)  {-}
 
 Create a simulation engine which can be run either with the following `sim_net_trace` function or the `sim_net_estimation` function.
 
@@ -448,7 +448,7 @@ Now use `sim_net_trace` to plot traces for the first three scenarios, each set t
 
 **Tip**: Implement this main task one step at a time. Then add more components until you get the full functionality. For example, first have the network without modulation and then add modulation. Also first have deterministic routing and then add random routing. Printing out network states in short debug runs can be helpful also.
 
-## Task 4: Doing Statistical Testing (20pts)
+## Task 4: Doing Statistical Testing (20pts)  {-}
 
 Now you can test/explore the simulation in several ways, each time comparing to an Open Jackson Network. In all cases use `sim_net_estimation`. If there are problems with the test you may need to return to Task 3 to adjust your code. 
 
@@ -460,7 +460,7 @@ Now you can test/explore the simulation in several ways, each time comparing to 
 
 These tests may be placed in your `test` folder. For them to be automatic you would require thresholds as they are statistical (noisy tests). So making the tests automatic is not required.  
 
-## Task 5: Analysis of the effect of modulation on Mean Queue Sizes (20pts)
+## Task 5: Analysis of the effect of modulation on Mean Queue Sizes (20pts)  {-}
 
 Now that the simulation appears to be working correctly (based on your tests above), use your simulation engine to carry out a study. In particular we are interested in the effect of modulation on mean queue sizes. For networks with the same $\rho^*$, how does modulation affect mean queues? We know that as $\rho^*$ increases from $0$ towards $1$, mean queue sizes increase. But what about modulation? The answer to this is not clear.
 
