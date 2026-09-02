@@ -34,8 +34,8 @@ The PDF file should be a nicely formatted file that includes:
 
 * Your names, student numbers, and assignment title (Project A - 2026) on the top.
 * A (clickable) link to your GitHub repo.
+* A brief description of how you have structured your module and which files contain the important functions.
 * Instructions on how to run the main simulation code in the repo via an easy to use `simulation_script.jl` file.
-* All of the project code formatted in an organized manner.
 * Output and answers to specific questions formatted in an organized manner.
 * Plots and graphs should have clean organized labels, legends, etc.
 
