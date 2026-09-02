@@ -13,7 +13,6 @@ format:
     number-sections: true
 ---
 
-# Project A - Semester 2, 2026
 # Discrete Event Simulation of a Modulated Queueing Network 
 
 (last edit: August 30, 2026)
