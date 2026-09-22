@@ -13,8 +13,6 @@ format:
     number-sections: true
 ---
 
-# Unit 5: More language features for software architecture
-
 In the previous three units we explored basics of programming and computation (Unit 2), algorithms and data structures (Unit 3), and data files and numerics (Unit 4). In this unit we take a deeper and more thorough approach at basic Julia language features.
 
 Programming languages, including Julia, are designed mostly with these aims in mind:
@@ -29,7 +27,7 @@ Julia is a high-performance language for solving large mathematical problems, an
 
 The goal of this unit is to show you the most important language features of Julia and how to use them to best effect. The most important language features that we explore are the syntax, type system, user-defined types, and multiple-dispatch. At the end we'll consider how to use these to construct your code with an emphasis on types and functions (data and transformations / nouns and verbs). Choosing good *nouns* and *verbs* for your problem domain is the core of good program design. The notes below often refer to the Julia documentation.
 
-## Values and their types
+# Values and their types
 
 One way Julia allows for easy and fast mathematical code is to emphasise _values_ (or _objects_), and transformations of values (via functions).
 
@@ -46,7 +44,7 @@ Many modern languages feature the above, but Julia takes it even further than th
 
 With these last two, you can do some pretty powerful things with Julia. In fact, most of Julia is itself written in Julia. However, we won't focus on those here.
 
-### Why is it so?
+## Why is it so?
 
 Remember, all this is designed to make it easy for mathematicians to write code that fast to run and easy to scale.
 
@@ -61,7 +59,7 @@ The fact that values have _types_ is for two reasons:
 
 Types have two purposes: help _humans_ organise their data and define behaviour, and the help _the computer_ to execute the program quickly.
 
-### All valid code is an _expression_
+## All valid code is an _expression_
 
 An expression is a piece of code that evaluates to a value. (Some languages, like Python or C, also have other pieces of syntax which are not expressions, typically known as "statements" - a statement tells to computer or compiler to "do something" but does not produce a value you can use).
 
@@ -81,7 +79,7 @@ y = ["a", "b", "c"]
 z = println(pi)
 ```
 
-### Every value has a concrete type
+## Every value has a concrete type
 
 The types of the first value is straightforward:
 
@@ -105,7 +103,7 @@ typeof(println(pi))
 
 The `println` function takes input and prints it to the console (followed by a new line). It doesn't really have any "value" to return. But I said earlier that all expressions in Julia return _some_ value. Julia has an value defined called `nothing` for this purpose, which is of type `Nothing`. There is nothing special about this type, except that it has no associated data (meaning it needs 0 bytes of data to represent at runtime).
 
-### What is a concrete type?
+## What is a concrete type?
 
 A type can be thought of as a set of values.
 
@@ -117,7 +115,7 @@ Every value is a concrete type, and Julia has just these concrete types:
  4. `String`
  5. `Tuple`
 
-### Primitive types
+## Primitive types
 
 Primitive types is where we begin describing data at the bits-and-bytes level. Here is the definition of `UInt8`:
 
@@ -163,7 +161,7 @@ The advantage of distinct types is we can describe different behaviour for these
 
 (Note that all primitive types are immutable values. You cannot "mutate" `0` to become `1` - you construct a new value instead.)
 
-### Structs
+## Structs
 
 Structs allow us to organise different pieces of data into a "structure". In general, structs represent composition of data: e.g. a complex number consists of a real component and an imaginary component:
 
@@ -196,7 +194,7 @@ z.re
 z.im
 ```
 
-#### Empty structs
+### Empty structs
 
 A struct can have any number of fields, including zero:
 
@@ -210,7 +208,7 @@ const nothing = Nothing()
 
 This is exactly how `nothing` is defined in Julia! It takes zero bytes to represent nothing, and you could say `Nothing` is like a set containing `2^0 = 1` possible value - `nothing`.
 
-##### Mutable structs
+### Mutable structs
 
 By default structs are immutable - once constructed you cannot edit the fields. It is possible to create structs that you can modify with the `mutable` keyword:
 
@@ -226,7 +224,7 @@ z = MutableComplex64(1.0, 2.0)
 z.im = 0.0  # this would throw an error if z were immutable
 ```
 
-#### Generic structs
+### Generic structs
 
 Finally, one more thing you can do is create _generic_ structs. In Julia the type for complex numbers is more like:
 
@@ -251,7 +249,7 @@ and this single definition is sufficient for all possible `T`.
 
 Note that the type `Complex` is an _abstract_ type (not a _concrete_ type). We'll talk more about abstract types and multiple dispatch later. For now, note that Julia lets you write both generic data types and generic functions.
 
-#### Type aliases
+### Type aliases
 
 Earlier we saw an example of a type "alias". You can create them like so:
 
@@ -262,7 +260,7 @@ const Complex64 = Complex{Float64}
 
 Type aliases are useful to make your code shorter or more readable.
 
-#### Tuples
+### Tuples
 
 Tuples in Julia are a kind of "lightweight" struct with no type or field names that you need to define in advance. You construct tuples with brackets like `(1, 2, 3)`. Note the types don't have to be uniform, `t = (1, true, "abc")` is equally valid. You access the fields with the index, such as `t[3] === "abc"`.
 
@@ -270,7 +268,7 @@ Note the syntax of tuples is much like the arguments to a function - `(x, y)` is
 
 Julia also has "named" tuples, where you can name the fields, like `(a = 1, b = true, c = "abc")`. (These look a bit like keyword arguments to functions).
 
-### Arrays
+## Arrays
 
 Structs are useful for collecting data, but only if you know how many elements you want at compile time.
 
@@ -290,7 +288,7 @@ const Matrix{T} = Array{2, T}
 
 Underneath, `Array{N,T}` is now (as of Julia 1.11) implemented in terms of the low level `Memory{T}` - a one dimensional array of elements of type `T` with a length which is fixed at the time of construction. However, `Vector{T}` is more convenient to work with and you'll generally see that used in most Julia code.
 
-### Strings
+## Strings
 
 Strings are built into the Julia language, for convenience. They are much like a `Vector{UInt8}` containing UTF-8 encoded string data, but are immutable.
 
@@ -305,13 +303,13 @@ Julia provides other important types, like `Set`s and `Dict`s, but these are imp
  3. A `Memory`
  4. A `String`
 
-## Logic and syntax
+# Logic and syntax
 
 Now that we've covered all the possible types of values in Julia, we'll take a look at how data is manipulated via logic and functions.
 
 Eventually we'll come back to abstract types and multiple dispatch, but first we'll cover some fundamentals of Julia code syntax and functions so we understand _what_ we are looking at later. A lot of this might be intuitive to some of you, but since we are mathematicians, we'd like to spell it out more formally :)
 
-### Everything is an expression, everything has a value, and everything has a type
+## Everything is an expression, everything has a value, and everything has a type
 
 We saw earlier that an expression is a piece of code that, when evaluated, produces a value. For example:
 
@@ -329,7 +327,7 @@ using InteractiveUtils
 
 The compiler essentially contains a "proof engine" that can formally prove constraints on the outputs of expressions. In this case it knows for sure that the output will be an `Int64`. Sometimes no proof can be found - in Julia this just makes the code slower, while in some other programming languages that could be a compilation error. This choice makes Julia feel more "dynamic" and makes prototype code easier to write.
 
-### `if`-`else`
+## `if`-`else`
 
 In Julia, _every_ piece of syntactically valid code is an expression — which means at run time it generates a value which you can assign to a variable. Even things like `if` statements!
 
@@ -351,7 +349,7 @@ is_x_even = x % 2 == 0 ? "$x is even" : "$x is odd"
 
 It's worth noting these are 100% identical. We say that `x ? y : z` is "syntax sugar" for the `if` statement — it's a sweetener to make the programmer's life easier, but not an entirely new feature since you can always achieve the same thing with more characters of code. Another piece of syntax sugar is that `x + y` has exactly the same meaning as `+(x, y)`.
 
-#### Our first abstract type
+### Our first abstract type
 
 What if the types of the `true` branch and the `false` branch of `if`-`else` don't match?
 
@@ -381,7 +379,7 @@ If `Bool` represents the set containing `true` and `false`, and `String` represe
 
 There are two more ways abstract types can show up Julia that we'll see later.
 
-#### Short cutting logic
+### Short cutting logic
 
 Julia has operators for Boolean arithmetic, including `&` for _AND_ (logical conjunction) and `|` for _OR_ (logical disjunction).
 
@@ -461,7 +459,7 @@ One "cute" way to people use this is to perform assertions:
 x >= 0 || error("x is negative")
 ```
 
-### Blocks of code
+## Blocks of code
 
 Above, we saw blocks of code containing values. They didn't really _do_ anything, like assign values to variables.
 
@@ -502,7 +500,7 @@ If you prefer, you can separate multiple expressions in a code block with `;` in
 x = (1; 2; 3)
 ```
 
-### Empty blocks of code return `nothing`
+## Empty blocks of code return `nothing`
 
 So what happens when the block of code is empty?
 
@@ -560,7 +558,7 @@ x = hello()
 
 _Q: Does anyone know what the equivalent thing in `C` is?_
 
-### Why expressions? Metaprogramming!
+## Why expressions? Metaprogramming!
 
 Having the syntax rule that "all valid syntax is an expression" makes it easier to analyse and manipulate code than it would be otherwise. It lets you rearrange code much like you can manipulate a mathematical expression with algebra (via substitution, etc), resulting in code that is correct and still compiles.
 
@@ -582,17 +580,17 @@ println("x + 1 = ", x + 1)
 
 Each macro can be thought of as like user-defined syntax sugar. We can extend the language with our own ideas of how we can write programs.
 
-### An even better way to metaprogram
+## An even better way to metaprogram
 
 Another form of metaprogramming in Julia is multiple dispatch. Multiple dispatch allows us to construct entire classes of programs that depend on the _types_ of values — and Julia will construct on-demand a particular program _specialized_ on the inputs you actually provide.
 
 Next we'll learn more about Julia functions and how multiple dispatch works. Afterwards we'll learn about abstract types and how to use this metaprogramming approach.
 
-## Functions in Julia
+# Functions in Julia
 
 Functions are at the heart of Julia, and there's lots of ways of expressing different functions. The [Julia documentation of functions](https://docs.julialang.org/en/v1/manual/functions/) provides a rich description of all of the details. We now overview a few special features that were perhaps not evident from Units 1-3. There are also links to the documentation for it.
 
-### [Function syntaxes](https://docs.julialang.org/en/v1/manual/functions/#man-functions)
+## [Function syntaxes](https://docs.julialang.org/en/v1/manual/functions/#man-functions)
 
 In Julia there are multiple ways of creating a function. There is the "long form":
 
@@ -621,7 +619,7 @@ In this form `x -> x^2` is an expression that constructs a function which is "an
 map(x -> x^2, [1,2,4])
 ```
 
-#### What type is a function?
+### What type is a function?
 
 You can think of the above functions as being a struct with zero fields. Each function has a unique type:
 
@@ -645,7 +643,7 @@ sizeof(f1)
 
 These types have only one possible value, which is why Julia describes them as "singleton types". Singleton types have a one-to-one correspondence between type and value.
 
-#### Function methods
+### Function methods
 
 Note that in Julia you can attach _function methods_ to any type (primitive, struct, etc), not just those defined like above.
 
@@ -680,7 +678,7 @@ nothing() = "Nothing else matters"
 
 If this seems a bit crazy or abstract - don't worry! Just remember that _anything_ can be made callable - functions are not special.
 
-### Nested functions: "closures"
+## Nested functions: "closures"
 
 In Julia you can define functions within functions.
 
@@ -757,7 +755,7 @@ add_2(3)
 
 Note that _every_ function in Julia has its own type — e.g. `sin` and `cos` have different types. We'll come back to types and methods later.
 
-### [Argument types](https://docs.julialang.org/en/v1/manual/functions/#Argument-type-declarations)
+## [Argument types](https://docs.julialang.org/en/v1/manual/functions/#Argument-type-declarations)
 
 To constrain the type of a function argument we use the `::` operator: When
 written in the argument list, `x::T` means the argument named `x` must be of
@@ -789,7 +787,7 @@ Note that there are two other uses of the `::` operator outside of function
 arguments - type assertion and typed variable declarations - but these aren't
 used as commonly and we won't cover them here.
 
-### Dispatch
+## Dispatch
 
 "Dispatch" is the process of determining which method of a function is called.
 
@@ -835,7 +833,7 @@ methods(example_f3)
 
 In object-oriented languages (like Python, Javascript, C#, Java or C++) dynamic dispatch occurs only on the type of first object (the class method being called). Multiple dispatch is a lot more flexible and changes the way we design software.
 
-### [Varargs functions](https://docs.julialang.org/en/v1/manual/functions/#Varargs-Functions)
+## [Varargs functions](https://docs.julialang.org/en/v1/manual/functions/#Varargs-Functions)
 
 Sometimes functions have a variable number of arguments — sometimes called "varargs" (or "variadic functions").
 
@@ -878,7 +876,7 @@ println("Zeros of the function f(x): ", zero_vals)
 
 Here you start to see how Julia features like varargs functions, closures, and packages let you solve a wide range of problems without writing very much code.
 
-### [Optional arguments](https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments)
+## [Optional arguments](https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments)
 
 You can have optional arguments (or default values):
 
@@ -894,7 +892,7 @@ x = 1.5
 @show pdf(Normal(0.5), x) my_density(x, 0.5);
 ```
 
-### [Keyword arguments](https://docs.julialang.org/en/v1/manual/functions/#Keyword-Arguments)
+## [Keyword arguments](https://docs.julialang.org/en/v1/manual/functions/#Keyword-Arguments)
 
 Arguments following the `;` character in the function definition or the function call are called **keyword arguments**. These are named as they are used.
 
@@ -920,7 +918,7 @@ The standard non-keyword arguments are called "positional" arguments since they 
 
 Note that when _calling_ a function you may either put a `;` or a `,` before the keyword arguments. In a function definition there's an ambiguity between optional arguments and keyword
 
-### [Destructing](https://docs.julialang.org/en/v1/manual/functions/#Argument-destructuring)
+## [Destructing](https://docs.julialang.org/en/v1/manual/functions/#Argument-destructuring)
 
 In Julia you can _destructure_ tuples (and other iterables) in the reverse way you _construct_ them:
 
@@ -957,7 +955,7 @@ f(10 + 42im)
 (But note that the `x.re` and `x.im` fields are internal - you should use the
 `real()` and `imag()` functions to work with `Complex` values!)
 
-### [Function composition and piping](https://docs.julialang.org/en/v1/manual/functions/#Function-composition-and-piping)
+## [Function composition and piping](https://docs.julialang.org/en/v1/manual/functions/#Function-composition-and-piping)
 
 Just a little bit of syntax sugar for "piping" values into function calls:
 
@@ -972,7 +970,7 @@ const ii = cos ∘ acos #\circ + [TAB]
 (ii(π/4), π/4)
 ```
 
-### [Dot syntax for broadcasting functions](https://docs.julialang.org/en/v1/manual/functions/#man-vectorized)
+## [Dot syntax for broadcasting functions](https://docs.julialang.org/en/v1/manual/functions/#man-vectorized)
 
 You already know the broadcast operator. It is syntax sugar for the `broadcast` function.
 
@@ -990,7 +988,7 @@ x_range = 0:0.5:π
 @. cos(x_range + 2)^2
 ```
 
-## More items from control flow
+# More items from control flow
 
 You are already very familiar with conditional statements (`if`, `elseif`, `else`), with loops (`for` and `while`), with short circuit evaluation, and with many other variants. For example you can use `continue` and `break` in loops, and Julia even supports `@goto` and `@label` for when that isn't enough.
 
@@ -1022,7 +1020,7 @@ In the above, `tmp` is either `nothing` or it's a tuple of length two — contai
 
 You can make any of your data types iterable in a `for` loop by implementing a method on the `iterate` function. We won't be doing this in this course, but it is an excellent example of an _interface_ in Julia. We'll talk more about interfaces later.
 
-### [Errors and exceptions](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling)
+## [Errors and exceptions](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling)
 
 One additional thing to know about is exception handling.
 
@@ -1093,7 +1091,7 @@ Stacktrace:
    @ REPL[36]:1
 ```
 
-#### Try, catch and finally
+### Try, catch and finally
 
 It's possible to "catch" and handle errors that happened using `try`, `catch` and `finally`.
 
@@ -1115,7 +1113,7 @@ finally
 end;
 ```
 
-#### Resource cleanup
+### Resource cleanup
 
 One place closures, and `do` syntax in particular, gets used is when you want resources to be cleaned up automatically. Here's how one method of `open` is defined in Julia:
 
@@ -1153,7 +1151,7 @@ end
 
 The `do` syntax is _yet another_ way of making a function. It creates a new function and injects it into the first argument.
 
-### Variable scope
+## Variable scope
 
 See [variables and scoping in Julia docs](https://docs.julialang.org/en/v1/manual/variables-and-scoping/).
 
@@ -1280,7 +1278,7 @@ Working with variables in different scopes can a little confusing and error pron
 
 Remember you want your programs to be _simple_ and _easy to read_. Variable names are cheap (though naming things well is hard!)
 
-## More on mutation
+# More on mutation
 
 As we saw earlier, a type can be **mutable** or not (**immutable**). Values/objects of the immutable types are typically stored on the stack. Values/objects of mutable types are typically allocated and stored on the heap.
 
@@ -1308,7 +1306,7 @@ Note that `collection[index]` is shorthand for `getindex(collection, index)` and
 
 For immutable values, there is no way to modify their contents. They are never modified by functions.
 
-#### Variable bindings
+### Variable bindings
 
 Variable bindings are not modified inside functions. The function below introduces a _new_ binding `z` every time the function is called, and `x` is unaffected.
 
@@ -1369,7 +1367,7 @@ b[1][1] = 20
 @show a;
 ```
 
-## Abstract type tree
+# Abstract type tree
 
 We saw the `Union` abstract type earlier.
 
@@ -1474,7 +1472,7 @@ primitive type Float64 <: AbstractFloat
 end
 ```
 
-### Parameterized / generic types
+## Parameterized / generic types
 
 We've actually now seen all three types of abstract types in Julia – the `abstract type`s that make up the type tree, the `Union` type, and the parameterized types (abstract `Complex` vs concrete `Complex{Float64}`).
 
@@ -1518,7 +1516,7 @@ You've seen other `UnionAll` types like `Vector`, `Matrix`, `Set`, `Dict`, etc.
 
 Don't worry about this seeming complex – consider this background material!
 
-### Union types
+## Union types
 
 We saw earlier that Julia has a third abstract type called `Union` which let's you reason about a finite set of (abstract or concrete) types.
 
@@ -1546,13 +1544,13 @@ Don't worry if that was whirlwind. You don't need to memorise every detail that 
 
 Now we will practice using these tools to build larger programs, so you are ready for Projects 1, 2 and 3.
 
-## Crafting programs in Julia
+# Crafting programs in Julia
 
-### Making types for your programs - dimensions and units
+## Making types for your programs - dimensions and units
 
 You can define your own types. Any "serious" programming task would almost always merit that you do that.
 
-#### Dimensions and units
+### Dimensions and units
 
 One thing types let you do is ensure you do things "safely" without making mistakes.
 
@@ -1561,7 +1559,7 @@ When solving physics problems its always useful to perform dimensional analysis 
  * **Dimensions** - length, time, mass, area (length squared), etc
  * **Units** - metres, kilometres, centimetres, feet, inches, miles, etc
 
-#### Our first unit - `Metre`
+### Our first unit - `Metre`
 
 Julia lets us encode dimensions and units. There is a nice package called [Unitful.jl](https://painterqubits.github.io/Unitful.jl/stable/) that you can download and use. Lets see how a package like this works.
 
@@ -1614,15 +1612,15 @@ We can also make it print something similar to the terminal:
 Base.show(io::IO, x::Metre) = print(io, x.value, "m")
 ```
 
-##### How does this make things safe?
+#### How does this make things safe?
 
 If I try and do something invalid like `1 + 2m`, Julia will throw an error. This means algebra with incorrect dimensions will not compute in Julia. You'll get an error message and have the opportunity to fix your code.
 
-##### Isn't all of this slow?
+#### Isn't all of this slow?
 
 Surprisingly, in Julia this doesn't slow anything down. The `Metre{Float64}` object uses the same 64 bits to represent as a bare `Float64`. The compiler is smart enough to know it can use the same representation for either type interchangeably, and your program won't spend any effort "constructing structs" or "getting fields" at run time.
 
-#### Other length units
+### Other length units
 
 How would you deal with other kinds of units of length?
 
@@ -1674,7 +1672,7 @@ struct Mile{T} <: AbstractLength
 end;
 ```
 
-##### Conversion to and from metres
+#### Conversion to and from metres
 
 For each of these, we might want a way to convert these to metres. We can use the `Metre` type, and attach methods to that. Such methods are known as "constructors".
 
@@ -1702,7 +1700,7 @@ Inch(x::Metre) = Inch(x.value / 0.0254)
 Mile(x::Metre) = Mile(x.value / (1760 * 3 * 12 * 0.0254));
 ```
 
-##### Conversion between any two types
+#### Conversion between any two types
 
 If we are converting between two length units neither of which is `Metre`, we might want to simply convert the input to metres first. Doing this we end up with:
 
@@ -1734,7 +1732,7 @@ Note that in general, we can get Julia to automatically do this step for every `
 
 (Don't worry – we won't expect you to create something like that in this course!)
 
-##### Algebra with metres
+#### Algebra with metres
 
 We have seen these already:
 
@@ -1748,7 +1746,7 @@ Base.:(/)(x::Metre, y::Metre) = x.value / y.value
 Base.:(/)(x::Metre, y::Real) = Metre(x.value / y)
 ```
 
-##### Algebra with abstract types
+#### Algebra with abstract types
 
 Now we have enough to perform algebra between all these types. Let's look at addition, subtraction and division:
 
@@ -1809,7 +1807,7 @@ end;
 
 (Note that the `if` part will be dealt with at compile time.)
 
-##### Niceties
+#### Niceties
 
 ```{julia}
 const m = Metre(1) # done above
@@ -1827,7 +1825,7 @@ Base.show(io::IO, x::Inch) = print(io, x.value, "inch")
 Base.show(io::IO, x::Mile) = print(io, x.value, "mile");
 ```
 
-##### Some results
+#### Some results
 
 *Q: How many kilometres in a mile?*
 
@@ -1843,7 +1841,7 @@ mile / km
 
 *A: Her head won't quite hit the ceiling, but Jenny will be able to reach the light with her arms.*
 
-##### New interfaces
+#### New interfaces
 
 So far we have mostly overloaded existing functions built into `Base` Julia. There is nothing stopping you defining your own functions – in fact you'll likely define more new functions that overload existing ones. Here we also added the `unit` function to help out.
 
@@ -1857,17 +1855,17 @@ Now we have our `AbstractLength` interface, we can document how people _implemen
 
 After this, everything will "just work"™. This is the power of interfaces!
 
-#### Other dimensions
+### Other dimensions
 
 We could do the same for time, mass, temperature, etc. But then we need to deal with compound dimensions like area, velocity, energy, etc. Again, we need a clever interface to deal with all this complexity. This (and more) is implemented in the [Unitful.jl](https://painterqubits.github.io/Unitful.jl/stable/) package.
 
-### Making types and functions together – shapes
+## Making types and functions together – shapes
 
 This time we'll practice making new types together with functions.
 
 For this example we'll look at geometric shapes, starting with two-dimensional shapes.
 
-#### Abstract type and interface
+### Abstract type and interface
 
 We can start with an abstract type for two-dimensional shapes.
 
@@ -1898,7 +1896,7 @@ end;
 
 Here we've defined two functions, each with zero methods but some documentation explaining their purpose (interfaces in Julia are informal, and are specified through documentation). You can find the documentation with `?area` at the REPL.
 
-#### Types of 2D shape
+### Types of 2D shape
 
 There are various kinds of 2D shapes. Let's introduce a few here, and organize them by the number of sides. Here is some triangles:
 
@@ -1969,7 +1967,7 @@ const Hexagon = RegularPolygon{6}
 here.)
 
 
-#### Implementing the `Shape2D` interface
+### Implementing the `Shape2D` interface
 
 For each of these shapes we can determine the perimeter:
 
@@ -2038,7 +2036,7 @@ We can use these pretty straightforwardly.
 
 At any point in time we can introduce new subtypes of `Shape2D`, `Triangle` or `Rectangle` so long as we define their perimeter and area. The person who wrote `Shape2d` does not even need to be aware.
 
-### Combining interfaces
+## Combining interfaces
 
 Today we have introduced two new abstract types with their own interfaces. One for units of length, and one for shapes.
 
@@ -2070,7 +2068,7 @@ using Unitful
 area(Circle(10.0u"cm"))
 ```
 
-## Going forward
+# Going forward
 
 We are now done with the material for Unit 5. We have learned:
 
@@ -2093,11 +2091,11 @@ We are now done with the material for Unit 5. We have learned:
 
 This will place you in good stead for Units 6-8, and in particular Projects 1-3 where you will need to craft non-trivial programs to create a solution.
 
-## Bonus material
+# Bonus material
 
 Consider the following material optional. Have a look through if you are curious, have extra time, or would like extra exposure and practice to defining types and interfaces.
 
-### Online statistics
+## Online statistics
 
 Lets consider an example where we want to collect some quick running statistics from some data coming in. E.g.:
 
@@ -2175,7 +2173,7 @@ running_stats_storage = RunningStats()
 print_running_stats(100, running_stats_storage)
 ```
 
-#### Running statistics of other types
+### Running statistics of other types
 
 Going a bit more generic we could have also had,
 
@@ -2225,7 +2223,7 @@ But there is a problem with the above. What if `T` was `Complex`? Should we have
 
 In generic code its good to consider what *interfaces* we want to use, so we can figure out which type constraints are appropriate. Julia will go ahead and assemble the pieces of your program together into a coherent whole.
 
-### Interfaces
+## Interfaces
 
 So above we used a few interface methods to implement our online-statistics accumulator.
 
@@ -2237,7 +2235,7 @@ So above we used a few interface methods to implement our online-statistics accu
 
 Let's have a look at some common interfaces
 
-#### Numbers
+### Numbers
 
  * Common arithmetic operations `+`, `-`, `*`, `/`, etc.
  * `promote(x, y)` - take two numbers and return two numbers of the same type, e.g `promote_type(3.14, 1) = (3.14, 1.0)`
@@ -2256,7 +2254,7 @@ Some things iterate but we might not have known length or element type, so there
 * `IteratorSize(iter)` - return whether `length` is known
 * `IteratorEltype(iter)` - return whether `eltype` is known
 
-#### Arrays
+### Arrays
 
 Arrays are iterable and satisfy the the above. They are also indexable
 
@@ -2270,7 +2268,7 @@ Some types like `Vector` are resizable and for these types there are functions l
 
 Arrays are also defined as arithmetic objects according to linear algebra, and therefore have `+`, `-`, `*`, `/`, etc defined. The `LinearAlgebra` standard library package has lots of functions to invert or decompose matrices, find eigenvalues, etc.
 
-#### Sets
+### Sets
 
 Julia has a `Set{T}` type and an `AbstractSet{T}` supertype. Sets are iterable and support things like:
 
@@ -2282,7 +2280,7 @@ Julia has a `Set{T}` type and an `AbstractSet{T}` supertype. Sets are iterable a
 
 Here's where interfaces get interesting. Things like `Array` also support `in`, but it is slow (must check every element). With `Set` lookup is fast (e.g. O(1) instead of O(N)) - so the operations above are fast.
 
-#### Dictionaries
+### Dictionaries
 
 Julia has a `Dict{K, T}` type and an `AbstractDict{K, T}` supertype. Like arrays, dictionaries are iterable and indexable. You can imagine they are like a `Set` but have associate values (in fact their implementation is related).
 
@@ -2300,7 +2298,7 @@ You generally iterate a dictionary by specifying if you want to iterate the keys
  * `keys(dict)` - an iterable of the dictionary keys only
  * `values(dict)` - an iterable of the dictionary values only
 
-### Using structs for complex, nested data structures
+## Using structs for complex, nested data structures
 
 You can make interesting data structures by referencing other instances of yourself, like this tree structure below:
 
@@ -2332,7 +2330,7 @@ end
 root
 ```
 
-### More to be covered as part of Unit 6:
+## More to be covered as part of Unit 6:
 
 [See constructors in Julia docs](https://docs.julialang.org/en/v1/manual/constructors/). More on this in Unit 6.
 

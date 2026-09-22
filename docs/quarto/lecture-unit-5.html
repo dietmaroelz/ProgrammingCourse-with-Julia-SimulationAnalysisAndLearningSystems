@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,13 +12,10 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -71,10 +68,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="lecture-unit-5_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="lecture-unit-5_files/libs/quarto-html/anchor.min.js"></script>
 <link href="lecture-unit-5_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="lecture-unit-5_files/libs/quarto-html/quarto-syntax-highlighting-12757e4b7af482b2d9c5bd8860d2b707.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="lecture-unit-5_files/libs/quarto-html/quarto-syntax-highlighting-4bd490e9cd57f2396cbd188312c0541c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="lecture-unit-5_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="lecture-unit-5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="lecture-unit-5_files/libs/bootstrap/bootstrap-dc1ce38ec3176f0b9a5881f4075f6214.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="lecture-unit-5_files/libs/bootstrap/bootstrap-25808a6e4626de0feadfecd6d3274d08.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -90,67 +87,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#unit-5-more-language-features-for-software-architecture" id="toc-unit-5-more-language-features-for-software-architecture" class="nav-link active" data-scroll-target="#unit-5-more-language-features-for-software-architecture"><span class="header-section-number">1</span> Unit 5: More language features for software architecture</a>
+  <li><a href="#values-and-their-types" id="toc-values-and-their-types" class="nav-link active" data-scroll-target="#values-and-their-types"><span class="header-section-number">1</span> Values and their types</a>
   <ul class="collapse">
-  <li><a href="#values-and-their-types" id="toc-values-and-their-types" class="nav-link" data-scroll-target="#values-and-their-types"><span class="header-section-number">1.1</span> Values and their types</a>
+  <li><a href="#why-is-it-so" id="toc-why-is-it-so" class="nav-link" data-scroll-target="#why-is-it-so"><span class="header-section-number">1.1</span> Why is it so?</a></li>
+  <li><a href="#all-valid-code-is-an-expression" id="toc-all-valid-code-is-an-expression" class="nav-link" data-scroll-target="#all-valid-code-is-an-expression"><span class="header-section-number">1.2</span> All valid code is an <em>expression</em></a></li>
+  <li><a href="#every-value-has-a-concrete-type" id="toc-every-value-has-a-concrete-type" class="nav-link" data-scroll-target="#every-value-has-a-concrete-type"><span class="header-section-number">1.3</span> Every value has a concrete type</a></li>
+  <li><a href="#what-is-a-concrete-type" id="toc-what-is-a-concrete-type" class="nav-link" data-scroll-target="#what-is-a-concrete-type"><span class="header-section-number">1.4</span> What is a concrete type?</a></li>
+  <li><a href="#primitive-types" id="toc-primitive-types" class="nav-link" data-scroll-target="#primitive-types"><span class="header-section-number">1.5</span> Primitive types</a></li>
+  <li><a href="#structs" id="toc-structs" class="nav-link" data-scroll-target="#structs"><span class="header-section-number">1.6</span> Structs</a>
   <ul class="collapse">
-  <li><a href="#why-is-it-so" id="toc-why-is-it-so" class="nav-link" data-scroll-target="#why-is-it-so"><span class="header-section-number">1.1.1</span> Why is it so?</a></li>
-  <li><a href="#all-valid-code-is-an-expression" id="toc-all-valid-code-is-an-expression" class="nav-link" data-scroll-target="#all-valid-code-is-an-expression"><span class="header-section-number">1.1.2</span> All valid code is an <em>expression</em></a></li>
-  <li><a href="#every-value-has-a-concrete-type" id="toc-every-value-has-a-concrete-type" class="nav-link" data-scroll-target="#every-value-has-a-concrete-type"><span class="header-section-number">1.1.3</span> Every value has a concrete type</a></li>
-  <li><a href="#what-is-a-concrete-type" id="toc-what-is-a-concrete-type" class="nav-link" data-scroll-target="#what-is-a-concrete-type"><span class="header-section-number">1.1.4</span> What is a concrete type?</a></li>
-  <li><a href="#primitive-types" id="toc-primitive-types" class="nav-link" data-scroll-target="#primitive-types"><span class="header-section-number">1.1.5</span> Primitive types</a></li>
-  <li><a href="#structs" id="toc-structs" class="nav-link" data-scroll-target="#structs"><span class="header-section-number">1.1.6</span> Structs</a></li>
-  <li><a href="#arrays" id="toc-arrays" class="nav-link" data-scroll-target="#arrays"><span class="header-section-number">1.1.7</span> Arrays</a></li>
-  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings"><span class="header-section-number">1.1.8</span> Strings</a></li>
+  <li><a href="#empty-structs" id="toc-empty-structs" class="nav-link" data-scroll-target="#empty-structs"><span class="header-section-number">1.6.1</span> Empty structs</a></li>
+  <li><a href="#mutable-structs" id="toc-mutable-structs" class="nav-link" data-scroll-target="#mutable-structs"><span class="header-section-number">1.6.2</span> Mutable structs</a></li>
+  <li><a href="#generic-structs" id="toc-generic-structs" class="nav-link" data-scroll-target="#generic-structs"><span class="header-section-number">1.6.3</span> Generic structs</a></li>
+  <li><a href="#type-aliases" id="toc-type-aliases" class="nav-link" data-scroll-target="#type-aliases"><span class="header-section-number">1.6.4</span> Type aliases</a></li>
+  <li><a href="#tuples" id="toc-tuples" class="nav-link" data-scroll-target="#tuples"><span class="header-section-number">1.6.5</span> Tuples</a></li>
   </ul></li>
-  <li><a href="#logic-and-syntax" id="toc-logic-and-syntax" class="nav-link" data-scroll-target="#logic-and-syntax"><span class="header-section-number">1.2</span> Logic and syntax</a>
-  <ul class="collapse">
-  <li><a href="#everything-is-an-expression-everything-has-a-value-and-everything-has-a-type" id="toc-everything-is-an-expression-everything-has-a-value-and-everything-has-a-type" class="nav-link" data-scroll-target="#everything-is-an-expression-everything-has-a-value-and-everything-has-a-type"><span class="header-section-number">1.2.1</span> Everything is an expression, everything has a value, and everything has a type</a></li>
-  <li><a href="#if-else" id="toc-if-else" class="nav-link" data-scroll-target="#if-else"><span class="header-section-number">1.2.2</span> <code>if</code>-<code>else</code></a></li>
-  <li><a href="#blocks-of-code" id="toc-blocks-of-code" class="nav-link" data-scroll-target="#blocks-of-code"><span class="header-section-number">1.2.3</span> Blocks of code</a></li>
-  <li><a href="#empty-blocks-of-code-return-nothing" id="toc-empty-blocks-of-code-return-nothing" class="nav-link" data-scroll-target="#empty-blocks-of-code-return-nothing"><span class="header-section-number">1.2.4</span> Empty blocks of code return <code>nothing</code></a></li>
-  <li><a href="#why-expressions-metaprogramming" id="toc-why-expressions-metaprogramming" class="nav-link" data-scroll-target="#why-expressions-metaprogramming"><span class="header-section-number">1.2.5</span> Why expressions? Metaprogramming!</a></li>
-  <li><a href="#an-even-better-way-to-metaprogram" id="toc-an-even-better-way-to-metaprogram" class="nav-link" data-scroll-target="#an-even-better-way-to-metaprogram"><span class="header-section-number">1.2.6</span> An even better way to metaprogram</a></li>
+  <li><a href="#arrays" id="toc-arrays" class="nav-link" data-scroll-target="#arrays"><span class="header-section-number">1.7</span> Arrays</a></li>
+  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings"><span class="header-section-number">1.8</span> Strings</a></li>
   </ul></li>
-  <li><a href="#functions-in-julia" id="toc-functions-in-julia" class="nav-link" data-scroll-target="#functions-in-julia"><span class="header-section-number">1.3</span> Functions in Julia</a>
+  <li><a href="#logic-and-syntax" id="toc-logic-and-syntax" class="nav-link" data-scroll-target="#logic-and-syntax"><span class="header-section-number">2</span> Logic and syntax</a>
   <ul class="collapse">
-  <li><a href="#function-syntaxes" id="toc-function-syntaxes" class="nav-link" data-scroll-target="#function-syntaxes"><span class="header-section-number">1.3.1</span> Function syntaxes</a></li>
-  <li><a href="#nested-functions-closures" id="toc-nested-functions-closures" class="nav-link" data-scroll-target="#nested-functions-closures"><span class="header-section-number">1.3.2</span> Nested functions: “closures”</a></li>
-  <li><a href="#argument-types" id="toc-argument-types" class="nav-link" data-scroll-target="#argument-types"><span class="header-section-number">1.3.3</span> Argument types</a></li>
-  <li><a href="#dispatch" id="toc-dispatch" class="nav-link" data-scroll-target="#dispatch"><span class="header-section-number">1.3.4</span> Dispatch</a></li>
-  <li><a href="#varargs-functions" id="toc-varargs-functions" class="nav-link" data-scroll-target="#varargs-functions"><span class="header-section-number">1.3.5</span> Varargs functions</a></li>
-  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments"><span class="header-section-number">1.3.6</span> Optional arguments</a></li>
-  <li><a href="#keyword-arguments" id="toc-keyword-arguments" class="nav-link" data-scroll-target="#keyword-arguments"><span class="header-section-number">1.3.7</span> Keyword arguments</a></li>
-  <li><a href="#destructing" id="toc-destructing" class="nav-link" data-scroll-target="#destructing"><span class="header-section-number">1.3.8</span> Destructing</a></li>
-  <li><a href="#function-composition-and-piping" id="toc-function-composition-and-piping" class="nav-link" data-scroll-target="#function-composition-and-piping"><span class="header-section-number">1.3.9</span> Function composition and piping</a></li>
-  <li><a href="#dot-syntax-for-broadcasting-functions" id="toc-dot-syntax-for-broadcasting-functions" class="nav-link" data-scroll-target="#dot-syntax-for-broadcasting-functions"><span class="header-section-number">1.3.10</span> Dot syntax for broadcasting functions</a></li>
-  </ul></li>
-  <li><a href="#more-items-from-control-flow" id="toc-more-items-from-control-flow" class="nav-link" data-scroll-target="#more-items-from-control-flow"><span class="header-section-number">1.4</span> More items from control flow</a>
+  <li><a href="#everything-is-an-expression-everything-has-a-value-and-everything-has-a-type" id="toc-everything-is-an-expression-everything-has-a-value-and-everything-has-a-type" class="nav-link" data-scroll-target="#everything-is-an-expression-everything-has-a-value-and-everything-has-a-type"><span class="header-section-number">2.1</span> Everything is an expression, everything has a value, and everything has a type</a></li>
+  <li><a href="#if-else" id="toc-if-else" class="nav-link" data-scroll-target="#if-else"><span class="header-section-number">2.2</span> <code>if</code>-<code>else</code></a>
   <ul class="collapse">
-  <li><a href="#iteration-and-for-loops" id="toc-iteration-and-for-loops" class="nav-link" data-scroll-target="#iteration-and-for-loops"><span class="header-section-number">1.4.1</span> Iteration and <code>for</code> loops</a></li>
-  <li><a href="#errors-and-exceptions" id="toc-errors-and-exceptions" class="nav-link" data-scroll-target="#errors-and-exceptions"><span class="header-section-number">1.4.2</span> Errors and exceptions</a></li>
-  <li><a href="#variable-scope" id="toc-variable-scope" class="nav-link" data-scroll-target="#variable-scope"><span class="header-section-number">1.4.3</span> Variable scope</a></li>
+  <li><a href="#our-first-abstract-type" id="toc-our-first-abstract-type" class="nav-link" data-scroll-target="#our-first-abstract-type"><span class="header-section-number">2.2.1</span> Our first abstract type</a></li>
+  <li><a href="#short-cutting-logic" id="toc-short-cutting-logic" class="nav-link" data-scroll-target="#short-cutting-logic"><span class="header-section-number">2.2.2</span> Short cutting logic</a></li>
   </ul></li>
-  <li><a href="#more-on-mutation" id="toc-more-on-mutation" class="nav-link" data-scroll-target="#more-on-mutation"><span class="header-section-number">1.5</span> More on mutation</a></li>
-  <li><a href="#abstract-type-tree" id="toc-abstract-type-tree" class="nav-link" data-scroll-target="#abstract-type-tree"><span class="header-section-number">1.6</span> Abstract type tree</a>
+  <li><a href="#blocks-of-code" id="toc-blocks-of-code" class="nav-link" data-scroll-target="#blocks-of-code"><span class="header-section-number">2.3</span> Blocks of code</a></li>
+  <li><a href="#empty-blocks-of-code-return-nothing" id="toc-empty-blocks-of-code-return-nothing" class="nav-link" data-scroll-target="#empty-blocks-of-code-return-nothing"><span class="header-section-number">2.4</span> Empty blocks of code return <code>nothing</code></a></li>
+  <li><a href="#why-expressions-metaprogramming" id="toc-why-expressions-metaprogramming" class="nav-link" data-scroll-target="#why-expressions-metaprogramming"><span class="header-section-number">2.5</span> Why expressions? Metaprogramming!</a></li>
+  <li><a href="#an-even-better-way-to-metaprogram" id="toc-an-even-better-way-to-metaprogram" class="nav-link" data-scroll-target="#an-even-better-way-to-metaprogram"><span class="header-section-number">2.6</span> An even better way to metaprogram</a></li>
+  </ul></li>
+  <li><a href="#functions-in-julia" id="toc-functions-in-julia" class="nav-link" data-scroll-target="#functions-in-julia"><span class="header-section-number">3</span> Functions in Julia</a>
   <ul class="collapse">
-  <li><a href="#parameterized-generic-types" id="toc-parameterized-generic-types" class="nav-link" data-scroll-target="#parameterized-generic-types"><span class="header-section-number">1.6.1</span> Parameterized / generic types</a></li>
-  <li><a href="#union-types" id="toc-union-types" class="nav-link" data-scroll-target="#union-types"><span class="header-section-number">1.6.2</span> Union types</a></li>
-  </ul></li>
-  <li><a href="#crafting-programs-in-julia" id="toc-crafting-programs-in-julia" class="nav-link" data-scroll-target="#crafting-programs-in-julia"><span class="header-section-number">1.7</span> Crafting programs in Julia</a>
+  <li><a href="#function-syntaxes" id="toc-function-syntaxes" class="nav-link" data-scroll-target="#function-syntaxes"><span class="header-section-number">3.1</span> Function syntaxes</a>
   <ul class="collapse">
-  <li><a href="#making-types-for-your-programs---dimensions-and-units" id="toc-making-types-for-your-programs---dimensions-and-units" class="nav-link" data-scroll-target="#making-types-for-your-programs---dimensions-and-units"><span class="header-section-number">1.7.1</span> Making types for your programs - dimensions and units</a></li>
-  <li><a href="#making-types-and-functions-together-shapes" id="toc-making-types-and-functions-together-shapes" class="nav-link" data-scroll-target="#making-types-and-functions-together-shapes"><span class="header-section-number">1.7.2</span> Making types and functions together – shapes</a></li>
-  <li><a href="#combining-interfaces" id="toc-combining-interfaces" class="nav-link" data-scroll-target="#combining-interfaces"><span class="header-section-number">1.7.3</span> Combining interfaces</a></li>
+  <li><a href="#what-type-is-a-function" id="toc-what-type-is-a-function" class="nav-link" data-scroll-target="#what-type-is-a-function"><span class="header-section-number">3.1.1</span> What type is a function?</a></li>
+  <li><a href="#function-methods" id="toc-function-methods" class="nav-link" data-scroll-target="#function-methods"><span class="header-section-number">3.1.2</span> Function methods</a></li>
   </ul></li>
-  <li><a href="#going-forward" id="toc-going-forward" class="nav-link" data-scroll-target="#going-forward"><span class="header-section-number">1.8</span> Going forward</a></li>
-  <li><a href="#bonus-material" id="toc-bonus-material" class="nav-link" data-scroll-target="#bonus-material"><span class="header-section-number">1.9</span> Bonus material</a>
+  <li><a href="#nested-functions-closures" id="toc-nested-functions-closures" class="nav-link" data-scroll-target="#nested-functions-closures"><span class="header-section-number">3.2</span> Nested functions: “closures”</a></li>
+  <li><a href="#argument-types" id="toc-argument-types" class="nav-link" data-scroll-target="#argument-types"><span class="header-section-number">3.3</span> Argument types</a></li>
+  <li><a href="#dispatch" id="toc-dispatch" class="nav-link" data-scroll-target="#dispatch"><span class="header-section-number">3.4</span> Dispatch</a></li>
+  <li><a href="#varargs-functions" id="toc-varargs-functions" class="nav-link" data-scroll-target="#varargs-functions"><span class="header-section-number">3.5</span> Varargs functions</a></li>
+  <li><a href="#optional-arguments" id="toc-optional-arguments" class="nav-link" data-scroll-target="#optional-arguments"><span class="header-section-number">3.6</span> Optional arguments</a></li>
+  <li><a href="#keyword-arguments" id="toc-keyword-arguments" class="nav-link" data-scroll-target="#keyword-arguments"><span class="header-section-number">3.7</span> Keyword arguments</a></li>
+  <li><a href="#destructing" id="toc-destructing" class="nav-link" data-scroll-target="#destructing"><span class="header-section-number">3.8</span> Destructing</a></li>
+  <li><a href="#function-composition-and-piping" id="toc-function-composition-and-piping" class="nav-link" data-scroll-target="#function-composition-and-piping"><span class="header-section-number">3.9</span> Function composition and piping</a></li>
+  <li><a href="#dot-syntax-for-broadcasting-functions" id="toc-dot-syntax-for-broadcasting-functions" class="nav-link" data-scroll-target="#dot-syntax-for-broadcasting-functions"><span class="header-section-number">3.10</span> Dot syntax for broadcasting functions</a></li>
+  </ul></li>
+  <li><a href="#more-items-from-control-flow" id="toc-more-items-from-control-flow" class="nav-link" data-scroll-target="#more-items-from-control-flow"><span class="header-section-number">4</span> More items from control flow</a>
   <ul class="collapse">
-  <li><a href="#online-statistics" id="toc-online-statistics" class="nav-link" data-scroll-target="#online-statistics"><span class="header-section-number">1.9.1</span> Online statistics</a></li>
-  <li><a href="#interfaces" id="toc-interfaces" class="nav-link" data-scroll-target="#interfaces"><span class="header-section-number">1.9.2</span> Interfaces</a></li>
-  <li><a href="#using-structs-for-complex-nested-data-structures" id="toc-using-structs-for-complex-nested-data-structures" class="nav-link" data-scroll-target="#using-structs-for-complex-nested-data-structures"><span class="header-section-number">1.9.3</span> Using structs for complex, nested data structures</a></li>
-  <li><a href="#more-to-be-covered-as-part-of-unit-6" id="toc-more-to-be-covered-as-part-of-unit-6" class="nav-link" data-scroll-target="#more-to-be-covered-as-part-of-unit-6"><span class="header-section-number">1.9.4</span> More to be covered as part of Unit 6:</a></li>
+  <li><a href="#iteration-and-for-loops" id="toc-iteration-and-for-loops" class="nav-link" data-scroll-target="#iteration-and-for-loops"><span class="header-section-number">4.0.1</span> Iteration and <code>for</code> loops</a></li>
+  <li><a href="#errors-and-exceptions" id="toc-errors-and-exceptions" class="nav-link" data-scroll-target="#errors-and-exceptions"><span class="header-section-number">4.1</span> Errors and exceptions</a>
+  <ul class="collapse">
+  <li><a href="#try-catch-and-finally" id="toc-try-catch-and-finally" class="nav-link" data-scroll-target="#try-catch-and-finally"><span class="header-section-number">4.1.1</span> Try, catch and finally</a></li>
+  <li><a href="#resource-cleanup" id="toc-resource-cleanup" class="nav-link" data-scroll-target="#resource-cleanup"><span class="header-section-number">4.1.2</span> Resource cleanup</a></li>
   </ul></li>
+  <li><a href="#variable-scope" id="toc-variable-scope" class="nav-link" data-scroll-target="#variable-scope"><span class="header-section-number">4.2</span> Variable scope</a></li>
+  </ul></li>
+  <li><a href="#more-on-mutation" id="toc-more-on-mutation" class="nav-link" data-scroll-target="#more-on-mutation"><span class="header-section-number">5</span> More on mutation</a>
+  <ul class="collapse">
+  <li><a href="#variable-bindings" id="toc-variable-bindings" class="nav-link" data-scroll-target="#variable-bindings"><span class="header-section-number">5.0.1</span> Variable bindings</a></li>
+  </ul></li>
+  <li><a href="#abstract-type-tree" id="toc-abstract-type-tree" class="nav-link" data-scroll-target="#abstract-type-tree"><span class="header-section-number">6</span> Abstract type tree</a>
+  <ul class="collapse">
+  <li><a href="#parameterized-generic-types" id="toc-parameterized-generic-types" class="nav-link" data-scroll-target="#parameterized-generic-types"><span class="header-section-number">6.1</span> Parameterized / generic types</a></li>
+  <li><a href="#union-types" id="toc-union-types" class="nav-link" data-scroll-target="#union-types"><span class="header-section-number">6.2</span> Union types</a></li>
+  </ul></li>
+  <li><a href="#crafting-programs-in-julia" id="toc-crafting-programs-in-julia" class="nav-link" data-scroll-target="#crafting-programs-in-julia"><span class="header-section-number">7</span> Crafting programs in Julia</a>
+  <ul class="collapse">
+  <li><a href="#making-types-for-your-programs---dimensions-and-units" id="toc-making-types-for-your-programs---dimensions-and-units" class="nav-link" data-scroll-target="#making-types-for-your-programs---dimensions-and-units"><span class="header-section-number">7.1</span> Making types for your programs - dimensions and units</a>
+  <ul class="collapse">
+  <li><a href="#dimensions-and-units" id="toc-dimensions-and-units" class="nav-link" data-scroll-target="#dimensions-and-units"><span class="header-section-number">7.1.1</span> Dimensions and units</a></li>
+  <li><a href="#our-first-unit---metre" id="toc-our-first-unit---metre" class="nav-link" data-scroll-target="#our-first-unit---metre"><span class="header-section-number">7.1.2</span> Our first unit - <code>Metre</code></a></li>
+  <li><a href="#other-length-units" id="toc-other-length-units" class="nav-link" data-scroll-target="#other-length-units"><span class="header-section-number">7.1.3</span> Other length units</a></li>
+  <li><a href="#other-dimensions" id="toc-other-dimensions" class="nav-link" data-scroll-target="#other-dimensions"><span class="header-section-number">7.1.4</span> Other dimensions</a></li>
+  </ul></li>
+  <li><a href="#making-types-and-functions-together-shapes" id="toc-making-types-and-functions-together-shapes" class="nav-link" data-scroll-target="#making-types-and-functions-together-shapes"><span class="header-section-number">7.2</span> Making types and functions together – shapes</a>
+  <ul class="collapse">
+  <li><a href="#abstract-type-and-interface" id="toc-abstract-type-and-interface" class="nav-link" data-scroll-target="#abstract-type-and-interface"><span class="header-section-number">7.2.1</span> Abstract type and interface</a></li>
+  <li><a href="#types-of-2d-shape" id="toc-types-of-2d-shape" class="nav-link" data-scroll-target="#types-of-2d-shape"><span class="header-section-number">7.2.2</span> Types of 2D shape</a></li>
+  <li><a href="#implementing-the-shape2d-interface" id="toc-implementing-the-shape2d-interface" class="nav-link" data-scroll-target="#implementing-the-shape2d-interface"><span class="header-section-number">7.2.3</span> Implementing the <code>Shape2D</code> interface</a></li>
+  </ul></li>
+  <li><a href="#combining-interfaces" id="toc-combining-interfaces" class="nav-link" data-scroll-target="#combining-interfaces"><span class="header-section-number">7.3</span> Combining interfaces</a></li>
+  </ul></li>
+  <li><a href="#going-forward" id="toc-going-forward" class="nav-link" data-scroll-target="#going-forward"><span class="header-section-number">8</span> Going forward</a></li>
+  <li><a href="#bonus-material" id="toc-bonus-material" class="nav-link" data-scroll-target="#bonus-material"><span class="header-section-number">9</span> Bonus material</a>
+  <ul class="collapse">
+  <li><a href="#online-statistics" id="toc-online-statistics" class="nav-link" data-scroll-target="#online-statistics"><span class="header-section-number">9.1</span> Online statistics</a>
+  <ul class="collapse">
+  <li><a href="#running-statistics-of-other-types" id="toc-running-statistics-of-other-types" class="nav-link" data-scroll-target="#running-statistics-of-other-types"><span class="header-section-number">9.1.1</span> Running statistics of other types</a></li>
+  </ul></li>
+  <li><a href="#interfaces" id="toc-interfaces" class="nav-link" data-scroll-target="#interfaces"><span class="header-section-number">9.2</span> Interfaces</a>
+  <ul class="collapse">
+  <li><a href="#numbers" id="toc-numbers" class="nav-link" data-scroll-target="#numbers"><span class="header-section-number">9.2.1</span> Numbers</a></li>
+  <li><a href="#arrays-1" id="toc-arrays-1" class="nav-link" data-scroll-target="#arrays-1"><span class="header-section-number">9.2.2</span> Arrays</a></li>
+  <li><a href="#sets" id="toc-sets" class="nav-link" data-scroll-target="#sets"><span class="header-section-number">9.2.3</span> Sets</a></li>
+  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries"><span class="header-section-number">9.2.4</span> Dictionaries</a></li>
+  </ul></li>
+  <li><a href="#using-structs-for-complex-nested-data-structures" id="toc-using-structs-for-complex-nested-data-structures" class="nav-link" data-scroll-target="#using-structs-for-complex-nested-data-structures"><span class="header-section-number">9.3</span> Using structs for complex, nested data structures</a></li>
+  <li><a href="#more-to-be-covered-as-part-of-unit-6" id="toc-more-to-be-covered-as-part-of-unit-6" class="nav-link" data-scroll-target="#more-to-be-covered-as-part-of-unit-6"><span class="header-section-number">9.4</span> More to be covered as part of Unit 6:</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-unit-5.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -176,8 +212,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="unit-5-more-language-features-for-software-architecture" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Unit 5: More language features for software architecture</h1>
 <p>In the previous three units we explored basics of programming and computation (Unit 2), algorithms and data structures (Unit 3), and data files and numerics (Unit 4). In this unit we take a deeper and more thorough approach at basic Julia language features.</p>
 <p>Programming languages, including Julia, are designed mostly with these aims in mind:</p>
 <ol type="1">
@@ -188,8 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Different programming languages have different goals and target audiences, and make different trade-offs and affordances for the above. The trickiest one to get right is the third one — as codebases grow it is <em>typical</em> to get stuck in a tarpit of complexity, where it gets harder and harder to change and improve the code, and progress grinds to a halt. A corollary of that is that code in large pieces of software is <em>read</em> far more often than it is <em>written</em>, so it becomes crucial to make code that is written easy to understand.</p>
 <p>Julia is a high-performance language for solving large mathematical problems, and compiled code needs to run “close to the metal”. It makes many affordances to solve mathematical problems quickly and efficiently. But most crucially, it tries to solve these in such a way that is “scalable” — where generic code can be reused and repurposed, and pieces of a program can be connected together elegantly like lego bricks.</p>
 <p>The goal of this unit is to show you the most important language features of Julia and how to use them to best effect. The most important language features that we explore are the syntax, type system, user-defined types, and multiple-dispatch. At the end we’ll consider how to use these to construct your code with an emphasis on types and functions (data and transformations / nouns and verbs). Choosing good <em>nouns</em> and <em>verbs</em> for your problem domain is the core of good program design. The notes below often refer to the Julia documentation.</p>
-<section id="values-and-their-types" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="values-and-their-types"><span class="header-section-number">1.1</span> Values and their types</h2>
+<section id="values-and-their-types" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Values and their types</h1>
 <p>One way Julia allows for easy and fast mathematical code is to emphasise <em>values</em> (or <em>objects</em>), and transformations of values (via functions).</p>
 <p>A few ways that is apparent is:</p>
 <ol type="1">
@@ -203,8 +237,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Julia code is a value (you can use and create macros, access generated native code, etc).</li>
 </ol>
 <p>With these last two, you can do some pretty powerful things with Julia. In fact, most of Julia is itself written in Julia. However, we won’t focus on those here.</p>
-<section id="why-is-it-so" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="why-is-it-so"><span class="header-section-number">1.1.1</span> Why is it so?</h3>
+<section id="why-is-it-so" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="why-is-it-so"><span class="header-section-number">1.1</span> Why is it so?</h2>
 <p>Remember, all this is designed to make it easy for mathematicians to write code that fast to run and easy to scale.</p>
 <p>In mathematics, we are interested in values or objects, as well as operations and transformations on such objects. Basing the language around values (objects), and allowing functions to behave like values (objects), makes our code resemble mathematics and have a similar interpretation. It does this without “getting in your way” or stopping you writing imperative code.</p>
 <p>From a historical perspective, Julia is strongly influenced by lisp (scheme) which is a functional language where everything is an expression.</p>
@@ -215,8 +249,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Types have two purposes: help <em>humans</em> organise their data and define behaviour, and the help <em>the computer</em> to execute the program quickly.</p>
 </section>
-<section id="all-valid-code-is-an-expression" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="all-valid-code-is-an-expression"><span class="header-section-number">1.1.2</span> All valid code is an <em>expression</em></h3>
+<section id="all-valid-code-is-an-expression" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="all-valid-code-is-an-expression"><span class="header-section-number">1.2</span> All valid code is an <em>expression</em></h2>
 <p>An expression is a piece of code that evaluates to a value. (Some languages, like Python or C, also have other pieces of syntax which are not expressions, typically known as “statements” - a statement tells to computer or compiler to “do something” but does not produce a value you can use).</p>
 <p>Here are some expressions in Julia:</p>
 <div id="2" class="cell" data-execution_count="1">
@@ -237,8 +271,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="every-value-has-a-concrete-type" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="every-value-has-a-concrete-type"><span class="header-section-number">1.1.3</span> Every value has a concrete type</h3>
+<section id="every-value-has-a-concrete-type" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="every-value-has-a-concrete-type"><span class="header-section-number">1.3</span> Every value has a concrete type</h2>
 <p>The types of the first value is straightforward:</p>
 <div id="6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fl">1</span><span class="op">+</span><span class="fl">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -261,8 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The <code>println</code> function takes input and prints it to the console (followed by a new line). It doesn’t really have any “value” to return. But I said earlier that all expressions in Julia return <em>some</em> value. Julia has an value defined called <code>nothing</code> for this purpose, which is of type <code>Nothing</code>. There is nothing special about this type, except that it has no associated data (meaning it needs 0 bytes of data to represent at runtime).</p>
 </section>
-<section id="what-is-a-concrete-type" class="level3" data-number="1.1.4">
-<h3 data-number="1.1.4" class="anchored" data-anchor-id="what-is-a-concrete-type"><span class="header-section-number">1.1.4</span> What is a concrete type?</h3>
+<section id="what-is-a-concrete-type" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="what-is-a-concrete-type"><span class="header-section-number">1.4</span> What is a concrete type?</h2>
 <p>A type can be thought of as a set of values.</p>
 <p>Every value is a concrete type, and Julia has just these concrete types:</p>
 <ol type="1">
@@ -273,8 +307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>Tuple</code></li>
 </ol>
 </section>
-<section id="primitive-types" class="level3" data-number="1.1.5">
-<h3 data-number="1.1.5" class="anchored" data-anchor-id="primitive-types"><span class="header-section-number">1.1.5</span> Primitive types</h3>
+<section id="primitive-types" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="primitive-types"><span class="header-section-number">1.5</span> Primitive types</h2>
 <p>Primitive types is where we begin describing data at the bits-and-bytes level. Here is the definition of <code>UInt8</code>:</p>
 <div id="10" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">primitive type</span> <span class="dt">UInt8</span></span>
@@ -315,8 +349,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The advantage of distinct types is we can describe different behaviour for these types. For example, there are separate methods for addition representing the different ways the CPU handles integer and floating-point arithmetic, <code>+(x::Int64, y::Int64)</code> and <code>+(x::Float64, y::Float64)</code>.</p>
 <p>(Note that all primitive types are immutable values. You cannot “mutate” <code>0</code> to become <code>1</code> - you construct a new value instead.)</p>
 </section>
-<section id="structs" class="level3" data-number="1.1.6">
-<h3 data-number="1.1.6" class="anchored" data-anchor-id="structs"><span class="header-section-number">1.1.6</span> Structs</h3>
+<section id="structs" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="structs"><span class="header-section-number">1.6</span> Structs</h2>
 <p>Structs allow us to organise different pieces of data into a “structure”. In general, structs represent composition of data: e.g.&nbsp;a complex number consists of a real component and an imaginary component:</p>
 <div id="20" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> <span class="dt">Complex64</span></span>
@@ -351,8 +385,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>2.0</code></pre>
 </div>
 </div>
-<section id="empty-structs" class="level4" data-number="1.1.6.1">
-<h4 data-number="1.1.6.1" class="anchored" data-anchor-id="empty-structs"><span class="header-section-number">1.1.6.1</span> Empty structs</h4>
+<section id="empty-structs" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="empty-structs"><span class="header-section-number">1.6.1</span> Empty structs</h3>
 <p>A struct can have any number of fields, including zero:</p>
 <div id="30" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> <span class="dt">Nothing</span></span>
@@ -361,8 +395,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> <span class="cn">nothing</span> <span class="op">=</span> <span class="fu">Nothing</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This is exactly how <code>nothing</code> is defined in Julia! It takes zero bytes to represent nothing, and you could say <code>Nothing</code> is like a set containing <code>2^0 = 1</code> possible value - <code>nothing</code>.</p>
-<section id="mutable-structs" class="level5" data-number="1.1.6.1.1">
-<h5 data-number="1.1.6.1.1" class="anchored" data-anchor-id="mutable-structs"><span class="header-section-number">1.1.6.1.1</span> Mutable structs</h5>
+</section>
+<section id="mutable-structs" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="mutable-structs"><span class="header-section-number">1.6.2</span> Mutable structs</h3>
 <p>By default structs are immutable - once constructed you cannot edit the fields. It is possible to create structs that you can modify with the <code>mutable</code> keyword:</p>
 <div id="32" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mutable struct</span> MutableComplex64</span>
@@ -375,9 +410,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>z.<span class="cn">im</span> <span class="op">=</span> <span class="fl">0.0</span>  <span class="co"># this would throw an error if z were immutable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="generic-structs" class="level4" data-number="1.1.6.2">
-<h4 data-number="1.1.6.2" class="anchored" data-anchor-id="generic-structs"><span class="header-section-number">1.1.6.2</span> Generic structs</h4>
+<section id="generic-structs" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="generic-structs"><span class="header-section-number">1.6.3</span> Generic structs</h3>
 <p>Finally, one more thing you can do is create <em>generic</em> structs. In Julia the type for complex numbers is more like:</p>
 <div id="34" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> <span class="dt">Complex</span>{T}</span>
@@ -398,23 +432,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>and this single definition is sufficient for all possible <code>T</code>.</p>
 <p>Note that the type <code>Complex</code> is an <em>abstract</em> type (not a <em>concrete</em> type). We’ll talk more about abstract types and multiple dispatch later. For now, note that Julia lets you write both generic data types and generic functions.</p>
 </section>
-<section id="type-aliases" class="level4" data-number="1.1.6.3">
-<h4 data-number="1.1.6.3" class="anchored" data-anchor-id="type-aliases"><span class="header-section-number">1.1.6.3</span> Type aliases</h4>
+<section id="type-aliases" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="type-aliases"><span class="header-section-number">1.6.4</span> Type aliases</h3>
 <p>Earlier we saw an example of a type “alias”. You can create them like so:</p>
 <div id="38" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> <span class="dt">Complex64</span> <span class="op">=</span> <span class="dt">Complex</span>{<span class="dt">Float64</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Type aliases are useful to make your code shorter or more readable.</p>
 </section>
-<section id="tuples" class="level4" data-number="1.1.6.4">
-<h4 data-number="1.1.6.4" class="anchored" data-anchor-id="tuples"><span class="header-section-number">1.1.6.4</span> Tuples</h4>
+<section id="tuples" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="tuples"><span class="header-section-number">1.6.5</span> Tuples</h3>
 <p>Tuples in Julia are a kind of “lightweight” struct with no type or field names that you need to define in advance. You construct tuples with brackets like <code>(1, 2, 3)</code>. Note the types don’t have to be uniform, <code>t = (1, true, "abc")</code> is equally valid. You access the fields with the index, such as <code>t[3] === "abc"</code>.</p>
 <p>Note the syntax of tuples is much like the arguments to a function - <code>(x, y)</code> is a tuple and <code>f(x, y)</code> calls function <code>f</code> with inputs <code>(x, y)</code>. The correspondence is intentional.</p>
 <p>Julia also has “named” tuples, where you can name the fields, like <code>(a = 1, b = true, c = "abc")</code>. (These look a bit like keyword arguments to functions).</p>
 </section>
 </section>
-<section id="arrays" class="level3" data-number="1.1.7">
-<h3 data-number="1.1.7" class="anchored" data-anchor-id="arrays"><span class="header-section-number">1.1.7</span> Arrays</h3>
+<section id="arrays" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="arrays"><span class="header-section-number">1.7</span> Arrays</h2>
 <p>Structs are useful for collecting data, but only if you know how many elements you want at compile time.</p>
 <p>Arrays are dynamically-sized collections, that can contain zero-or-more elements. We use arrays a lot in Julia.</p>
 <p>Arrays in Julia are multi-dimensional and have the type <code>Array{T, N}</code>. Each array value knows the type of its contents <code>T</code> as well as how many dimensions <code>N</code> it has. However, since we don’t know how many elements might be in an array, the computer needs to allocate memory to store the array at runtime. In terms of sets, arrays are a type contain an unbounded number of possible values.</p>
@@ -426,8 +460,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Underneath, <code>Array{N,T}</code> is now (as of Julia 1.11) implemented in terms of the low level <code>Memory{T}</code> - a one dimensional array of elements of type <code>T</code> with a length which is fixed at the time of construction. However, <code>Vector{T}</code> is more convenient to work with and you’ll generally see that used in most Julia code.</p>
 </section>
-<section id="strings" class="level3" data-number="1.1.8">
-<h3 data-number="1.1.8" class="anchored" data-anchor-id="strings"><span class="header-section-number">1.1.8</span> Strings</h3>
+<section id="strings" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="strings"><span class="header-section-number">1.8</span> Strings</h2>
 <p>Strings are built into the Julia language, for convenience. They are much like a <code>Vector{UInt8}</code> containing UTF-8 encoded string data, but are immutable.</p>
 <p>(If a future version of Julia had immutable arrays, <code>String</code> could theoretically become a “normal” Julia type, but for now this is a pragmatic tradeoff).</p>
 <p><strong>…and, that’s it!</strong></p>
@@ -440,12 +474,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 </section>
-<section id="logic-and-syntax" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="logic-and-syntax"><span class="header-section-number">1.2</span> Logic and syntax</h2>
+<section id="logic-and-syntax" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Logic and syntax</h1>
 <p>Now that we’ve covered all the possible types of values in Julia, we’ll take a look at how data is manipulated via logic and functions.</p>
 <p>Eventually we’ll come back to abstract types and multiple dispatch, but first we’ll cover some fundamentals of Julia code syntax and functions so we understand <em>what</em> we are looking at later. A lot of this might be intuitive to some of you, but since we are mathematicians, we’d like to spell it out more formally :)</p>
-<section id="everything-is-an-expression-everything-has-a-value-and-everything-has-a-type" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="everything-is-an-expression-everything-has-a-value-and-everything-has-a-type"><span class="header-section-number">1.2.1</span> Everything is an expression, everything has a value, and everything has a type</h3>
+<section id="everything-is-an-expression-everything-has-a-value-and-everything-has-a-type" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="everything-is-an-expression-everything-has-a-value-and-everything-has-a-type"><span class="header-section-number">2.1</span> Everything is an expression, everything has a value, and everything has a type</h2>
 <p>We saw earlier that an expression is a piece of code that, when evaluated, produces a value. For example:</p>
 <div id="42" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -469,8 +503,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The compiler essentially contains a “proof engine” that can formally prove constraints on the outputs of expressions. In this case it knows for sure that the output will be an <code>Int64</code>. Sometimes no proof can be found - in Julia this just makes the code slower, while in some other programming languages that could be a compilation error. This choice makes Julia feel more “dynamic” and makes prototype code easier to write.</p>
 </section>
-<section id="if-else" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="if-else"><span class="header-section-number">1.2.2</span> <code>if</code>-<code>else</code></h3>
+<section id="if-else" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="if-else"><span class="header-section-number">2.2</span> <code>if</code>-<code>else</code></h2>
 <p>In Julia, <em>every</em> piece of syntactically valid code is an expression — which means at run time it generates a value which you can assign to a variable. Even things like <code>if</code> statements!</p>
 <div id="46" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">42</span></span>
@@ -492,8 +526,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>It’s worth noting these are 100% identical. We say that <code>x ? y : z</code> is “syntax sugar” for the <code>if</code> statement — it’s a sweetener to make the programmer’s life easier, but not an entirely new feature since you can always achieve the same thing with more characters of code. Another piece of syntax sugar is that <code>x + y</code> has exactly the same meaning as <code>+(x, y)</code>.</p>
-<section id="our-first-abstract-type" class="level4" data-number="1.2.2.1">
-<h4 data-number="1.2.2.1" class="anchored" data-anchor-id="our-first-abstract-type"><span class="header-section-number">1.2.2.1</span> Our first abstract type</h4>
+<section id="our-first-abstract-type" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="our-first-abstract-type"><span class="header-section-number">2.2.1</span> Our first abstract type</h3>
 <p>What if the types of the <code>true</code> branch and the <code>false</code> branch of <code>if</code>-<code>else</code> don’t match?</p>
 <div id="50" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_even</span>(x) <span class="op">=</span> x <span class="op">%</span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span> ? <span class="cn">true</span> <span class="op">:</span> <span class="st">"false"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -533,8 +567,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>Union</code> is the first <strong>abstract type</strong> we’ll cover, and is relatively straightforward. <code>Union</code> itself is not a concrete type; there are no values of type <code>Union</code>. It mostly exists in Julia to aid with type inference for cases like <code>if</code>-<code>else</code> above – to abstractly analyse the outputs and intermediate values of programs during compilation (where more precise inference leads to more efficient code generation). In cases like this Julia can keep track which of the two possibilities the data is in relatively efficiently (e.g.&nbsp;with a single byte for a tag).</p>
 <p>There are two more ways abstract types can show up Julia that we’ll see later.</p>
 </section>
-<section id="short-cutting-logic" class="level4" data-number="1.2.2.2">
-<h4 data-number="1.2.2.2" class="anchored" data-anchor-id="short-cutting-logic"><span class="header-section-number">1.2.2.2</span> Short cutting logic</h4>
+<section id="short-cutting-logic" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="short-cutting-logic"><span class="header-section-number">2.2.2</span> Short cutting logic</h3>
 <p>Julia has operators for Boolean arithmetic, including <code>&amp;</code> for <em>AND</em> (logical conjunction) and <code>|</code> for <em>OR</em> (logical disjunction).</p>
 <div id="58" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="cn">false</span> <span class="op">&amp;</span> <span class="cn">false</span></span>
@@ -607,8 +641,8 @@ true | true = true</code></pre>
 </div>
 </section>
 </section>
-<section id="blocks-of-code" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="blocks-of-code"><span class="header-section-number">1.2.3</span> Blocks of code</h3>
+<section id="blocks-of-code" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="blocks-of-code"><span class="header-section-number">2.3</span> Blocks of code</h2>
 <p>Above, we saw blocks of code containing values. They didn’t really <em>do</em> anything, like assign values to variables.</p>
 <p>The rule in Julia is that the last expression in a block of code is the value returned from that block of code. If for some reason you want to <em>explicitly</em> create a code block (sometimes useful) you can use <code>begin</code> like so:</p>
 <div id="74" class="cell" data-execution_count="1">
@@ -662,8 +696,8 @@ true | true = true</code></pre>
 </div>
 </div>
 </section>
-<section id="empty-blocks-of-code-return-nothing" class="level3" data-number="1.2.4">
-<h3 data-number="1.2.4" class="anchored" data-anchor-id="empty-blocks-of-code-return-nothing"><span class="header-section-number">1.2.4</span> Empty blocks of code return <code>nothing</code></h3>
+<section id="empty-blocks-of-code-return-nothing" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="empty-blocks-of-code-return-nothing"><span class="header-section-number">2.4</span> Empty blocks of code return <code>nothing</code></h2>
 <p>So what happens when the block of code is empty?</p>
 <div id="80" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="cf">begin</span></span>
@@ -714,8 +748,8 @@ x = nothing</code></pre>
 </div>
 <p><em>Q: Does anyone know what the equivalent thing in <code>C</code> is?</em></p>
 </section>
-<section id="why-expressions-metaprogramming" class="level3" data-number="1.2.5">
-<h3 data-number="1.2.5" class="anchored" data-anchor-id="why-expressions-metaprogramming"><span class="header-section-number">1.2.5</span> Why expressions? Metaprogramming!</h3>
+<section id="why-expressions-metaprogramming" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="why-expressions-metaprogramming"><span class="header-section-number">2.5</span> Why expressions? Metaprogramming!</h2>
 <p>Having the syntax rule that “all valid syntax is an expression” makes it easier to analyse and manipulate code than it would be otherwise. It lets you rearrange code much like you can manipulate a mathematical expression with algebra (via substitution, etc), resulting in code that is correct and still compiles.</p>
 <p>For human coders, this means it is easier to copy-paste code from one place to another, or refactor it into a function.</p>
 <p>A “metaprogram” is a program that writes a program. Julia supports metaprogramming through macros and other advanced techniques. We won’t be teaching how to create a macro, but using a macro is pretty easy. A good example is the <code>@show</code> macro:</p>
@@ -736,17 +770,17 @@ x = nothing</code></pre>
 </div>
 <p>Each macro can be thought of as like user-defined syntax sugar. We can extend the language with our own ideas of how we can write programs.</p>
 </section>
-<section id="an-even-better-way-to-metaprogram" class="level3" data-number="1.2.6">
-<h3 data-number="1.2.6" class="anchored" data-anchor-id="an-even-better-way-to-metaprogram"><span class="header-section-number">1.2.6</span> An even better way to metaprogram</h3>
+<section id="an-even-better-way-to-metaprogram" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="an-even-better-way-to-metaprogram"><span class="header-section-number">2.6</span> An even better way to metaprogram</h2>
 <p>Another form of metaprogramming in Julia is multiple dispatch. Multiple dispatch allows us to construct entire classes of programs that depend on the <em>types</em> of values — and Julia will construct on-demand a particular program <em>specialized</em> on the inputs you actually provide.</p>
 <p>Next we’ll learn more about Julia functions and how multiple dispatch works. Afterwards we’ll learn about abstract types and how to use this metaprogramming approach.</p>
 </section>
 </section>
-<section id="functions-in-julia" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="functions-in-julia"><span class="header-section-number">1.3</span> Functions in Julia</h2>
+<section id="functions-in-julia" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Functions in Julia</h1>
 <p>Functions are at the heart of Julia, and there’s lots of ways of expressing different functions. The <a href="https://docs.julialang.org/en/v1/manual/functions/">Julia documentation of functions</a> provides a rich description of all of the details. We now overview a few special features that were perhaps not evident from Units 1-3. There are also links to the documentation for it.</p>
-<section id="function-syntaxes" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="function-syntaxes"><span class="header-section-number">1.3.1</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#man-functions">Function syntaxes</a></h3>
+<section id="function-syntaxes" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="function-syntaxes"><span class="header-section-number">3.1</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#man-functions">Function syntaxes</a></h2>
 <p>In Julia there are multiple ways of creating a function. There is the “long form”:</p>
 <div id="96" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f1</span>(x)</span>
@@ -781,8 +815,8 @@ x = nothing</code></pre>
  16</code></pre>
 </div>
 </div>
-<section id="what-type-is-a-function" class="level4" data-number="1.3.1.1">
-<h4 data-number="1.3.1.1" class="anchored" data-anchor-id="what-type-is-a-function"><span class="header-section-number">1.3.1.1</span> What type is a function?</h4>
+<section id="what-type-is-a-function" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="what-type-is-a-function"><span class="header-section-number">3.1.1</span> What type is a function?</h3>
 <p>You can think of the above functions as being a struct with zero fields. Each function has a unique type:</p>
 <div id="104" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(f1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -811,13 +845,13 @@ x = nothing</code></pre>
 </div>
 <p>These types have only one possible value, which is why Julia describes them as “singleton types”. Singleton types have a one-to-one correspondence between type and value.</p>
 </section>
-<section id="function-methods" class="level4" data-number="1.3.1.2">
-<h4 data-number="1.3.1.2" class="anchored" data-anchor-id="function-methods"><span class="header-section-number">1.3.1.2</span> Function methods</h4>
+<section id="function-methods" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="function-methods"><span class="header-section-number">3.1.2</span> Function methods</h3>
 <p>Note that in Julia you can attach <em>function methods</em> to any type (primitive, struct, etc), not just those defined like above.</p>
 <div id="112" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(f1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-# 1 method for generic function <b>f1</b> from [35mMain.Notebook[39m:<ul><li> f1(x) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L600" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:600</a></li> </ul>
+# 1 method for generic function <b>f1</b> from [35mMain.Notebook[39m:<ul><li> f1(x) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L598" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:598</a></li> </ul>
 </div>
 </div>
 <div id="114" class="cell" data-execution_count="1">
@@ -843,8 +877,8 @@ x = nothing</code></pre>
 <p>If this seems a bit crazy or abstract - don’t worry! Just remember that <em>anything</em> can be made callable - functions are not special.</p>
 </section>
 </section>
-<section id="nested-functions-closures" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="nested-functions-closures"><span class="header-section-number">1.3.2</span> Nested functions: “closures”</h3>
+<section id="nested-functions-closures" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="nested-functions-closures"><span class="header-section-number">3.2</span> Nested functions: “closures”</h2>
 <p>In Julia you can define functions within functions.</p>
 <div id="120" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">adder</span>(x)</span>
@@ -904,7 +938,7 @@ x = nothing</code></pre>
 <div id="134" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">methods</span>(add_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-# 1 method for anonymous function <b>#adder##0</b>:<ul><li> (::<b>Main.Notebook.var"#adder##0#adder##1"</b>)(y) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L689" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:689</a></li> </ul>
+# 1 method for anonymous function <b>#adder##0</b>:<ul><li> (::<b>Main.Notebook.var"#adder##0#adder##1"</b>)(y) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L687" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:687</a></li> </ul>
 </div>
 </div>
 <p>Because closures are “just” a convenient way to do things you can already do in Julia with structs and methods, you can think of them as an advanced type of syntax sugar. The above is equivalent to this:</p>
@@ -934,8 +968,8 @@ x = nothing</code></pre>
 </div>
 <p>Note that <em>every</em> function in Julia has its own type — e.g.&nbsp;<code>sin</code> and <code>cos</code> have different types. We’ll come back to types and methods later.</p>
 </section>
-<section id="argument-types" class="level3" data-number="1.3.3">
-<h3 data-number="1.3.3" class="anchored" data-anchor-id="argument-types"><span class="header-section-number">1.3.3</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Argument-type-declarations">Argument types</a></h3>
+<section id="argument-types" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="argument-types"><span class="header-section-number">3.3</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Argument-type-declarations">Argument types</a></h2>
 <p>To constrain the type of a function argument we use the <code>::</code> operator: When written in the argument list, <code>x::T</code> means the argument named <code>x</code> must be of type <code>T</code> for this method to match.</p>
 <p>We have seen Julia methods from the start, e.g.</p>
 <div id="140" class="cell" data-execution_count="1">
@@ -962,8 +996,8 @@ x = nothing</code></pre>
 <p>In a sense, the third method isn’t <em>safe</em> since someone could provide an input like <code>(1, 2, 3)</code> that can’t be squared. What happens if someone provides a string? Is this expected? On the other hand, the third method provides maximum flexibility — someone can introduce a new type that works with <code>f</code> at any point in time, without having to edit the definition of <code>f</code> to make it work.</p>
 <p>Note that there are two other uses of the <code>::</code> operator outside of function arguments - type assertion and typed variable declarations - but these aren’t used as commonly and we won’t cover them here.</p>
 </section>
-<section id="dispatch" class="level3" data-number="1.3.4">
-<h3 data-number="1.3.4" class="anchored" data-anchor-id="dispatch"><span class="header-section-number">1.3.4</span> Dispatch</h3>
+<section id="dispatch" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="dispatch"><span class="header-section-number">3.4</span> Dispatch</h2>
 <p>“Dispatch” is the process of determining which method of a function is called.</p>
 <div id="146" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">example_f</span>(x<span class="op">::</span><span class="dt">Int</span>) <span class="op">=</span> <span class="st">"input is an integer"</span></span>
@@ -978,7 +1012,7 @@ x = nothing</code></pre>
 example_f("abc") = "input is a string"</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-# 2 methods for generic function <b>example_f</b> from [35mMain.Notebook[39m:<ul><li> example_f(x::<b>String</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L798" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:798</a></li> <li> example_f(x::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L797" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:797</a></li> </ul>
+# 2 methods for generic function <b>example_f</b> from [35mMain.Notebook[39m:<ul><li> example_f(x::<b>String</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L796" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:796</a></li> <li> example_f(x::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L795" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:795</a></li> </ul>
 </div>
 </div>
 <p>You can use it to tailor the logic of a function to its inputs. Try type <code>methods(+)</code> at the REPL!</p>
@@ -996,7 +1030,7 @@ example_f("abc") = "input is a string"</code></pre>
 example_f2("abc") = "input is not an integer"</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-# 2 methods for generic function <b>example_f2</b> from [35mMain.Notebook[39m:<ul><li> example_f2(x::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L811" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:811</a></li> <li> example_f2(x) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L812" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:812</a></li> </ul>
+# 2 methods for generic function <b>example_f2</b> from [35mMain.Notebook[39m:<ul><li> example_f2(x::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L809" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:809</a></li> <li> example_f2(x) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L810" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:810</a></li> </ul>
 </div>
 </div>
 <p>Note that <code>Int &lt;: Any</code> and the two methods overlap somewhat. In this case Julia will pick the most “specific” method. In terms of “types as sets of values” it matches to the “smallest” set.</p>
@@ -1016,13 +1050,13 @@ example_f2("abc") = "input is not an integer"</code></pre>
 example_f3(1, "abc") = "the inputs have different types"</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-# 4 methods for generic function <b>example_f3</b> from [35mMain.Notebook[39m:<ul><li> example_f3(x::<b>String</b>, y::<b>String</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L828" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:828</a></li> <li> example_f3(x::<b>Int64</b>, y::<b>String</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L827" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:827</a></li> <li> example_f3(x::<b>String</b>, y::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L826" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:826</a></li> <li> example_f3(x::<b>Int64</b>, y::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L825" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:825</a></li> </ul>
+# 4 methods for generic function <b>example_f3</b> from [35mMain.Notebook[39m:<ul><li> example_f3(x::<b>String</b>, y::<b>String</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L826" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:826</a></li> <li> example_f3(x::<b>Int64</b>, y::<b>String</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L825" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:825</a></li> <li> example_f3(x::<b>String</b>, y::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L824" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:824</a></li> <li> example_f3(x::<b>Int64</b>, y::<b>Int64</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L823" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:823</a></li> </ul>
 </div>
 </div>
 <p>In object-oriented languages (like Python, Javascript, C#, Java or C++) dynamic dispatch occurs only on the type of first object (the class method being called). Multiple dispatch is a lot more flexible and changes the way we design software.</p>
 </section>
-<section id="varargs-functions" class="level3" data-number="1.3.5">
-<h3 data-number="1.3.5" class="anchored" data-anchor-id="varargs-functions"><span class="header-section-number">1.3.5</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Varargs-Functions">Varargs functions</a></h3>
+<section id="varargs-functions" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="varargs-functions"><span class="header-section-number">3.5</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Varargs-Functions">Varargs functions</a></h2>
 <p>Sometimes functions have a variable number of arguments — sometimes called “varargs” (or “variadic functions”).</p>
 <p>A simple thing to do might be to add up all the inputs:</p>
 <div id="152" class="cell" data-execution_count="1">
@@ -1070,8 +1104,8 @@ example_f3(1, "abc") = "the inputs have different types"</code></pre>
 </div>
 <p>Here you start to see how Julia features like varargs functions, closures, and packages let you solve a wide range of problems without writing very much code.</p>
 </section>
-<section id="optional-arguments" class="level3" data-number="1.3.6">
-<h3 data-number="1.3.6" class="anchored" data-anchor-id="optional-arguments"><span class="header-section-number">1.3.6</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments">Optional arguments</a></h3>
+<section id="optional-arguments" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="optional-arguments"><span class="header-section-number">3.6</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments">Optional arguments</a></h2>
 <p>You can have optional arguments (or default values):</p>
 <div id="158" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Distributions</span></span>
@@ -1091,8 +1125,8 @@ my_density(x, 0.5) = 0.24197072451914337</code></pre>
 </div>
 </div>
 </section>
-<section id="keyword-arguments" class="level3" data-number="1.3.7">
-<h3 data-number="1.3.7" class="anchored" data-anchor-id="keyword-arguments"><span class="header-section-number">1.3.7</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Keyword-Arguments">Keyword arguments</a></h3>
+<section id="keyword-arguments" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="keyword-arguments"><span class="header-section-number">3.7</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Keyword-Arguments">Keyword arguments</a></h2>
 <p>Arguments following the <code>;</code> character in the function definition or the function call are called <strong>keyword arguments</strong>. These are named as they are used.</p>
 <div id="160" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_density</span>(x<span class="op">::</span><span class="dt">Float64</span>; μ<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">0.0</span>, σ<span class="op">::</span><span class="dt">Float64 </span><span class="op">=</span> <span class="fl">1.0</span>)</span>
@@ -1128,8 +1162,8 @@ my_density(x, σ = 2.5) = 0.13328984115671988</code></pre>
 <p>The standard non-keyword arguments are called “positional” arguments since they are identified by their position not their name.</p>
 <p>Note that when <em>calling</em> a function you may either put a <code>;</code> or a <code>,</code> before the keyword arguments. In a function definition there’s an ambiguity between optional arguments and keyword</p>
 </section>
-<section id="destructing" class="level3" data-number="1.3.8">
-<h3 data-number="1.3.8" class="anchored" data-anchor-id="destructing"><span class="header-section-number">1.3.8</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Argument-destructuring">Destructing</a></h3>
+<section id="destructing" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="destructing"><span class="header-section-number">3.8</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Argument-destructuring">Destructing</a></h2>
 <p>In Julia you can <em>destructure</em> tuples (and other iterables) in the reverse way you <em>construct</em> them:</p>
 <div id="164" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>my_tuple <span class="op">=</span> (<span class="fl">42</span>, <span class="st">"abc"</span>)  <span class="co"># construct</span></span>
@@ -1169,8 +1203,8 @@ y = 1</code></pre>
 </div>
 <p>(But note that the <code>x.re</code> and <code>x.im</code> fields are internal - you should use the <code>real()</code> and <code>imag()</code> functions to work with <code>Complex</code> values!)</p>
 </section>
-<section id="function-composition-and-piping" class="level3" data-number="1.3.9">
-<h3 data-number="1.3.9" class="anchored" data-anchor-id="function-composition-and-piping"><span class="header-section-number">1.3.9</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Function-composition-and-piping">Function composition and piping</a></h3>
+<section id="function-composition-and-piping" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="function-composition-and-piping"><span class="header-section-number">3.9</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#Function-composition-and-piping">Function composition and piping</a></h2>
 <p>Just a little bit of syntax sugar for “piping” values into function calls:</p>
 <div id="170" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="cn">π</span><span class="op">/</span><span class="fl">4</span> <span class="op">|&gt;</span> cos <span class="op">|&gt;</span> acos <span class="op">|&gt;</span> x <span class="op">-&gt;</span> <span class="fl">4</span>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1187,8 +1221,8 @@ y = 1</code></pre>
 </div>
 </div>
 </section>
-<section id="dot-syntax-for-broadcasting-functions" class="level3" data-number="1.3.10">
-<h3 data-number="1.3.10" class="anchored" data-anchor-id="dot-syntax-for-broadcasting-functions"><span class="header-section-number">1.3.10</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#man-vectorized">Dot syntax for broadcasting functions</a></h3>
+<section id="dot-syntax-for-broadcasting-functions" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="dot-syntax-for-broadcasting-functions"><span class="header-section-number">3.10</span> <a href="https://docs.julialang.org/en/v1/manual/functions/#man-vectorized">Dot syntax for broadcasting functions</a></h2>
 <p>You already know the broadcast operator. It is syntax sugar for the <code>broadcast</code> function.</p>
 <div id="174" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>x_range <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">0.5</span><span class="op">:</span><span class="cn">π</span></span>
@@ -1222,12 +1256,12 @@ y = 1</code></pre>
 </div>
 </section>
 </section>
-<section id="more-items-from-control-flow" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="more-items-from-control-flow"><span class="header-section-number">1.4</span> More items from control flow</h2>
+<section id="more-items-from-control-flow" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> More items from control flow</h1>
 <p>You are already very familiar with conditional statements (<code>if</code>, <code>elseif</code>, <code>else</code>), with loops (<code>for</code> and <code>while</code>), with short circuit evaluation, and with many other variants. For example you can use <code>continue</code> and <code>break</code> in loops, and Julia even supports <code>@goto</code> and <code>@label</code> for when that isn’t enough.</p>
 <p>You can find more control flow details here: <a href="https://docs.julialang.org/en/v1/manual/control-flow/">control flow in Julia docs</a>. We’ll just dive into <code>for</code> loops and error handling below.</p>
-<section id="iteration-and-for-loops" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="iteration-and-for-loops"><span class="header-section-number">1.4.1</span> Iteration and <code>for</code> loops</h3>
+<section id="iteration-and-for-loops" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="iteration-and-for-loops"><span class="header-section-number">4.0.1</span> Iteration and <code>for</code> loops</h3>
 <p>One impressive piece of syntax sugar is the <code>for</code> loop. It is in fact a special case of a <code>while</code> loop, like so:</p>
 <div id="178" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this loop...</span></span>
@@ -1248,8 +1282,8 @@ y = 1</code></pre>
 <p>In the above, <code>tmp</code> is either <code>nothing</code> or it’s a tuple of length two — containing the next value and whatever metadata is needed to iterate to the next element.</p>
 <p>You can make any of your data types iterable in a <code>for</code> loop by implementing a method on the <code>iterate</code> function. We won’t be doing this in this course, but it is an excellent example of an <em>interface</em> in Julia. We’ll talk more about interfaces later.</p>
 </section>
-<section id="errors-and-exceptions" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="errors-and-exceptions"><span class="header-section-number">1.4.2</span> <a href="https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling">Errors and exceptions</a></h3>
+<section id="errors-and-exceptions" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="errors-and-exceptions"><span class="header-section-number">4.1</span> <a href="https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling">Errors and exceptions</a></h2>
 <p>One additional thing to know about is exception handling.</p>
 <div id="180" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">my_2_by_2_inv</span>(A<span class="op">::</span><span class="dt">Matrix{Float64}</span>)</span>
@@ -1274,9 +1308,9 @@ Stacktrace:
  [1] <span class="ansi-bold">error</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">s</span>::String<span class="ansi-bold">)</span>
 <span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">error.jl:44</span>
  [2] <span class="ansi-bold">my_2_by_2_inv</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">A</span>::Matrix<span class="ansi-bright-black-fg">{Float64}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1032</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1030</span>
  [3] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1044</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1042</span></pre>
 </div>
 </div>
 </div>
@@ -1287,9 +1321,9 @@ Stacktrace:
 <pre>ArgumentError: matrix is singular or near singular
 Stacktrace:
  [1] <span class="ansi-bold">my_2_by_2_inv</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">A</span>::Matrix<span class="ansi-bright-black-fg">{Float64}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1038</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1036</span>
  [2] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1048</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1046</span></pre>
 </div>
 </div>
 </div>
@@ -1324,15 +1358,15 @@ Stacktrace:
 <pre>ArgumentError: matrix is singular or near singular
 Stacktrace:
  [1] <span class="ansi-bold">my_2_by_2_inv</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">A</span>::Matrix<span class="ansi-bright-black-fg">{Float64}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1038</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1036</span>
  [2] <span class="ansi-bold">f</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1075</span><span class="ansi-bright-black-fg"> [inlined]</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1073</span><span class="ansi-bright-black-fg"> [inlined]</span>
  [3] <span class="ansi-bold">g</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mat</span>::Matrix<span class="ansi-bright-black-fg">{Float64}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1076</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1074</span>
  [4] <span class="ansi-bold">h</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">mat</span>::Matrix<span class="ansi-bright-black-fg">{Float64}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1077</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1075</span>
  [5] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1079</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1077</span></pre>
 </div>
 </div>
 </div>
@@ -1348,8 +1382,8 @@ Stacktrace:
    @ Main ./REPL[35]:1
  [5] top-level scope
    @ REPL[36]:1</code></pre>
-<section id="try-catch-and-finally" class="level4" data-number="1.4.2.1">
-<h4 data-number="1.4.2.1" class="anchored" data-anchor-id="try-catch-and-finally"><span class="header-section-number">1.4.2.1</span> Try, catch and finally</h4>
+<section id="try-catch-and-finally" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="try-catch-and-finally"><span class="header-section-number">4.1.1</span> Try, catch and finally</h3>
 <p>It’s possible to “catch” and handle errors that happened using <code>try</code>, <code>catch</code> and <code>finally</code>.</p>
 <div id="190" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span></span>
@@ -1380,8 +1414,8 @@ done</code></pre>
 </div>
 </div>
 </section>
-<section id="resource-cleanup" class="level4" data-number="1.4.2.2">
-<h4 data-number="1.4.2.2" class="anchored" data-anchor-id="resource-cleanup"><span class="header-section-number">1.4.2.2</span> Resource cleanup</h4>
+<section id="resource-cleanup" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="resource-cleanup"><span class="header-section-number">4.1.2</span> Resource cleanup</h3>
 <p>One place closures, and <code>do</code> syntax in particular, gets used is when you want resources to be cleaned up automatically. Here’s how one method of <code>open</code> is defined in Julia:</p>
 <div id="194" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">open</span>(f, filename<span class="op">::</span><span class="dt">String</span>)</span>
@@ -1409,8 +1443,8 @@ done</code></pre>
 <p>The <code>do</code> syntax is <em>yet another</em> way of making a function. It creates a new function and injects it into the first argument.</p>
 </section>
 </section>
-<section id="variable-scope" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3" class="anchored" data-anchor-id="variable-scope"><span class="header-section-number">1.4.3</span> Variable scope</h3>
+<section id="variable-scope" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="variable-scope"><span class="header-section-number">4.2</span> Variable scope</h2>
 <p>See <a href="https://docs.julialang.org/en/v1/manual/variables-and-scoping/">variables and scoping in Julia docs</a>.</p>
 <p>Julia actually has two separate scopes — global or “toplevel” scope, and local scope.</p>
 <p>Local scope is the simplest, and we’ll look at that first. By default bindings inside a function body create <em>new</em> variables that take precedence (or “shadows”) any variables of the same name outside the function body.</p>
@@ -1540,8 +1574,8 @@ x = 1</code></pre>
 <p>Remember you want your programs to be <em>simple</em> and <em>easy to read</em>. Variable names are cheap (though naming things well is hard!)</p>
 </section>
 </section>
-<section id="more-on-mutation" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="more-on-mutation"><span class="header-section-number">1.5</span> More on mutation</h2>
+<section id="more-on-mutation" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> More on mutation</h1>
 <p>As we saw earlier, a type can be <strong>mutable</strong> or not (<strong>immutable</strong>). Values/objects of the immutable types are typically stored on the stack. Values/objects of mutable types are typically allocated and stored on the heap.</p>
 <div id="216" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb184"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb184-1"><a href="#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">ismutable</span>(<span class="fl">7</span>)</span>
@@ -1569,8 +1603,8 @@ After call: [0]</code></pre>
 <p>Programmers tend to need to keep track of which objects are being mutated and when. You’ll see functions that mutate things often end in <code>!</code>, e.g.&nbsp;<code>push!</code>, <code>pop!</code>, <code>setindex!</code>, etc. This is just a convention – we could have called the above <code>mutating_function!</code>.</p>
 <p>Note that <code>collection[index]</code> is shorthand for <code>getindex(collection, index)</code> and <code>collection[index] = value</code> is shorthand for <code>setindex!(collection, index, value)</code>.</p>
 <p>For immutable values, there is no way to modify their contents. They are never modified by functions.</p>
-<section id="variable-bindings" class="level4" data-number="1.5.0.1">
-<h4 data-number="1.5.0.1" class="anchored" data-anchor-id="variable-bindings"><span class="header-section-number">1.5.0.1</span> Variable bindings</h4>
+<section id="variable-bindings" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="variable-bindings"><span class="header-section-number">5.0.1</span> Variable bindings</h3>
 <p>Variable bindings are not modified inside functions. The function below introduces a <em>new</em> binding <code>z</code> every time the function is called, and <code>x</code> is unaffected.</p>
 <div id="220" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb188"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">rebinding_function</span>(z<span class="op">::</span><span class="dt">Array{Int}</span>)</span>
@@ -1650,8 +1684,8 @@ a = [[10]]</code></pre>
 </div>
 </section>
 </section>
-<section id="abstract-type-tree" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="abstract-type-tree"><span class="header-section-number">1.6</span> Abstract type tree</h2>
+<section id="abstract-type-tree" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Abstract type tree</h1>
 <p>We saw the <code>Union</code> abstract type earlier.</p>
 <p>Julia also has an abstract type hierarchy (a tree). At the top of the tree is the type <code>Any</code>, which encompasses every possible value in Julia. All types have a supertype (the supertype of <code>Any</code> is <code>Any</code>). Types that are not leaves of the tree have subtypes. Some types are <strong>abstract</strong> while others are <strong>concrete</strong>. One particularly distinctive feature of Julia’s type system is that concrete types may not subtype each other: all concrete types are final and may only have abstract types as their supertypes.</p>
 <div id="232" class="cell" data-execution_count="1">
@@ -1830,8 +1864,8 @@ isconcretetype(Real) = false</code></pre>
 <span id="cb220-11"><a href="#cb220-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">64</span></span>
 <span id="cb220-12"><a href="#cb220-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="parameterized-generic-types" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="parameterized-generic-types"><span class="header-section-number">1.6.1</span> Parameterized / generic types</h3>
+<section id="parameterized-generic-types" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="parameterized-generic-types"><span class="header-section-number">6.1</span> Parameterized / generic types</h2>
 <p>We’ve actually now seen all three types of abstract types in Julia – the <code>abstract type</code>s that make up the type tree, the <code>Union</code> type, and the parameterized types (abstract <code>Complex</code> vs concrete <code>Complex{Float64}</code>).</p>
 <p>Actually <code>Complex</code> is a shorthand. It’s full type is written like this:</p>
 <div id="254" class="cell" data-execution_count="0">
@@ -1867,8 +1901,8 @@ isconcretetype(Complex{Float64}) = true</code></pre>
 <p>You’ve seen other <code>UnionAll</code> types like <code>Vector</code>, <code>Matrix</code>, <code>Set</code>, <code>Dict</code>, etc.</p>
 <p>Don’t worry about this seeming complex – consider this background material!</p>
 </section>
-<section id="union-types" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="union-types"><span class="header-section-number">1.6.2</span> Union types</h3>
+<section id="union-types" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="union-types"><span class="header-section-number">6.2</span> Union types</h2>
 <p>We saw earlier that Julia has a third abstract type called <code>Union</code> which let’s you reason about a finite set of (abstract or concrete) types.</p>
 <div id="262" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb228"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fl">42</span><span class="op">::</span><span class="dt">Union{Int, Float64}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1889,7 +1923,7 @@ isconcretetype(Complex{Float64}) = true</code></pre>
 <pre>TypeError: in typeassert, expected Union{Float64, Int64}, got a value of type String
 Stacktrace:
  [1] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1534</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1532</span></pre>
 </div>
 </div>
 </div>
@@ -1901,13 +1935,13 @@ Stacktrace:
 <p>Now we will practice using these tools to build larger programs, so you are ready for Projects 1, 2 and 3.</p>
 </section>
 </section>
-<section id="crafting-programs-in-julia" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="crafting-programs-in-julia"><span class="header-section-number">1.7</span> Crafting programs in Julia</h2>
-<section id="making-types-for-your-programs---dimensions-and-units" class="level3" data-number="1.7.1">
-<h3 data-number="1.7.1" class="anchored" data-anchor-id="making-types-for-your-programs---dimensions-and-units"><span class="header-section-number">1.7.1</span> Making types for your programs - dimensions and units</h3>
+<section id="crafting-programs-in-julia" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Crafting programs in Julia</h1>
+<section id="making-types-for-your-programs---dimensions-and-units" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="making-types-for-your-programs---dimensions-and-units"><span class="header-section-number">7.1</span> Making types for your programs - dimensions and units</h2>
 <p>You can define your own types. Any “serious” programming task would almost always merit that you do that.</p>
-<section id="dimensions-and-units" class="level4" data-number="1.7.1.1">
-<h4 data-number="1.7.1.1" class="anchored" data-anchor-id="dimensions-and-units"><span class="header-section-number">1.7.1.1</span> Dimensions and units</h4>
+<section id="dimensions-and-units" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="dimensions-and-units"><span class="header-section-number">7.1.1</span> Dimensions and units</h3>
 <p>One thing types let you do is ensure you do things “safely” without making mistakes.</p>
 <p>When solving physics problems its always useful to perform dimensional analysis to ensure your answer makes sense, and to make sure you are using a consistent set of units in your numeric computations.</p>
 <ul>
@@ -1915,8 +1949,8 @@ Stacktrace:
 <li><strong>Units</strong> - metres, kilometres, centimetres, feet, inches, miles, etc</li>
 </ul>
 </section>
-<section id="our-first-unit---metre" class="level4" data-number="1.7.1.2">
-<h4 data-number="1.7.1.2" class="anchored" data-anchor-id="our-first-unit---metre"><span class="header-section-number">1.7.1.2</span> Our first unit - <code>Metre</code></h4>
+<section id="our-first-unit---metre" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="our-first-unit---metre"><span class="header-section-number">7.1.2</span> Our first unit - <code>Metre</code></h3>
 <p>Julia lets us encode dimensions and units. There is a nice package called <a href="https://painterqubits.github.io/Unitful.jl/stable/">Unitful.jl</a> that you can download and use. Lets see how a package like this works.</p>
 <p>We can start simple with a single type:</p>
 <div id="268" class="cell" data-execution_count="0">
@@ -1949,17 +1983,17 @@ Stacktrace:
 <div id="276" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb237"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb237-1"><a href="#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">show</span>(io<span class="op">::</span><span class="dt">IO</span>, x<span class="op">::</span><span class="dt">Metre</span>) <span class="op">=</span> <span class="fu">print</span>(io, x.value, <span class="st">"m"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="how-does-this-make-things-safe" class="level5" data-number="1.7.1.2.1">
-<h5 data-number="1.7.1.2.1" class="anchored" data-anchor-id="how-does-this-make-things-safe"><span class="header-section-number">1.7.1.2.1</span> How does this make things safe?</h5>
+<section id="how-does-this-make-things-safe" class="level4" data-number="7.1.2.1">
+<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="how-does-this-make-things-safe"><span class="header-section-number">7.1.2.1</span> How does this make things safe?</h4>
 <p>If I try and do something invalid like <code>1 + 2m</code>, Julia will throw an error. This means algebra with incorrect dimensions will not compute in Julia. You’ll get an error message and have the opportunity to fix your code.</p>
 </section>
-<section id="isnt-all-of-this-slow" class="level5" data-number="1.7.1.2.2">
-<h5 data-number="1.7.1.2.2" class="anchored" data-anchor-id="isnt-all-of-this-slow"><span class="header-section-number">1.7.1.2.2</span> Isn’t all of this slow?</h5>
+<section id="isnt-all-of-this-slow" class="level4" data-number="7.1.2.2">
+<h4 data-number="7.1.2.2" class="anchored" data-anchor-id="isnt-all-of-this-slow"><span class="header-section-number">7.1.2.2</span> Isn’t all of this slow?</h4>
 <p>Surprisingly, in Julia this doesn’t slow anything down. The <code>Metre{Float64}</code> object uses the same 64 bits to represent as a bare <code>Float64</code>. The compiler is smart enough to know it can use the same representation for either type interchangeably, and your program won’t spend any effort “constructing structs” or “getting fields” at run time.</p>
 </section>
 </section>
-<section id="other-length-units" class="level4" data-number="1.7.1.3">
-<h4 data-number="1.7.1.3" class="anchored" data-anchor-id="other-length-units"><span class="header-section-number">1.7.1.3</span> Other length units</h4>
+<section id="other-length-units" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="other-length-units"><span class="header-section-number">7.1.3</span> Other length units</h3>
 <p>How would you deal with other kinds of units of length?</p>
 <ul>
 <li>kilometres</li>
@@ -2003,8 +2037,8 @@ Stacktrace:
 <span id="cb239-18"><a href="#cb239-18" aria-hidden="true" tabindex="-1"></a>    value<span class="op">::</span><span class="dt">T</span></span>
 <span id="cb239-19"><a href="#cb239-19" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="conversion-to-and-from-metres" class="level5" data-number="1.7.1.3.1">
-<h5 data-number="1.7.1.3.1" class="anchored" data-anchor-id="conversion-to-and-from-metres"><span class="header-section-number">1.7.1.3.1</span> Conversion to and from metres</h5>
+<section id="conversion-to-and-from-metres" class="level4" data-number="7.1.3.1">
+<h4 data-number="7.1.3.1" class="anchored" data-anchor-id="conversion-to-and-from-metres"><span class="header-section-number">7.1.3.1</span> Conversion to and from metres</h4>
 <p>For each of these, we might want a way to convert these to metres. We can use the <code>Metre</code> type, and attach methods to that. Such methods are known as “constructors”.</p>
 <div id="282" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb240"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb240-1"><a href="#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Metre</span>(x<span class="op">::</span><span class="dt">Kilometre</span>) <span class="op">=</span> <span class="fu">Metre</span>(<span class="fl">1000</span> <span class="op">*</span> x.value)</span>
@@ -2025,8 +2059,8 @@ Stacktrace:
 <span id="cb242-4"><a href="#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Mile</span>(x<span class="op">::</span><span class="dt">Metre</span>) <span class="op">=</span> <span class="fu">Mile</span>(x.value <span class="op">/</span> (<span class="fl">1760</span> <span class="op">*</span> <span class="fl">3</span> <span class="op">*</span> <span class="fl">12</span> <span class="op">*</span> <span class="fl">0.0254</span>));</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="conversion-between-any-two-types" class="level5" data-number="1.7.1.3.2">
-<h5 data-number="1.7.1.3.2" class="anchored" data-anchor-id="conversion-between-any-two-types"><span class="header-section-number">1.7.1.3.2</span> Conversion between any two types</h5>
+<section id="conversion-between-any-two-types" class="level4" data-number="7.1.3.2">
+<h4 data-number="7.1.3.2" class="anchored" data-anchor-id="conversion-between-any-two-types"><span class="header-section-number">7.1.3.2</span> Conversion between any two types</h4>
 <p>If we are converting between two length units neither of which is <code>Metre</code>, we might want to simply convert the input to metres first. Doing this we end up with:</p>
 <div id="288" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb243"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb243-1"><a href="#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Kilometre</span>(x<span class="op">::</span><span class="dt">AbstractLength</span>) <span class="op">=</span> <span class="fu">Kilometre</span>(<span class="fu">Metre</span>(x))</span>
@@ -2050,8 +2084,8 @@ Stacktrace:
 </div>
 <p>(Don’t worry – we won’t expect you to create something like that in this course!)</p>
 </section>
-<section id="algebra-with-metres" class="level5" data-number="1.7.1.3.3">
-<h5 data-number="1.7.1.3.3" class="anchored" data-anchor-id="algebra-with-metres"><span class="header-section-number">1.7.1.3.3</span> Algebra with metres</h5>
+<section id="algebra-with-metres" class="level4" data-number="7.1.3.3">
+<h4 data-number="7.1.3.3" class="anchored" data-anchor-id="algebra-with-metres"><span class="header-section-number">7.1.3.3</span> Algebra with metres</h4>
 <p>We have seen these already:</p>
 <div id="292" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb245"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb245-1"><a href="#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="op">:</span>(<span class="op">+</span>)(x<span class="op">::</span><span class="dt">Metre</span>, y<span class="op">::</span><span class="dt">Metre</span>) <span class="op">=</span> <span class="fu">Metre</span>(x.value <span class="op">+</span> y.value)</span>
@@ -2063,8 +2097,8 @@ Stacktrace:
 <span id="cb245-7"><a href="#cb245-7" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="op">:</span>(<span class="op">/</span>)(x<span class="op">::</span><span class="dt">Metre</span>, y<span class="op">::</span><span class="dt">Real</span>) <span class="op">=</span> <span class="fu">Metre</span>(x.value <span class="op">/</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="algebra-with-abstract-types" class="level5" data-number="1.7.1.3.4">
-<h5 data-number="1.7.1.3.4" class="anchored" data-anchor-id="algebra-with-abstract-types"><span class="header-section-number">1.7.1.3.4</span> Algebra with abstract types</h5>
+<section id="algebra-with-abstract-types" class="level4" data-number="7.1.3.4">
+<h4 data-number="7.1.3.4" class="anchored" data-anchor-id="algebra-with-abstract-types"><span class="header-section-number">7.1.3.4</span> Algebra with abstract types</h4>
 <p>Now we have enough to perform algebra between all these types. Let’s look at addition, subtraction and division:</p>
 <div id="294" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb246"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="op">:</span>(<span class="op">+</span>)(x<span class="op">::</span><span class="dt">AbstractLength</span>, y<span class="op">::</span><span class="dt">AbstractLength</span>) <span class="op">=</span> <span class="fu">Metre</span>(x) <span class="op">+</span> <span class="fu">Metre</span>(y)</span>
@@ -2118,8 +2152,8 @@ Stacktrace:
 </div>
 <p>(Note that the <code>if</code> part will be dealt with at compile time.)</p>
 </section>
-<section id="niceties" class="level5" data-number="1.7.1.3.5">
-<h5 data-number="1.7.1.3.5" class="anchored" data-anchor-id="niceties"><span class="header-section-number">1.7.1.3.5</span> Niceties</h5>
+<section id="niceties" class="level4" data-number="7.1.3.5">
+<h4 data-number="7.1.3.5" class="anchored" data-anchor-id="niceties"><span class="header-section-number">7.1.3.5</span> Niceties</h4>
 <div id="302" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb251"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb251-1"><a href="#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> m <span class="op">=</span> <span class="fu">Metre</span>(<span class="fl">1</span>) <span class="co"># done above</span></span>
 <span id="cb251-2"><a href="#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> km <span class="op">=</span> <span class="fu">Kilometre</span>(<span class="fl">1</span>)</span>
@@ -2135,8 +2169,8 @@ Stacktrace:
 <span id="cb252-5"><a href="#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">show</span>(io<span class="op">::</span><span class="dt">IO</span>, x<span class="op">::</span><span class="dt">Mile</span>) <span class="op">=</span> <span class="fu">print</span>(io, x.value, <span class="st">"mile"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="some-results" class="level5" data-number="1.7.1.3.6">
-<h5 data-number="1.7.1.3.6" class="anchored" data-anchor-id="some-results"><span class="header-section-number">1.7.1.3.6</span> Some results</h5>
+<section id="some-results" class="level4" data-number="7.1.3.6">
+<h4 data-number="7.1.3.6" class="anchored" data-anchor-id="some-results"><span class="header-section-number">7.1.3.6</span> Some results</h4>
 <p><em>Q: How many kilometres in a mile?</em></p>
 <div id="306" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb253"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb253-1"><a href="#cb253-1" aria-hidden="true" tabindex="-1"></a>mile <span class="op">/</span> km</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2153,8 +2187,8 @@ Stacktrace:
 </div>
 <p><em>A: Her head won’t quite hit the ceiling, but Jenny will be able to reach the light with her arms.</em></p>
 </section>
-<section id="new-interfaces" class="level5" data-number="1.7.1.3.7">
-<h5 data-number="1.7.1.3.7" class="anchored" data-anchor-id="new-interfaces"><span class="header-section-number">1.7.1.3.7</span> New interfaces</h5>
+<section id="new-interfaces" class="level4" data-number="7.1.3.7">
+<h4 data-number="7.1.3.7" class="anchored" data-anchor-id="new-interfaces"><span class="header-section-number">7.1.3.7</span> New interfaces</h4>
 <p>So far we have mostly overloaded existing functions built into <code>Base</code> Julia. There is nothing stopping you defining your own functions – in fact you’ll likely define more new functions that overload existing ones. Here we also added the <code>unit</code> function to help out.</p>
 <p>But how did we know to overload the <code>Base</code> functions? Well, these functions are <em>interfaces</em> used throughout Julia. We can define new interfaces for our new <em>abstract</em> types. (Typically, a function we write that accepts some concrete type is not a <em>generic interface</em> – it is just a one-off function with a single method).</p>
 <p>Now we have our <code>AbstractLength</code> interface, we can document how people <em>implement</em> it so people could add new types, like <code>Nanometres</code> and <code>Yard</code>. To <em>implement the <code>AbstractLength</code> interface</em> you’d need to implement:</p>
@@ -2166,17 +2200,17 @@ Stacktrace:
 <p>After this, everything will “just work”™. This is the power of interfaces!</p>
 </section>
 </section>
-<section id="other-dimensions" class="level4" data-number="1.7.1.4">
-<h4 data-number="1.7.1.4" class="anchored" data-anchor-id="other-dimensions"><span class="header-section-number">1.7.1.4</span> Other dimensions</h4>
+<section id="other-dimensions" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="other-dimensions"><span class="header-section-number">7.1.4</span> Other dimensions</h3>
 <p>We could do the same for time, mass, temperature, etc. But then we need to deal with compound dimensions like area, velocity, energy, etc. Again, we need a clever interface to deal with all this complexity. This (and more) is implemented in the <a href="https://painterqubits.github.io/Unitful.jl/stable/">Unitful.jl</a> package.</p>
 </section>
 </section>
-<section id="making-types-and-functions-together-shapes" class="level3" data-number="1.7.2">
-<h3 data-number="1.7.2" class="anchored" data-anchor-id="making-types-and-functions-together-shapes"><span class="header-section-number">1.7.2</span> Making types and functions together – shapes</h3>
+<section id="making-types-and-functions-together-shapes" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="making-types-and-functions-together-shapes"><span class="header-section-number">7.2</span> Making types and functions together – shapes</h2>
 <p>This time we’ll practice making new types together with functions.</p>
 <p>For this example we’ll look at geometric shapes, starting with two-dimensional shapes.</p>
-<section id="abstract-type-and-interface" class="level4" data-number="1.7.2.1">
-<h4 data-number="1.7.2.1" class="anchored" data-anchor-id="abstract-type-and-interface"><span class="header-section-number">1.7.2.1</span> Abstract type and interface</h4>
+<section id="abstract-type-and-interface" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="abstract-type-and-interface"><span class="header-section-number">7.2.1</span> Abstract type and interface</h3>
 <p>We can start with an abstract type for two-dimensional shapes.</p>
 <div id="310" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb257"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb257-1"><a href="#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract type</span> Shape2D</span>
@@ -2202,8 +2236,8 @@ Stacktrace:
 </div>
 <p>Here we’ve defined two functions, each with zero methods but some documentation explaining their purpose (interfaces in Julia are informal, and are specified through documentation). You can find the documentation with <code>?area</code> at the REPL.</p>
 </section>
-<section id="types-of-2d-shape" class="level4" data-number="1.7.2.2">
-<h4 data-number="1.7.2.2" class="anchored" data-anchor-id="types-of-2d-shape"><span class="header-section-number">1.7.2.2</span> Types of 2D shape</h4>
+<section id="types-of-2d-shape" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="types-of-2d-shape"><span class="header-section-number">7.2.2</span> Types of 2D shape</h3>
 <p>There are various kinds of 2D shapes. Let’s introduce a few here, and organize them by the number of sides. Here is some triangles:</p>
 <div id="314" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb259"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb259-1"><a href="#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="kw">abstract type</span> Triangle <span class="op">&lt;:</span><span class="dt"> Shape2D</span></span>
@@ -2258,8 +2292,8 @@ Stacktrace:
 </div>
 <p>(One limitation of this is that we we can’t have <code>RegularPolgyon{4} &lt;: Quadrilateral</code> in this generic definition so if <code>Quadrilateral</code> was important to our design we may have some thinking to do here.)</p>
 </section>
-<section id="implementing-the-shape2d-interface" class="level4" data-number="1.7.2.3">
-<h4 data-number="1.7.2.3" class="anchored" data-anchor-id="implementing-the-shape2d-interface"><span class="header-section-number">1.7.2.3</span> Implementing the <code>Shape2D</code> interface</h4>
+<section id="implementing-the-shape2d-interface" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="implementing-the-shape2d-interface"><span class="header-section-number">7.2.3</span> Implementing the <code>Shape2D</code> interface</h3>
 <p>For each of these shapes we can determine the perimeter:</p>
 <div id="322" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb264"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb264-1"><a href="#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">perimeter</span>(shape<span class="op">::</span><span class="dt">EquilateralTriangle</span>)</span>
@@ -2327,8 +2361,8 @@ area(RightAngledTriangle(10, 10)) = 15.0</code></pre>
 <p>At any point in time we can introduce new subtypes of <code>Shape2D</code>, <code>Triangle</code> or <code>Rectangle</code> so long as we define their perimeter and area. The person who wrote <code>Shape2d</code> does not even need to be aware.</p>
 </section>
 </section>
-<section id="combining-interfaces" class="level3" data-number="1.7.3">
-<h3 data-number="1.7.3" class="anchored" data-anchor-id="combining-interfaces"><span class="header-section-number">1.7.3</span> Combining interfaces</h3>
+<section id="combining-interfaces" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="combining-interfaces"><span class="header-section-number">7.3</span> Combining interfaces</h2>
 <p>Today we have introduced two new abstract types with their own interfaces. One for units of length, and one for shapes.</p>
 <p>We have said Julia is good for quickly writing mathematical code, and good for writing code that executes fast. Here we can see how Julia “scales” well when combining code together – everything will “just work”.</p>
 <p>Take this:</p>
@@ -2357,18 +2391,18 @@ Closest candidates are:
   *(::Any, ::Any, <span class="ansi-bright-red-fg">::Any</span>, <span class="ansi-bright-red-fg">::Any...</span>)
 <span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">Base</span> <span style="text-decoration:underline" class="ansi-bright-black-fg">operators.jl:642</span>
   *(::AbstractLength, <span class="ansi-bright-red-fg">::Real</span>)
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1777</span>
-  *(<span class="ansi-bright-red-fg">::SpecialFunctions.SimplePoly</span>, ::Any)
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-yellow-fg">SpecialFunctions</span> <span class="ansi-bright-black-fg">~/.julia/packages/SpecialFunctions/pIm7V/src/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">expint.jl:8</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1775</span>
+  *(<span class="ansi-bright-red-fg">::Real</span>, ::AbstractLength)
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:1776</span>
   ...
 
 Stacktrace:
  [1] <span class="ansi-bold">*</span>
 <span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">./</span><span style="text-decoration:underline" class="ansi-bright-black-fg">operators.jl:642</span><span class="ansi-bright-black-fg"> [inlined]</span>
  [2] <span class="ansi-bold">area</span><span class="ansi-bold">(</span><span class="ansi-bright-black-fg">shape</span>::Circle<span class="ansi-bright-black-fg">{Centimetre{Float64}}</span><span class="ansi-bold">)</span>
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:2023</span>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-magenta-fg">Main.Notebook</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:2021</span>
  [3] top-level scope
-<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">/work/math2504/notes/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:2062</span></pre>
+<span class="ansi-bright-black-fg">   @</span> <span class="ansi-bright-black-fg">~/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/</span><span style="text-decoration:underline" class="ansi-bright-black-fg">lecture-unit-5.qmd:2060</span></pre>
 </div>
 </div>
 </div>
@@ -2383,8 +2417,8 @@ Stacktrace:
 </div>
 </section>
 </section>
-<section id="going-forward" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="going-forward"><span class="header-section-number">1.8</span> Going forward</h2>
+<section id="going-forward" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Going forward</h1>
 <p>We are now done with the material for Unit 5. We have learned:</p>
 <ol type="1">
 <li>What are the “concrete” types represents sets of values in Julia?
@@ -2414,11 +2448,11 @@ Stacktrace:
 </ol>
 <p>This will place you in good stead for Units 6-8, and in particular Projects 1-3 where you will need to craft non-trivial programs to create a solution.</p>
 </section>
-<section id="bonus-material" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="bonus-material"><span class="header-section-number">1.9</span> Bonus material</h2>
+<section id="bonus-material" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Bonus material</h1>
 <p>Consider the following material optional. Have a look through if you are curious, have extra time, or would like extra exposure and practice to defining types and interfaces.</p>
-<section id="online-statistics" class="level3" data-number="1.9.1">
-<h3 data-number="1.9.1" class="anchored" data-anchor-id="online-statistics"><span class="header-section-number">1.9.1</span> Online statistics</h3>
+<section id="online-statistics" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="online-statistics"><span class="header-section-number">9.1</span> Online statistics</h2>
 <p>Lets consider an example where we want to collect some quick running statistics from some data coming in. E.g.:</p>
 <div id="336" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb275"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb275-1"><a href="#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
@@ -2535,8 +2569,8 @@ Mean: 45.137781249720675
 Max: 98.13388392678519</code></pre>
 </div>
 </div>
-<section id="running-statistics-of-other-types" class="level4" data-number="1.9.1.1">
-<h4 data-number="1.9.1.1" class="anchored" data-anchor-id="running-statistics-of-other-types"><span class="header-section-number">1.9.1.1</span> Running statistics of other types</h4>
+<section id="running-statistics-of-other-types" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="running-statistics-of-other-types"><span class="header-section-number">9.1.1</span> Running statistics of other types</h3>
 <p>Going a bit more generic we could have also had,</p>
 <div id="342" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb281"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb281-1"><a href="#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="kw">mutable struct</span> FlexRunningStats{T <span class="op">&lt;:</span><span class="dt"> Number</span>}</span>
@@ -2600,15 +2634,15 @@ Max: 9814</code></pre>
 <div id="344" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb283"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb283-1"><a href="#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@which</span> <span class="fu">mean</span>(running_stats_storage)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/12ba92a25bfb29f2ab95467a84d6e76a18a674e5//quarto/lecture-unit-5.qmd#L2194" target="_blank">/work/math2504/notes/quarto/lecture-unit-5.qmd:2194</a>
+mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="https://github.com/dietmaroelz/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/tree/77a18e2c427775e82dc471a3e08c3966baf9bf2c//quarto/lecture-unit-5.qmd#L2192" target="_blank">/home/dietmar/github/ProgrammingCourse-with-Julia-SimulationAnalysisAndLearningSystems/quarto/lecture-unit-5.qmd:2192</a>
 </div>
 </div>
 <p>But there is a problem with the above. What if <code>T</code> was <code>Complex</code>? Should we have done <code>&lt;: Number</code> or <code>&lt;: Real</code>?</p>
 <p>In generic code its good to consider what <em>interfaces</em> we want to use, so we can figure out which type constraints are appropriate. Julia will go ahead and assemble the pieces of your program together into a coherent whole.</p>
 </section>
 </section>
-<section id="interfaces" class="level3" data-number="1.9.2">
-<h3 data-number="1.9.2" class="anchored" data-anchor-id="interfaces"><span class="header-section-number">1.9.2</span> Interfaces</h3>
+<section id="interfaces" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="interfaces"><span class="header-section-number">9.2</span> Interfaces</h2>
 <p>So above we used a few interface methods to implement our online-statistics accumulator.</p>
 <ul>
 <li><code>push!</code> - add an element to a collection (mutates the input)</li>
@@ -2618,17 +2652,16 @@ mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="ht
 <li><code>mean</code> - the mean of all the elements in a collection</li>
 </ul>
 <p>Let’s have a look at some common interfaces</p>
-<section id="numbers" class="level4" data-number="1.9.2.1">
-<h4 data-number="1.9.2.1" class="anchored" data-anchor-id="numbers"><span class="header-section-number">1.9.2.1</span> Numbers</h4>
+<section id="numbers" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="numbers"><span class="header-section-number">9.2.1</span> Numbers</h3>
 <ul>
 <li>Common arithmetic operations <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, etc.</li>
 <li><code>promote(x, y)</code> - take two numbers and return two numbers of the same type, e.g <code>promote_type(3.14, 1) = (3.14, 1.0)</code></li>
 <li><code>promote_rule(T1, T2)</code> - e.g.&nbsp;<code>promote_rule(Float64, Int64) = Float64</code>.</li>
 </ul>
 <p>Some subtypes of <code>Number</code> like <code>AbstractFloat</code> have more interface methods.</p>
-</section>
-<section id="iterables" class="level4" data-number="1.9.2.2">
-<h4 data-number="1.9.2.2" class="anchored" data-anchor-id="iterables"><span class="header-section-number">1.9.2.2</span> Iterables</h4>
+<section id="iterables" class="level4" data-number="9.2.1.1">
+<h4 data-number="9.2.1.1" class="anchored" data-anchor-id="iterables"><span class="header-section-number">9.2.1.1</span> Iterables</h4>
 <ul>
 <li><code>iterate(iter)</code> - used in <code>for</code> loops</li>
 <li><code>length(iter)</code> - the number of elements to iterate</li>
@@ -2640,8 +2673,9 @@ mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="ht
 <li><code>IteratorEltype(iter)</code> - return whether <code>eltype</code> is known</li>
 </ul>
 </section>
-<section id="arrays-1" class="level4" data-number="1.9.2.3">
-<h4 data-number="1.9.2.3" class="anchored" data-anchor-id="arrays-1"><span class="header-section-number">1.9.2.3</span> Arrays</h4>
+</section>
+<section id="arrays-1" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="arrays-1"><span class="header-section-number">9.2.2</span> Arrays</h3>
 <p>Arrays are iterable and satisfy the the above. They are also indexable</p>
 <ul>
 <li><code>getindex(a, i)</code> - the function behind <code>a[i]</code></li>
@@ -2652,8 +2686,8 @@ mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="ht
 <p>Some types like <code>Vector</code> are resizable and for these types there are functions like <code>push!</code>, <code>pop!</code>, <code>insert!</code>, <code>deleteat!</code>, <code>append!</code>, <code>empty!</code>, etc to manipulate them as arbitrary-sized lists.</p>
 <p>Arrays are also defined as arithmetic objects according to linear algebra, and therefore have <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, etc defined. The <code>LinearAlgebra</code> standard library package has lots of functions to invert or decompose matrices, find eigenvalues, etc.</p>
 </section>
-<section id="sets" class="level4" data-number="1.9.2.4">
-<h4 data-number="1.9.2.4" class="anchored" data-anchor-id="sets"><span class="header-section-number">1.9.2.4</span> Sets</h4>
+<section id="sets" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="sets"><span class="header-section-number">9.2.3</span> Sets</h3>
 <p>Julia has a <code>Set{T}</code> type and an <code>AbstractSet{T}</code> supertype. Sets are iterable and support things like:</p>
 <ul>
 <li><code>in</code></li>
@@ -2664,8 +2698,8 @@ mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="ht
 </ul>
 <p>Here’s where interfaces get interesting. Things like <code>Array</code> also support <code>in</code>, but it is slow (must check every element). With <code>Set</code> lookup is fast (e.g.&nbsp;O(1) instead of O(N)) - so the operations above are fast.</p>
 </section>
-<section id="dictionaries" class="level4" data-number="1.9.2.5">
-<h4 data-number="1.9.2.5" class="anchored" data-anchor-id="dictionaries"><span class="header-section-number">1.9.2.5</span> Dictionaries</h4>
+<section id="dictionaries" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="dictionaries"><span class="header-section-number">9.2.4</span> Dictionaries</h3>
 <p>Julia has a <code>Dict{K, T}</code> type and an <code>AbstractDict{K, T}</code> supertype. Like arrays, dictionaries are iterable and indexable. You can imagine they are like a <code>Set</code> but have associate values (in fact their implementation is related).</p>
 <ul>
 <li><code>keys(dict)</code> - return the set of keys</li>
@@ -2684,8 +2718,8 @@ mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="ht
 </ul>
 </section>
 </section>
-<section id="using-structs-for-complex-nested-data-structures" class="level3" data-number="1.9.3">
-<h3 data-number="1.9.3" class="anchored" data-anchor-id="using-structs-for-complex-nested-data-structures"><span class="header-section-number">1.9.3</span> Using structs for complex, nested data structures</h3>
+<section id="using-structs-for-complex-nested-data-structures" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="using-structs-for-complex-nested-data-structures"><span class="header-section-number">9.3</span> Using structs for complex, nested data structures</h2>
 <p>You can make interesting data structures by referencing other instances of yourself, like this tree structure below:</p>
 <div id="346" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb284"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb284-1"><a href="#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">0</span>)</span>
@@ -2720,12 +2754,11 @@ mean(rsd::<b>Main.Notebook.FlexRunningStats</b>) in Main.Notebook at <a href="ht
 </div>
 </div>
 </section>
-<section id="more-to-be-covered-as-part-of-unit-6" class="level3" data-number="1.9.4">
-<h3 data-number="1.9.4" class="anchored" data-anchor-id="more-to-be-covered-as-part-of-unit-6"><span class="header-section-number">1.9.4</span> More to be covered as part of Unit 6:</h3>
+<section id="more-to-be-covered-as-part-of-unit-6" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="more-to-be-covered-as-part-of-unit-6"><span class="header-section-number">9.4</span> More to be covered as part of Unit 6:</h2>
 <p><a href="https://docs.julialang.org/en/v1/manual/constructors/">See constructors in Julia docs</a>. More on this in Unit 6.</p>
 <p><a href="https://docs.julialang.org/en/v1/manual/conversion-and-promotion/">See conversion and promotion in Julia docs</a></p>
 <p><a href="https://docs.julialang.org/en/v1/manual/interfaces/">See interfaces in Julia docs</a></p>
-</section>
 </section>
 </section>
 
