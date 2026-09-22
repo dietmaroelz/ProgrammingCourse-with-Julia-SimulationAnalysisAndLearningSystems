@@ -151,8 +151,9 @@ window.Quarto = {
   <li><a href="#task-4-ypts---implementing-mathbbz_p" id="toc-task-4-ypts---implementing-mathbbz_p" class="nav-link" data-scroll-target="#task-4-ypts---implementing-mathbbz_p"><span class="header-section-number">3.4</span> <strong>Task 4 (Ypts) - Implementing <span class="math inline">\(\mathbb{Z}_p\)</span></strong></a>
   <ul class="collapse">
   <li><a href="#constructors-1" id="toc-constructors-1" class="nav-link" data-scroll-target="#constructors-1"><span class="header-section-number">3.4.1</span> Constructors</a></li>
-  <li><a href="#field-operations-and-miscellaneous-functions" id="toc-field-operations-and-miscellaneous-functions" class="nav-link" data-scroll-target="#field-operations-and-miscellaneous-functions"><span class="header-section-number">3.4.2</span> Field operations and miscellaneous functions</a></li>
-  <li><a href="#checking-that-it-works" id="toc-checking-that-it-works" class="nav-link" data-scroll-target="#checking-that-it-works"><span class="header-section-number">3.4.3</span> Checking that it works</a></li>
+  <li><a href="#miscellaneous-functions" id="toc-miscellaneous-functions" class="nav-link" data-scroll-target="#miscellaneous-functions"><span class="header-section-number">3.4.2</span> Miscellaneous functions</a></li>
+  <li><a href="#field-operations" id="toc-field-operations" class="nav-link" data-scroll-target="#field-operations"><span class="header-section-number">3.4.3</span> Field Operations</a></li>
+  <li><a href="#checking-that-it-works" id="toc-checking-that-it-works" class="nav-link" data-scroll-target="#checking-that-it-works"><span class="header-section-number">3.4.4</span> Checking that it works</a></li>
   </ul></li>
   <li><a href="#task-5-ypts---using-mathbbz_px" id="toc-task-5-ypts---using-mathbbz_px" class="nav-link" data-scroll-target="#task-5-ypts---using-mathbbz_px"><span class="header-section-number">3.5</span> <strong>Task 5 (Ypts) - Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></strong></a>
   <ul class="collapse">
@@ -310,12 +311,12 @@ There are <em>10</em> points for setting up the GitHub repo properly and followi
 </section>
 <section id="types" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="types"><span class="header-section-number">2.2</span> Types</h2>
-<p>TODO - either create type tree here or refer to Unit 7 notes</p>
+<p>TODO - either create type tree here or refer to Unit 6 notes</p>
 </section>
 </section>
 <section id="tasks-90pts" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Tasks (90pts)</h1>
-<p>Build your project on top of the <a href="https://github.com/dietmaroelz/2504_2026_projectB">repo</a> (TODO - UPDATE LINK FOR TEMPLATE REPO) by making modifications, additions, and improvements. Your first goal is to understand the base repository. After that, you will make improvements, additions, and cleanups.</p>
+<p>Build your project on top of the <a href="https://github.com/dietmaroelz/2504_2026_projectB">repo</a> (TODO - UPDATE LINK FOR TEMPLATE REPO) by making modifications, additions, and improvements. Your first goal is to understand the base repository.</p>
 <p>Follow the supplied type names below. These are given so that tasks have backwards compatibility. Note that in an actual project, you would sometimes replace older types with newer ones.</p>
 <p>Read all the tasks before starting - only some tasks are dependent on previous ones so they do <em>not</em> necessarily have to be done in order.</p>
 <p>TODO - REVIEW ALL POINT DISTRIBUTIONS</p>
@@ -399,7 +400,8 @@ x^4 - 1
 </section>
 <section id="fast-evaluation" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="fast-evaluation"><span class="header-section-number">3.3.2</span> Fast Evaluation</h3>
-<p>Our current evaluation strategy for a polynomial <span class="math inline">\(a_0 + a_1\cdot x + \ldots + a_n \cdot x^n\)</span> is for the i’th term take <span class="math inline">\(x\)</span> to the power <span class="math inline">\(i\)</span>, then multiply by the i’th coefficient <span class="math inline">\(a_i\)</span>. This however, is inefficient - <a href="https://en.wikipedia.org/wiki/Horner%27s_method">Horner’s method</a> offers a much faster evaluation method, by implicitly utilising the following representation. Utilise this algorithm to optimise the existing implementation of <code>evaluate</code>. This algorithm should be implemented at the abstract level, but should be optimised for both sparse/dense representations simultaneously (<em>hint: </em>)</p>
+<p>Our current evaluation strategy for a polynomial <span class="math inline">\(a_0 + a_1\cdot x + \ldots + a_n \cdot x^n\)</span> is for the i’th term take <span class="math inline">\(x\)</span> to the power <span class="math inline">\(i\)</span>, then multiply by the i’th coefficient <span class="math inline">\(a_i\)</span>. This however, is inefficient - <a href="https://en.wikipedia.org/wiki/Horner%27s_method">Horner’s method</a> offers a much faster evaluation method, by implicitly utilising the following representation: <span class="math inline">\((\ldots(a_n \cdot x + a_{n-1})\cdot x + \ldots + a_1)\cdot x + a_0 + a_0\)</span>.</p>
+<p>Utilise this algorithm to optimise the existing implementation of <code>evaluate</code>. This algorithm should be implemented at the abstract level, but should be optimised for both sparse/dense representations simultaneously (<em>hint: </em>)</p>
 <p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.</p>
 <p>Test your implementation of <code>evaluate</code> for at least <span class="math inline">\(10^2\)</span> random polynomials (your tests should not take more than 30s to run on your computer).</p>
 </section>
@@ -419,11 +421,11 @@ x^4 - 1
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="fast-powers"><span class="header-section-number">3.3.4</span> Fast Powers</h3>
 <p>As discussed in class, if you have a polynomial <span class="math inline">\(f\)</span> and raise it to the power <span class="math inline">\(2^n\)</span> then instead of doing about <span class="math inline">\(2^n\)</span> multiplications you can do about <span class="math inline">\(n\)</span> using <strong>repeated squaring</strong>. E.g., to compute <span class="math inline">\(f^8\)</span>, we compute <span class="math inline">\(f^2 = f \cdot f\)</span>, then <span class="math inline">\(f^4 = f^2 \cdot f^2\)</span> and finally <span class="math inline">\(f^8 = f^4 \cdot f^4\)</span>. This idea can be extended to computing <span class="math inline">\(f^n\)</span> for any <span class="math inline">\(n \in \mathbb{N}\)</span>! Utilise this algorithm to optimise the existing implementation of <code>^</code>. You may wish to short-circuit computations of <span class="math inline">\(f^0\)</span> and <span class="math inline">\(f^1\)</span> (this is not required). This algorithm should be implemented at the abstract level (i.e., <code>Polynomial{C}</code>).</p>
 <p>For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.</p>
-<p>Test your implementation of <code>^</code> for at least <span class="math inline">\(10^2\)</span> polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the <a href="https://en.wikipedia.org/wiki/Binomial_theorem">Binomial Theorem</a> alongside polynomials <span class="math inline">\((1+x)^n\)</span> for various <span class="math inline">\(n\)</span>.</p>
+<p>Add new tests for your implementation of <code>^</code> using at least <span class="math inline">\(10^2\)</span> generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the <a href="https://en.wikipedia.org/wiki/Binomial_theorem">Binomial Theorem</a> alongside polynomials <span class="math inline">\((1+x)^n\)</span>.</p>
 </section>
 <section id="johnsons-algorithm" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="johnsons-algorithm"><span class="header-section-number">3.3.5</span> Johnson’s Algorithm</h3>
-<p>This is a <strong>harder task</strong> (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible. Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia’s native vectorisation over the provided <code>Heap</code> implementation, this can still become very slow. Implement <a href="https://dl.acm.org/doi/pdf/10.1145/1086837.1086847">Johnson’s Algorithm</a> (<a href="https://www.sciencedirect.com/science/article/pii/S0747717110001446">this may also be useful</a>) for <code>PolynomialSparse</code>.</p>
+<p>This is a <strong>harder task</strong> (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible). Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia’s native vectorisation over the provided <code>Heap</code> implementation, this can still become very slow. Implement <a href="https://dl.acm.org/doi/pdf/10.1145/1086837.1086847">Johnson’s Algorithm</a> for <code>PolynomialSparse</code> (<a href="https://www.sciencedirect.com/science/article/pii/S0747717110001446">this may also be useful</a>).</p>
 <p>Use the existing multiplication tests to ensure your implementation is correct (you do not need to implement more tests).</p>
 <p>For benchmarking, find a single instance where the existing implementation takes on average at least 10s to run. Demonstrate that your implemention is indeed an optimisation.</p>
 </section>
@@ -431,7 +433,7 @@ x^4 - 1
 <section id="task-4-ypts---implementing-mathbbz_p" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="task-4-ypts---implementing-mathbbz_p"><span class="header-section-number">3.4</span> <strong>Task 4 (Ypts) - Implementing <span class="math inline">\(\mathbb{Z}_p\)</span></strong></h2>
 <p>We have provided an implementation of the <em>Cantor-Zassenhaus factoring algorithm</em> which allows for factoring polynomials when the coefficient ring is the field <em><span class="math inline">\(\mathbb{Z}_p\)</span></em>. Previously, this course delved into the algorithm itself (and the corresponding algorithm to reconstruct a full factorisation over the integers). However, this was too involved (feel free to try to understand the algorithm/implementation if you wish to do so - but this is not necessary and will not be assessed) and instead we will simply utilise the implementation as a <em>blackbox</em>.</p>
-<p>Until now, your polynomial implementation has assumed integer coefficients and (fatally) <span class="math inline">\(\mathbb{Z}[x]\)</span> is <em>not</em> a <a href="https://en.wikipedia.org/wiki/Euclidean_domain">euclidean domain</a>. This means we do not yet have access to <code>gcd</code> on polynomials which is a critical component of the factoring algorithm. If we take our coefficients from a <em><a href="https://en.wikipedia.org/wiki/Field_(mathematics)">field</a></em> like <span class="math inline">\(\mathbb{Z}_p\)</span>, for <span class="math inline">\(p\)</span> a prime, then the resulting <span class="math inline">\(\mathbb{Z}_p[x]\)</span> <em>is</em> a Euclidean domain. We therefore need to implement some way to work with <span class="math inline">\(\mathbb{Z}_p[x]\)</span>.</p>
+<p>Until now, your polynomial implementation has assumed integer coefficients and (fatally) <span class="math inline">\(\mathbb{Z}[x]\)</span> is <em>not</em> a <a href="https://en.wikipedia.org/wiki/Euclidean_domain">euclidean domain</a>. This means we do not yet have access to <code>gcd</code> (or even <code>div</code>/<code>rem</code>) on polynomials which is a critical component of the factoring algorithm. If we take our coefficients from a <em><a href="https://en.wikipedia.org/wiki/Field_(mathematics)">field</a></em> like <span class="math inline">\(\mathbb{Z}_p\)</span>, for <span class="math inline">\(p\)</span> a prime, then the resulting <span class="math inline">\(\mathbb{Z}_p[x]\)</span> <em>is</em> a Euclidean domain. We therefore need to implement some way to work with <span class="math inline">\(\mathbb{Z}_p[x]\)</span>.</p>
 <p>Your task is to implement the coefficient field <em><span class="math inline">\(\mathbb{Z}_p\)</span></em>, such that in the next task we can utilise it to factor polynomials.</p>
 <p><em>Note: you should aim to implement all functions in this section as efficiently as you can. Additionally, if you can implement any of the following function in an equivalent (in particular, multiple dispatch should work with the same effectiveness) manner but a simpler type signature, you may do so</em>.</p>
 <p>To begin, view the provided stub and initial implementation in <code>src/coefficients/z_mod_p/z_mod_p.jl</code>.</p>
@@ -451,56 +453,29 @@ x^4 - 1
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">one</span>(z5) </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">one</span>(a) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You may at this stage add any other reasonable outer constructors for convenience (<em>not assessed</em>).</p>
+<p><em>Note: in all of the following, it is up to you to determine exactly which function type signatures are required - remember that you can always return and add more if necessary later on. Remember also to prefix relevant functions with <code>Base.</code>, e.g., <code>Base.show</code> or <code>Base.:(+)</code>.</em></p>
 </section>
-<section id="field-operations-and-miscellaneous-functions" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="field-operations-and-miscellaneous-functions"><span class="header-section-number">3.4.2</span> Field operations and miscellaneous functions</h3>
-<p>TODO - add Base. to everything 4. Implement the following convenience and query operations:</p>
-<pre><code>    function show(io::IO, a::ZModP{N}) where {N}
-    function ==(a::ZModP{N}, b::ZModP{N})::Bool where {N}
-    function ==(a::ZModP{N}, b::Integer)::Bool where {N}
-    function ==(a::Integer, b::ZModP{N})::Bool where {N}</code></pre>
-<ol start="5" type="1">
-<li>Implement the following basic arithmetic (field) operations:</li>
-</ol>
-<pre><code>    function +(a::ZModP{N}, b::ZModP{N}) where {N}
-    function +(a::ZModP{N}, b::Integer) where {N}
-    function +(a::Int, b::ZModP{N}) where {N}
-    function -(a::ZModP{N}) where {N}
-    function -(a::ZModP{N}, b::ZModP{N}) where {N}
-    function -(a::ZModP{N}, b::Integer) where {N}
-    function -(a::Integer, b::ZModP{N}) where {N}
-    function *(a::ZModP{N}, b::ZModP{N}) where {N}
-    function *(a::ZModP{N}, b::Integer) where {N}
-    function *(a::Integer, b::ZModP{N}) where {N}
-    function inv(a::ZModP{N})::ZModP{N} where {N}
-    function ÷(a::ZModP{N}, b::ZModP{N})::ZModP{N} where {N}
-    function ÷(a::ZModP{N}, b::Integer)::ZModP{N} where {N}
-    function ÷(a::Integer, b::ZModP{N})::ZModP{N} where {N}</code></pre>
+<section id="miscellaneous-functions" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="miscellaneous-functions"><span class="header-section-number">3.4.2</span> Miscellaneous functions</h3>
+<p>Define methods for <code>show</code> and <code>==</code>.</p>
+</section>
+<section id="field-operations" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="field-operations"><span class="header-section-number">3.4.3</span> Field Operations</h3>
+<p>Implement basic arithmetic for <em><span class="math inline">\(\mathbb{Z}_p\)</span></em> including <code>+</code>, <code>-</code>, <code>*</code>, <code>inv</code>, <code>÷</code>, <code>/</code> and <code>^</code> .</p>
+<p><em>Note: you should optimise <code>^</code> similarly to the fast power section of Task 3.</em></p>
 <p><em>Hint: Recall division in a field is simply multiplication by the inverse. See <code>int_inverse_mod</code> in <code>src/utils/general_alg.jl</code>.</em></p>
-<p><em>Note: All the above operations should act as they do in <span class="math inline">\(\mathbb{Z}_p\)</span>. E.g., <span class="math inline">\(3 \cdot 2 = 6 \equiv 1\, (\text{mod}\, 5)\)</span> should correspond to the code:</em></p>
+<p>All the above operations should act as they do in <em><span class="math inline">\(\mathbb{Z}_p\)</span></em>. E.g., <em><span class="math inline">\(3 \cdot 2 = 6 \equiv 1\, (\text{mod}\, 5)\)</span></em> should correspond to the code:</p>
 <pre><code>    a = ZModP(3, Val(5))
     @show a * 2 # should print 1</code></pre>
-<ol start="6" type="1">
-<li>Implement the additional arithmetic operations</li>
-</ol>
-<pre><code>    function ^(a::ZModP{N}, n::Integer) where {N}
-    function abs(a::ZModP{N})::ZModP{N} where {N} </code></pre>
-<ol start="7" type="1">
-<li>Implement the following function to convert elements of <code>ZModP{N}</code> to <code>Int</code> or <code>BigInt</code>:</li>
-</ol>
-<pre><code>    function (::Type{S})(a::ZModP)::S where {S &lt;: Union{Int, BigInt}} </code></pre>
-<ol start="8" type="1">
-<li>Override the function <code>div</code> for <code>Term</code> (i.e., in <code>src/term.jl</code>) to implement it for terms with coefficient type <code>ZModP</code> (the existing implementation should still be used for other coefficient fields).</li>
-</ol>
-<p><strong>Note:</strong> you may make as many additional convenience/helper functions as you wish.</p>
 </section>
-<section id="checking-that-it-works" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="checking-that-it-works"><span class="header-section-number">3.4.3</span> Checking that it works</h3>
-<ol start="10" type="1">
-<li><p>Create <code>example_script_task_5.jl</code> and in this file, demonstrate <em>all</em> basic modular arithmetic operations working correctly (each at least once). TODO - Keep this and print output for PDF submission?</p></li>
-<li><p>Create <code>tests/z_mod_p.jl</code> containing tests which run <em>all</em> operations on <code>ZModP</code>. Your tests must run on at least <span class="math inline">\(10^3\)</span> randomly generated integers in the range <span class="math inline">\([-10^4, 10^4]\)</span> inclusive and using at least 10 different primes. Utilise the in-built <code>mod</code> function on integers to verify correctness of your operations. Ensure your implementations pass these tests.</p></li>
-<li><p>Add this test file to the <code>test/runtests.jl</code> file and have your tests print some output demonstrating the correctness of your operations on <code>ZModP</code>. <em>Screenshot (or copy/paste) the output of this and your <code>example_script_task_5.jl</code> and add it to your PDF submission.</em> TODO - edit this to be consistent with others (just one big test output and we can view tests ourselves)</p></li>
+<section id="checking-that-it-works" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="checking-that-it-works"><span class="header-section-number">3.4.4</span> Checking that it works</h3>
+<ol type="1">
+<li><p>Create <code>scripts/example_script_task_4.jl</code> and in this file, demonstrate <em>all</em> basic modular arithmetic operations working correctly (each at least once).</p></li>
+<li><p>Create <code>tests/z_mod_p_test.jl</code> containing tests which run <em>all</em> operations on <code>ZModP{N}</code>. Your tests must run on at least <span class="math inline">\(10^3\)</span> randomly generated integers in the range <span class="math inline">\([-10^4, 10^4]\)</span> inclusive and use at least 4 different primes. Utilise the in-built <code>mod</code> function on integers to verify correctness of your operations.</p></li>
+<li><p>Ensure your implementations pass these tests, and that they run with the command <code>julia test/runtests.jl -v</code>. Unlike before we omit the <code>-p</code> flag - at this stage the tests should <em>also</em> pass the factorisation and modular operations tests for <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>. Ensure that if tests are run <em>with</em> the <code>-p</code> flag then your additional tests are skipped.</p></li>
 </ol>
+<p><em>Note: make sure to add the output of <code>example_script_task_4.jl</code> to your PDF submission.</em></p>
 </section>
 </section>
 <section id="task-5-ypts---using-mathbbz_px" class="level2" data-number="3.5">

@@ -173,11 +173,11 @@ Folders are further subdivided based on the type/functionality they relate to, y
  
 ## Types
 
-TODO - either create type tree here or refer to Unit 7 notes
+TODO - either create type tree here or refer to Unit 6 notes
 
 # Tasks (90pts)
  
-Build your project on top of the [repo](https://github.com/dietmaroelz/2504_2026_projectB) (TODO - UPDATE LINK FOR TEMPLATE REPO) by making modifications, additions, and improvements. Your first goal is to understand the base repository. After that, you will make improvements, additions, and cleanups.
+Build your project on top of the [repo](https://github.com/dietmaroelz/2504_2026_projectB) (TODO - UPDATE LINK FOR TEMPLATE REPO) by making modifications, additions, and improvements. Your first goal is to understand the base repository. 
  
 Follow the supplied type names below. These are given so that tasks have backwards compatibility. Note that in an actual project, you would sometimes replace older types with newer ones.
   
@@ -268,7 +268,9 @@ For benchmarking, find a single instance where the existing implementation takes
 
 ### Fast Evaluation
 
-Our current evaluation strategy for a polynomial $a_0 + a_1\cdot x + \ldots + a_n \cdot x^n$ is for the i'th term take $x$ to the power $i$, then multiply by the i'th coefficient $a_i$. This however, is inefficient - [Horner's method](https://en.wikipedia.org/wiki/Horner%27s_method) offers a much faster evaluation method, by implicitly utilising the following representation. Utilise this algorithm to optimise the existing implementation of `evaluate`. This algorithm should be implemented at the abstract level, but should be optimised for both sparse/dense representations simultaneously (*hint: *)
+Our current evaluation strategy for a polynomial $a_0 + a_1\cdot x + \ldots + a_n \cdot x^n$ is for the i'th term take $x$ to the power $i$, then multiply by the i'th coefficient $a_i$. This however, is inefficient - [Horner's method](https://en.wikipedia.org/wiki/Horner%27s_method) offers a much faster evaluation method, by implicitly utilising the following representation: $(\ldots(a_n \cdot x + a_{n-1})\cdot x + \ldots + a_1)\cdot x + a_0 + a_0$.  
+
+Utilise this algorithm to optimise the existing implementation of `evaluate`. This algorithm should be implemented at the abstract level, but should be optimised for both sparse/dense representations simultaneously (*hint: *)
 
 For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.
 
@@ -300,11 +302,11 @@ As discussed in class, if you have a polynomial $f$ and raise it to the power $2
 
 For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
 
-Test your implementation of `^` for at least $10^2$ polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$ for various $n$. 
+Add new tests for your implementation of `^` using at least $10^2$ generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$.
 
 ### Johnson's Algorithm
 
-This is a **harder task** (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible. Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia's native vectorisation over the provided `Heap` implementation, this can still become very slow. Implement [Johnson's Algorithm](https://dl.acm.org/doi/pdf/10.1145/1086837.1086847) ([this may also be useful](https://www.sciencedirect.com/science/article/pii/S0747717110001446)) for `PolynomialSparse`.  
+This is a **harder task** (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible). Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia's native vectorisation over the provided `Heap` implementation, this can still become very slow. Implement [Johnson's Algorithm](https://dl.acm.org/doi/pdf/10.1145/1086837.1086847) for `PolynomialSparse` ([this may also be useful](https://www.sciencedirect.com/science/article/pii/S0747717110001446)). 
 
 Use the existing multiplication tests to ensure your implementation is correct (you do not need to implement more tests).
 
@@ -315,7 +317,7 @@ For benchmarking, find a single instance where the existing implementation takes
 
 We have provided an implementation of the *Cantor-Zassenhaus factoring algorithm* which allows for factoring polynomials when the coefficient ring is the field *$\mathbb{Z}_p$*. Previously, this course delved into the algorithm itself (and the corresponding algorithm to reconstruct a full factorisation over the integers). However, this was too involved (feel free to try to understand the algorithm/implementation if you wish to do so - but this is not necessary and will not be assessed) and instead we will simply utilise the implementation as a *blackbox*. 
 
-Until now, your polynomial implementation has assumed integer coefficients and (fatally) $\mathbb{Z}[x]$ is *not* a [euclidean domain](https://en.wikipedia.org/wiki/Euclidean_domain). This means we do not yet have access to `gcd` on polynomials which is a critical component of the factoring algorithm. If we take our coefficients from a *[field](https://en.wikipedia.org/wiki/Field_(mathematics))* like $\mathbb{Z}_p$, for $p$ a prime, then the resulting $\mathbb{Z}_p[x]$ *is* a Euclidean domain. We therefore need to implement some way to work with $\mathbb{Z}_p[x]$.
+Until now, your polynomial implementation has assumed integer coefficients and (fatally) $\mathbb{Z}[x]$ is *not* a [euclidean domain](https://en.wikipedia.org/wiki/Euclidean_domain). This means we do not yet have access to `gcd` (or even `div`/`rem`) on polynomials which is a critical component of the factoring algorithm. If we take our coefficients from a *[field](https://en.wikipedia.org/wiki/Field_(mathematics))* like $\mathbb{Z}_p$, for $p$ a prime, then the resulting $\mathbb{Z}_p[x]$ *is* a Euclidean domain. We therefore need to implement some way to work with $\mathbb{Z}_p[x]$.
 
 Your task is to implement the coefficient field *$\mathbb{Z}_p$*, such that in the next task we can utilise it to factor polynomials. 
 
@@ -345,69 +347,35 @@ one(a)
 
 You may at this stage add any other reasonable outer constructors for convenience (*not assessed*).
 
-### Field operations and miscellaneous functions
+*Note: in all of the following, it is up to you to determine exactly which function type signatures are required - remember that you can always return and add more if necessary later on. Remember also to prefix relevant functions with `Base.`, e.g., `Base.show` or `Base.:(+)`.*
 
-TODO - add Base. to everything
-4. Implement the following convenience and query operations:
+### Miscellaneous functions
 
-```
-    function show(io::IO, a::ZModP{N}) where {N}
-    function ==(a::ZModP{N}, b::ZModP{N})::Bool where {N}
-    function ==(a::ZModP{N}, b::Integer)::Bool where {N}
-    function ==(a::Integer, b::ZModP{N})::Bool where {N}
-```
+Define methods for `show` and `==`.
 
-5. Implement the following basic arithmetic (field) operations:
+### Field Operations
 
-```
-    function +(a::ZModP{N}, b::ZModP{N}) where {N}
-    function +(a::ZModP{N}, b::Integer) where {N}
-    function +(a::Int, b::ZModP{N}) where {N}
-    function -(a::ZModP{N}) where {N}
-    function -(a::ZModP{N}, b::ZModP{N}) where {N}
-    function -(a::ZModP{N}, b::Integer) where {N}
-    function -(a::Integer, b::ZModP{N}) where {N}
-    function *(a::ZModP{N}, b::ZModP{N}) where {N}
-    function *(a::ZModP{N}, b::Integer) where {N}
-    function *(a::Integer, b::ZModP{N}) where {N}
-    function inv(a::ZModP{N})::ZModP{N} where {N}
-    function ÷(a::ZModP{N}, b::ZModP{N})::ZModP{N} where {N}
-    function ÷(a::ZModP{N}, b::Integer)::ZModP{N} where {N}
-    function ÷(a::Integer, b::ZModP{N})::ZModP{N} where {N}
-```
+Implement basic arithmetic for *$\mathbb{Z}_p$* including `+`, `-`, `*`, `inv`, `÷`, `/` and `^` .
+
+*Note: you should optimise `^` similarly to the fast power section of Task 3.*
 
 *Hint: Recall division in a field is simply multiplication by the inverse. See `int_inverse_mod` in `src/utils/general_alg.jl`.*
 
-*Note: All the above operations should act as they do in $\mathbb{Z}_p$. E.g., $3 \cdot 2 = 6 \equiv 1\, (\text{mod}\, 5)$ should correspond to the code:*
+All the above operations should act as they do in *$\mathbb{Z}_p$*. E.g., *$3 \cdot 2 = 6 \equiv 1\, (\text{mod}\, 5)$* should correspond to the code:
 ```
     a = ZModP(3, Val(5))
     @show a * 2 # should print 1
 ```
 
-6. Implement the additional arithmetic operations
-
-```
-    function ^(a::ZModP{N}, n::Integer) where {N}
-    function abs(a::ZModP{N})::ZModP{N} where {N} 
-```
-
-7. Implement the following function to convert elements of `ZModP{N}` to `Int` or `BigInt`:
-
-```
-    function (::Type{S})(a::ZModP)::S where {S <: Union{Int, BigInt}} 
-```
-
-8. Override the function `div` for `Term` (i.e., in `src/term.jl`) to implement it for terms with coefficient type `ZModP` (the existing implementation should still be used for other coefficient fields).
-
-**Note:** you may make as many additional convenience/helper functions as you wish.
-
 ### Checking that it works
 
-10.  Create `example_script_task_5.jl` and in this file, demonstrate *all* basic modular arithmetic operations working correctly (each at least once). TODO - Keep this and print output for PDF submission?
+1.  Create `scripts/example_script_task_4.jl` and in this file, demonstrate *all* basic modular arithmetic operations working correctly (each at least once).
 
-11.  Create `tests/z_mod_p.jl` containing tests which run *all* operations on `ZModP`.  Your tests must run on at least $10^3$ randomly generated integers in the range $[-10^4, 10^4]$ inclusive and using at least 10 different primes. Utilise the in-built `mod` function on integers to verify correctness of your operations. Ensure your implementations pass these tests.
+2.  Create `tests/z_mod_p_test.jl` containing tests which run *all* operations on `ZModP{N}`.  Your tests must run on at least $10^3$ randomly generated integers in the range $[-10^4, 10^4]$ inclusive and use at least 4 different primes. Utilise the in-built `mod` function on integers to verify correctness of your operations. 
 
-12. Add this test file to the `test/runtests.jl` file and have your tests print some output demonstrating the correctness of your operations on `ZModP`. *Screenshot (or copy/paste) the output of this and your `example_script_task_5.jl` and add it to your PDF submission.* TODO - edit this to be consistent with others (just one big test output and we can view tests ourselves)
+3. Ensure your implementations pass these tests, and that they run with the command `julia test/runtests.jl -v`. Unlike before we omit the `-p` flag - at this stage the tests should *also* pass the factorisation and modular operations tests for *$\mathbb{Z}_p[x]$*. Ensure that if tests are run *with* the `-p` flag then your additional tests are skipped.
+
+*Note: make sure to add the output of `example_script_task_4.jl` to your PDF submission.*
 
 ## **Task 5 (Ypts) - Using $\mathbb{Z}_p[x]$**
 ### Constructing $\mathbb{Z}_p[x]$
