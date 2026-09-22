@@ -157,7 +157,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#task-5-ypts---using-mathbbz_px" id="toc-task-5-ypts---using-mathbbz_px" class="nav-link" data-scroll-target="#task-5-ypts---using-mathbbz_px"><span class="header-section-number">3.5</span> <strong>Task 5 (Ypts) - Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></strong></a>
   <ul class="collapse">
-  <li><a href="#constructing-mathbbz_px" id="toc-constructing-mathbbz_px" class="nav-link" data-scroll-target="#constructing-mathbbz_px"><span class="header-section-number">3.5.1</span> Constructing <span class="math inline">\(\mathbb{Z}_p[x]\)</span></a></li>
+  <li><a href="#using-mathbbz_px" id="toc-using-mathbbz_px" class="nav-link" data-scroll-target="#using-mathbbz_px"><span class="header-section-number">3.5.1</span> Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></a></li>
+  <li><a href="#rational-functions" id="toc-rational-functions" class="nav-link" data-scroll-target="#rational-functions"><span class="header-section-number">3.5.2</span> Rational Functions</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -211,19 +212,19 @@ ol > li::before {
 <p><strong>Note:</strong> The teaching staff will only answer questions (via Ed, consultation hour, or practicals) regarding this assignment up to late Wednesday evening before the due date.</p>
 <p><strong>Weights and marking criteria:</strong> Total number of points: <em>100</em>.<br>
 There are <em>10</em> points for setting up the GitHub repo properly and following instructions for hand-in (including voice recording). The remaining <em>90</em> points are for the project tasks.</p>
-<p><strong>Submission format:</strong> This assignment should be submitted via a GitHub Repo and a PDF file via Blackboard.</p>
+<p><strong>Submission format:</strong> This assignment should be submitted via a GitHub repo and a PDF file via Blackboard.</p>
 <p>Specific instructions for the GitHub repo are below. It is important that the GitHub repo be <strong>private</strong> and created within the MATH25042026 github organization. It is also important to name the repo exactly as <code>PROJECTB-2504-2026-&lt;&lt;FIRST NAME&gt;&gt;-&lt;&lt;LAST NAME&gt;&gt;</code>. So for example if your name is “Pierre-Simon Laplace”, the repo name should be <code>PROJECTB-2504-2026-Pierre-Simon-Laplace</code>.</p>
 <p>The PDF must have the following components in this order:</p>
 <ol type="1">
 <li>Your name, student number, and assignment title (Project B - MATH2504 - 2026) on the top.</li>
 <li>A (clickable) link to your GitHub repo.</li>
-<li>A screenshot or copy/paste of output for each <code>example_script_task_i.jl</code>.</li>
-<li>A screenshot or copy/paste the output of <code>test/runtests.jl</code> at the end of the PDF (this should be run as <code>julia test/runtests.jl -v</code> if Task 5 is complete and <code>julia test/runtests.jl -vp</code> otherwise).</li>
+<li>A screenshot or copy/paste of the output for each <code>example_script_task_i.jl</code>.</li>
+<li>A screenshot or copy/paste of the output of <code>test/runtests.jl</code> at the end of the PDF (this should be run as <code>julia test/runtests.jl -v</code> if Task 4 is complete and <code>julia test/runtests.jl -vp</code> otherwise).</li>
 </ol>
 <p><strong>Note:</strong> <em>organize your PDF submission into clearly marked sections. Use headings in the format <code>Task i</code> or <code>Task i.j</code> for each part of the assignment.</em></p>
 <p>Describe briefly the new snippets of code that you created. It is also a place to answer any questions that require output, or description.</p>
 <p>The recommended way to make the PDF file is via a Jupyter notebook where you copy in some code and output into the notebook, and in certain cases use <code>include()</code> to run Julia code if appropriate. Also comment on questions in this PDF (e.g.&nbsp;when asked to answer things not via code). If desired keep this jupyter notebook (<code>.ipynb</code> file) in the repo. However, this Jupyter notebook will not be checked (only the PDF file), and it is not required to be a “runnable” notebook. In any case, please avoid pixilated screenshots of code (<a href="https://carbon.now.sh">this page</a> may be useful), so for example if you choose to format your PDF file in MS-word (instead of Jupyter), make sure the code is clean, formatted, and readable.</p>
-<p>Feedback will be given by the teaching staff by annotating <strong>selected parts</strong> of your PDF file via blackboard. The teaching staff will also inspect your GitHub repo. A very readable and clean PDF file is important. Note that in printing Jupyter to PDF (or exporting to PDF) there may sometimes be excessive white space. Do not worry about this extra white space; it is not a problem.</p>
+<p>Feedback will be given by the teaching staff by annotating <strong>selected parts</strong> of your PDF file via Blackboard. The teaching staff will also inspect your GitHub repo. A very readable and clean PDF file is important. Note that in printing Jupyter to PDF (or exporting to PDF) there may sometimes be excessive white space. Do not worry about this extra white space; it is not a problem.</p>
 <p><strong>Note:</strong> <em>long lines of code in Jupyter notebooks may be truncated by the width of the page when converted to a PDF. Please be aware of this and format your notebook (i.e., split code over multiple lines if needed) as appropriate.</em></p>
 <p><strong>Marking Criteria</strong>:</p>
 <ul>
@@ -307,7 +308,7 @@ There are <em>10</em> points for setting up the GitHub repo properly and followi
 
 14 directories, 30 files</code></pre>
 <p><code>PolynomialAlgebra.jl</code> is the main entry point for the package, and contains the module definition alongside importing all relevant dependencies. The files <code>_includes.jl</code> import the files at each folder such that the dependencies are imported in the correct order. If new files/folders are added, these must be updated.</p>
-<p>Folders are further subdivided based on the type/functionality they relate to, you should explore these to understand at a high level what each folder/file is for.</p>
+<p>Folders are further subdivided based on the type/functionality they relate to. You should explore these to understand at a high level the purpose of each folder/file.</p>
 </section>
 <section id="types" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="types"><span class="header-section-number">2.2</span> Types</h2>
@@ -325,26 +326,29 @@ There are <em>10</em> points for setting up the GitHub repo properly and followi
 <p>This task is for getting the repo to run, improving pretty printing, and creating your own example script to show what the repo can and can’t do by engaging with the type system.</p>
 <section id="study-the-repo" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="study-the-repo"><span class="header-section-number">3.1.1</span> Study the Repo</h3>
-<p>Once you create your own repository, first read the file <code>README.md</code>. Then make sure the repository works by running <code>julia test/runtests.jl -vp</code> and <code>julia script/example_script.jl</code>. At this point simply study the functionality of the repository by looking at the function signatures (not implementations) to understand what the repo can do.</p>
+<p>Once you create your own repository, first read the file <code>README.md</code>. Then make sure the repository works by running <code>julia test/runtests.jl -vp</code> and <code>julia scripts/example_script.jl</code>. At this point simply study the functionality of the repository by looking at the function signatures (not implementations) to understand what the repo can do.</p>
+<ol type="1">
+<li>What sort of license is used in this repository? Explain your reasoning (add your answer to your PDF submission).</li>
+</ol>
 </section>
 <section id="pretty-printing" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="pretty-printing"><span class="header-section-number">3.1.2</span> Pretty Printing</h3>
-<p>The current <code>show</code>/<code>print</code> methods do not produce particularly nice outputs. We want polynomials to be rendered similarly to the following (these may not include all the only edge cases):</p>
+<p>The current <code>show</code>/<code>print</code> methods do not produce particularly nice outputs. We want polynomials to be rendered similarly to the following (these may not include all the edge cases):</p>
 <p><span class="math display">\[
-3x^5 - 4x^2 + 2x + 1 \\
--3x^{10} + 2x^4 - 1 \\
-x^4 - 1
+3x^5 \, - \, 4x^2 \, + \, 2x \, + \, 1 \\
+-3x^{10} \, + \, 2x^4 \, - \, 1 \\
+x^4 \, - \, 1
 \]</span></p>
 <ol type="1">
 <li><p>Improve the “pretty printing” of the polynomials by refactoring the <code>show</code> methods for both <code>Term</code> and <code>Polynomial</code>. Use <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> via the provided function <code>to_superscript</code> to display exponents appropriately.</p></li>
-<li><p>Create your own example script (called <code>example_script_task_1.jl</code>) and include functionality demonstrating the correctness of your “pretty printing” implementation . You should demonstrate this works by constructing (at least) <em>three</em> polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all edge cases for pretty printing). Following this, verify (in the same script) that <code>derivative</code> is working correctly with respect to the product rule.</p></li>
+<li><p>Create your own example script (called <code>scripts/example_script_task_1.jl</code>) and include functionality demonstrating the correctness of your “pretty printing” implementation. You should demonstrate this works by constructing (at least) <em>three</em> polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all edge cases for pretty printing). Following this, verify (in the same script) that <code>derivative</code> is working correctly with respect to the product rule.</p></li>
 </ol>
 </section>
 <section id="showing-overflow-for-polynomialdense" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="showing-overflow-for-polynomialdense"><span class="header-section-number">3.1.3</span> Showing overflow for <code>PolynomialDense</code></h3>
 <p>Exact computation requires polynomials with (truly) integer coefficients and thereby we must use <code>BigInt</code> rather than (the finitely many integers comprising) <code>Int</code>.</p>
 <ol type="1">
-<li><p>At the end of <code>example_script_task_1.jl</code>, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use <code>rand</code> to generate them) of <code>PolynomialDense{Int}</code> addition that will overflow by making the coefficients excessively large.</p></li>
+<li><p>At the end of <code>example_script_task_1.jl</code>, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use <code>rand</code> to generate them) of <code>PolynomialDense{Int}</code> addition that overflow by making the coefficients excessively large.</p></li>
 <li><p>Demonstrate (within the same script) that by changing the coefficients to <code>BigInt</code>, this overflow does not occur.</p></li>
 </ol>
 <p><em>Note: remember to include the final output of <code>example_script_task_1.jl</code> in your PDF submission.</em></p>
@@ -368,7 +372,7 @@ x^4 - 1
 <section id="operations" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="operations"><span class="header-section-number">3.2.3</span> Operations</h3>
 <ol type="1">
-<li><p>Add in all <em>necessary functions</em> (i.e., those for which existing functions defined over the abstract type <code>Polynomial{C}</code> are insufficient) in your <code>polynomial_sparse.jl</code> defintion file to account for the new underlying representation. For example, <code>iterate</code> must be overloaded to account for the fact that the <code>Heap</code> is not strictly ordered.</p></li>
+<li><p>Add in all <em>necessary functions</em> (i.e., those for which existing functions defined over the abstract type <code>Polynomial{C}</code> are insufficient) in your <code>polynomial_sparse.jl</code> definition file to account for the new underlying representation. For example, <code>iterate</code> must be overloaded to account for the fact that the <code>Heap</code> is not strictly ordered.</p></li>
 <li><p>Add in all required arithmetic functions (at this stage these do <em>not</em> need to be fast) and account for your new underlying representation (for example, <code>+</code> can no longer use vector indexing). <em>Note: you will need to compare optimised versions of addition and multiplication of sparse polynomials in the next task, so for now you should only implement the minimum required functionality of polynomial-term addition.</em></p></li>
 </ol>
 </section>
@@ -377,7 +381,7 @@ x^4 - 1
 <ol type="1">
 <li><p>Replicate the <code>example_script_task_1.jl</code> for <code>PolynomialSparse</code> in a file called <code>example_script_task_2.jl</code>.</p></li>
 <li><p>Show (using <a href="https://juliaci.github.io/BenchmarkTools.jl/stable/"><code>BenchmarkTools</code></a>) that there are examples where <code>PolynomialSparse{Int}</code> outperforms <code>PolynomialDense{Int}</code> for both time and memory usage. <em>Do this only for cases where <code>PolynomialSparse</code> and <code>PolynomialDense</code> do not overflow.</em></p></li>
-<li><p>Describe (at least) three pros and/or cons (<em>in a table within your PDF</em>) between the dense and sparse representations.</p></li>
+<li><p>Compare (at least) three pros and/or cons (<em>in a table within your PDF</em>) between the dense and sparse representations.</p></li>
 </ol>
 </section>
 </section>
@@ -389,7 +393,7 @@ x^4 - 1
 <li><p>Refactor all specified functions into the more efficient algorithm.</p></li>
 <li><p>You may use the provided tests to check correctness (run <code>julia test/runtests.jl -vp</code>), but these may be inadequate. If stated below, you should add the further specified tests, but it is recommended that you extend the existing tests regardless if you feel they are insufficient (i.e., add new <code>@testset</code> blocks). You will only be marked on the correctness of your implementation and any tests that have been explicitly stated below (i.e., we will <em>not</em> mark any other additional tests you write regardless of whether they are correct). You may choose which <code>Polynomial</code> concrete subtype to run your tests on if the algorithm is implemented at the abstract level. For any new tests, create a file <code>test/algorithms_test.jl</code> and include your tests there (these should be runnable via <code>julia test/runtests.jl -vp</code>).</p></li>
 <li><p>(<em>PDF Submission</em>) Benchmark your new implementation using <code>BenchmarkTools</code> and report the results.</p></li>
-<li><p>(<em>PDF Submission</em>) State the time complexity of the intial implementation and your new optimised implementation.</p></li>
+<li><p>(<em>PDF Submission</em>) State the time complexity of the initial implementation and your new optimised implementation.</p></li>
 </ol>
 <p><em>Note: the following algorithms are intended to be listed in the order of easiest to hardest, but do not depend on each other and hence you may do/skip them in any order.</em></p>
 <section id="vectorising-polynomialdense-addition" class="level3" data-number="3.3.1">
@@ -400,9 +404,9 @@ x^4 - 1
 </section>
 <section id="fast-evaluation" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="fast-evaluation"><span class="header-section-number">3.3.2</span> Fast Evaluation</h3>
-<p>Our current evaluation strategy for a polynomial <span class="math inline">\(a_0 + a_1\cdot x + \ldots + a_n \cdot x^n\)</span> is for the i’th term take <span class="math inline">\(x\)</span> to the power <span class="math inline">\(i\)</span>, then multiply by the i’th coefficient <span class="math inline">\(a_i\)</span>. This however, is inefficient - <a href="https://en.wikipedia.org/wiki/Horner%27s_method">Horner’s method</a> offers a much faster evaluation method, by implicitly utilising the following representation: <span class="math inline">\((\ldots(a_n \cdot x + a_{n-1})\cdot x + \ldots + a_1)\cdot x + a_0 + a_0\)</span>.</p>
-<p>Utilise this algorithm to optimise the existing implementation of <code>evaluate</code>. This algorithm should be implemented at the abstract level, but should be optimised for both sparse/dense representations simultaneously (<em>hint: </em>)</p>
-<p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.</p>
+<p>Our current evaluation strategy for a polynomial <span class="math inline">\(a_0 + a_1\cdot x + \ldots + a_n \cdot x^n\)</span> is for the i’th term, take <span class="math inline">\(x\)</span> to the power <span class="math inline">\(i\)</span>, then multiply by the i’th coefficient <span class="math inline">\(a_i\)</span>. This however, is inefficient - <a href="https://en.wikipedia.org/wiki/Horner%27s_method">Horner’s method</a> offers a much faster evaluation method, by implicitly utilising the following representation: <span class="math inline">\((\ldots(a_n \cdot x + a_{n-1})\cdot x + \ldots + a_1)\cdot x + a_0\)</span>.</p>
+<p>Utilise this algorithm to optimise the existing implementation of <code>evaluate</code>. This algorithm should be implemented at the abstract level, but should be optimised for both sparse/dense representations simultaneously.</p>
+<p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implementation is indeed an optimisation.</p>
 <p>Test your implementation of <code>evaluate</code> for at least <span class="math inline">\(10^2\)</span> random polynomials (your tests should not take more than 30s to run on your computer).</p>
 </section>
 <section id="specialising-polynomialsparse-additionmultiplication" class="level3" data-number="3.3.3">
@@ -433,9 +437,9 @@ x^4 - 1
 <section id="task-4-ypts---implementing-mathbbz_p" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="task-4-ypts---implementing-mathbbz_p"><span class="header-section-number">3.4</span> <strong>Task 4 (Ypts) - Implementing <span class="math inline">\(\mathbb{Z}_p\)</span></strong></h2>
 <p>We have provided an implementation of the <em>Cantor-Zassenhaus factoring algorithm</em> which allows for factoring polynomials when the coefficient ring is the field <em><span class="math inline">\(\mathbb{Z}_p\)</span></em>. Previously, this course delved into the algorithm itself (and the corresponding algorithm to reconstruct a full factorisation over the integers). However, this was too involved (feel free to try to understand the algorithm/implementation if you wish to do so - but this is not necessary and will not be assessed) and instead we will simply utilise the implementation as a <em>blackbox</em>.</p>
-<p>Until now, your polynomial implementation has assumed integer coefficients and (fatally) <span class="math inline">\(\mathbb{Z}[x]\)</span> is <em>not</em> a <a href="https://en.wikipedia.org/wiki/Euclidean_domain">euclidean domain</a>. This means we do not yet have access to <code>gcd</code> (or even <code>div</code>/<code>rem</code>) on polynomials which is a critical component of the factoring algorithm. If we take our coefficients from a <em><a href="https://en.wikipedia.org/wiki/Field_(mathematics)">field</a></em> like <span class="math inline">\(\mathbb{Z}_p\)</span>, for <span class="math inline">\(p\)</span> a prime, then the resulting <span class="math inline">\(\mathbb{Z}_p[x]\)</span> <em>is</em> a Euclidean domain. We therefore need to implement some way to work with <span class="math inline">\(\mathbb{Z}_p[x]\)</span>.</p>
+<p>Until now, your polynomial implementation has assumed integer coefficients and (fatally) <span class="math inline">\(\mathbb{Z}[x]\)</span> is <em>not</em> a <a href="https://en.wikipedia.org/wiki/Euclidean_domain">Euclidean domain</a>. This means we do not yet have access to <code>gcd</code> (or even <code>div</code>/<code>rem</code>) on polynomials which is a critical component of the factoring algorithm. If we take our coefficients from a <em><a href="https://en.wikipedia.org/wiki/Field_(mathematics)">field</a></em> like <span class="math inline">\(\mathbb{Z}_p\)</span>, for <span class="math inline">\(p\)</span> a prime, then the resulting <span class="math inline">\(\mathbb{Z}_p[x]\)</span> <em>is</em> a Euclidean domain. We therefore need to implement some way to work with <span class="math inline">\(\mathbb{Z}_p[x]\)</span>.</p>
 <p>Your task is to implement the coefficient field <em><span class="math inline">\(\mathbb{Z}_p\)</span></em>, such that in the next task we can utilise it to factor polynomials.</p>
-<p><em>Note: you should aim to implement all functions in this section as efficiently as you can. Additionally, if you can implement any of the following function in an equivalent (in particular, multiple dispatch should work with the same effectiveness) manner but a simpler type signature, you may do so</em>.</p>
+<p><em>Note: you should aim to implement all functions in this section as efficiently as you can. Additionally, if you can implement any of the following functions in an equivalent (in particular, multiple dispatch should work with the same effectiveness) manner but a simpler type signature, you may do so</em>.</p>
 <p>To begin, view the provided stub and initial implementation in <code>src/coefficients/z_mod_p/z_mod_p.jl</code>.</p>
 <p><em>Note: that <code>N</code> is a <a href="https://docs.julialang.org/en/v1/manual/types/#%22Value-types%22">value type</a> and thus it must be specified as a constant, it cannot be generated (e.g.&nbsp;via rand) at runtime.</em></p>
 <section id="constructors-1" class="level3" data-number="3.4.1">
@@ -465,14 +469,14 @@ x^4 - 1
 <p><em>Note: you should optimise <code>^</code> similarly to the fast power section of Task 3.</em></p>
 <p><em>Hint: Recall division in a field is simply multiplication by the inverse. See <code>int_inverse_mod</code> in <code>src/utils/general_alg.jl</code>.</em></p>
 <p>All the above operations should act as they do in <em><span class="math inline">\(\mathbb{Z}_p\)</span></em>. E.g., <em><span class="math inline">\(3 \cdot 2 = 6 \equiv 1\, (\text{mod}\, 5)\)</span></em> should correspond to the code:</p>
-<pre><code>    a = ZModP(3, Val(5))
+<pre><code>    a = ZModP{5}(3)
     @show a * 2 # should print 1</code></pre>
 </section>
 <section id="checking-that-it-works" class="level3" data-number="3.4.4">
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="checking-that-it-works"><span class="header-section-number">3.4.4</span> Checking that it works</h3>
 <ol type="1">
 <li><p>Create <code>scripts/example_script_task_4.jl</code> and in this file, demonstrate <em>all</em> basic modular arithmetic operations working correctly (each at least once).</p></li>
-<li><p>Create <code>tests/z_mod_p_test.jl</code> containing tests which run <em>all</em> operations on <code>ZModP{N}</code>. Your tests must run on at least <span class="math inline">\(10^3\)</span> randomly generated integers in the range <span class="math inline">\([-10^4, 10^4]\)</span> inclusive and use at least 4 different primes. Utilise the in-built <code>mod</code> function on integers to verify correctness of your operations.</p></li>
+<li><p>Create <code>test/z_mod_p_test.jl</code> containing tests which run <em>all</em> operations on <code>ZModP{N}</code>. Your tests must run on at least <span class="math inline">\(10^3\)</span> randomly generated integers in the range <span class="math inline">\([-10^4, 10^4]\)</span> inclusive and use at least 4 different primes. Utilise the in-built <code>mod</code> function on integers to verify correctness of your operations.</p></li>
 <li><p>Ensure your implementations pass these tests, and that they run with the command <code>julia test/runtests.jl -v</code>. Unlike before we omit the <code>-p</code> flag - at this stage the tests should <em>also</em> pass the factorisation and modular operations tests for <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>. Ensure that if tests are run <em>with</em> the <code>-p</code> flag then your additional tests are skipped.</p></li>
 </ol>
 <p><em>Note: make sure to add the output of <code>example_script_task_4.jl</code> to your PDF submission.</em></p>
@@ -480,16 +484,24 @@ x^4 - 1
 </section>
 <section id="task-5-ypts---using-mathbbz_px" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="task-5-ypts---using-mathbbz_px"><span class="header-section-number">3.5</span> <strong>Task 5 (Ypts) - Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></strong></h2>
-<section id="constructing-mathbbz_px" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="constructing-mathbbz_px"><span class="header-section-number">3.5.1</span> Constructing <span class="math inline">\(\mathbb{Z}_p[x]\)</span></h3>
+<section id="using-mathbbz_px" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="using-mathbbz_px"><span class="header-section-number">3.5.1</span> Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></h3>
+<p>Before starting this section, ensure all tests pass when run with command <code>julia test/runtests.jl -v</code>.</p>
 <p>Now that we have <code>ZModP</code> as a subtype of <code>Number</code>, we can use this as the coefficient type of our polynomials. E.g., <code>PolynomialSparse{ZModP{Int, 5}}</code>. <em>Try experimenting in the REPL with this before attempting the rest of this section.</em></p>
-<p>Now that we have a working version of <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>, we can use the provided factorisation algorithm! In particular, we can now work with <strong>rational functions</strong> (quotients of polynomials).</p>
-<ol type="1">
-<li>Check factorisation works with tests</li>
-<li>Create a new folder</li>
-</ol>
-<p>TODO - Make a quotient type, use it with polynomials of the same numerator/denominator type. Simplify via factorisation and then expansion. Have evaluation with errors on denominator equals 0. That’s probably enough tbh.</p>
-<p>TODO - Add in points for each task, and run spellchecker. Remove TODO’s before pushing. Make template repo. Decide what should go in this final task on bit <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em> (quotient idea or just testing things like factorisation and gcd that weren’t runnable before to check their mod p works correctly).</p>
+<p>Now that we have a working version of <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>, we can use the provided factorisation algorithm! Within a file <code>scripts/example_script_task_5.jl</code>, demonstrate the factorisation algorithm for a product of linear and quadratic polynomials over a field <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em> for some $2 &lt; p `.</p>
+</section>
+<section id="rational-functions" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="rational-functions"><span class="header-section-number">3.5.2</span> Rational Functions</h3>
+<p>Given we have a factorisation for <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>, we can now work with with <strong>rational functions</strong> (quotients of polynomials). Create a new folder <code>src/rational</code>, and add the type in appropriate files/subfolders:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> RationalFunc{N}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    num<span class="op">::</span><span class="dt">Polynomial{ZModP{N}} </span><span class="co"># numerator</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    den<span class="op">::</span><span class="dt">Polynomial{ZModP{N}} </span><span class="co"># denominator</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Implement methods for <code>show</code>.</p>
+<p>Implement an <code>evaluation</code> function for this type (it should throw a <code>DivideError</code> upon division by zero).</p>
+<p>Implement a <code>simplify</code> function which factorises the numerator and denominator and cancels out like terms. The result should be provided as a <code>RationalFunc</code> (i.e., with denominator <code>1</code> if the denominator exactly divides the numerator).</p>
+<p>Ensure the module exports the <code>RationalFunc</code> type, as well as the <code>evaluation</code> and <code>simplify</code> functions.</p>
+<p>Extend your <code>example_script_task_5.jl</code> by demonstrating that your <code>RationalFunc</code> type can be imported from the package <code>PolynomialAlgebra</code> and works as expected.</p>
 </section>
 </section>
 </section>
