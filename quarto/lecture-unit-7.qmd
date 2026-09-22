@@ -13,7 +13,7 @@ format:
     number-sections: true
 ---
 
-# Unit 7: Monte Carlo and discrete event simulation
+# Unit 7: Random numbers
 
 In this unit we move away from computer algebra to a completely different world: randomness and simulation. The first component that we cover, **uniform pseudorandom numbers**, is in fact mildly related to computer algebra because algorithms for generating uniform pseudorandom numbers are often analyzed with number theory (however we won't go in that direction). The latter components of the unit are significantly different as they involve probability distributions, statistics, modelling and simulation, as well as structured software design.
 
@@ -362,7 +362,9 @@ randn() = sqrt(-2log(rand())) * cos(2π*rand())
 This is another seemingly magical algorithm but it isn't too hard to understand. Like before we want to find the CDF of the distribution and invert it. The CDF is just the integral of the PDF. And if you cast your mind back to your calculus classes, the way to integrate a Gaussian is to transform it into the 2D integral of a 2D Gaussian and use polar coordinates:
 
 $$
-\left( \int_{-\infty}^{\infty} \exp(\frac{-x^2}{2}) \,dx \right)^2 = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(\frac{-(x^2 + y^2)}{2}) \,dx \,dy = \int_{0}^{2\pi} \int_{0}^{\infty} r \exp(\frac{-r^2}{2}) \,dr \,d\theta = 2\pi \int_0^{\infty} \exp(-R) \,dR = 2\pi
+\begin{aligned}
+&\left( \int_{-\infty}^{\infty} \exp(\frac{-x^2}{2}) \,dx \right)^2 = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(\frac{-(x^2 + y^2)}{2}) \,dx \,dy=\\ &= \int_{0}^{2\pi} \int_{0}^{\infty} r \exp(\frac{-r^2}{2}) \,dr \,d\theta = 2\pi \int_0^{\infty} \exp(-R) \,dR = 2\pi
+\end{aligned}
 $$
 
 (where we do integration by substitution with $R = \frac{1}{2} r^2$, such that $dR = r \, dr$).
