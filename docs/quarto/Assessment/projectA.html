@@ -296,7 +296,7 @@ R^{(2)} = \frac{\gamma_1}{\gamma_1 + \gamma_2} = \frac{\gamma_2^{-1}}{\gamma_1^{
 1 / mean(dist) = 2.5
 
 Monte Carlo:
-1 / mean(data) = 2.499922400074431</code></pre>
+1 / mean(data) = 2.504070517882621</code></pre>
 </div>
 </div>
 </section>
@@ -485,7 +485,8 @@ Monte Carlo:
 ρ_star = 0.7000000000000001</code></pre>
 </div>
 </div>
-<p>Now, after you take time to understand the code and computations above, assume we are in one of three test cases, the <strong>always slow</strong> case, the <strong>always fast</strong> case, or the <strong>super fast modulation</strong> case. Since each of these cases agree with a (non-modulated) Open Jackson Network we’ll use these cases as test code later. At this point, set parameters for each scenario and each of these cases (choose the <span class="math inline">\(\gamma_1\)</span> and <span class="math inline">\(R^{(1)}\)</span> parameters as you like, as long as they approximate these cases; keep <span class="math inline">\(\kappa = 2\)</span>). Then for each of the 4 scenarios and each of the 3 cases create a plot of the Open Jackson Network <strong>total steady state mean queue lengths</strong> as a function of <span class="math inline">\(\rho^*\)</span>. For this, simply use the fact that the theoretical steady state mean queue length for individual queue <span class="math inline">\(i\)</span> is <span class="math inline">\(\rho_i/(1-\rho_i)\)</span>. Then add the queue length of all <span class="math inline">\(L\)</span> queues in the scenario. Note the plots you create will not be affected by the type of test case (always slow, always fast, or super fast modulation). So it is enough to present 4 plots (no need for 12). Still, you will use this code below for testing. The idea here is that you know what type of behavior to expect from the network in these cases.</p>
+<p>In this task, we consider the following three test cases: the <strong>always slow</strong> case, the <strong>always fast</strong> case, or the <strong>super fast modulation</strong> case. Since each of these cases agree with a (non-modulated) Open Jackson Network we’ll use these cases as test code later.</p>
+<p>Define 12 parameter sets combining each scenario with each of these cases. Choose the <span class="math inline">\(\gamma_1\)</span> and <span class="math inline">\(R^{(1)}\)</span> parameters as you like, as long as they approximate these cases; keep <span class="math inline">\(\kappa = 2\)</span>. Then for each parameter set create a plot of the Open Jackson Network <strong>total steady state mean queue lengths</strong> as a function of <span class="math inline">\(\rho^*\)</span>. For this, simply use the fact that the theoretical steady state mean queue length for individual queue <span class="math inline">\(i\)</span> is <span class="math inline">\(\rho_i/(1-\rho_i)\)</span>. Then add the queue length of all <span class="math inline">\(L\)</span> queues in the scenario. <!--Note the plots you create will not be affected by the type of test case (always slow, always fast, or super fast modulation). So it is enough to present 4 plots (no need for 12). Still, you will use this code below for testing. The idea here is that you know what type of behavior to expect from the network in these cases. --></p>
 </section>
 <section id="task-3-a-simulation-engine-based-on-queue-states-33pts" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="task-3-a-simulation-engine-based-on-queue-states-33pts">Task 3: A Simulation Engine Based on Queue States (33pts)</h2>
