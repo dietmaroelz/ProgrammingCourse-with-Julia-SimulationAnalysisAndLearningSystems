@@ -4,7 +4,7 @@ format:
   html:
     toc: true
     code-fold: false
-    highlight-style: tango
+    highlight-style: github 
     number-sections: true
   pdf:
     documentclass: article
@@ -55,11 +55,11 @@ The PDF must have the following components in this order:
 1.  Your name, student number, and assignment title (Project B - MATH2504 - 2026) on the top.
 2.  A (clickable) link to your GitHub repo.
 3.  A screenshot or copy/paste of output for each `example_script_task_i.jl`.
-4.  A screenshot or copy/paste the output of `test/runtests.jl` for the relevant tasks.
+4.  A screenshot or copy/paste the output of `test/runtests.jl` at the end of the PDF (this should be run as `julia test/runtests.jl -v` if Task 5 is complete and `julia test/runtests.jl -vp` otherwise).
   
-**Note:** *organize your submission into clearly marked sections. Use headings in the format `Task i` or `Task i.j` for each part of the assignment.*
+**Note:** *organize your PDF submission into clearly marked sections. Use headings in the format `Task i` or `Task i.j` for each part of the assignment.*
   
-Present the new snippets of code that you created and indicate what they do via brief descriptions. It is also a place to answer any questions that require output, or description.
+Describe briefly the new snippets of code that you created. It is also a place to answer any questions that require output, or description.
   
 The recommended way to make the PDF file is via a Jupyter notebook where you copy in some code and output into the notebook, and in certain cases use `include()` to run Julia code if appropriate. Also comment on questions in this PDF (e.g. when asked to answer things not via code). If desired keep this jupyter notebook (`.ipynb` file) in the repo. However, this Jupyter notebook will not be checked (only the PDF file), and it is not required to be a "runnable" notebook. In any case, please avoid pixilated screenshots of code ([this page](https://carbon.now.sh) may be useful), so for example if you choose to format your PDF file in MS-word (instead of Jupyter), make sure the code is clean, formatted, and readable.
   
@@ -73,19 +73,11 @@ Feedback will be given by the teaching staff by annotating **selected parts** of
  
 * *90 points* are allocated for the polynomial project itself. Points are awarded for completing each of the tasks with full marks given to clean readable code.
  
-<!-- 
-* *12 points* are allocated for the *bonus tasks*. No support will be given on Ed for these tasks and tutors will prioritise questions other than those related to the bonus tasks. Bonus marks will be applied on top of your mark for the remainder of the assignment, and your overall mark is capped at 100.
--->
+* In general, points **will be** deducted for sloppy coding style. Make sure your code is properly indented, uses sensible and consistent variable names and write code that is in general, clean and consistent.
 
-* In general, points **will be** deducted for sloppy coding style. Make sure your code is properly indented, uses sensible and consistent variable names and write code that is in general clean and consistent.
-
-
-TODO - something about put test results in final submission once, rather than reporting test results separately. Maybe still via screenshots but they should have their own section. Bit more description about the report. Some more intro to type system, how to get started, how to use Revise.jl/`pkg> dev .` and so on.
- 
----
- 
 ## Setting up your GitHub repo for hand-in (10pts):
  
+TODO - UPDATE FOR TEMPLATE REPO STRUCTURE
 * Ideally use the same account you used for BigHW and Project A.
 * **Duplicate** the repository [https://github.com/dietmaroelz/2504\_2026\_projectB](https://github.com/dietmaroelz/2504_2026_projectB) as described [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/duplicating-a-repository). You will first create your new repository and then follow the 4 steps under "Mirroring a repository". *Ideally, you would fork the repository, but GitHub does not allow forked repositories to be made private. Do **not** attempt to fork the repository.*
 * Invite the course GitHub user, `MATH2504-staff-2026` as a collaborator and verify this is done (*failure to do so may result in a grade of 0*). You must do this no later than the project due date. It is your duty to check that we accepted the invite (give us 2-5 working days to accept the invite).
@@ -95,87 +87,162 @@ TODO - something about put test results in final submission once, rather than re
 Your GitHub repo must be formatted like the original repo.
  
 * Ensure that there aren't excessive files in your submission repo. An exception is perhaps a Jupyter `.ipynb` file if you choose to use it for creating the PDF. Use the `.gitignore` file to ensure `git` does not commit additional files and output files to your `repo`.
+
+---
+
+# Project Overview
+
+This project requires working in a somewhat larger pre-existing repository and making changes/improvements. The context of the project is *Computer Algebra*, specifically *univariate polynomials over the ring $\mathbb{Z}$*. The repository is structured similarly to an actual Julia project. As such, your tasks will involve both understanding how to work with such a repository without violating the existing style and structure, as well as understanding some of the underlying computer algebra.
+
+As in a real project, you are not required to understand the underlying mechanics behind every file or function. Understanding the inputs and outputs to functions, and the files relevant to your tasks is sufficient to work in the codebase.
+
+In general, algebraic methods are either only computationally tractable (or even possible) when efficiently representing/computing with polynomials and utilising number theoretic techniques. Your tasks will involve optimising both data structures and algorithms. In addition, several functions have been provided that only work over *$\mathbb{Z}_p[x]$* (or a field in general), but the implementation of *$\mathbb{Z}_p$* is left to you.
+
+## Repository Structure
+
+The top level tree of the repository looks as follows:
+
+```text
+.
+├── LICENSE
+├── Project.toml
+├── README.md
+├── scripts
+├── src
+└── test
+
+4 directories, 3 files
+```
+
+The `src` (source) directory contains the main package. `test` is as named, a selection of tests which can be run (see `test/README.md` for details) and `scripts` is a place for you to add in small code snippets.
+
+The source directory is structured as follows:
+
+```text
+src
+├── PolynomialAlgebra.jl
+├── _includes.jl
+├── abstract
+│   ├── _includes.jl
+│   ├── arithmetic
+│   │   ├── _includes.jl
+│   │   ├── polynomial_addition.jl
+│   │   └── polynomial_multiplication.jl
+│   ├── definition
+│   │   ├── _includes.jl
+│   │   └── polynomial.jl
+│   └── field_ops
+│       ├── _includes.jl
+│       ├── further_modular_operations.jl
+│       ├── polynomial_division.jl
+│       └── polynomial_gcd.jl
+├── coefficients
+│   ├── _includes.jl
+│   └── z_mod_p
+│       ├── _includes.jl
+│       └── z_mod_p.jl
+├── concrete
+│   ├── _includes.jl
+│   └── dense
+│       ├── _includes.jl
+│       ├── arithmetic
+│       │   ├── _includes.jl
+│       │   ├── polynomial_addition.jl
+│       │   └── polynomial_multiplication.jl
+│       └── definition
+│           ├── _includes.jl
+│           └── polynomial_dense.jl
+├── factorisation
+│   ├── _includes.jl
+│   └── factor.jl
+├── term
+│   ├── _includes.jl
+│   └── term.jl
+└── utils
+    ├── _includes.jl
+    ├── general_alg.jl
+    ├── heap.jl
+    └── misc.jl
+
+14 directories, 30 files
+```
+
+`PolynomialAlgebra.jl` is the main entry point for the package, and contains the module definition alongside importing all relevant dependencies. The files `_includes.jl` import the files at each folder such that the dependencies are imported in the correct order. If new files/folders are added, these must be updated.
+
+Folders are further subdivided based on the type/functionality they relate to, you should explore these to understand at a high level what each folder/file is for.
  
- 
+## Types
+
+TODO - either create type tree here or refer to Unit 7 notes
+
 # Tasks (90pts)
  
-Build your project on top of the [repo](https://github.com/dietmaroelz/2504_2026_projectB) by making modifications, additions, and improvements. Your first goal is to understand the base repository. After that, you will make improvements, additions, and cleanups.
+Build your project on top of the [repo](https://github.com/dietmaroelz/2504_2026_projectB) (TODO - UPDATE LINK FOR TEMPLATE REPO) by making modifications, additions, and improvements. Your first goal is to understand the base repository. After that, you will make improvements, additions, and cleanups.
  
 Follow the supplied type names below. These are given so that tasks have backwards compatibility. Note that in an actual project, you would sometimes replace older types with newer ones.
   
 Read all the tasks before starting - only some tasks are dependent on previous ones so they do *not* necessarily have to be done in order.
-  
-## **Task 1 (15pts) - Working in an existing codebase**
-This task is for getting the repo to run, improving pretty printing, and creating your own example script.
+
+TODO - REVIEW ALL POINT DISTRIBUTIONS  
+
+## **Task 1 (Ypts) - Working in an existing codebase**
+This task is for getting the repo to run, improving pretty printing, and creating your own example script to show what the repo can and can't do by engaging with the type system.
  
 ### Study the Repo
-Once you create your own repository, first read the file `README.md`. Then make sure the repository works by running `test/runtests.jl` and `example_script.jl`. At this point simply study the functionality of the repository by looking at the function signatures (not implementations) to understand what the repo can do.
+Once you create your own repository, first read the file `README.md`. Then make sure the repository works by running `julia test/runtests.jl -vp` and `julia script/example_script.jl`. At this point simply study the functionality of the repository by looking at the function signatures (not implementations) to understand what the repo can do.
   
-### Create Example Scripts (*7 points*)
-Create your own example script called `example_script_task_1.jl` and include polynomials for illustrating the key functionality of the operations available via the software. Your script should run and demonstrate (using `println` or `@show`) how (*not why*) the code in the repository works. Namely:
-  
-1.  construct (at least) *three* polynomials (say `f`, `g`, and `h`) using the given constructors for `PolynomialDense`,
-2.  compute `f + g`, `f * h`, `g * h`,
-3.  compute `derivative(f * g)` and show it is equal to what is expected when utilizing product rule,
-4.  compute `(f * h) ÷ h` modulo 5, 17 and 101, and confirm using `mod` (in `polynomial_dense.jl`) that `f` modulo 5, 17, and 101 is returned.
-5.  compute `gcd_mod_p(f*h, g*h, p)` for `p` equal to 5, 11 and 13. 
-    
-Basically, `example_script_task_1.jl` is an improvement over the minimally supplied `example_script.jl`.
-  
-### Pretty Printing (*8 points*)
-Improve the "pretty printing" of the polynomials by incorporating the following rules:
-  
-5.  Terms of zero degree (i.e., constants) should exclude `x^0`, e.g. `2` not `2x^0`.
-6.  Terms with unit degree should exclude the degree, e.g. `3x` not `3x^1`.
-7.  Excluding the constant term `1`, terms with unit coefficient should exclude the coefficient, e.g. `3x^2 + x` not `3x^2 + 1x`.
-8.  Use subtraction instead of adding negative terms, e.g. `3x^2 - 2x` not `3x^2 + -2x`.
-9.  Display the terms in *descending* degree order. $a_n \cdot x^n + a_n \cdot x^{n-1} + \cdots + a_1 x + a_0$.
-10.  Do not print terms with zero coefficients, e.g. `x^2 + 1` not `x^2 + 0 x^1 + 1`. *Note: feel free to use [Unicode](https://en.wikipedia.org/wiki/Unicode) characters (but this is not necessary).*
-11. *Include the output of `example_script_task_1.jl` in your PDF submission via screenshot (or copy/paste).*
+### Pretty Printing 
+The current `show`/`print` methods do not produce particularly nice outputs. We want polynomials to be rendered similarly to the following (these may not include all the only edge cases):
 
-  
-## **Task 2 (20pts) - Utilising Julia's type system**
- In this task we parameterise the coefficient type to utilize `BigInt`
-   
-### Showing overflow for `PolynomialDense` (*2 points*)
+$$ 
+3x^5 - 4x^2 + 2x + 1 \\
+-3x^{10} + 2x^4 - 1 \\
+x^4 - 1
+$$
+
+1. Improve the "pretty printing" of the polynomials by refactoring the `show` methods for both `Term` and `Polynomial`. Use [Unicode](https://en.wikipedia.org/wiki/Unicode) via the provided function `to_superscript` to display exponents appropriately.
+
+2. Create your own example script (called `example_script_task_1.jl`) and include functionality demonstrating the correctness of your "pretty printing" implementation . You should demonstrate this works by constructing (at least) *three* polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all edge cases for pretty printing). Following this, verify (in the same script) that `derivative` is working correctly with respect to the product rule.
+
+### Showing overflow for `PolynomialDense`
+
 Exact computation requires polynomials with (truly) integer coefficients and thereby we must use `BigInt` rather than (the finitely many integers comprising) `Int`. 
   
-1. Create a new script called `example_script_task_2.jl`. Demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use `rand` to generate them) of `PolynomialDense` addition that will overflow by making the coefficients (*not the degree*) excessively large.
+1. At the end of `example_script_task_1.jl`, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use `rand` to generate them) of `PolynomialDense{Int}` addition that will overflow by making the coefficients excessively large.
 
-2. TODO - Replace with optimising current polynomial dense addition with a vectorised version (the current one is very slow)
+2. Demonstrate (within the same script) that by changing the coefficients to `BigInt`, this overflow does not occur.
+
+*Note: remember to include the final output of `example_script_task_1.jl` in your PDF submission.*
   
-## **Task 3 (15pts) - Refactoring the data structure used**
+## **Task 2 (Ypts) - Refactoring the data structure used**
 ### Sparse Polynomials 
   
-The current implementation for `PolynomialDense` uses a `Vector` to store the term of degree $k$ at position $k+1$. This is optimal for dense polynomials (those with mostly *nonzero* coefficients) but our factoring algorithms rely heavily on manipulating *sparse polynomials* like $x^n - 1$. In this task we address this deficiency:
+The current implementation for `PolynomialDense` uses a `Vector` to store the term of degree $k$ at position $k+1$. This is optimal for dense polynomials (those with mostly *nonzero* coefficients) but our (later) factoring algorithms rely heavily on manipulating *sparse polynomials* like $x^n - 1$. In this task we address this deficiency.
+
+*Note: you will use the provided type `Heap`, if you wish to modify it check with course staff first.*
   
-### Constructors (*2 points*)
-1.  Navigate to the directory `src/polynomial_definitions` and duplicate `polynomial_dense.jl` as `polynomial_sparse.jl`.
+### Constructors
 
-2.  Inside `src/polynomial_sparse.jl` rename all instances of `PolynomialDense` to `PolynomialSparse` and modify the inner constructor of `PolynomialSparse` so that *zero terms* are excluded from storage.  Utilize the [max heap](https://en.wikipedia.org/wiki/Heap_(data_structure)) (which you can find in `src/utils/heap.jl`) ordered by term degree to accomplish this.
+1. Within the directory `src/concrete`, create a new directory `sparse` within which sparse polynomials will be implemented. Create all files/subfolders as necessary (see the folder `src/concrete/dense` for what needs to be included). Files/folders should be named appropriately.
 
-3.  Rewrite the *constructors* in `src/polynomial_sparse.jl` to account for the new underlying representation.  
-  
-### Operations (*9 points*)
+2. Create inner and outer constructors for a new type, `PolynomialSparse{C} <: Polynomial{C}`. This type (unlike `PolynomialDense`) should store a `Heap{Term{C}}` rather than a `Vector{Term{C}}`. The [max heap](https://en.wikipedia.org/wiki/Heap_(data_structure)) (which you can find in `src/utils/heap.jl`) can be used to accomplish this. 
 
-4.  Rewrite the *functions* in `src/polynomial_sparse.jl` to account for the new underlying representation. For example, `mod` can no longer utilise array indexing.
+*Note:* Zero terms should be excluded from storage, i.e, for the polynomial $x^3 + 1$, the underlying representation for your `PolynomialSparse{C}` should *not* contain a zero term for $0\cdot x^2$ or $0 \cdot x$.
 
-5.  Navigate to the directory `src/basic_polynomial_operations` and duplicate the directory `dense` as the directory `sparse`.
+### Operations
 
-6.  Refactor the *operations* in `src/basic_polynomial_operations/sparse` to account for the new underlying representation.  For example, `+` can no longer be done with simple vector addition. To optimise these you may also need to refactor functions in `src/polynomial_sparse.jl`.
-  
-*Note: sparse term multiplication and addition can be optimised significantly compared to the abstract implementations. You should override both these functions for your `PolynomialSparse` implementation. You cannot achieve full marks in this section without optimisation to **both** addition and term multiplication. You may need to optimise other helper functions in order to achieve this.*
- 
-### Checking it works (*4 points*)
-7.  Replicate the `example_script_task_2.jl` for `PolynomialSparse` in a file called `example_script_task_3.jl`.
+1.  Add in all *necessary functions*  (i.e., those for which existing functions defined over the abstract type `Polynomial{C}` are insufficient) in your `polynomial_sparse.jl` defintion file to account for the new underlying representation. For example, `iterate` must be overloaded to account for the fact that the `Heap` is not strictly ordered.
 
-8.  Show (using [`BenchmarkTools`](https://juliaci.github.io/BenchmarkTools.jl/stable/)) that there are examples where `PolynomialSparse` outperforms `PolynomialDense` for both time and memory usage. *Do this only for cases where `PolynomialSparse` and `PolynomialDense` do not overflow.*
+2. Add in all required arithmetic functions (at this stage these do *not* need to be fast) and account for your new underlying representation (for example, `+` can no longer use vector indexing). *Note: you will need to compare optimised versions of addition and multiplication of sparse polynomials in the next task, so for now you should only implement the minimum required functionality of polynomial-term addition.*
 
-9. Append your code for task 3.8 to `example_script_task_3.jl` and *include the output of the script in your PDF submission.*
+### Checking it works
+1.  Replicate the `example_script_task_1.jl` for `PolynomialSparse` in a file called `example_script_task_2.jl`.
 
-10.  Describe (at least) three pros and/or cons (*in a table within your PDF*) between the dense and sparse representations.
+2.  Show (using [`BenchmarkTools`](https://juliaci.github.io/BenchmarkTools.jl/stable/)) that there are examples where `PolynomialSparse{Int}` outperforms `PolynomialDense{Int}` for both time and memory usage. *Do this only for cases where `PolynomialSparse` and `PolynomialDense` do not overflow.*
+
+3.  Describe (at least) three pros and/or cons (*in a table within your PDF*) between the dense and sparse representations.
     
-## **Task 4 (TODOpts) - Optimising Algorithms**
+## **Task 3 (Ypts) - Optimising Algorithms**
 
 Many of the algorithms provided within the codebase are not optimised. We (you) will improve several of these. **For each of the algorithms described below, complete the following tasks** (*note - read in full the relevant algorithm description on what is considered sufficient testing/benchmarking and which functions are to be optimised before starting the sub-task*):
 
@@ -183,79 +250,104 @@ Many of the algorithms provided within the codebase are not optimised. We (you) 
 
 2. Refactor all specified functions into the more efficient algorithm. 
 
-3. Create tests for your new optimised implemention to check it's correctness. All tests for this tasks should be placed in the file `test/algorithms_test` (you will need to create this file). You may choose which `Polynomial` concrete subtype to run your tests on. It is recommended you write additional tests beyond the minimum requirements below to ensure your implementation is correct (you will *not* be marked on these additional tests, but you will be marked on the correctness of your implementation).
+3. You may use the provided tests to check correctness (run `julia test/runtests.jl -vp`), but these may be inadequate. If stated below, you should add the further specified tests, but it is recommended that you extend the existing tests regardless if you feel they are insufficient (i.e., add new `@testset` blocks). You will only be marked on the correctness of your implementation and any tests that have been explicitly stated below (i.e., we will *not* mark any other additional tests you write regardless of whether they are correct). You may choose which `Polynomial` concrete subtype to run your tests on if the algorithm is implemented at the abstract level. For any new tests, create a file `test/algorithms_test.jl` and include your tests there (these should be runnable via `julia test/runtests.jl -vp`).
 
 4. (*PDF Submission*) Benchmark your new implementation using `BenchmarkTools` and report the results.
 
 5. (*PDF Submission*) State the time complexity of the intial implementation and your new optimised implementation. 
 
-### Fast Powers (*TODO points*)
+*Note: the following algorithms are intended to be listed in the order of easiest to hardest, but do not depend on each other and hence you may do/skip them in any order.*
 
-As discussed in class, if you have a polynomial $f$ and raise it to the power $2^n$ then instead of doing about $2^n$ multiplications you can do about $n$ using **repeated squaring**. E.g., to compute $f^8$, we compute $f^2 = f \cdot f$, then $f^4 = f^2 \cdot f^2$ and finally $f^8 = f^4 \cdot f^4$. This idea can be extended to computing $f^n$ for any $n \in \mathbb{N}$! Utilise this algorithm to optimise the existing implementation of `^`. You may wish to short-circuit computations of $f^0$ and $f^1$ (this is not required). This algorithm should be implemented at the abstract level (i.e., `Polynomial{C}`).
+### Vectorising `PolynomialDense` Addition
 
-For benchmarking, find a single instance where the existing implementation takes on average at least 10s to run. Demonstrate that your implemention is indeed an optimisation.
+Our current implementation for adding two `PolynomialDense{C}` together simply delegates the task to the abstract implementation. The abstract implementation however, uses significant amounts of memory and time by making copies of polynomials at each stage, and does not leverage Julia's native speed with vectors.
 
-Test your implementation of `^` for at least $10^2$ polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$ for various $n$. 
+Implement a version of addition between two `PolynomialDense{C}` (they *must* be parameterised with the same type parameter) that is vectorised and in particular, does not require explicit iteration (i.e., you shouldn't need a `for` loop) through the underlying vectors of either polynomial.
 
+For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation, and report the memory usage before and after your optimisation.
 
-### Fast Evaluation (*TODO points*)
+### Fast Evaluation
 
 Our current evaluation strategy for a polynomial $a_0 + a_1\cdot x + \ldots + a_n \cdot x^n$ is for the i'th term take $x$ to the power $i$, then multiply by the i'th coefficient $a_i$. This however, is inefficient - [Horner's method](https://en.wikipedia.org/wiki/Horner%27s_method) offers a much faster evaluation method, by implicitly utilising the following representation. Utilise this algorithm to optimise the existing implementation of `evaluate`. This algorithm should be implemented at the abstract level, but should be optimised for both sparse/dense representations simultaneously (*hint: *)
 
-For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
+For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.
 
 Test your implementation of `evaluate` for at least $10^2$ random polynomials (your tests should not take more than 30s to run on your computer).
 
+### Specialising `PolynomialSparse` Addition/Multiplication
 
-### Johnson's Algorithm (TODO points)
+*Note: to implement either of these algorithms well, you should study the provided functions in `src/utils/heap.jl` for manipulating the underlying data of the heap efficiently.*
+
+**Addition `+(PolynomialSparse{C}, PolynomialSparse{C})`**
+
+Our current implementation for adding two `PolynomialSparse{C}` together once again delegates the task to the abstract implementation. As before, the abstract implementation is inefficient. 
+
+The time complexity of a single `push`/`pop` operation on a `Heap` is $O(\log_2 n)$ where $n$ is the number of terms in the heap (`peek` is $O(1)$). We can use this fact to produce an addition algorithm between two sparse polynomials by repeatedly popping from each heap, and adding the two terms together if they have the same degree. You should attempt to minimise the additional memory used (i.e., as few or no `deepcopy`/`copy`'s if possible).
+
+For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation.
+
+**Multiplication `*(PolynomialSparse{C}, Term{C})`**
+
+As above, multiplication between a term and sparse polynomial is currently delegated to the abstract methods. This can be significantly optimised by understanding that *pointwise multiplication between a term and vector of terms, will not change the relative ordering of the vector*. 
+
+I.e., given the terms $3x^2$, $2x^5$ and $x^6$, we have that $x^6 > 2x^5$ (where we order terms by degree). We also know that $(3x^2)\cdot x^6 > (3x^2)\cdot(2x^5)$. Leverage this property to produce a vectorised version of term-polynomial multiplication (the provided `Heap` data structure provides you with methods to achieve this). 
+
+For benchmarking use multiplication between two sparse polynomials (i.e., not between a term and a polynomial), find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
+
+### Fast Powers
+
+As discussed in class, if you have a polynomial $f$ and raise it to the power $2^n$ then instead of doing about $2^n$ multiplications you can do about $n$ using **repeated squaring**. E.g., to compute $f^8$, we compute $f^2 = f \cdot f$, then $f^4 = f^2 \cdot f^2$ and finally $f^8 = f^4 \cdot f^4$. This idea can be extended to computing $f^n$ for any $n \in \mathbb{N}$! Utilise this algorithm to optimise the existing implementation of `^`. You may wish to short-circuit computations of $f^0$ and $f^1$ (this is not required). This algorithm should be implemented at the abstract level (i.e., `Polynomial{C}`).
+
+For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
+
+Test your implementation of `^` for at least $10^2$ polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$ for various $n$. 
+
+### Johnson's Algorithm
 
 This is a **harder task** (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible. Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia's native vectorisation over the provided `Heap` implementation, this can still become very slow. Implement [Johnson's Algorithm](https://dl.acm.org/doi/pdf/10.1145/1086837.1086847) ([this may also be useful](https://www.sciencedirect.com/science/article/pii/S0747717110001446)) for `PolynomialSparse`.  
 
 Use the existing multiplication tests to ensure your implementation is correct (you do not need to implement more tests).
 
-For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
+For benchmarking, find a single instance where the existing implementation takes on average at least 10s to run. Demonstrate that your implemention is indeed an optimisation.
 
   
-## **Task 5 (8pts) - Implementing $\mathbb{Z}_p$**
+## **Task 4 (Ypts) - Implementing $\mathbb{Z}_p$**
 
 We have provided an implementation of the *Cantor-Zassenhaus factoring algorithm* which allows for factoring polynomials when the coefficient ring is the field *$\mathbb{Z}_p$*. Previously, this course delved into the algorithm itself (and the corresponding algorithm to reconstruct a full factorisation over the integers). However, this was too involved (feel free to try to understand the algorithm/implementation if you wish to do so - but this is not necessary and will not be assessed) and instead we will simply utilise the implementation as a *blackbox*. 
 
 Until now, your polynomial implementation has assumed integer coefficients and (fatally) $\mathbb{Z}[x]$ is *not* a [euclidean domain](https://en.wikipedia.org/wiki/Euclidean_domain). This means we do not yet have access to `gcd` on polynomials which is a critical component of the factoring algorithm. If we take our coefficients from a *[field](https://en.wikipedia.org/wiki/Field_(mathematics))* like $\mathbb{Z}_p$, for $p$ a prime, then the resulting $\mathbb{Z}_p[x]$ *is* a Euclidean domain. We therefore need to implement some way to work with $\mathbb{Z}_p[x]$.
 
-Your task is to implement the coefficient field *$\mathbb{Z}_p$*, such that in the next task we can utilise it to factor polynomials. Throughout this section, you should create `_includes.jl` files as appropriate, and ensure you export the functions from the main module file.
+Your task is to implement the coefficient field *$\mathbb{Z}_p$*, such that in the next task we can utilise it to factor polynomials. 
 
 *Note: you should aim to implement all functions in this section as efficiently as you can. Additionally, if you can implement any of the following function in an equivalent (in particular, multiple dispatch should work with the same effectiveness) manner but a simpler type signature, you may do so*.
 
-TODO - add Base. to everything
+To begin, view the provided stub and initial implementation in `src/coefficients/z_mod_p/z_mod_p.jl`.
+
+*Note: that `N` is a [value type](https://docs.julialang.org/en/v1/manual/types/#%22Value-types%22) and thus it must be specified as a constant, it cannot be generated (e.g. via rand) at runtime.*
  
-### Constructors (*2 points*)
+### Constructors
 
-1. Create folders `src/coefficients/z_mod_p/`. Inside of this folder, create a file `z_mod_p.jl` and create a `struct` with the following type signature:
-```
-struct ZModP{N} <: Integer
-    val::Int # We will not implement this for BigInt, but in general val could be any subtype of Integer
+An *inner* constructor has been provided for you. Create *outer* constructors that may be used to easily construct `0 (mod p)` and `1 (mod p)`. The following code should work at a minimum:
 
-    # val ∈ [0,...,N - 1] - N is the prime p in Zp
-end
-```
+```julia
+z5 = ZModP{5}
+a = z5(3)
+b = z5(4)
 
-*Note: that `N` is a [value type](https://docs.julialang.org/en/v1/manual/types/#%22Value-types%22) and thus it must be specified as a constant, it cannot be generated (e.g. via rand) at runtime. A collection of primes has been provided to you in `src/utils/sample_primes.jl`. Use subset of these to work with constants which are primes.*
+# Should be 0 (mod 5)
+zero(z5) 
+zero(a) 
 
-2. Create inner and outer constructors for this struct. You must be able to construct an object of type (TODO - `Val{N}`?) `ZModP{N}` where `N` is some prime. You must you write functions satisfying *all* of the following type signatures:
-
-```
-    function ZModP{N}(a::Int) where {N}
-    function ZModP(a::Int, ::Val{N})::ZModP{N} where {N}
-    function zero(::Type{ZModP{N}})::ZModP{N} where {N}
-    function one(::Type{ZModP{N}})::ZModP{N} where {N}
-    function zero(a::ZModP{N})::ZModP{N} where {N}
-    function one(a::ZModP{N})::ZModP{N} where {N}
+# Should be 1 (mod 5)
+one(z5) 
+one(a) 
 ```
 
-3. Ensure the constructors in Task 5.2 (above) fail when attempting to create an object of type `ZModP{N}` when `N` is *not* a prime. *Use the Primes.jl package that is included in the repository.*
+You may at this stage add any other reasonable outer constructors for convenience (*not assessed*).
 
-### Field operations and miscellaneous functions (*4 points*)
+### Field operations and miscellaneous functions
 
+TODO - add Base. to everything
 4. Implement the following convenience and query operations:
 
 ```
@@ -309,15 +401,16 @@ end
 
 **Note:** you may make as many additional convenience/helper functions as you wish.
 
-### Checking that it works (*2 points*)
+### Checking that it works
+
 10.  Create `example_script_task_5.jl` and in this file, demonstrate *all* basic modular arithmetic operations working correctly (each at least once). TODO - Keep this and print output for PDF submission?
 
 11.  Create `tests/z_mod_p.jl` containing tests which run *all* operations on `ZModP`.  Your tests must run on at least $10^3$ randomly generated integers in the range $[-10^4, 10^4]$ inclusive and using at least 10 different primes. Utilise the in-built `mod` function on integers to verify correctness of your operations. Ensure your implementations pass these tests.
 
 12. Add this test file to the `test/runtests.jl` file and have your tests print some output demonstrating the correctness of your operations on `ZModP`. *Screenshot (or copy/paste) the output of this and your `example_script_task_5.jl` and add it to your PDF submission.* TODO - edit this to be consistent with others (just one big test output and we can view tests ourselves)
 
-## **Task 6 (7pts) - Using $\mathbb{Z}_p[x]$**
-### Constructing $\mathbb{Z}_p[x]$ (*5 points*)
+## **Task 5 (Ypts) - Using $\mathbb{Z}_p[x]$**
+### Constructing $\mathbb{Z}_p[x]$
 
 Now that we have `ZModP` as a subtype of `Number`, we can use this as the coefficient type of our polynomials. E.g., `PolynomialSparse{ZModP{Int, 5}}`. *Try experimenting in the REPL with this before attempting the rest of this section.*
  
@@ -327,7 +420,9 @@ Now that we have a working version of *$\mathbb{Z}_p[x]$*, we can use the provid
 2.   Create a new folder
 
 
-   TODO - Make a quotient type, use it with polynomials of the same numerator/denominator type.
-          Simplify via factorisation and then expansion.
-          Have evaluation with errors on denominator equals 0.
-          That's probably enough tbh.
+TODO - Make a quotient type, use it with polynomials of the same numerator/denominator type.
+      Simplify via factorisation and then expansion.
+      Have evaluation with errors on denominator equals 0.
+      That's probably enough tbh.
+
+TODO - Add in points for each task, and run spellchecker. Remove TODO's before pushing. Make template repo. Decide what should go in this final task on bit *$\mathbb{Z}_p[x]$* (quotient idea or just testing things like factorisation and gcd that weren't runnable before to check their mod p works correctly).
