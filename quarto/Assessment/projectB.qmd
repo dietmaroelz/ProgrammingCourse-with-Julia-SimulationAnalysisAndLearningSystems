@@ -204,7 +204,7 @@ Many of the algorithms provided within the codebase are not optimised and should
 
 *Note: the following algorithms are intended to be listed in the order of easiest to hardest, but do not depend on each other and hence you may do/skip them in any order.*
 
-### Vectorising `PolynomialDense` Addition (4pts)
+### Vectorising `PolynomialDense` Addition (5pts)
 
 Our current implementation for adding two `PolynomialDense{C}` together simply delegates the task to the abstract implementation. The abstract implementation however, uses significant amounts of memory and time by making copies of polynomials at each stage, and does not leverage Julia's native speed with vectors.
 
@@ -212,7 +212,7 @@ Implement a version of addition between two `PolynomialDense{C}` (they *must* be
 
 For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation, and report the memory usage before and after your optimisation.
 
-### Fast Evaluation (4pts)
+### Fast Evaluation (5pts)
 
 Our current evaluation strategy for a polynomial $a_0 + a_1\cdot x + \ldots + a_n \cdot x^n$ is for the i'th term, take $x$ to the power $i$, then multiply by the i'th coefficient $a_i$. This however, is inefficient - [Horner's method](https://en.wikipedia.org/wiki/Horner%27s_method) offers a much faster evaluation method, by implicitly utilising the following representation: $(\ldots(a_n \cdot x + a_{n-1})\cdot x + \ldots + a_1)\cdot x + a_0$.  
 
@@ -222,7 +222,7 @@ For benchmarking, find a single instance where the existing implementation takes
 
 Test your implementation of `evaluate` for at least $10^2$ random polynomials (your tests should not take more than 30s to run on your computer).
 
-### Specialising `PolynomialSparse` Addition/Multiplication (6pts)
+### Specialising `PolynomialSparse` Addition/Multiplication (8pts)
 
 *Note: to implement either of these algorithms well, you should study the provided functions in `src/utils/heap.jl` for manipulating the underlying data of the heap efficiently.*
 
@@ -242,7 +242,7 @@ I.e., given the terms $3x^2$, $2x^5$ and $x^6$, we have that $x^6 > 2x^5$ (where
 
 For benchmarking use multiplication between two sparse polynomials (i.e., not between a term and a polynomial), find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
 
-### Fast Powers (5pts)
+### Fast Powers (6pts)
 
 As discussed in class, if you have a polynomial $f$ and raise it to the power $2^n$ then instead of doing about $2^n$ multiplications you can do about $n$ using **repeated squaring**. E.g., to compute $f^8$, we compute $f^2 = f \cdot f$, then $f^4 = f^2 \cdot f^2$ and finally $f^8 = f^4 \cdot f^4$. This idea can be extended to computing $f^n$ for any $n \in \mathbb{N}$! Utilise this algorithm to optimise the existing implementation of `^`. You may wish to short-circuit computations of $f^0$ and $f^1$ (this is not required). This algorithm should be implemented at the abstract level (i.e., `Polynomial{C}`).
 
@@ -250,13 +250,14 @@ For benchmarking, find a single instance where the existing implementation takes
 
 Add new tests for your implementation of `^` using at least $10^2$ generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$.
 
-### Johnson's Algorithm (6pts)
+
+<!-- ### Johnson's Algorithm (6pts)
 
 This is a **harder task** (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible). Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia's native vectorisation over the provided `Heap` implementation, this can still become very slow. Implement [Johnson's Algorithm](https://dl.acm.org/doi/pdf/10.1145/1086837.1086847) for `PolynomialSparse` ([this may also be useful](https://www.sciencedirect.com/science/article/pii/S0747717110001446)). 
 
 Use the existing multiplication tests to ensure your implementation is correct (you do not need to implement more tests).
 
-For benchmarking, find a single instance where the existing implementation takes on average at least 10s to run. Demonstrate that your implemention is indeed an optimisation.
+For benchmarking, find a single instance where the existing implementation takes on average at least 10s to run. Demonstrate that your implemention is indeed an optimisation. -->
 
   
 ## **Task 4 - Implementing $\mathbb{Z}_p$** (15pts)

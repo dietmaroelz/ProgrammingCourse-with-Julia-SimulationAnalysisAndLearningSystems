@@ -137,11 +137,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#task-3-25pts---optimising-algorithms" id="toc-task-3-25pts---optimising-algorithms" class="nav-link" data-scroll-target="#task-3-25pts---optimising-algorithms"><span class="header-section-number">3.4</span> <strong>Task 3 (25pts) - Optimising Algorithms</strong></a>
   <ul class="collapse">
-  <li><a href="#vectorising-polynomialdense-addition-4pts" id="toc-vectorising-polynomialdense-addition-4pts" class="nav-link" data-scroll-target="#vectorising-polynomialdense-addition-4pts"><span class="header-section-number">3.4.1</span> Vectorising <code>PolynomialDense</code> Addition (4pts)</a></li>
-  <li><a href="#fast-evaluation-4pts" id="toc-fast-evaluation-4pts" class="nav-link" data-scroll-target="#fast-evaluation-4pts"><span class="header-section-number">3.4.2</span> Fast Evaluation (4pts)</a></li>
-  <li><a href="#specialising-polynomialsparse-additionmultiplication-6pts" id="toc-specialising-polynomialsparse-additionmultiplication-6pts" class="nav-link" data-scroll-target="#specialising-polynomialsparse-additionmultiplication-6pts"><span class="header-section-number">3.4.3</span> Specialising <code>PolynomialSparse</code> Addition/Multiplication (6pts)</a></li>
-  <li><a href="#fast-powers-5pts" id="toc-fast-powers-5pts" class="nav-link" data-scroll-target="#fast-powers-5pts"><span class="header-section-number">3.4.4</span> Fast Powers (5pts)</a></li>
-  <li><a href="#johnsons-algorithm-6pts" id="toc-johnsons-algorithm-6pts" class="nav-link" data-scroll-target="#johnsons-algorithm-6pts"><span class="header-section-number">3.4.5</span> Johnson’s Algorithm (6pts)</a></li>
+  <li><a href="#vectorising-polynomialdense-addition-5pts" id="toc-vectorising-polynomialdense-addition-5pts" class="nav-link" data-scroll-target="#vectorising-polynomialdense-addition-5pts"><span class="header-section-number">3.4.1</span> Vectorising <code>PolynomialDense</code> Addition (5pts)</a></li>
+  <li><a href="#fast-evaluation-5pts" id="toc-fast-evaluation-5pts" class="nav-link" data-scroll-target="#fast-evaluation-5pts"><span class="header-section-number">3.4.2</span> Fast Evaluation (5pts)</a></li>
+  <li><a href="#specialising-polynomialsparse-additionmultiplication-8pts" id="toc-specialising-polynomialsparse-additionmultiplication-8pts" class="nav-link" data-scroll-target="#specialising-polynomialsparse-additionmultiplication-8pts"><span class="header-section-number">3.4.3</span> Specialising <code>PolynomialSparse</code> Addition/Multiplication (8pts)</a></li>
+  <li><a href="#fast-powers-6pts" id="toc-fast-powers-6pts" class="nav-link" data-scroll-target="#fast-powers-6pts"><span class="header-section-number">3.4.4</span> Fast Powers (6pts)</a></li>
   </ul></li>
   <li><a href="#task-4---implementing-mathbbz_p-15pts" id="toc-task-4---implementing-mathbbz_p-15pts" class="nav-link" data-scroll-target="#task-4---implementing-mathbbz_p-15pts"><span class="header-section-number">3.5</span> <strong>Task 4 - Implementing <span class="math inline">\(\mathbb{Z}_p\)</span></strong> (15pts)</a>
   <ul class="collapse">
@@ -340,21 +339,21 @@ ol > li::before {
 <li><p>(<em>PDF Submission</em>) State the time complexity of the initial implementation and your new optimised implementation.</p></li>
 </ol>
 <p><em>Note: the following algorithms are intended to be listed in the order of easiest to hardest, but do not depend on each other and hence you may do/skip them in any order.</em></p>
-<section id="vectorising-polynomialdense-addition-4pts" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="vectorising-polynomialdense-addition-4pts"><span class="header-section-number">3.4.1</span> Vectorising <code>PolynomialDense</code> Addition (4pts)</h3>
+<section id="vectorising-polynomialdense-addition-5pts" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="vectorising-polynomialdense-addition-5pts"><span class="header-section-number">3.4.1</span> Vectorising <code>PolynomialDense</code> Addition (5pts)</h3>
 <p>Our current implementation for adding two <code>PolynomialDense{C}</code> together simply delegates the task to the abstract implementation. The abstract implementation however, uses significant amounts of memory and time by making copies of polynomials at each stage, and does not leverage Julia’s native speed with vectors.</p>
 <p>Implement a version of addition between two <code>PolynomialDense{C}</code> (they <em>must</em> be parameterised with the same type parameter) that is vectorised and in particular, does not require explicit iteration (i.e., you shouldn’t need a <code>for</code> loop) through the underlying vectors of either polynomial.</p>
 <p>For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation, and report the memory usage before and after your optimisation.</p>
 </section>
-<section id="fast-evaluation-4pts" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="fast-evaluation-4pts"><span class="header-section-number">3.4.2</span> Fast Evaluation (4pts)</h3>
+<section id="fast-evaluation-5pts" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="fast-evaluation-5pts"><span class="header-section-number">3.4.2</span> Fast Evaluation (5pts)</h3>
 <p>Our current evaluation strategy for a polynomial <span class="math inline">\(a_0 + a_1\cdot x + \ldots + a_n \cdot x^n\)</span> is for the i’th term, take <span class="math inline">\(x\)</span> to the power <span class="math inline">\(i\)</span>, then multiply by the i’th coefficient <span class="math inline">\(a_i\)</span>. This however, is inefficient - <a href="https://en.wikipedia.org/wiki/Horner%27s_method">Horner’s method</a> offers a much faster evaluation method, by implicitly utilising the following representation: <span class="math inline">\((\ldots(a_n \cdot x + a_{n-1})\cdot x + \ldots + a_1)\cdot x + a_0\)</span>.</p>
 <p>Utilise this algorithm to optimise the existing implementation of <code>evaluate</code>. This algorithm should be implemented at the abstract level, but should improve the runtime for both sparse/dense representations simultaneously.</p>
 <p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implementation is indeed an optimisation.</p>
 <p>Test your implementation of <code>evaluate</code> for at least <span class="math inline">\(10^2\)</span> random polynomials (your tests should not take more than 30s to run on your computer).</p>
 </section>
-<section id="specialising-polynomialsparse-additionmultiplication-6pts" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="specialising-polynomialsparse-additionmultiplication-6pts"><span class="header-section-number">3.4.3</span> Specialising <code>PolynomialSparse</code> Addition/Multiplication (6pts)</h3>
+<section id="specialising-polynomialsparse-additionmultiplication-8pts" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="specialising-polynomialsparse-additionmultiplication-8pts"><span class="header-section-number">3.4.3</span> Specialising <code>PolynomialSparse</code> Addition/Multiplication (8pts)</h3>
 <p><em>Note: to implement either of these algorithms well, you should study the provided functions in <code>src/utils/heap.jl</code> for manipulating the underlying data of the heap efficiently.</em></p>
 <p><strong>Addition <code>+(PolynomialSparse{C}, PolynomialSparse{C})</code></strong></p>
 <p>Our current implementation for adding two <code>PolynomialSparse{C}</code> together once again delegates the task to the abstract implementation. As before, the abstract implementation is inefficient.</p>
@@ -365,17 +364,18 @@ ol > li::before {
 <p>I.e., given the terms <span class="math inline">\(3x^2\)</span>, <span class="math inline">\(2x^5\)</span> and <span class="math inline">\(x^6\)</span>, we have that <span class="math inline">\(x^6 &gt; 2x^5\)</span> (where we order terms by degree). We also know that <span class="math inline">\((3x^2)\cdot x^6 &gt; (3x^2)\cdot(2x^5)\)</span>. Leverage this property to produce a vectorised version of term-polynomial multiplication (the provided <code>Heap</code> data structure provides you with methods to achieve this).</p>
 <p>For benchmarking use multiplication between two sparse polynomials (i.e., not between a term and a polynomial), find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.</p>
 </section>
-<section id="fast-powers-5pts" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="fast-powers-5pts"><span class="header-section-number">3.4.4</span> Fast Powers (5pts)</h3>
+<section id="fast-powers-6pts" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="fast-powers-6pts"><span class="header-section-number">3.4.4</span> Fast Powers (6pts)</h3>
 <p>As discussed in class, if you have a polynomial <span class="math inline">\(f\)</span> and raise it to the power <span class="math inline">\(2^n\)</span> then instead of doing about <span class="math inline">\(2^n\)</span> multiplications you can do about <span class="math inline">\(n\)</span> using <strong>repeated squaring</strong>. E.g., to compute <span class="math inline">\(f^8\)</span>, we compute <span class="math inline">\(f^2 = f \cdot f\)</span>, then <span class="math inline">\(f^4 = f^2 \cdot f^2\)</span> and finally <span class="math inline">\(f^8 = f^4 \cdot f^4\)</span>. This idea can be extended to computing <span class="math inline">\(f^n\)</span> for any <span class="math inline">\(n \in \mathbb{N}\)</span>! Utilise this algorithm to optimise the existing implementation of <code>^</code>. You may wish to short-circuit computations of <span class="math inline">\(f^0\)</span> and <span class="math inline">\(f^1\)</span> (this is not required). This algorithm should be implemented at the abstract level (i.e., <code>Polynomial{C}</code>).</p>
 <p>For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.</p>
 <p>Add new tests for your implementation of <code>^</code> using at least <span class="math inline">\(10^2\)</span> generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the <a href="https://en.wikipedia.org/wiki/Binomial_theorem">Binomial Theorem</a> alongside polynomials <span class="math inline">\((1+x)^n\)</span>.</p>
-</section>
-<section id="johnsons-algorithm-6pts" class="level3" data-number="3.4.5">
-<h3 data-number="3.4.5" class="anchored" data-anchor-id="johnsons-algorithm-6pts"><span class="header-section-number">3.4.5</span> Johnson’s Algorithm (6pts)</h3>
-<p>This is a <strong>harder task</strong> (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible). Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia’s native vectorisation over the provided <code>Heap</code> implementation, this can still become very slow. Implement <a href="https://dl.acm.org/doi/pdf/10.1145/1086837.1086847">Johnson’s Algorithm</a> for <code>PolynomialSparse</code> (<a href="https://www.sciencedirect.com/science/article/pii/S0747717110001446">this may also be useful</a>).</p>
-<p>Use the existing multiplication tests to ensure your implementation is correct (you do not need to implement more tests).</p>
-<p>For benchmarking, find a single instance where the existing implementation takes on average at least 10s to run. Demonstrate that your implemention is indeed an optimisation.</p>
+<!-- ### Johnson's Algorithm (6pts)
+
+This is a **harder task** (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible). Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia's native vectorisation over the provided `Heap` implementation, this can still become very slow. Implement [Johnson's Algorithm](https://dl.acm.org/doi/pdf/10.1145/1086837.1086847) for `PolynomialSparse` ([this may also be useful](https://www.sciencedirect.com/science/article/pii/S0747717110001446)). 
+
+Use the existing multiplication tests to ensure your implementation is correct (you do not need to implement more tests).
+
+For benchmarking, find a single instance where the existing implementation takes on average at least 10s to run. Demonstrate that your implemention is indeed an optimisation. -->
 </section>
 </section>
 <section id="task-4---implementing-mathbbz_p-15pts" class="level2" data-number="3.5">
