@@ -66,9 +66,9 @@ Feedback will be given by the teaching staff by annotating **selected parts** of
   
 **Weights and Marking Criteria**: Total number of points: *100*.  
  
-* *10 points* are allocated for setting up GitHub according to the instructions and following the submission instructions.
+* *7 points* are allocated for setting up GitHub according to the instructions and following the submission instructions.
  
-* *90 points* are allocated for the polynomial project itself. Points are awarded for completing each of the tasks with full marks given to clean readable code.
+* *93 points* are allocated for the polynomial project itself. Points are awarded for completing each of the tasks with full marks given to clean readable code.
  
 * In general, points **will be** deducted for sloppy coding style. Make sure your code is properly indented, uses sensible and consistent variable names and write code that is in general, clean and consistent.
 
