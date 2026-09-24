@@ -35,7 +35,7 @@ ol > li::before {
 }
 </style>
 
-# Univariate Polynomials with Integer Coefficients
+# Univariate integer-coefficient polynomials
   
 (last edit: Sep 24, 2026)
      
