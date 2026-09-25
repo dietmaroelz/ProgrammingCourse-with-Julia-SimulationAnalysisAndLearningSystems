@@ -426,9 +426,11 @@ For benchmarking, find a single instance where the existing implementation takes
 <h2 data-number="3.6" class="anchored" data-anchor-id="task-5-16-pts---using-mathbbz_px"><span class="header-section-number">3.6</span> <strong>Task 5 (16 pts) - Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></strong></h2>
 <p>Before starting this section, ensure all tests pass when run with command <code>julia test/runtests.jl -vp</code>.</p>
 <p>Now that we have <code>ZModP</code> as a subtype of <code>Number</code>, we can use this as the coefficient type of our polynomials. E.g., <code>PolynomialSparse{ZModP{Int, 5}}</code>. <em>Try experimenting in the REPL with this before attempting the rest of this section.</em></p>
-<p>Implement the following function for polynomial division, <code>function Base.divrem(f::P, g::P)::Tuple{P, P} where {P &lt;: Polynomial}</code>. It returns the tuple of div(isor) and rem(ainder).</p>
-<p>Rerun the tests pass when run with command <code>julia test/runtests.jl -v</code>.</p>
-<p>Within a file <code>scripts/example_script_task_5.jl</code>, demonstrate the division algorithm over a field <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em> for some $123 &lt; p `.</p>
+<p>Implement the following function for polynomial division:</p>
+<pre><code>function Base.divrem(f::P, g::P)::Tuple{P, P} where {P &lt;: Polynomial}</code></pre>
+<p>It returns the tuple of div(isor) and rem(ainder).</p>
+<p>Make sure the tests pass when run with command <code>julia test/runtests.jl -v</code>.</p>
+<p>Within a file <code>scripts/example_script_task_5.jl</code>, demonstrate the division algorithm over a field <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em> for some <span class="math inline">\(123 &lt; p &lt; 423\)</span>.</p>
 <!-- Now that we have a working version of *$\mathbb{Z}_p[x]$*, we can use the provided factorisation algorithm which uses the division algorithm!
 Within a file `scripts/example_script_task_5.jl`, demonstrate the factorisation algorithm for a product of linear and quadratic polynomials over a field *$\mathbb{Z}_p[x]$* for some $2 < p \leq 23`. -->
 <!-- 
