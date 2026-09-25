@@ -149,11 +149,7 @@ window.Quarto = {
   <li><a href="#field-operations-4pts" id="toc-field-operations-4pts" class="nav-link" data-scroll-target="#field-operations-4pts"><span class="header-section-number">3.5.3</span> Field Operations (4pts)</a></li>
   <li><a href="#checking-that-it-works-4pts" id="toc-checking-that-it-works-4pts" class="nav-link" data-scroll-target="#checking-that-it-works-4pts"><span class="header-section-number">3.5.4</span> Checking that it works (4pts)</a></li>
   </ul></li>
-  <li><a href="#task-5-16-pts---using-mathbbz_px" id="toc-task-5-16-pts---using-mathbbz_px" class="nav-link" data-scroll-target="#task-5-16-pts---using-mathbbz_px"><span class="header-section-number">3.6</span> <strong>Task 5 (16 pts) - Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></strong></a>
-  <ul class="collapse">
-  <li><a href="#using-mathbbz_px-6pts" id="toc-using-mathbbz_px-6pts" class="nav-link" data-scroll-target="#using-mathbbz_px-6pts"><span class="header-section-number">3.6.1</span> Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span> (6pts)</a></li>
-  <li><a href="#rational-functions-10pts" id="toc-rational-functions-10pts" class="nav-link" data-scroll-target="#rational-functions-10pts"><span class="header-section-number">3.6.2</span> Rational Functions (10pts)</a></li>
-  </ul></li>
+  <li><a href="#task-5-16-pts---using-mathbbz_px" id="toc-task-5-16-pts---using-mathbbz_px" class="nav-link" data-scroll-target="#task-5-16-pts---using-mathbbz_px"><span class="header-section-number">3.6</span> <strong>Task 5 (16 pts) - Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></strong></a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="projectB.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -343,7 +339,7 @@ ol > li::before {
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="vectorising-polynomialdense-addition-5pts"><span class="header-section-number">3.4.1</span> Vectorising <code>PolynomialDense</code> Addition (5pts)</h3>
 <p>Our current implementation for adding two <code>PolynomialDense{C}</code> together simply delegates the task to the abstract implementation. The abstract implementation however, uses significant amounts of memory and time by making copies of polynomials at each stage, and does not leverage Julia’s native speed with vectors.</p>
 <p>Implement a version of addition between two <code>PolynomialDense{C}</code> (they <em>must</em> be parameterised with the same type parameter) that is vectorised and in particular, does not require explicit iteration (i.e., you shouldn’t need a <code>for</code> loop) through the underlying vectors of either polynomial.</p>
-<p>For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation, and report the memory usage before and after your optimisation.</p>
+<p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation, and report the memory usage before and after your optimisation.</p>
 </section>
 <section id="fast-evaluation-5pts" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="fast-evaluation-5pts"><span class="header-section-number">3.4.2</span> Fast Evaluation (5pts)</h3>
@@ -358,16 +354,16 @@ ol > li::before {
 <p><strong>Addition <code>+(PolynomialSparse{C}, PolynomialSparse{C})</code></strong></p>
 <p>Our current implementation for adding two <code>PolynomialSparse{C}</code> together once again delegates the task to the abstract implementation. As before, the abstract implementation is inefficient.</p>
 <p>The time complexity of a single <code>push</code>/<code>pop</code> operation on a <code>Heap</code> is <span class="math inline">\(O(\log_2 n)\)</span> where <span class="math inline">\(n\)</span> is the number of terms in the heap (<code>peek</code> is <span class="math inline">\(O(1)\)</span>). We can use this fact to produce an addition algorithm between two sparse polynomials by repeatedly popping from each heap, and adding the two terms together if they have the same degree. You should attempt to minimise the additional memory used (i.e., as few or no <code>deepcopy</code>/<code>copy</code>’s if possible).</p>
-<p>For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation.</p>
+<p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.</p>
 <p><strong>Multiplication <code>*(PolynomialSparse{C}, Term{C})</code></strong></p>
 <p>As above, multiplication between a term and sparse polynomial is currently delegated to the abstract methods. This can be significantly optimised by understanding that <em>pointwise multiplication between a term and vector of terms, will not change the relative ordering of the vector</em>.</p>
 <p>I.e., given the terms <span class="math inline">\(3x^2\)</span>, <span class="math inline">\(2x^5\)</span> and <span class="math inline">\(x^6\)</span>, we have that <span class="math inline">\(x^6 &gt; 2x^5\)</span> (where we order terms by degree). We also know that <span class="math inline">\((3x^2)\cdot x^6 &gt; (3x^2)\cdot(2x^5)\)</span>. Leverage this property to produce a vectorised version of term-polynomial multiplication (the provided <code>Heap</code> data structure provides you with methods to achieve this).</p>
-<p>For benchmarking use multiplication between two sparse polynomials (i.e., not between a term and a polynomial), find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.</p>
+<p>For benchmarking use multiplication between two sparse polynomials (i.e., not between a term and a polynomial), find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.</p>
 </section>
 <section id="fast-powers-6pts" class="level3" data-number="3.4.4">
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="fast-powers-6pts"><span class="header-section-number">3.4.4</span> Fast Powers (6pts)</h3>
 <p>As discussed in class, if you have a polynomial <span class="math inline">\(f\)</span> and raise it to the power <span class="math inline">\(2^n\)</span> then instead of doing about <span class="math inline">\(2^n\)</span> multiplications you can do about <span class="math inline">\(n\)</span> using <strong>repeated squaring</strong>. E.g., to compute <span class="math inline">\(f^8\)</span>, we compute <span class="math inline">\(f^2 = f \cdot f\)</span>, then <span class="math inline">\(f^4 = f^2 \cdot f^2\)</span> and finally <span class="math inline">\(f^8 = f^4 \cdot f^4\)</span>. This idea can be extended to computing <span class="math inline">\(f^n\)</span> for any <span class="math inline">\(n \in \mathbb{N}\)</span>! Utilise this algorithm to optimise the existing implementation of <code>^</code>. You may wish to short-circuit computations of <span class="math inline">\(f^0\)</span> and <span class="math inline">\(f^1\)</span> (this is not required). This algorithm should be implemented at the abstract level (i.e., <code>Polynomial{C}</code>).</p>
-<p>For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.</p>
+<p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.</p>
 <p>Add new tests for your implementation of <code>^</code> using at least <span class="math inline">\(10^2\)</span> generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the <a href="https://en.wikipedia.org/wiki/Binomial_theorem">Binomial Theorem</a> alongside polynomials <span class="math inline">\((1+x)^n\)</span>.</p>
 <!-- ### Johnson's Algorithm (6pts)
 
@@ -428,25 +424,34 @@ For benchmarking, find a single instance where the existing implementation takes
 </section>
 <section id="task-5-16-pts---using-mathbbz_px" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="task-5-16-pts---using-mathbbz_px"><span class="header-section-number">3.6</span> <strong>Task 5 (16 pts) - Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span></strong></h2>
-<section id="using-mathbbz_px-6pts" class="level3" data-number="3.6.1">
-<h3 data-number="3.6.1" class="anchored" data-anchor-id="using-mathbbz_px-6pts"><span class="header-section-number">3.6.1</span> Using <span class="math inline">\(\mathbb{Z}_p[x]\)</span> (6pts)</h3>
-<p>Before starting this section, ensure all tests pass when run with command <code>julia test/runtests.jl -v</code>.</p>
+<p>Before starting this section, ensure all tests pass when run with command <code>julia test/runtests.jl -vp</code>.</p>
 <p>Now that we have <code>ZModP</code> as a subtype of <code>Number</code>, we can use this as the coefficient type of our polynomials. E.g., <code>PolynomialSparse{ZModP{Int, 5}}</code>. <em>Try experimenting in the REPL with this before attempting the rest of this section.</em></p>
-<p>Now that we have a working version of <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>, we can use the provided factorisation algorithm! Within a file <code>scripts/example_script_task_5.jl</code>, demonstrate the factorisation algorithm for a product of linear and quadratic polynomials over a field <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em> for some $2 &lt; p `.</p>
-</section>
-<section id="rational-functions-10pts" class="level3" data-number="3.6.2">
-<h3 data-number="3.6.2" class="anchored" data-anchor-id="rational-functions-10pts"><span class="header-section-number">3.6.2</span> Rational Functions (10pts)</h3>
-<p>Given we have a factorisation for <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>, we can now work with with <strong>rational functions</strong> (quotients of polynomials). Create a new folder <code>src/rational</code>, and add the type in appropriate files/subfolders:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> RationalFunc{N}</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    num<span class="op">::</span><span class="dt">Polynomial{ZModP{N}} </span><span class="co"># numerator</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    den<span class="op">::</span><span class="dt">Polynomial{ZModP{N}} </span><span class="co"># denominator</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Implement methods for <code>show</code>.</p>
-<p>Implement an <code>evaluation</code> function for this type (it should throw a <code>DivideError</code> upon division by zero).</p>
-<p>Implement a <code>simplify</code> function which factorises the numerator and denominator and cancels out like terms. The result should be provided as a <code>RationalFunc</code> (i.e., with denominator <code>1</code> if the denominator exactly divides the numerator).</p>
-<p>Ensure the module exports the <code>RationalFunc</code> type, as well as the <code>evaluation</code> and <code>simplify</code> functions.</p>
-<p>Extend your <code>example_script_task_5.jl</code> by demonstrating that your <code>RationalFunc</code> type can be imported from the package <code>PolynomialAlgebra</code> and works as expected.</p>
-</section>
+<p>Implement the following function for polynomial division, <code>function Base.divrem(f::P, g::P)::Tuple{P, P} where {P &lt;: Polynomial}</code>. It returns the tuple of div(isor) and rem(ainder).</p>
+<p>Rerun the tests pass when run with command <code>julia test/runtests.jl -v</code>.</p>
+<p>Within a file <code>scripts/example_script_task_5.jl</code>, demonstrate the division algorithm over a field <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em> for some $123 &lt; p `.</p>
+<!-- Now that we have a working version of *$\mathbb{Z}_p[x]$*, we can use the provided factorisation algorithm which uses the division algorithm!
+Within a file `scripts/example_script_task_5.jl`, demonstrate the factorisation algorithm for a product of linear and quadratic polynomials over a field *$\mathbb{Z}_p[x]$* for some $2 < p \leq 23`. -->
+<!-- 
+### Rational Functions (10pts)
+
+Given we have a factorisation for *$\mathbb{Z}_p[x]$*, we can now work with with **rational functions** (quotients of polynomials). Create a new folder `src/rational`, and add the type in appropriate files/subfolders:
+```julia
+struct RationalFunc{N}
+    num::Polynomial{ZModP{N}} # numerator
+    den::Polynomial{ZModP{N}} # denominator
+end
+```
+
+Implement methods for `show`. 
+
+Implement an `evaluation` function for this type (it should throw a `DivideError` upon division by zero).
+
+Implement a `simplify` function which factorises the numerator and denominator and cancels out like terms. The result should be provided as a `RationalFunc` (i.e., with denominator `1` if the denominator exactly divides the numerator).
+
+Ensure the module exports the `RationalFunc` type, as well as the `evaluation` and `simplify` functions.
+
+Extend your `example_script_task_5.jl` by demonstrating that your `RationalFunc` type can be imported from the package `PolynomialAlgebra` and works as expected.
+ -->
 </section>
 </section>
 

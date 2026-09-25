@@ -210,7 +210,7 @@ Our current implementation for adding two `PolynomialDense{C}` together simply d
 
 Implement a version of addition between two `PolynomialDense{C}` (they *must* be parameterised with the same type parameter) that is vectorised and in particular, does not require explicit iteration (i.e., you shouldn't need a `for` loop) through the underlying vectors of either polynomial.
 
-For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation, and report the memory usage before and after your optimisation.
+For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation, and report the memory usage before and after your optimisation.
 
 ### Fast Evaluation (5pts)
 
@@ -232,7 +232,7 @@ Our current implementation for adding two `PolynomialSparse{C}` together once ag
 
 The time complexity of a single `push`/`pop` operation on a `Heap` is $O(\log_2 n)$ where $n$ is the number of terms in the heap (`peek` is $O(1)$). We can use this fact to produce an addition algorithm between two sparse polynomials by repeatedly popping from each heap, and adding the two terms together if they have the same degree. You should attempt to minimise the additional memory used (i.e., as few or no `deepcopy`/`copy`'s if possible).
 
-For benchmarking, find a single instance where the existing implementation takes on average at least 3s to run. Demonstrate that your implemention is indeed an optimisation.
+For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.
 
 **Multiplication `*(PolynomialSparse{C}, Term{C})`**
 
@@ -240,13 +240,13 @@ As above, multiplication between a term and sparse polynomial is currently deleg
 
 I.e., given the terms $3x^2$, $2x^5$ and $x^6$, we have that $x^6 > 2x^5$ (where we order terms by degree). We also know that $(3x^2)\cdot x^6 > (3x^2)\cdot(2x^5)$. Leverage this property to produce a vectorised version of term-polynomial multiplication (the provided `Heap` data structure provides you with methods to achieve this). 
 
-For benchmarking use multiplication between two sparse polynomials (i.e., not between a term and a polynomial), find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
+For benchmarking use multiplication between two sparse polynomials (i.e., not between a term and a polynomial), find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.
 
 ### Fast Powers (6pts)
 
 As discussed in class, if you have a polynomial $f$ and raise it to the power $2^n$ then instead of doing about $2^n$ multiplications you can do about $n$ using **repeated squaring**. E.g., to compute $f^8$, we compute $f^2 = f \cdot f$, then $f^4 = f^2 \cdot f^2$ and finally $f^8 = f^4 \cdot f^4$. This idea can be extended to computing $f^n$ for any $n \in \mathbb{N}$! Utilise this algorithm to optimise the existing implementation of `^`. You may wish to short-circuit computations of $f^0$ and $f^1$ (this is not required). This algorithm should be implemented at the abstract level (i.e., `Polynomial{C}`).
 
-For benchmarking, find a single instance where the existing implementation takes on average at least 5s to run. Demonstrate that your implemention is indeed an optimisation.
+For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.
 
 Add new tests for your implementation of `^` using at least $10^2$ generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$.
 
@@ -326,14 +326,21 @@ All the above operations should act as they do in *$\mathbb{Z}_p$*. E.g., *$3 \c
 
 ## **Task 5 (16 pts) - Using $\mathbb{Z}_p[x]$**
 
-### Using $\mathbb{Z}_p[x]$ (6pts)
-
-Before starting this section, ensure all tests pass when run with command `julia test/runtests.jl -v`.
+Before starting this section, ensure all tests pass when run with command `julia test/runtests.jl -vp`.
 
 Now that we have `ZModP` as a subtype of `Number`, we can use this as the coefficient type of our polynomials. E.g., `PolynomialSparse{ZModP{Int, 5}}`. *Try experimenting in the REPL with this before attempting the rest of this section.*
- 
-Now that we have a working version of *$\mathbb{Z}_p[x]$*, we can use the provided factorisation algorithm! Within a file `scripts/example_script_task_5.jl`, demonstrate the factorisation algorithm for a product of linear and quadratic polynomials over a field *$\mathbb{Z}_p[x]$* for some $2 < p \leq 23`.
 
+Implement the following function for polynomial division, `function Base.divrem(f::P, g::P)::Tuple{P, P} where {P <: Polynomial}`. It returns the tuple of div(isor) and rem(ainder).
+
+Rerun the tests pass when run with command `julia test/runtests.jl -v`.
+
+Within a file `scripts/example_script_task_5.jl`, demonstrate the division algorithm over a field *$\mathbb{Z}_p[x]$* for some $123 < p \leq 423`.
+
+<!-- Now that we have a working version of *$\mathbb{Z}_p[x]$*, we can use the provided factorisation algorithm which uses the division algorithm!
+Within a file `scripts/example_script_task_5.jl`, demonstrate the factorisation algorithm for a product of linear and quadratic polynomials over a field *$\mathbb{Z}_p[x]$* for some $2 < p \leq 23`. -->
+
+
+<!-- 
 ### Rational Functions (10pts)
 
 Given we have a factorisation for *$\mathbb{Z}_p[x]$*, we can now work with with **rational functions** (quotients of polynomials). Create a new folder `src/rational`, and add the type in appropriate files/subfolders:
@@ -353,4 +360,4 @@ Implement a `simplify` function which factorises the numerator and denominator a
 Ensure the module exports the `RationalFunc` type, as well as the `evaluation` and `simplify` functions.
 
 Extend your `example_script_task_5.jl` by demonstrating that your `RationalFunc` type can be imported from the package `PolynomialAlgebra` and works as expected.
-
+ -->
