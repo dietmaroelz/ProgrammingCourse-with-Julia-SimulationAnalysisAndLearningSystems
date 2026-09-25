@@ -335,7 +335,6 @@ Implement the following function for polynomial division:
 function Base.divrem(f::P, g::P)::Tuple{P, P} where {P <: Polynomial}
 ```
 It returns the tuple of div(isor) and rem(ainder).
-
 Make sure the tests pass when run with command `julia test/runtests.jl -v`.
 
 Within a file `scripts/example_script_task_5.jl`, demonstrate the division algorithm over a field *$\mathbb{Z}_p[x]$* for some $123 < p < 423$.
