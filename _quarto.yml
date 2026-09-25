@@ -1,6 +1,9 @@
 project:
   type: default
   output-dir: docs
+  render:
+    - quarto/*.qmd
+    - quarto/Assessment/*.qmd
 
 execute:
   freeze: false
@@ -17,7 +20,7 @@ format:
     code-overflow: wrap
     highlight-style: tango
     number-sections: true
-    
+
   pdf:
     pdf-engine: xelatex
     documentclass: article
@@ -29,4 +32,5 @@ format:
     keep-tex: false
     include-in-header: header.tex
     fig-width: 5.5
+    
     fig-height: 3.5
