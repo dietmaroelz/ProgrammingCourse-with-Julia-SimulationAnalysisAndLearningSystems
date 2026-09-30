@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,13 +71,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="projectB_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="projectB_files/libs/quarto-html/anchor.min.js"></script>
 <link href="projectB_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="projectB_files/libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="projectB_files/libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="projectB_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="projectB_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="projectB_files/libs/bootstrap/bootstrap-ad597ff7798831d4c258b9446d1e4c38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="projectB_files/libs/bootstrap/bootstrap-c5b8249e638a5980cd3bf2a10a2d2d08.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -265,6 +268,7 @@ ol > li::before {
 <ul>
 <li>Ensure that there aren’t excessive files in your submission repo. An exception is perhaps a Jupyter <code>.ipynb</code> file if you choose to use it for creating the PDF. Use the <code>.gitignore</code> file to ensure <code>git</code> does not commit additional files and output files to your <code>repo</code>.</li>
 </ul>
+<p><em>Note, in any of the following tasks, you may modify which functions are exported in <code>src/PolynomialAlgebra.jl</code>. You should only export functions the user may reasonably want to access (i.e., <code>to_superscript</code> is used internally, but shouldn’t be exported by a polynomial algebra library).</em></p>
 </section>
 <section id="task-1-12-pts---working-in-an-existing-codebase" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="task-1-12-pts---working-in-an-existing-codebase"><span class="header-section-number">3.2</span> <strong>Task 1 (12 pts) - Working in an existing codebase</strong></h2>
@@ -280,6 +284,7 @@ ol > li::before {
 \]</span></p>
 <ol type="1">
 <li><p>Improve the “pretty printing” of the polynomials by rewriting (refactoring) the <code>show</code> methods for both <code>Term{C}</code> and <code>Polynomial{C}</code>. Use <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> via the provided function <code>to_superscript</code> to display exponents appropriately.</p></li>
+<li><p>Implement subtraction to facilitate easier constructions of polynomials (e.g., <code>2x - 5</code> in the original codebase will error although <code>2x + (-5)</code> does work).</p></li>
 <li><p>Create your own example script (called <code>scripts/example_script_task_1.jl</code>) and include functionality demonstrating the correctness of your “pretty printing” implementation. You should demonstrate this works by constructing (at least) <em>three</em> polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all special cases relevant for pretty printing). Following this, verify (in the same script) that <code>derivative</code> is working correctly with respect to the product rule.</p></li>
 </ol>
 </section>
@@ -287,7 +292,7 @@ ol > li::before {
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="showing-overflow-for-polynomialdense-4-pts"><span class="header-section-number">3.2.3</span> Showing overflow for <code>PolynomialDense</code> (4 pts)</h3>
 <p>Exact computation requires polynomials with (truly) integer coefficients and thereby we must use <code>BigInt</code> rather than (the finitely many integers comprising) <code>Int</code>.</p>
 <ol type="1">
-<li><p>At the end of <code>example_script_task_1.jl</code>, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use <code>rand</code> to generate them) of <code>PolynomialDense{Int}</code> additio and multiplication that overflow by making the coefficients excessively large.</p></li>
+<li><p>At the end of <code>example_script_task_1.jl</code>, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use <code>rand</code> to generate them) of <code>PolynomialDense{Int}</code> addition and multiplication that overflow by making the coefficients excessively large.</p></li>
 <li><p>Demonstrate (within the same script) that by changing the coefficients to <code>BigInt</code>, this overflow does not occur.</p></li>
 </ol>
 <p><em>Note: remember to include the final output of <code>example_script_task_1.jl</code> in your PDF submission.</em></p>
@@ -364,7 +369,8 @@ ol > li::before {
 <h3 data-number="3.4.4" class="anchored" data-anchor-id="fast-powers-6pts"><span class="header-section-number">3.4.4</span> Fast Powers (6pts)</h3>
 <p>As discussed in class, if you have a polynomial <span class="math inline">\(f\)</span> and raise it to the power <span class="math inline">\(2^n\)</span> then instead of doing about <span class="math inline">\(2^n\)</span> multiplications you can do about <span class="math inline">\(n\)</span> using <strong>repeated squaring</strong>. E.g., to compute <span class="math inline">\(f^8\)</span>, we compute <span class="math inline">\(f^2 = f \cdot f\)</span>, then <span class="math inline">\(f^4 = f^2 \cdot f^2\)</span> and finally <span class="math inline">\(f^8 = f^4 \cdot f^4\)</span>. This idea can be extended to computing <span class="math inline">\(f^n\)</span> for any <span class="math inline">\(n \in \mathbb{N}\)</span>! Utilise this algorithm to optimise the existing implementation of <code>^</code>. You may wish to short-circuit computations of <span class="math inline">\(f^0\)</span> and <span class="math inline">\(f^1\)</span> (this is not required). This algorithm should be implemented at the abstract level (i.e., <code>Polynomial{C}</code>).</p>
 <p>For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.</p>
-<p>Add new tests for your implementation of <code>^</code> using at least <span class="math inline">\(10^2\)</span> generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the <a href="https://en.wikipedia.org/wiki/Binomial_theorem">Binomial Theorem</a> alongside polynomials <span class="math inline">\((1+x)^n\)</span>.</p>
+<p>Add new tests for your implementation of <code>^</code> using at least <span class="math inline">\(10^2\)</span> generated polynomials (your tests should not take more than 30s to run on your computer).</p>
+<p><em>Note: To construct polynomials where you can easily check the correctness of the result, you may want to use the <a href="https://en.wikipedia.org/wiki/Binomial_theorem">Binomial Theorem</a> alongside polynomials <span class="math inline">\((1+x)^n\)</span>.</em></p>
 <!-- ### Johnson's Algorithm (6pts)
 
 This is a **harder task** (it requires reading an algorithm from a research paper - it is recommended you return to this after trying Task 5 onwards to ensure you get as many marks as possible). Our current sparse multiplication algorithm may potentially generate many redundant intermediate polynomials. Even with Julia's native vectorisation over the provided `Heap` implementation, this can still become very slow. Implement [Johnson's Algorithm](https://dl.acm.org/doi/pdf/10.1145/1086837.1086847) for `PolynomialSparse` ([this may also be useful](https://www.sciencedirect.com/science/article/pii/S0747717110001446)). 
@@ -397,7 +403,10 @@ For benchmarking, find a single instance where the existing implementation takes
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">one</span>(z5) </span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">one</span>(a) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You may at this stage add any other reasonable outer constructors for convenience (<em>not assessed</em>).</p>
-<p><em>Note: in all of the following, it is up to you to determine exactly which function type signatures are required - remember that you can always return and add more if necessary later on. Remember also to prefix relevant functions with <code>Base.</code>, e.g., <code>Base.show</code> or <code>Base.:(+)</code>.</em></p>
+<p><strong>Notes:</strong></p>
+<p>In all of the following, it is up to you to determine exactly which function type signatures are required - remember that you can always return and add more if necessary later on. Remember also to prefix relevant functions with <code>Base.</code>, e.g., <code>Base.show</code> or <code>Base.:(+)</code>.*</p>
+<p>It is possible to complete this task only implementing the explicitly mentioned operations between objects of type <code>ZModP{N}</code>.</p>
+<p>Your pretty printer may stop working optimally during these tasks for objects of type <code>Polynomial{ZModP{N}}</code> - you will not be marked down for this provided the outputs are still correct and no errors occur (e.g., <span class="math inline">\(x+6 \pmod 7\)</span> may be rendered as <span class="math inline">\(x + -1\)</span>).</p>
 </section>
 <section id="miscellaneous-functions-4pts" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="miscellaneous-functions-4pts"><span class="header-section-number">3.5.2</span> Miscellaneous functions (4pts)</h3>
@@ -417,7 +426,7 @@ For benchmarking, find a single instance where the existing implementation takes
 <ol type="1">
 <li><p>Create <code>scripts/example_script_task_4.jl</code> and in this file, demonstrate <em>all</em> basic modular arithmetic operations working correctly (each at least once).</p></li>
 <li><p>Create <code>test/z_mod_p_test.jl</code> containing tests which run <em>all</em> operations on <code>ZModP{N}</code>. Your tests must run on at least <span class="math inline">\(10^3\)</span> randomly generated integers in the range <span class="math inline">\([-10^4, 10^4]\)</span> inclusive and use at least 4 different primes. Utilise the in-built <code>mod</code> function on integers to verify correctness of your operations.</p></li>
-<li><p>Ensure your implementations pass these tests, and that they run with the command <code>julia test/runtests.jl -v</code>. Unlike before we omit the <code>-p</code> flag - at this stage the tests should <em>also</em> pass the factorisation and modular operations tests for <em><span class="math inline">\(\mathbb{Z}_p[x]\)</span></em>. Ensure that if tests are run <em>with</em> the <code>-p</code> flag then your additional tests are skipped.</p></li>
+<li><p>Ensure your implementations pass these tests, and that they run with the command <code>julia test/runtests.jl -vp</code>.</p></li>
 </ol>
 <p><em>Note: make sure to add the output of <code>example_script_task_4.jl</code> to your PDF submission.</em></p>
 </section>

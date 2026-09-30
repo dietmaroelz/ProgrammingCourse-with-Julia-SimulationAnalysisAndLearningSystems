@@ -134,9 +134,11 @@ Your GitHub repo must be formatted like the original repo.
 * Ensure that there aren't excessive files in your submission repo. An exception is perhaps a Jupyter `.ipynb` file if you choose to use it for creating the PDF. Use the `.gitignore` file to ensure `git` does not commit additional files and output files to your `repo`.
 
 
+*Note, in any of the following tasks, you may modify which functions are exported in `src/PolynomialAlgebra.jl`. You should only export functions the user may reasonably want to access (i.e., `to_superscript` is used internally, but shouldn't be exported by a polynomial algebra library).*
+ 
 ## **Task 1 (12 pts) - Working in an existing codebase**
 This task is for getting the repo to run and improving pretty printing.
- 
+
 ### Study the Repo
 Once you create your own repository, first read the file `README.md`. Then make sure the repository works by running `julia test/runtests.jl -vp` and `julia scripts/example_script.jl`. At this point simply study the functionality of the repository by looking at the function signatures (not implementations) to understand what the repo can do.
 
@@ -148,13 +150,15 @@ $$
 
 1. Improve the "pretty printing" of the polynomials by rewriting (refactoring) the `show` methods for both `Term{C}` and `Polynomial{C}`. Use [Unicode](https://en.wikipedia.org/wiki/Unicode) via the provided function `to_superscript` to display exponents appropriately.
 
-2. Create your own example script (called `scripts/example_script_task_1.jl`) and include functionality demonstrating the correctness of your "pretty printing" implementation. You should demonstrate this works by constructing (at least) *three* polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all special cases relevant for pretty printing). Following this, verify (in the same script) that `derivative` is working correctly with respect to the product rule.
+2. Implement subtraction to facilitate easier constructions of polynomials (e.g., `2x - 5` in the original codebase will error although `2x + (-5)` does work).
+
+3. Create your own example script (called `scripts/example_script_task_1.jl`) and include functionality demonstrating the correctness of your "pretty printing" implementation. You should demonstrate this works by constructing (at least) *three* polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all special cases relevant for pretty printing). Following this, verify (in the same script) that `derivative` is working correctly with respect to the product rule.
 
 ### Showing overflow for `PolynomialDense` (4 pts)
 
 Exact computation requires polynomials with (truly) integer coefficients and thereby we must use `BigInt` rather than (the finitely many integers comprising) `Int`. 
   
-1. At the end of `example_script_task_1.jl`, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use `rand` to generate them) of `PolynomialDense{Int}` additio and multiplication that overflow by making the coefficients excessively large.
+1. At the end of `example_script_task_1.jl`, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use `rand` to generate them) of `PolynomialDense{Int}` addition and multiplication that overflow by making the coefficients excessively large.
 
 2. Demonstrate (within the same script) that by changing the coefficients to `BigInt`, this overflow does not occur.
 
@@ -248,7 +252,9 @@ As discussed in class, if you have a polynomial $f$ and raise it to the power $2
 
 For benchmarking, find a single instance where the existing implementation takes on average at least 1s to run. Demonstrate that your implemention is indeed an optimisation.
 
-Add new tests for your implementation of `^` using at least $10^2$ generated polynomials (your tests should not take more than 30s to run on your computer). To construct polynomials where you can easily check the correctness of the result, use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$.
+Add new tests for your implementation of `^` using at least $10^2$ generated polynomials (your tests should not take more than 30s to run on your computer). 
+
+*Note: To construct polynomials where you can easily check the correctness of the result, you may want to use the [Binomial Theorem](https://en.wikipedia.org/wiki/Binomial_theorem) alongside polynomials $(1+x)^n$.*
 
 
 <!-- ### Johnson's Algorithm (6pts)
@@ -294,7 +300,13 @@ one(a)
 
 You may at this stage add any other reasonable outer constructors for convenience (*not assessed*).
 
-*Note: in all of the following, it is up to you to determine exactly which function type signatures are required - remember that you can always return and add more if necessary later on. Remember also to prefix relevant functions with `Base.`, e.g., `Base.show` or `Base.:(+)`.*
+**Notes:**
+
+In all of the following, it is up to you to determine exactly which function type signatures are required - remember that you can always return and add more if necessary later on. Remember also to prefix relevant functions with `Base.`, e.g., `Base.show` or `Base.:(+)`.*
+
+It is possible to complete this task only implementing the explicitly mentioned operations between objects of type `ZModP{N}`.
+
+Your pretty printer may stop working optimally during these tasks for objects of type `Polynomial{ZModP{N}}` - you will not be marked down for this provided the outputs are still correct and no errors occur (e.g., $x+6 \pmod 7$ may be rendered as $x + -1$).
 
 ### Miscellaneous functions (4pts)
 
@@ -320,7 +332,7 @@ All the above operations should act as they do in *$\mathbb{Z}_p$*. E.g., *$3 \c
 
 2.  Create `test/z_mod_p_test.jl` containing tests which run *all* operations on `ZModP{N}`.  Your tests must run on at least $10^3$ randomly generated integers in the range $[-10^4, 10^4]$ inclusive and use at least 4 different primes. Utilise the in-built `mod` function on integers to verify correctness of your operations. 
 
-3. Ensure your implementations pass these tests, and that they run with the command `julia test/runtests.jl -v`. Unlike before we omit the `-p` flag - at this stage the tests should *also* pass the factorisation and modular operations tests for *$\mathbb{Z}_p[x]$*. Ensure that if tests are run *with* the `-p` flag then your additional tests are skipped.
+3. Ensure your implementations pass these tests, and that they run with the command `julia test/runtests.jl -vp`.
 
 *Note: make sure to add the output of `example_script_task_4.jl` to your PDF submission.*
 
