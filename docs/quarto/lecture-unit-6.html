@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unit 6: Symbolic Computing, Polymorphism, and the Type System</title>
+<title>Unit 6A: Symbolic Computing, Polymorphism, and the Type System</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -106,6 +106,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styling/page-styles.css">
 </head>
 
 <body class="quarto-light">
@@ -161,7 +162,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unit 6: Symbolic Computing, Polymorphism, and the Type System</h1>
+<h1 class="title">Unit 6A: Symbolic Computing, Polymorphism, and the Type System</h1>
 </div>
 
 
@@ -178,39 +179,6 @@ window.Quarto = {
 </header>
 
 
-<style>
-.theorem {
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-}
-
-.theorem-title {
-    display: block;
-    font-size: 1.05em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
-    color: #51247A;
-}
-
-/* Different colours by environment */
-.theorem.theorem .theorem-title { color: #A32638; }
-.theorem.definition .theorem-title { color: #3333B2; }
-.theorem.example .theorem-title { 
-    color: #007A5E; 
-    font-weight: 400;
-}
-.theorem.lemma .theorem-title      { color: #B45F06; }
-.theorem.proposition .theorem-title { color: #A32638; }
-
-.theorem-title * {
-    font-weight: inherit !important;
-}
-
-.theorem.example:has(> p:first-child + ol) > p:first-child .theorem-title,
-.theorem.example:has(> p:first-child + ul) > p:first-child .theorem-title {
-    display: inline !important;
-}
-</style>
 <!-- LaTeX Macros -->
 <section id="project-preliminaries" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Project Preliminaries</h1>
@@ -1382,6 +1350,13 @@ b q_1 + r_1 = b q_2 + r_2
 \]</span></p>
 <p>Therefore <span class="math inline">\(b(q_1-q_2) = 0\)</span>. But since <span class="math inline">\(\mathbb{F}[x]\)</span> is an integral domain it cannot have zero divisors. As we assumed <span class="math inline">\(b\neq 0\)</span> this implies <span class="math display">\[(q_1-q_2)=0 \implies q_1 = q_2. ~\square\]</span></p>
 </div>
+<p>The division algorithm is basically the same as <em>synthetic division</em> that students of calculus are taught.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 18 (Synthetic Division)</strong></span> <img src="img/div_example_1.svg" class="img-fluid" style="width:80.0%"></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 19 (Synthetic Division)</strong></span> <img src="img/div_example_2.svg" class="img-fluid" style="width:80.0%"></p>
+</div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em> (Existence – The Division Algorithm). </span></p>
 <pre class="raw"><code>def DIVISION: 
@@ -1396,7 +1371,7 @@ b q_1 + r_1 = b q_2 + r_2
     return (q,r)</code></pre>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 18</strong></span> Consider <span class="math inline">\(a = 10x^2 + 4x + 1\)</span> divided by <span class="math inline">\(b = 5x-3\)</span> in <span class="math inline">\(\mathbb{Z}_{11}[x]\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 20</strong></span> Consider <span class="math inline">\(a = 10x^2 + 4x + 1\)</span> divided by <span class="math inline">\(b = 5x-3\)</span> in <span class="math inline">\(\mathbb{Z}_{11}[x]\)</span>.</p>
 <p><span class="math display">\[
 \begin{align*}
 r,q &amp;\gets 10x^2 + 4x + 1, 0 \\[1em]

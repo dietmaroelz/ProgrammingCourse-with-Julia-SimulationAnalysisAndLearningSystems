@@ -1,5 +1,5 @@
 ---
-title: "Unit 6: Symbolic Computing, Polymorphism, and the Type System"
+title: "Unit 6A: Symbolic Computing, Polymorphism, and the Type System"
 engine: julia
 format:
   html:
@@ -7,6 +7,7 @@ format:
     code-fold: false
     highlight-style: github
     fig-align: center
+    css: styling/page-styles.css
   pdf:
     documentclass: article
     geometry:
@@ -17,41 +18,6 @@ format:
 filters:
   - tikz
 ---
-
-<style>
-.theorem {
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-}
-
-.theorem-title {
-    display: block;
-    font-size: 1.05em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
-    color: #51247A;
-}
-
-/* Different colours by environment */
-.theorem.theorem .theorem-title { color: #A32638; }
-.theorem.definition .theorem-title { color: #3333B2; }
-.theorem.example .theorem-title { 
-    color: #007A5E; 
-    font-weight: 400;
-}
-.theorem.lemma .theorem-title      { color: #B45F06; }
-.theorem.proposition .theorem-title { color: #A32638; }
-
-.theorem-title * {
-    font-weight: inherit !important;
-}
-
-.theorem.example:has(> p:first-child + ol) > p:first-child .theorem-title,
-.theorem.example:has(> p:first-child + ul) > p:first-child .theorem-title {
-    display: inline !important;
-}
-</style>
-
 
 <!-- LaTeX Macros -->
 \newcommand{\ring}{\mathcal{R}}
@@ -1303,6 +1269,20 @@ b q_1 + r_1 = b q_2 + r_2
 $$
 
 Therefore $b(q_1-q_2) = 0$. But since $\FF[x]$ is an integral domain it cannot have zero divisors. As we assumed $b\neq 0$ this implies $$(q_1-q_2)=0 \implies q_1 = q_2. ~\square$$
+:::
+
+The division algorithm is basically the same as *synthetic division* that students of calculus are taught.
+
+::: {#exm-}
+# Synthetic Division
+
+![](img/div_example_1.svg){width=80%}
+:::
+
+::: {#exm-}
+# Synthetic Division
+
+![](img/div_example_2.svg){width=80%}
 :::
 
 ::: {.proof}

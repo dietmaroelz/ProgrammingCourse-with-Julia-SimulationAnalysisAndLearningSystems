@@ -1,0 +1,31 @@
+.theorem {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.theorem-title {
+    display: block;
+    font-size: 1.05em;
+    font-weight: 400;
+    margin-bottom: 0.5em;
+    color: #51247A;
+}
+
+/* Different colours by environment */
+.theorem.theorem .theorem-title { color: #A32638; }
+.theorem.definition .theorem-title { color: #3333B2; }
+.theorem.example .theorem-title { 
+    color: #007A5E; 
+    font-weight: 400;
+}
+.theorem.lemma .theorem-title      { color: #B45F06; }
+.theorem.proposition .theorem-title { color: #A32638; }
+
+.theorem-title * {
+    font-weight: inherit !important;
+}
+
+.theorem.example:has(> p:first-child + ol) > p:first-child .theorem-title,
+.theorem.example:has(> p:first-child + ul) > p:first-child .theorem-title {
+    display: inline !important;
+}
