@@ -51,8 +51,8 @@ The PDF must have the following components in this order:
   
 1.  Your name, student number, and assignment title (Project B - MATH2504 - 2026) on the top.
 2.  A (clickable) link to your GitHub repo.
-3.  A screenshot or copy/paste of the output for each `example_script_task_i.jl`.
-4.  A screenshot or copy/paste of the output of `test/runtests.jl` at the end of the PDF (this should be run as `julia test/runtests.jl -v` if Task 4 is complete and `julia test/runtests.jl -vp` otherwise).
+3.  Screenshots or copy/paste of the output for each `example_script_task_i.jl`, written answers to specific questions and any other outputs requested within this specification (e.g., benchmarks). These should be presented in the order they appear below.
+4.  A screenshot or copy/paste of the output of `test/runtests.jl` at the end of the PDF (this should be run as `julia test/runtests.jl -v` if Task 5 is complete and `julia test/runtests.jl -vp` otherwise).
   
 **Note:** *organize your PDF submission into clearly marked sections. Use headings in the format `Task i` or `Task i.j` for each part of the assignment.*
   
