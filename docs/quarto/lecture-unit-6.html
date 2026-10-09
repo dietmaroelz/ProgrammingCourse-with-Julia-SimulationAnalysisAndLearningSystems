@@ -155,6 +155,17 @@ window.Quarto = {
   <li><a href="#repeated-squaring" id="toc-repeated-squaring" class="nav-link" data-scroll-target="#repeated-squaring"><span class="header-section-number">4.6</span> Repeated Squaring</a></li>
   <li><a href="#division-in-mathbbz_px" id="toc-division-in-mathbbz_px" class="nav-link" data-scroll-target="#division-in-mathbbz_px"><span class="header-section-number">4.7</span> Division in <span class="math inline">\(\mathbb{Z}_p[x]\)</span></a></li>
   </ul></li>
+  <li><a href="#heaps" id="toc-heaps" class="nav-link" data-scroll-target="#heaps"><span class="header-section-number">5</span> Heaps</a>
+  <ul class="collapse">
+  <li><a href="#underlying-representation" id="toc-underlying-representation" class="nav-link" data-scroll-target="#underlying-representation"><span class="header-section-number">5.1</span> Underlying Representation</a></li>
+  <li><a href="#implemeting-a-heap-in-julia" id="toc-implemeting-a-heap-in-julia" class="nav-link" data-scroll-target="#implemeting-a-heap-in-julia"><span class="header-section-number">5.2</span> Implemeting a Heap in Julia</a>
+  <ul class="collapse">
+  <li><a href="#base-interfaces" id="toc-base-interfaces" class="nav-link" data-scroll-target="#base-interfaces"><span class="header-section-number">5.2.1</span> Base Interfaces</a></li>
+  <li><a href="#pop-sink" id="toc-pop-sink" class="nav-link" data-scroll-target="#pop-sink"><span class="header-section-number">5.2.2</span> Pop / Sink</a></li>
+  <li><a href="#push-swim" id="toc-push-swim" class="nav-link" data-scroll-target="#push-swim"><span class="header-section-number">5.2.3</span> Push / Swim</a></li>
+  </ul></li>
+  <li><a href="#heapfiy" id="toc-heapfiy" class="nav-link" data-scroll-target="#heapfiy"><span class="header-section-number">5.3</span> Heapfiy</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-unit-6.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -740,6 +751,16 @@ f+g &amp;=&amp; 3x^3 &amp;+&amp; 2x^2 &amp;+&amp; 6x &amp;+&amp; 6
 \]</span></p>
 <p>Here the “missing” <span class="math inline">\(x^2\)</span> term in <span class="math inline">\(f\)</span> and the missing <span class="math inline">\(x^3\)</span> term in <span class="math inline">\(g\)</span> are treated as having coefficient zero.</p>
 </div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1</strong></span> When <span class="math inline">\(\mathcal{R}\)</span> is a ring then <span class="math inline">\(\mathcal{R}[x]\)</span> is a group.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (Sketch). </span>Follows from the defintion of addition over <span class="math inline">\(\mathcal{R}[x]\)</span>.</p>
+<p>By our construction, when <span class="math inline">\(f, g \in \mathcal{R}[x]\)</span> then <span class="math inline">\(f+g \in \mathcal{R}[x]\)</span>.</p>
+<p>When <span class="math inline">\(a_i, b_i, c_i \in \mathcal{R}\)</span> then commutativity follows from <span class="math display">\[a_i + b_i = b_i + a_i\]</span> and associativity from <span class="math display">\[(a_i + b_i) + c_i = a_i + (b_i + c_i).\]</span></p>
+<p><span class="math inline">\(0 \in R[x]\)</span> is the additive identity.</p>
+<p>The additive inverse of <span class="math inline">\(f = \sum_{i=0}^n a_ix^i\)</span> is <span class="math inline">\(g = \sum_{i=0}^n (-a_i) x^i\)</span> where <span class="math inline">\(-a_i\)</span> is the additive inverse of <span class="math inline">\(a_i\)</span>.</p>
+</div>
 </section>
 <section id="multiplication-in-mathcalrx" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="multiplication-in-mathcalrx"><span class="header-section-number">3.3.2</span> Multiplication in <span class="math inline">\(\mathcal{R}[x]\)</span></h3>
@@ -752,20 +773,22 @@ fg = \sum_{k=0}^{n+m}\left(\sum_{i+j=k} a_i b_j\right)x^k.
 f = 2x^2 + 3x + 1
 \qquad\text{and}\qquad
 g = x + 4.
-\]</span></p>
-<p>First multiply each term of <span class="math inline">\(f\)</span> by each term of <span class="math inline">\(g\)</span>: <span class="math display">\[
+\]</span> then by definition <span class="math display">\[
 \begin{aligned}
 fg
-&amp;= (2x^2)(x) + (2x^2)(4) + (3x)(x) + (3x)(4) + (1)(x) + (1)(4) \\
+&amp;= (2\cdot1)x^3 + (2\cdot 4+ 3\cdot 1)x^2 + (3\cdot 4 + 1 \cdot 1)x^1 + (1 \cdot 4)x^0 \\
 &amp;= 2x^3 + 8x^2 + 3x^2 + 12x + x + 4.
 \end{aligned}
 \]</span></p>
-<p>Then combine like terms: <span class="math display">\[
-fg = 2x^3 + 11x^2 + 13x + 4.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (Sketch). </span>By our construction when <span class="math inline">\(f,g \in \mathcal{R}[x]\)</span> then <span class="math inline">\(fg \in \mathcal{R}[x]\)</span>.</p>
+<p>Associativity and multiplicative distribution follows from the associativity of the coefficient ring.</p>
+<p>The muliplicative identify is <span class="math inline">\(1 \in \mathcal{R}[x]\)</span>.</p>
 </div>
 <p>The following properties are consequences of our definition.</p>
 <div id="prp-poly-mult" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1 (Polynomial Multiplication)</strong></span> When <span class="math inline">\(\mathcal{R}\)</span> is an <em>integral domain</em> (a nonzero commutative ring in which the product of any two nonzero elements is nonzero) and <span class="math inline">\(a,b \in \mathcal{R}[x]^{\neq 0}\)</span> then</p>
+<p><span class="theorem-title"><strong>Proposition 2 (Polynomial Multiplication)</strong></span> When <span class="math inline">\(\mathcal{R}\)</span> is an <em>integral domain</em> (a nonzero commutative ring in which the product of any two nonzero elements is nonzero) and <span class="math inline">\(a,b \in \mathcal{R}[x]^{\neq 0}\)</span> then</p>
 <ol type="1">
 <li><span class="math inline">\(\deg(ab) = \deg(a) + \deg(b)\)</span>,</li>
 <li><span class="math inline">\(\mathop{\mathrm{lc}}\nolimits(ab) = a_b \cdot b_m = \mathop{\mathrm{lc}}\nolimits(a) \cdot \mathop{\mathrm{lc}}\nolimits(b)\)</span>,</li>
@@ -782,10 +805,7 @@ a \times b &amp;= (a_n x^n + \cdots + a_0)(b_mx^m + \cdots + b_0) \\
 \]</span></p>
 </div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 2</strong></span> Every field is also an integral domain.</p>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Omitted.</p>
+<p><span class="theorem-title"><strong>Proposition 3</strong></span> When <span class="math inline">\(\mathcal{R}\)</span> is a ring then <span class="math inline">\(\mathcal{R}[x]\)</span> is a ring.</p>
 </div>
 </section>
 </section>
@@ -803,7 +823,7 @@ a \times b &amp;= (a_n x^n + \cdots + a_0)(b_mx^m + \cdots + b_0) \\
 <img src="img/dense01.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sparse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Sparse representation of <span class="math inline">\(6x^5 + 5x^4 + 4x^3 + 3x^2 + 2x + 1\)</span>
+Figure&nbsp;3: Dense representation of <span class="math inline">\(6x^5 + 5x^4 + 4x^3 + 3x^2 + 2x + 1\)</span>
 </figcaption>
 </figure>
 </div>
@@ -813,7 +833,7 @@ Figure&nbsp;3: Sparse representation of <span class="math inline">\(6x^5 + 5x^4 
 <img src="img/dense02.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sparse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Sparse representation of <span class="math inline">\(x^{10} - 1\)</span>
+Figure&nbsp;4: Dense representation of <span class="math inline">\(x^{10} - 1\)</span>
 </figcaption>
 </figure>
 </div>
@@ -1388,6 +1408,521 @@ r \neq 0 &amp;\mbox{ and } \color{red}{\deg r = 0 \geq \deg b = 1} \\[1em]
 \end{align*}
 \]</span></p>
 <p>And notice <span class="math inline">\(10x^2 + 4x + 1 \equiv(5x-3)(2x+2) + 7 \bmod 11\)</span>.</p>
+</div>
+</section>
+</section>
+<section id="heaps" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Heaps</h1>
+<p>Sparse polynomial arithmetic relies on the <em>heap</em> data structure to be efficient. A <em>heap</em> is a type of priority queue in which priority is determined by an ordering on the elements of the heap. The element that is <em>maximum</em> with respect to this ordering has the highest priority in the queue and can be removed most efficiently. When the maximum element has the highest priority, the heap is more precisely called a <em>max heap</em>.</p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9 (Heap)</strong></span> A vector of <span class="math inline">\(n\)</span> elements <span class="math inline">\(H = [H_1,\, H2\, \ldots, H_n]\)</span> is a <em>heap</em> when it satisfies the following properties: <span class="math display">\[
+\begin{align*}
+H_i \geq H_{2i} &amp;&amp;\mbox{and}&amp;&amp;
+H_i \geq H_{2i + 1} &amp;&amp;\mbox{for}&amp;&amp;
+i \geq 1
+\end{align*}
+\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 21</strong></span> If <span class="math inline">\(H = [11, 7, 3, 4, 6, 5, 1]\)</span> then <span class="math inline">\(H\)</span> is <em>not</em> a heap because <span class="math inline">\(H_3 &lt; H_6\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 22</strong></span> If <span class="math inline">\(H = [11, 9, 6, 7, 4, 3, 1]\)</span> then <span class="math inline">\(H\)</span> <em>is</em> a heap.</p>
+</div>
+<p>Importantly,</p>
+<ol type="1">
+<li>If <span class="math inline">\(H\)</span> is in <em>descenindg</em> order then <span class="math inline">\(H\)</span> is a heap</li>
+<li>If <span class="math inline">\(H\)</span> is a heap then <span class="math inline">\(H_1\)</span> is the maximum element.</li>
+</ol>
+<p>One may ask why we do not simply use a sorted list for this task. Notice, however, that inserting a new element into a sorted list may require shifting existing elements to make room. The cost of this operation is proportional to the size of the list, whereas insertion into a heap has a cost proportional to the logarithm of its size.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 23</strong></span> Adding the element 8 to a queue encoded by a sorted list.</p>
+<div class="quarto-layout-panel" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/list-queue-1.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 1: Initial queue.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/list-queue-2.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 2: Make room for the new element by shifting elements greater than 8.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/list-queue-3.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 3: Insert new element.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="underlying-representation" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="underlying-representation"><span class="header-section-number">5.1</span> Underlying Representation</h2>
+<p>We visualize heps as <em>binary trees</em></p>
+<p>When using this representation, the maximum element is the <em>root</em> of the tree, and the heap satisfies the recursive property that every subtree is also a heap. This means that every node in the heap is larger than (or equal to) each of its descendants.</p>
+<p>One may ask why we do not instead use a sorted this for this task. But notice that adding (or removing) something from an ordered list will require shifting elements. A task with expense proportional to the size of the list.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 24</strong></span> The heap <span class="math inline">\(H = [11, 9, 6, 7, 4, 3, 1]\)</span> as a binary tree.</p>
+<p><img src="img/target-1.svg" class="img-fluid"></p>
+<p>Notice that node 2 has children <span class="math inline">\(2 \cdot 2 = 4\)</span> and <span class="math inline">\(2 \cdot 2 + 1 = 5\)</span> and parent <span class="math inline">\(\lfloor \frac 2 2 \rfloor = 1\)</span>.</p>
+</div>
+<p>If we number the nodes of the tree from the top-to-bottom and left-to-right the node numbers correspond to exactly their position in the vector representation. This means 1. The <em>children</em> of node <span class="math inline">\(i\)</span> are at positions <span class="math inline">\(2i\)</span> and <span class="math inline">\(2i+1\)</span>, 1. The parent of node <span class="math inline">\(i\)</span> is at postion <span class="math inline">\(\lfloor \frac i 2 \rfloor\)</span>.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 25</strong></span> The heap <span class="math inline">\(H = [11, 9, 6, 7, 4, 3, 1]\)</span> as a binary tree.</p>
+<p><img src="img/heap-numbered.svg" class="img-fluid"></p>
+</div>
+<p>A heap <span class="math inline">\(H\)</span> with <span class="math inline">\(n = |H|\)</span> elements supports the following operations.</p>
+<div id="tbl-" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Basic heap operations and their complexities.
+</figcaption>
+<div aria-describedby="tbl--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th>Description</th>
+<th>Heap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create</td>
+<td>Create a new heap with <span class="math inline">\(n\)</span> elements</td>
+<td><span class="math inline">\(O(n \log n)\)</span></td>
+</tr>
+<tr class="even">
+<td>Peek</td>
+<td>Query the value of the top of the heap.</td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Push</td>
+<td>Insert a new element into the heap.</td>
+<td><span class="math inline">\(O(\log n)\)</span> comparisons</td>
+</tr>
+<tr class="even">
+<td>Pop</td>
+<td>Remove the maximum element from the heap.</td>
+<td><span class="math inline">\(O(\log n)\)</span> comparisons</td>
+</tr>
+<tr class="odd">
+<td>Length</td>
+<td>Return the number of elements in the heap.</td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="even">
+<td>Empty(H)</td>
+<td>Query if there is at least one element in the heap.</td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Comparison of array and heap operations.
+</figcaption>
+<div aria-describedby="tbl--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th>Vector</th>
+<th>Heap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Push</td>
+<td><span class="math inline">\(O(n)\)</span></td>
+<td><span class="math inline">\(O(\log n)\)</span></td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td><span class="math inline">\(O(1)\)</span></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Remove maximum</td>
+<td><span class="math inline">\(O(n)\)</span></td>
+<td><span class="math inline">\(O(\log n)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="implemeting-a-heap-in-julia" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="implemeting-a-heap-in-julia"><span class="header-section-number">5.2</span> Implemeting a Heap in Julia</h2>
+<p>A <code>heap</code> will be a new struct with a <code>data</code> attribute for storing the heap’s element.</p>
+<div id="80" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Heap{T} </span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>    data <span class="op">::</span><span class="dt"> Vector{T}</span></span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Inner constructor for initializing empty heap</span></span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">Heap</span><span class="dt">{T}</span>() <span class="kw">where</span> T</span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">new</span>(<span class="fu">Vector</span>())</span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="82" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fu">Heap</span><span class="dt">{Int64}</span>()</span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dump</span>(h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Heap{Int64}
+  data: Array{Int64}((0,)) Int64[]</code></pre>
+</div>
+</div>
+<p>For the time being, so we can run examples, we will let hepas be created from arbitrary vectors that we assume satisfy the heap property (though we wont enforce it).</p>
+<div id="84" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Heap{T} </span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">::</span><span class="dt">Vector{T}</span></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Inner constructor for initializing empty heap</span></span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">Heap</span><span class="dt">{T}</span>() <span class="kw">where</span> T</span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">new</span>(<span class="fu">Vector</span>())</span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Inner constructor for initializing a heap a vector v</span></span>
+<span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">Heap</span>(vec<span class="op">::</span><span class="dt">Vector{T}</span>) <span class="kw">where</span> T</span>
+<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a>      <span class="co"># precondition:  vec[i] ≥ vec[2i], vec[2i+1] for i ≥ 1</span></span>
+<span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">new</span><span class="dt">{T}</span>(vec)</span>
+<span id="cb105-13"><a href="#cb105-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb105-14"><a href="#cb105-14" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="86" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fu">Heap</span>([<span class="fl">11</span>, <span class="fl">9</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">3</span>])</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dump</span>(h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Heap{Int64}
+  data: Array{Int64}((6,)) [11, 9, 7, 6, 4, 3]</code></pre>
+</div>
+</div>
+<section id="base-interfaces" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="base-interfaces"><span class="header-section-number">5.2.1</span> Base Interfaces</h3>
+<p>There are some standard interfaces for containers that we can/should define now for <code>Heap</code> struct. Most of them are wrappers over the <code>Vector</code> that holds the heap’s data.</p>
+<div id="88" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">length</span>(heap<span class="op">::</span><span class="dt">Heap</span>) <span class="op">=</span> <span class="fu">length</span>(heap.data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="90" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>6</code></pre>
+</div>
+</div>
+<div id="92" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">isempty</span>(heap<span class="op">::</span><span class="dt">Heap</span>) <span class="op">=</span> <span class="fu">isempty</span>(heap.data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="94" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">isempty</span>(h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>false</code></pre>
+</div>
+</div>
+<div id="96" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">isempty</span>(<span class="fu">Heap</span><span class="dt">{Int64}</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>true</code></pre>
+</div>
+</div>
+<p>The following will enable us to write <code>h[3] = 7</code> instead of <code>h.data[3] = 7</code> when <code>h isa Heap</code>.</p>
+<div id="98" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">firstindex</span>(heap<span class="op">::</span><span class="dt">Heap</span>) <span class="op">=</span> heap.data <span class="op">|&gt;</span> firstindex</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">lastindex</span>(heap<span class="op">::</span><span class="dt">Heap</span>) <span class="op">=</span> heap.data <span class="op">|&gt;</span> lastindex</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">getindex</span>(heap<span class="op">::</span><span class="dt">Heap</span>, k<span class="op">::</span><span class="dt">Integer</span>) <span class="op">=</span> heap.data[k]</span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="bu">Base</span>.<span class="fu">setindex!</span>(heap<span class="op">::</span><span class="dt">Heap{T}</span>, value<span class="op">::</span><span class="dt">T</span>, key<span class="op">::</span><span class="dt">Integer</span>) <span class="kw">where</span> T</span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a>    key <span class="op">&gt;</span> <span class="fu">length</span>(heap) <span class="op">&amp;&amp;</span> <span class="fu">error</span>(<span class="st">"Out of bounds"</span>)</span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a>    key <span class="op">&lt;</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="fu">error</span>(<span class="st">"Out of bounds"</span>)</span>
+<span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-10"><a href="#cb116-10" aria-hidden="true" tabindex="-1"></a>    heap.data[key] <span class="op">=</span> value</span>
+<span id="cb116-11"><a href="#cb116-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="100" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">firstindex</span>(h), <span class="fu">lastindex</span>(h), <span class="fu">getindex</span>(h[begin]), <span class="fu">getindex</span>(h[<span class="kw">end</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(1, 6, 11, 3)</code></pre>
+</div>
+</div>
+<div id="102" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>h[<span class="kw">end</span>] <span class="op">=</span> h[<span class="kw">end</span>] <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getindex</span>(h[<span class="kw">end</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>4</code></pre>
+</div>
+</div>
+<div id="104" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">peek</span>(heap<span class="op">::</span><span class="dt">Heap</span>) <span class="op">=</span> heap[begin]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="106" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">peek</span>(h)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>11</code></pre>
+</div>
+</div>
+</section>
+<section id="pop-sink" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="pop-sink"><span class="header-section-number">5.2.2</span> Pop / Sink</h3>
+<p>To “pop” from the heap is to remove its largest element and then restore the heap property.</p>
+<p>To “sink” is to let an element move downward (by swapping with the largest child) until the heap property is restored. When we pop from the heap we replace its root with the last leaf and then let it sink.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 26</strong></span> Popping <code>11</code> then sinking <code>1</code> through the heap so that the result is a <code>heap</code>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-sink-6.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 1: Initial heap.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-sink-4.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 2: Swap the head and last leaf.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-sink-3.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 3: Remove/pop the last leaf.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-sink-2.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 4: Sink (swap with largest child).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-sink-1.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 5: Sink (swap with largest child).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="108" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="st">Sink node k in the heap.</span></span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="st">Each sink restores the heap property for the subtree rooted at that node.</span></span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sink!</span>(heap, k)</span>
+<span id="cb124-7"><a href="#cb124-7" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="fu">length</span>(heap)</span>
+<span id="cb124-8"><a href="#cb124-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="fl">2</span>k <span class="op">≤</span> n  <span class="co"># current node has (at least) left child</span></span>
+<span id="cb124-9"><a href="#cb124-9" aria-hidden="true" tabindex="-1"></a>        child_index <span class="op">=</span> <span class="fl">2</span>k</span>
+<span id="cb124-10"><a href="#cb124-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-11"><a href="#cb124-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># check if right child exists and is bigger than left child</span></span>
+<span id="cb124-12"><a href="#cb124-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> child_index<span class="op">+</span><span class="fl">1</span> <span class="op">≤</span> n <span class="op">&amp;&amp;</span> heap[child_index] <span class="op">&lt;</span> heap[child_index<span class="op">+</span><span class="fl">1</span>] </span>
+<span id="cb124-13"><a href="#cb124-13" aria-hidden="true" tabindex="-1"></a>            child_index <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb124-14"><a href="#cb124-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb124-15"><a href="#cb124-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-16"><a href="#cb124-16" aria-hidden="true" tabindex="-1"></a>        heap[k] <span class="op">≥</span> heap[child_index] <span class="op">&amp;&amp;</span> <span class="cf">break</span>  <span class="co"># cannot sink</span></span>
+<span id="cb124-17"><a href="#cb124-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb124-18"><a href="#cb124-18" aria-hidden="true" tabindex="-1"></a>        heap[k], heap[child_index] <span class="op">=</span> heap[child_index], heap[k]</span>
+<span id="cb124-19"><a href="#cb124-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-20"><a href="#cb124-20" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> child_index</span>
+<span id="cb124-21"><a href="#cb124-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb124-22"><a href="#cb124-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-23"><a href="#cb124-23" aria-hidden="true" tabindex="-1"></a>    <span class="cn">nothing</span></span>
+<span id="cb124-24"><a href="#cb124-24" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="110" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="bu">Base</span>.<span class="fu">pop!</span>(heap<span class="op">::</span><span class="dt">Heap</span>)</span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>  heap[begin], heap[<span class="kw">end</span>] <span class="op">=</span> heap[<span class="kw">end</span>], heap[begin]  <span class="co"># swap root with last leaf</span></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>  head <span class="op">=</span> <span class="fu">pop!</span>(heap.data)  <span class="co"># pop the leaf</span></span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sink!</span>(heap, <span class="fl">1</span>)</span>
+<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a>  head</span>
+<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="112" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fu">Heap</span>([<span class="fl">11</span>, <span class="fl">9</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">1</span>])</span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> !<span class="fu">isempty</span>(h)</span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="fu">pop!</span>(h))</span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>11
+9
+7
+6
+4
+3
+1</code></pre>
+</div>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 4 (Complexity)</strong></span> Pop does <span class="math inline">\(O(\log n)\)</span> many comparisions.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>The maximum number of swaps possible is equal to the depth of the tree. The depth of the tree with <span class="math inline">\(n\)</span> nodes is <span class="math inline">\(\log_2 n\)</span>.</p>
+</div>
+</section>
+<section id="push-swim" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="push-swim"><span class="header-section-number">5.2.3</span> Push / Swim</h3>
+<p>To “swim” is to let a node rise in the tree as high as possible while mantaining the heap property. An element is inserted into the heap by making it the next leaf and letting it swim.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 27</strong></span> Inserting <code>11</code> into the heap.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-swim-4.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 1: Initial heap</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-swim-3.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 2: Insert element as last leaf.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-swim-2.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 3: Swim</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/heap-swim-1.svg" class="img-fluid figure-img"></p>
+<figcaption>Step 4: Swim</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="114" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="bu">Base</span>.<span class="fu">push!</span>(heap<span class="op">::</span><span class="dt">Heap{T}</span>, x<span class="op">::</span><span class="dt">T</span>) <span class="kw">where</span> T</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">push!</span>(heap.data, x)</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> <span class="fu">length</span>(heap)</span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> k <span class="op">&gt;</span> <span class="fl">1</span> <span class="co"># node k has a parent</span></span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>        kparent <span class="op">=</span> k <span class="op">÷</span> <span class="fl">2</span></span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a>        heap[kparent] <span class="op">&gt;</span> heap[k] <span class="op">&amp;&amp;</span> <span class="cf">return</span></span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a>        heap[kparent], heap[k] <span class="op">=</span> heap[k], heap[kparent] </span>
+<span id="cb128-9"><a href="#cb128-9" aria-hidden="true" tabindex="-1"></a>        k <span class="op">=</span> kparent</span>
+<span id="cb128-10"><a href="#cb128-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">#swap</span></span>
+<span id="cb128-11"><a href="#cb128-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb128-12"><a href="#cb128-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-13"><a href="#cb128-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">nothing</span></span>
+<span id="cb128-14"><a href="#cb128-14" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="116" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fu">Heap</span>([<span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">4</span>, <span class="fl">1</span>])</span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">push!</span>(h, <span class="fl">11</span>)</span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> h</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>h = Main.Notebook.Heap{Int64}([11, 9, 6, 7, 4, 1, 3])</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>Heap{Int64}([11, 9, 6, 7, 4, 1, 3])</code></pre>
+</div>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 5 (Complexity)</strong></span> Insert does <span class="math inline">\(O(\log n)\)</span> many comparisions.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>The maximum number of swaps possible is equal to the depth of the tree. The depth of the tree with <span class="math inline">\(n\)</span> nodes is <span class="math inline">\(\log_2 n\)</span>.</p>
+</div>
+</section>
+</section>
+<section id="heapfiy" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="heapfiy"><span class="header-section-number">5.3</span> Heapfiy</h2>
+<p>To <em>heapify</em> is to create a heap from an <em>arbitrary</em> vector whose elements are given in no particular order.</p>
+<p>The strategy is to traverse the vectors backwards letting each node sink. Notice, however, that any node at index beyond the halfway point of the vector is leaf. We therefore should start traversing at the halway point.</p>
+<p>We revisit our inner constructor that currently assume the input input vector already satisfies the heap property and remove this precondition.</p>
+<div id="118" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Heap{T}</span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">::</span><span class="dt">Vector{T}</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Inner constructor for initializing empty heap</span></span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">Heap</span><span class="dt">{T}</span>() <span class="kw">where</span> T</span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">new</span>(<span class="fu">Vector</span>())</span>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">Heap</span>(vec<span class="op">::</span><span class="dt">Vector{T}</span>) <span class="kw">where</span> T</span>
+<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> <span class="fu">new</span><span class="dt">{T}</span>(vec)</span>
+<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="fu">length</span>(h)<span class="op">÷</span><span class="fl">2</span><span class="op">:-</span><span class="fl">1</span><span class="op">:</span><span class="fl">1</span></span>
+<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sink!</span>(h, k)</span>
+<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb132-14"><a href="#cb132-14" aria-hidden="true" tabindex="-1"></a>        h</span>
+<span id="cb132-15"><a href="#cb132-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb132-16"><a href="#cb132-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="120" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>vec <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">11</span>, <span class="fl">9</span>]</span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Heap</span>(vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>Heap{Int64}([11, 7, 9, 4, 3, 6, 1])</code></pre>
+</div>
+</div>
+<div id="fig-" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="img/heap-before.svg" class="img-fluid figure-img"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="img/heap-after.svg" class="img-fluid figure-img"></p>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Before and after heap construction.
+</figcaption>
+</figure>
 </div>
 </section>
 </section>
