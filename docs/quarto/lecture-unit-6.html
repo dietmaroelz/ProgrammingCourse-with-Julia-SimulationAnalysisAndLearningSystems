@@ -1267,23 +1267,16 @@ w^{103} = w^{64}w^{32}w^4w^2w.
 <p>We can obtain the required powers by repeated squaring:</p>
 <p><span class="math display">\[
 \begin{aligned}
-    &amp;&amp; s &amp;\gets w\\
-w^2 =
-    &amp;&amp; s &amp;\gets s^2\\
-w^4 =
-    &amp;&amp; s &amp;\gets s^2\\
-w^8 =
-    &amp;&amp; s &amp;\gets s^2\\
-w^{16} =
-    &amp;&amp; s &amp;\gets s^2\\
-w^{32} =
-    &amp;&amp; s &amp;\gets s^2\\
-w^{64} =
-    &amp;&amp; s &amp;\gets s^2
+w^2 &amp;= w \cdot w \\
+w^4 &amp;= w^2 \cdot w^2 \\
+w^8 &amp;= w^4 \cdot w^4 \\
+w^{16} &amp;= w^8 \cdot w^8 \\
+w^{32} &amp;= w^{16} \cdot w^{16} \\
+w^{64} &amp;= w^{32} \cdot w^{32} \\
 \end{aligned}
 \]</span></p>
 <p>Thus, rather than computing <span class="math inline">\(w^{103}\)</span> using roughly <span class="math inline">\(103\)</span> multiplications, we require only 6 squarings to obtain the powers of two, followed by 4 multiplications to combine the five powers that appear in the binary expansion.</p>
-<p>Returning to <span class="math inline">\(8^{17^3}\)</span>, we have <span class="math display">\[
+<p>For example, to compute <span class="math inline">\(8^{17^3}\)</span>, we have <span class="math display">\[
 17^3 = 4913 = (1001100110001)_2
 \]</span> and hence <span class="math display">\[
 17^3
@@ -1415,7 +1408,7 @@ r \neq 0 &amp;\mbox{ and } \color{red}{\deg r = 0 \geq \deg b = 1} \\[1em]
 <h1 data-number="5"><span class="header-section-number">5</span> Heaps</h1>
 <p>Sparse polynomial arithmetic relies on the <em>heap</em> data structure to be efficient. A <em>heap</em> is a type of priority queue in which priority is determined by an ordering on the elements of the heap. The element that is <em>maximum</em> with respect to this ordering has the highest priority in the queue and can be removed most efficiently. When the maximum element has the highest priority, the heap is more precisely called a <em>max heap</em>.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 9 (Heap)</strong></span> A vector of <span class="math inline">\(n\)</span> elements <span class="math inline">\(H = [H_1,\, H2\, \ldots, H_n]\)</span> is a <em>heap</em> when it satisfies the following properties: <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 9 (Heap)</strong></span> A vector of <span class="math inline">\(n\)</span> elements <span class="math inline">\(H = [H_1,\, H_2\, \ldots, H_n]\)</span> is a <em>heap</em> when it satisfies the following properties: <span class="math display">\[
 \begin{align*}
 H_i \geq H_{2i} &amp;&amp;\mbox{and}&amp;&amp;
 H_i \geq H_{2i + 1} &amp;&amp;\mbox{for}&amp;&amp;
@@ -1472,7 +1465,7 @@ i \geq 1
 </div>
 <section id="underlying-representation" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="underlying-representation"><span class="header-section-number">5.1</span> Underlying Representation</h2>
-<p>We visualize heps as <em>binary trees</em></p>
+<p>We visualize heaps as <em>binary trees</em></p>
 <p>When using this representation, the maximum element is the <em>root</em> of the tree, and the heap satisfies the recursive property that every subtree is also a heap. This means that every node in the heap is larger than (or equal to) each of its descendants.</p>
 <p>One may ask why we do not instead use a sorted this for this task. But notice that adding (or removing) something from an ordered list will require shifting elements. A task with expense proportional to the size of the list.</p>
 <div id="exm-" class="theorem example">
@@ -1557,17 +1550,17 @@ Table&nbsp;2: Comparison of array and heap operations.
 </thead>
 <tbody>
 <tr class="odd">
+<td>Create</td>
+<td><span class="math inline">\(O(n \log n)\)</span></td>
+<td><span class="math inline">\(O(n \log n)\)</span></td>
+</tr>
+<tr class="even">
 <td>Push</td>
 <td><span class="math inline">\(O(n)\)</span></td>
 <td><span class="math inline">\(O(\log n)\)</span></td>
 </tr>
-<tr class="even">
-<td>Maximum</td>
-<td><span class="math inline">\(O(1)\)</span></td>
-<td><span class="math inline">\(O(1)\)</span></td>
-</tr>
 <tr class="odd">
-<td>Remove maximum</td>
+<td>Pop</td>
 <td><span class="math inline">\(O(n)\)</span></td>
 <td><span class="math inline">\(O(\log n)\)</span></td>
 </tr>
@@ -1880,7 +1873,7 @@ Table&nbsp;2: Comparison of array and heap operations.
 <section id="heapfiy" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="heapfiy"><span class="header-section-number">5.3</span> Heapfiy</h2>
 <p>To <em>heapify</em> is to create a heap from an <em>arbitrary</em> vector whose elements are given in no particular order.</p>
-<p>The strategy is to traverse the vectors backwards letting each node sink. Notice, however, that any node at index beyond the halfway point of the vector is leaf. We therefore should start traversing at the halway point.</p>
+<p>The strategy is to traverse the vectors backwards letting each node sink. Notice, however, that any node at index beyond the halfway point of the vector is leaf. We therefore should start traversing at the halfway point.</p>
 <p>We revisit our inner constructor that currently assume the input input vector already satisfies the heap property and remove this precondition.</p>
 <div id="118" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Heap{T}</span>

@@ -1168,25 +1168,18 @@ We can obtain the required powers by repeated squaring:
 
 $$
 \begin{aligned}
-    && s &\gets w\\
-w^2 =
-    && s &\gets s^2\\
-w^4 =
-    && s &\gets s^2\\
-w^8 =
-    && s &\gets s^2\\
-w^{16} =
-    && s &\gets s^2\\
-w^{32} =
-    && s &\gets s^2\\
-w^{64} =
-    && s &\gets s^2 
+w^2 &= w \cdot w \\
+w^4 &= w^2 \cdot w^2 \\
+w^8 &= w^4 \cdot w^4 \\
+w^{16} &= w^8 \cdot w^8 \\
+w^{32} &= w^{16} \cdot w^{16} \\
+w^{64} &= w^{32} \cdot w^{32} \\
 \end{aligned}
 $$
 
 Thus, rather than computing $w^{103}$ using roughly $103$ multiplications, we require only 6 squarings to obtain the powers of two, followed by 4 multiplications to combine the five powers that appear in the binary expansion.
 
-Returning to $8^{17^3}$, we have
+For example, to compute $8^{17^3}$, we have
 $$
 17^3 = 4913 = (1001100110001)_2
 $$
@@ -1357,7 +1350,7 @@ Sparse polynomial arithmetic relies on the *heap* data structure to be efficient
 
 ## Heap
 
-A vector of $n$ elements $H = [H_1,\, H2\, \ldots, H_n]$ is a *heap* 
+A vector of $n$ elements $H = [H_1,\, H_2\, \ldots, H_n]$ is a *heap* 
 when it  satisfies the following properties:
 $$
 \begin{align*}
@@ -1401,7 +1394,7 @@ Adding the element 8 to a queue encoded by a sorted list.
 
 ## Underlying Representation
 
-We visualize heps as *binary trees*
+We visualize heaps as *binary trees*
 
 When using this representation, the maximum element is the *root* of the tree, and the heap satisfies the recursive property that every subtree is also a heap. This means that every node in the heap is larger than (or equal to) each of its descendants.
 
@@ -1447,9 +1440,9 @@ A heap $H$ with $n = |H|$ elements supports the following operations.
 
 | Operation | Vector | Heap |
 | -- | -- | -- |
+| Create   | $O(n \log n)$ | $O(n \log n)$ |
 | Push    | $O(n)$ | $O(\log n)$ |
-| Maximum   | $O(1)$ | $O(1)$ |
-| Remove maximum | $O(n)$ | $O(\log n)$ |
+| Pop | $O(n)$ | $O(\log n)$ |
 
 : Comparison of array and heap operations. {#tbl-}
 
@@ -1694,7 +1687,7 @@ The maximum number of swaps possible is equal to the depth of the tree.  The dep
 
 To *heapify* is to create a heap from an *arbitrary* vector whose elements are given in no particular order.
 
-The strategy is to traverse the vectors backwards letting each node sink.  Notice, however, that any node at index beyond the halfway point of the vector is leaf.  We therefore should start traversing at the halway point.
+The strategy is to traverse the vectors backwards letting each node sink.  Notice, however, that any node at index beyond the halfway point of the vector is leaf.  We therefore should start traversing at the halfway point.
 
 We revisit our inner constructor that currently assume the input input vector already satisfies the heap property and remove this precondition.
 ```{julia}
