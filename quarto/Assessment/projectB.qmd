@@ -43,7 +43,10 @@ ol > li::before {
   
 **Note:** The teaching staff will only answer questions (via Ed, consultation hour, or practicals) regarding this assignment up to late Wednesday evening before the due date.
   
-**Submission format:** This assignment should be submitted via a GitHub repo and a PDF file via Blackboard.
+**Submission format:** This assignment should be submitted 
+
+1. via your GitHub repo and 
+2. via Blackboard as a PDF file alongside a voice recording (state that the work is your own. Say what was easy, what was hard, what you found useful, and what less. In case you used LLMs (chatGPT etc…), make sure to mention how you used it and where it was useful (or not)).
   
 Specific instructions for the GitHub repo are below. It is important that the GitHub repo be **private** and created within the MATH25042026 github organization.  It is also important to name the repo exactly as `PROJECTB-2504-2026-<<FIRST NAME>>-<<LAST NAME>>`. So for example if your name is "Pierre-Simon Laplace", the repo name should be `PROJECTB-2504-2026-Pierre-Simon-Laplace`.
   
