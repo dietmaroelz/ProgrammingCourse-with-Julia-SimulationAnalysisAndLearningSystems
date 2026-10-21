@@ -139,7 +139,7 @@ Your GitHub repo must be formatted like the original repo.
 
 *Note, in any of the following tasks, you may modify which functions are exported in `src/PolynomialAlgebra.jl`. You should only export functions the user may reasonably want to access (i.e., `to_superscript` is used internally, but shouldn't be exported by a polynomial algebra library).*
  
-## **Task 1 (13 pts) - Working in an existing codebase**
+## **Task 1 (12 pts) - Working in an existing codebase**
 This task is for getting the repo to run and improving pretty printing.
 
 ### Study the Repo
@@ -157,7 +157,7 @@ $$
 
 3. Create your own example script (called `scripts/example_script_task_1.jl`) and include functionality demonstrating the correctness of your "pretty printing" implementation. You should demonstrate this works by constructing (at least) *three* polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all special cases relevant for pretty printing). Following this, verify (in the same script) that `derivative` is working correctly with respect to the product rule.
 
-### Showing overflow for `PolynomialDense` (5 pts)
+### Showing overflow for `PolynomialDense` (4 pts)
 
 Exact computation requires polynomials with (truly) integer coefficients and thereby we must use `BigInt` rather than (the finitely many integers comprising) `Int`. 
   

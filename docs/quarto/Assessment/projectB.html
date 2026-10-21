@@ -122,11 +122,11 @@ window.Quarto = {
   <li><a href="#tasks-100pts" id="toc-tasks-100pts" class="nav-link" data-scroll-target="#tasks-100pts"><span class="header-section-number">3</span> Tasks (100pts)</a>
   <ul class="collapse">
   <li><a href="#task-0-7pts---setting-up-your-github-repo-for-hand-in" id="toc-task-0-7pts---setting-up-your-github-repo-for-hand-in" class="nav-link" data-scroll-target="#task-0-7pts---setting-up-your-github-repo-for-hand-in"><span class="header-section-number">3.1</span> <strong>Task 0 (7pts) - Setting up your GitHub repo for hand-in</strong></a></li>
-  <li><a href="#task-1-13-pts---working-in-an-existing-codebase" id="toc-task-1-13-pts---working-in-an-existing-codebase" class="nav-link" data-scroll-target="#task-1-13-pts---working-in-an-existing-codebase"><span class="header-section-number">3.2</span> <strong>Task 1 (13 pts) - Working in an existing codebase</strong></a>
+  <li><a href="#task-1-12-pts---working-in-an-existing-codebase" id="toc-task-1-12-pts---working-in-an-existing-codebase" class="nav-link" data-scroll-target="#task-1-12-pts---working-in-an-existing-codebase"><span class="header-section-number">3.2</span> <strong>Task 1 (12 pts) - Working in an existing codebase</strong></a>
   <ul class="collapse">
   <li><a href="#study-the-repo" id="toc-study-the-repo" class="nav-link" data-scroll-target="#study-the-repo"><span class="header-section-number">3.2.1</span> Study the Repo</a></li>
   <li><a href="#pretty-printing-8-pts" id="toc-pretty-printing-8-pts" class="nav-link" data-scroll-target="#pretty-printing-8-pts"><span class="header-section-number">3.2.2</span> Pretty Printing (8 pts)</a></li>
-  <li><a href="#showing-overflow-for-polynomialdense-5-pts" id="toc-showing-overflow-for-polynomialdense-5-pts" class="nav-link" data-scroll-target="#showing-overflow-for-polynomialdense-5-pts"><span class="header-section-number">3.2.3</span> Showing overflow for <code>PolynomialDense</code> (5 pts)</a></li>
+  <li><a href="#showing-overflow-for-polynomialdense-4-pts" id="toc-showing-overflow-for-polynomialdense-4-pts" class="nav-link" data-scroll-target="#showing-overflow-for-polynomialdense-4-pts"><span class="header-section-number">3.2.3</span> Showing overflow for <code>PolynomialDense</code> (4 pts)</a></li>
   </ul></li>
   <li><a href="#task-2-25pts---refactoring-the-data-structure-used" id="toc-task-2-25pts---refactoring-the-data-structure-used" class="nav-link" data-scroll-target="#task-2-25pts---refactoring-the-data-structure-used"><span class="header-section-number">3.3</span> <strong>Task 2 (25pts) - Refactoring the data structure used</strong></a>
   <ul class="collapse">
@@ -271,8 +271,8 @@ ol > li::before {
 </ul>
 <p><em>Note, in any of the following tasks, you may modify which functions are exported in <code>src/PolynomialAlgebra.jl</code>. You should only export functions the user may reasonably want to access (i.e., <code>to_superscript</code> is used internally, but shouldn’t be exported by a polynomial algebra library).</em></p>
 </section>
-<section id="task-1-13-pts---working-in-an-existing-codebase" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="task-1-13-pts---working-in-an-existing-codebase"><span class="header-section-number">3.2</span> <strong>Task 1 (13 pts) - Working in an existing codebase</strong></h2>
+<section id="task-1-12-pts---working-in-an-existing-codebase" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="task-1-12-pts---working-in-an-existing-codebase"><span class="header-section-number">3.2</span> <strong>Task 1 (12 pts) - Working in an existing codebase</strong></h2>
 <p>This task is for getting the repo to run and improving pretty printing.</p>
 <section id="study-the-repo" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="study-the-repo"><span class="header-section-number">3.2.1</span> Study the Repo</h3>
@@ -289,8 +289,8 @@ ol > li::before {
 <li><p>Create your own example script (called <code>scripts/example_script_task_1.jl</code>) and include functionality demonstrating the correctness of your “pretty printing” implementation. You should demonstrate this works by constructing (at least) <em>three</em> polynomials and including computations of the sum, product and derivative (show as many polynomials as is required to demonstrate all special cases relevant for pretty printing). Following this, verify (in the same script) that <code>derivative</code> is working correctly with respect to the product rule.</p></li>
 </ol>
 </section>
-<section id="showing-overflow-for-polynomialdense-5-pts" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="showing-overflow-for-polynomialdense-5-pts"><span class="header-section-number">3.2.3</span> Showing overflow for <code>PolynomialDense</code> (5 pts)</h3>
+<section id="showing-overflow-for-polynomialdense-4-pts" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="showing-overflow-for-polynomialdense-4-pts"><span class="header-section-number">3.2.3</span> Showing overflow for <code>PolynomialDense</code> (4 pts)</h3>
 <p>Exact computation requires polynomials with (truly) integer coefficients and thereby we must use <code>BigInt</code> rather than (the finitely many integers comprising) <code>Int</code>.</p>
 <ol type="1">
 <li><p>At the end of <code>example_script_task_1.jl</code>, demonstrate using five hard-coded examples (i.e, explicitly write out the polynomials and do not use <code>rand</code> to generate them) of <code>PolynomialDense{Int}</code> addition and multiplication that overflow by making the coefficients excessively large.</p></li>
