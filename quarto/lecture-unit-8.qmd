@@ -294,7 +294,7 @@ Sometimes plain vectors or (typed) tables may be more convenient or faster than 
 
 For now we will double-down on DataFrames.jl.
 
-Here is a [nice cheatsheet for the syntax of DataFrames](https://www.ahsmart.com/assets/pages/data-wrangling-with-data-frames-jl-cheat-sheet/DataFramesCheatSheet_v1.x_rev1.pdf), and I recommend downloading and possibly even printing it out for your convenience.
+Here is a [nice cheatsheet for the syntax of DataFrames](https://ahsmart.com/posts/data-wrangling-with-data-frames-jl-cheat-eheet/DataFramesCheatSheet_v0.21_rev2.pdf), and I recommend downloading and possibly even printing it out for your convenience.
 
 ### Constructing dataframes
 
