@@ -1,0 +1,26 @@
+---
+title: "Unit 6B: Julia Type System and Programming Paradigms"
+engine: julia
+format:
+  html:
+    toc: true
+    code-fold: false
+    highlight-style: github
+    fig-align: center
+    css: styling/page-styles.css
+  pdf:
+    documentclass: article
+    geometry:
+      - margin=1in
+    toc: true
+    number-sections: true
+
+filters:
+  - tikz
+---
+
+::: {#thm-div-in-ff}
+## Polynomial Division
+
+Let $a,b \in \FF[x]$, $b\neq0$.  There exists *unique* polynomials $q,r \in \FF[x]$ such that 
+:::
